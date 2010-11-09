@@ -29,6 +29,8 @@
 #   < 100,000,000: 608,720 reversible numbers  (22m49.344s)
 # < 1,000,000,000:       ? reversible numbers
 
+import time
+
 def reverse(n):
     sn = str(n)
     ln = []
@@ -48,12 +50,21 @@ def chodd(n):
     return True
 
 
+start = time.clock()
+
 Answer = 0
-for n in range(10,1000):
+for n in range(10, 10000000):
     if ((n % 10) == 0):  continue
     t = n + reverse(n)
     if chodd(t):
         Answer += 1
         #print "{0} + {1} = {2}".format(n, reverse(n), n+reverse(n))
+    if ( ((n <     100) & ((n %      10) ==      9)) |
+         ((n <    1000) & ((n %     100) ==     99)) |
+         ((n <   10000) & ((n %    1000) ==    999)) |
+         ((n <  100000) & ((n %   10000) ==   9999)) |
+         ((n < 1000000) & ((n %  100000) ==  99999)) |
+         ((n > 1000000) & ((n % 1000000) == 999999)) ):
+        print "n = {0}, Answer = {1}, time = {2}".format(n, Answer, (time.clock() - start))
 
-print "Answer =", Answer
+print "n =", (n+1), "Answer =", Answer
