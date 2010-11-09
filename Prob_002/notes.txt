@@ -1,0 +1,13 @@
+Another pretty simple problem to solve.
+
+Here's the solution in python: <prob_002.py>
+
+This one takes 0.027 seconds to run on my laptop.  By the way, most of
+this time is taken up with just starting the python interpreter
+itself, running python on an empty file takes almost as long at 0.025
+seconds.
+
+As with Problem 1, if this problem was a lot larger we would have
+needed to come up with a more efficient algorithm to solve it, but it
+wasn't so we didn't.  When we get to problem 104, we'll be forced to
+come up with a more efficient algorithm for finding Fibonacci numbers.

@@ -1,0 +1,3 @@
+The biggest trick we use here is to constantly use the mod function on
+intermediate values, this keeps the size of the numbers significantly
+smaller.

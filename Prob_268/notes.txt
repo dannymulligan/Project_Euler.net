@@ -1,0 +1,46 @@
+There are 25 primes less than 100.
+
+First attempt: It is not possible to solve this problems in a simple
+way where we directly count the number of divisors, as this would
+require a multiple of 10**16 operations (actually about 12.5e19
+calculations) and a data structure with 10**16 entries (assuming one
+bit per entries, this would consume 1.25 petabytes).
+
+Calculating the divisors by dividing each of the possible groups of
+primes (~12.5k of them) into the number is possible, but subtracting
+out the overlap is also infeasible, given that there are ? groups of
+divisors that overlap two possible groups of primes, ?? groups that
+overlap three possible groups, etc.
+
+The eventual approach I got working was a recursive algorithm that
+calculated...
+
+One very helpful thing was to implement a simple counting algorithm
+for smaller sized problems, and use the results from that algorithm as
+test for the more sophisticated algorithm.
+
+When I finally got the algorithm working it took about 15 minutes to
+run while calculating the divisors of 10**6, but about 6 hours when
+calculating the divisors of 10**16.  This ~25x increase in compute
+time was because of the extended precision integer math that Python
+automatically used for the larger numbers.
+
+Without further optimization, this problem was just at the boundary of
+what was possible to run on my computer.  As mentioned above, a run of
+this algorithm calculating the divisors of 10**6 took about 15 minutes
+to run, but a version using just 20 primes instead of 25 ran in 8
+seconds, or about 100x faster.  A version using 10 primes ran in well
+under a tenth of a second, another factor of several hundred faster.
+
+An optimization would be to cache the results from the
+div_incl_overlap and div_excl_overlap functions, so that we only
+calculate the result of each function once, and repeated runs to those
+functions run faster.
+
+Appying this optimization to the div_incl_overlap function doesn't
+help much, as this function doesn't get called a lot.  (I think it
+actually makes the algorithm run a little bit slower.)
+
+Applying this optization to the div_excl_overlap function does help, a
+~15 minute run time to calculate the factors of 10**6 for the 25
+primes < 100 ran >2x faster in ~6.5 minutes.

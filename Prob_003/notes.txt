@@ -1,0 +1,34 @@
+With problem 3, we get to prime numbers.  Prime numbers appear a lot
+in the coming problems, so its worth our while spending some time here
+to understand what we're doing.
+
+By far the best know algorithm for finding primes is the Sieve of
+Erasthenes, which is the algorithm we use here.  The Wikipedia page on
+this explains the algorithm pretty well, so go there if you don't
+understand it.
+
+For our algorithm, we generate a table that holds the largest factor
+of each number, which will be 1 for prime numbers.  For this problem,
+we could have generated a much more compact table of single bit flags
+that indicated whether a number was a prime or not, but in some later
+problems we'll need factors as well, so we'll write the code to do
+that here, and then reuse it there later.
+
+Once we've got the table of primes, we start trying to divide each
+prime (starting with the largest) into the target number until we find
+one which is a factor.  We know that the largest factor cannot be
+greater than the square root of that number, so we limit our search to
+numbers just slightly larger than this.
+
+For some reason, when I first started programming in Python, I
+couldn't figure out how to declare an array like structure, which
+pushed me back into C for some of my early attempts to solve Project
+Euler problems, but this code shows how it's done.
+
+    prime_table = [1]*LIMIT_PRIME
+
+There is no way in Python (that I know of) to create an array without
+initializing every entry to some known value.  This is not necessarily
+a bad thing, as initializing data before using it is a good idea, but
+if you know what you're doing you might able to initialize the data
+structure more efficiently yourself.

@@ -1,0 +1,7 @@
+Solve by calculating a line in the form Y = mX+c for each of the 3
+sides of the triangle, then check to see which side of the line the
+other vertex of the triangle was on, and then see if the origin was on
+the same side.
+
+Ran into problems with divide by zero when two points had the same X
+coordinate, solved by swapping X & Y cordinates.

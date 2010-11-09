@@ -1,0 +1,86 @@
+This problem follows the pattern of later Project Euler problems,
+where the problem description actually gives you the solution to a
+simpler version of the problem.  Pay attention to these example
+solutions, as they will help you make sure that you've understood the
+problem right, as well as provide you with something to test your
+program with before you start getting frustrated when your answer to
+the real problem is rejected as wrong.
+
+Here's the solution: <prob_001.py>
+
+This problem is pretty easy to solve, so the solution doesn't require
+a lot of comments.  If you're new to Python, this program demonstrates
+some of the nice features of the language, including
+
+    - Nesting by whitespace indendation
+    - The flexibility of the looping features
+    - The range()/xrange() function
+
+Other themes we'll touch upon later...
+
+    - Arbitrary precision math
+    - Algorithm order
+    - Debugging techniques
+    - Version control & change tracking
+
+We are using a very simple/brute force algorithm here.  We could have
+solved the problem using a more elegant algorithm, but we're just
+getting started so we took the easy way out.
+
+Later Project Euler problems sometimes deliberately increase the size
+of the problem to force you to use a more elegant algorithm.  Our
+simple algorithm runs very quickly when asked to find multiples below
+1,000 (the runtime was < 0.025 seconds on my laptop), but if our
+original problem was to find the multiples below 100 billion, then
+then the above algorithm would have taken about half a day to run
+(assuming it actually finished).
+
+A more elegant algorithm would take advantage of the patterns in
+problem.  We are being asked to add all multiples of 3 and 5 below 100
+billion we get...
+
+    3 + 6 + 9 + 12 + ... + 99,999,999,999
+    5 + 10 + 15 + ... + 99,999,999,995
+
+but this double counts all multiples of both 3 & 5, so we also have to
+subtract out all the multiples of 15...
+
+    - (15 + 30 + ... + 99,999,999,990)
+
+Combining all three items we have...
+
+    3 + 6 + 9 + 12 + ... + 99,999,999,999
+    5 + 10 + 15 + ... + 99,999,999,995
+    - (15 + 30 + ... + 99,999,999,990)
+
+which is equal to...
+
+    3 * (1 + 2 + 3 + 4 + ... + 33,333,333,333)
+    + 5 * (2 + 2 + 3 + ... + 19,999,999,999)
+    - 15 * (1 + 2 + ... + 6,666,666,666)
+
+From math we know that...
+
+    1 + 2 + 3 + ... + n is equal to (n+1)*n/2
+
+so our answer will be...
+
+    3 * (33,333,333,333*33,333,333,334/2)
+    + 5 * (19,999*999,999*20,000,000,000/2)
+    - 15 * (6,666,666,666*6,666,666,667/2)
+
+which is equal to...
+
+    3 * 555,555,555,561,111,111,111
+    + 5 * 199,999,990,000,000,000
+    - 15 * 22,222,222,221,111,111,111
+
+which is equal to...
+
+    2,333,333,333,316,666,666,668
+
+Here's this algorithm in python: <prob_001a.py>
+
+This one actually runs faster than the original solution, while
+solving a problem that is 100 million times larger.  Behold the power
+of efficient algorithms!

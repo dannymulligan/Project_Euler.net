@@ -1,0 +1,52 @@
+In my first attempt to solve this problem, I misread the instructions.
+I thought that the outcome was 1+f for heads, and 1-f for tails, when
+in fact it was 1+2f & 1-f.  This caused my solution to be wrong, and I
+would probably have thrashed around for a long time looking for the
+soution were it not for the fact that I was able to find a solution
+online.  And this represents one of the biggest frustrations when
+solving these problems... what do you do when you think you have the
+right answer, but you don't.  Here are a few suggestions...
+
+- Reread the problem description thoroughly.
+
+- The problem description typicaly includes a small example, you
+  should try out your solution on that small example and see if you
+  solution matches the solution given.
+
+- Look for a simpler 'brute-force' algorithm that solves the same
+  problem, and then try it out on a smaller version of the problem.
+  Use the answer given to further test your more efficienct (but more
+  complicated) algorithm.
+
+The key to solving this problem is to recognize that although there
+are 2^1000 distinct permutations of heads and tails, the only thing
+that matters is the number of heads & tails - the order in which they
+arrive is irrelevant.  Whenever you get a heads, then your capital is
+multiplied by...
+
+    1+2*f
+
+...and whenever you get a tails, your capital is multipled by...
+
+    1-f
+
+So after a sequence of N heads, and 1000-N tails, your capital will be...
+
+    C(N) = (1+2*f)^N * (1-f)^(1000-N)
+
+If we can find a value of f for which this results in a final capital
+of greater than 1,000,000,000 at some N, then higher values of N will
+result in even larger results, so our goal must be to find the
+smallest N for which there exists a value of f that results in a final
+capital greater than 1,000,000,000.
+
+In other words, find the smallest N for which there exists an f
+with...
+
+    C(N) = (1+2*f)^N * (1-f)^(1000-N) > 1,000,000,000
+
+If we work in logarithms, the analysis will be easier, so restating
+the problem, we need the smallest N for which there exists an f
+with...
+
+    Cl(N) = N*log(1+2*f) * (1000-N)*log(1-f) > log(1,000,000,000)

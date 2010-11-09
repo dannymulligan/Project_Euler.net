@@ -1,0 +1,55 @@
+My first pass attempt at this problem was to calculate the triangle
+numbers in sequence, and count the divisors of each one using a brute
+force technique.  Since we end up testing more than 10 thousand
+triangle numbers before we find the one we're looking for, this takes
+a LONG time to run, in my case ~6 hours.
+
+A more efficient algorithm runs MUCH faster, I was able to reduce the
+eventual run time to 1 minute 11 seconds.  I'm still a little over the
+Project Euler target run time of under a minute, but I consider this
+close enough to call it done and move on.
+
+The more efficient algorithm was to recognise that every number can be
+broken down to its prime factors, for example...
+
+    2 * 3 * 5 = 30
+
+and the factors of this number consist of all of these prime factors
+in various combinations.  For this example, the factors will be...
+
+    1 * 1 * 1 = 1
+    1 * 1 * 5 = 5
+    1 * 3 * 1 = 3
+    1 * 3 * 5 = 15
+    2 * 1 * 1 = 2
+    2 * 1 * 5 = 10
+    2 * 3 * 1 = 6
+    2 * 3 * 5 = 15
+
+...for a total of 2*2*2 = 8 factors.  In other words, the number of
+factors will be double for each unique prime factor.  Sometimes there
+will be a prime factor is used more than once in building a number,
+like this...
+
+    (3 * 3) * 5 = 45
+
+in this case, instead of multiplying the number of factors by two, the
+repeated prime factor multiplies the number of factors by 1 + the
+number of times it is repeated.  For example...
+
+    (1 * 1) * 1 = 1
+    (1 * 1) * 5 = 5
+    (3 * 1) * 1 = 3
+    (3 * 1) * 5 = 15
+    (3 * 3) * 1 = 9
+    (3 * 3) * 5 = 45
+
+...for a total of 3*2 = 6 factors.
+
+Our more efficient algorithm calculates all of the prime factors of
+each triangle number, than then figures out the number of divisors by
+evaluating the prime factors, resulting in huge savings in
+computation, at the expense of needing to precalculate a list of
+factors (using the Sieve of E algorithm).  Most of the CPU time is now
+spent in the generation of the original prime factor table, and the
+process of determining the number of divisors is extremely quick.

@@ -1,0 +1,37 @@
+One of the Python documents at http://docs.python.org (it's called
+"Idioms and Anti-Idioms in Python") talks about do's and dont's in
+Python, and it specifically mentiones using backslashes as a "bad
+idea".
+
+By wah of example, my first version of the solution to this program
+included code like...
+
+    sum = 37107287533902102798797998220837590246510135740250 \
+        + 46376937677490009712648124896970078050417018260538 \
+        + 74324986199524741059474233309513058123726617309629 \
+    etcetera
+        + 20849603980134001723930671666823555245252804609722 \
+        + 53503534226472524250874054075591789781264330331690
+
+which uses '\' to continue the addition onto the next line until we've
+added each of the one hundred numbers in this problem.  If I had
+accidentally gotten a space after one of the '\'s, then I would have
+gotten a synthax error - for a character that I can't easily see in my
+editor.
+
+The Python document goes on to point out that at least I had gotten a
+syntax error, and gives an example of a simpilar problem which would
+have instead have caused a subtle programming difference that would
+have been very difficult to have found.
+
+The recommended way to do this is as follows...
+
+    sum = ( 37107287533902102798797998220837590246510135740250
+          + 46376937677490009712648124896970078050417018260538
+          + 74324986199524741059474233309513058123726617309629
+    etcetera
+          + 20849603980134001723930671666823555245252804609722 
+          + 53503534226472524250874054075591789781264330331690 )
+
+which uses implicit continuation, without needing the backspaces.  Now
+stray spaces have no effect.
