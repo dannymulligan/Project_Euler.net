@@ -16,18 +16,18 @@
 # How many reversible numbers are there below one-billion (10^9)?
 #
 # Answer: 
-# Solved ??/??/10
-# ?? problems solved
-# Position #??? on level ?
+# Solved 11/09/10
+# 130 problems solved
+# Position #423 on level 3
 
-#           < 100:      20 reversible numbers  ( 0m 0.061s)
-#         < 1,000:     120 reversible numbers  ( 0m 0.068s)
-#        < 10,000:     720 reversible numbers  ( 0m 0.136s)
-#       < 100,000:     720 reversible numbers  ( 0m 0.899s)
-#     < 1,000,000:  18,720 reversible numbers  ( 0m 8.730s)
-#    < 10,000,000:  68,720 reversible numbers  ( 1m30.279s)
-#   < 100,000,000: 608,720 reversible numbers  (22m49.344s)
-# < 1,000,000,000:       ? reversible numbers
+#           < 100:      20 reversible numbers  (  0m 0.061s)
+#         < 1,000:     120 reversible numbers  (  0m 0.068s)
+#        < 10,000:     720 reversible numbers  (  0m 0.136s)
+#       < 100,000:     720 reversible numbers  (  0m 0.899s)
+#     < 1,000,000:  18,720 reversible numbers  (  0m 8.730s)
+#    < 10,000,000:  68,720 reversible numbers  (  1m30.279s)
+#   < 100,000,000: 608,720 reversible numbers  ( 22m49.344s)
+# < 1,000,000,000: 608,720 reversible numbers  (196m38.503s)
 
 import time
 
@@ -53,7 +53,7 @@ def chodd(n):
 start = time.clock()
 
 Answer = 0
-for n in range(10, 10000000):
+for n in xrange(10, 1000000000):
     if ((n % 10) == 0):  continue
     t = n + reverse(n)
     if chodd(t):
@@ -67,4 +67,4 @@ for n in range(10, 10000000):
          ((n > 1000000) & ((n % 1000000) == 999999)) ):
         print "n = {0}, Answer = {1}, time = {2}".format(n, Answer, (time.clock() - start))
 
-print "n =", (n+1), "Answer =", Answer
+print "n = {0}, Answer = {1}, time = {2}".format((n+1), Answer, (time.clock() - start))
