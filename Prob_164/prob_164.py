@@ -9,10 +9,10 @@
 # How many 20 digit numbers n (without any leading zero) exist such
 # that no three consecutive digits of n have a sum greater than 9?
 #
-# Answer: 
-# Solved ??/??/10
-# ?? problems solved
-# Position #??? on level ?
+# Answer: 378158756814587
+# Solved 11/13/10
+# 131 problems solved
+# Position #398 on level 3
 
 import time
 import sys
@@ -260,7 +260,7 @@ print "{0} digit numbers - found {1} solutions".format(19, cnt)
 cache_20 = [0]*1000
 cnt = 0
 ans = 0
-for a in range(10):
+for a in range(1,10):
     for b in range(10):
         for c in range(10):
             if ((a+b+c) <= 9):
