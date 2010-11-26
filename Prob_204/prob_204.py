@@ -21,3 +21,22 @@
 # Solved ??/??/10
 # ?? problems solved
 # Position #??? on level ?
+
+LIMIT = 10**8
+primes = [2, 3, 5]
+
+def hamming(pr, po):
+    result = 1
+    for i in range(len(pr)):
+       result *= pr[i]**po[i]
+    return result
+
+pow = [0, 0, 0]
+
+ans = hamming(primes, pow)
+
+while
+
+#primes100 = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+
+
