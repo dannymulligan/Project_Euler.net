@@ -22,7 +22,53 @@
 # 
 # NOTE: This problem is related to problems 103 and 106.
 #
-# Answer:
-# Solved:
-# ? problems solved
-# Position #??? on level ?
+# Answer: 73702
+# Solved: 06/04/11
+# 140 problems solved
+# Position #216 on level 3
+
+import itertools
+
+tfile = open("./sets.txt", "r")
+answer = 0
+
+lcount = 0
+for line in tfile:
+    lcount += 1
+    #setA = (map(int, x) for x in line.split(','))
+    #setA = (float(x) for x in line.split(','))
+    sAs = line.split(',')
+    sA = []
+    found = True
+    for s in sAs:
+       sA.append(int(s))
+    
+    print "Set {0}: {1}, sum={2}".format(lcount, sA, sum(sA))
+    lA = len(sA)
+    for x in itertools.product('ABC', repeat=lA):
+        (lB,lC) = (0,0)
+        (tB,tC) = (0,0)
+        (sB,sC) = ([],[])
+        for i in range(lA):
+            if x[i] == 'B':
+               lB += 1
+               tB += sA[i]
+               sB.append(sA[i])
+            if x[i] == 'C':
+               lC += 1
+               tC += sA[i]
+               sC.append(sA[i])
+        if (lB == 0) | (lC == 0):  continue
+
+        if (((lB == lC) & (tB == tC))
+          | ((lB >  lC) & (tB <= tC))
+          | ((lB <  lC) & (tB >= tC))):
+            found = False
+            print "    Fail", sB, sC
+            break
+        
+        
+    if (found == True):
+        answer += sum(sA)
+
+print "Answer =", answer
