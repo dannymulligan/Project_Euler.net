@@ -7,7 +7,6 @@
 #
 # How many n-digit positive integers exist which are also an nth power?
 #
-# Answer:
 
 #
 # 10^N will be an (N+1) digit number, '1' followed by N '0's.

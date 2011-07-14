@@ -30,7 +30,6 @@
 #      r
 # for 1 <= n <= 100, are greater than one-million?
 #
-# Answer: 4075
 
 def gcd(a,b):
     while ((a != b) & (b != 0)):

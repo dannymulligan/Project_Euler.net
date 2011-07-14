@@ -40,7 +40,6 @@
 # How many distinct arrangements of the two cubes allow for all of the
 # square numbers to be displayed?
 #
-# Answer:
 # Solved 9/11/09
 # 100 problems solved
 # Postion #1332 on level 3

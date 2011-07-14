@@ -25,7 +25,6 @@
 # longest set of consecutive positive integers, 1 to n, can be
 # obtained, giving your answer as a string: abcd.
 #
-# Answer: 1258
 # Solved 10/6/09
 # 98 solved
 # Position #15 on level 2

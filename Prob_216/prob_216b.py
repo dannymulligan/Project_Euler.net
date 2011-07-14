@@ -11,9 +11,8 @@
 # 
 # How many numbers t(n) are prime for n <= 50,000,000 ?
 #
-# Answer: 5437849
-# Solved 12/25/09
-# 136 problems solved
+# Solved 12/25/10
+# 135 problems solved
 # Position #304 on level 3
 
 import sys

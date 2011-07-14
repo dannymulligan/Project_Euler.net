@@ -12,7 +12,6 @@
 # What is the sum of all such integers n below 150 million?
 #
 #
-# Answer: 
 # Solved ??/??/10
 # ?? problems solved
 # Position #??? on level ?

@@ -13,7 +13,6 @@
 # digital sums of the first one hundred decimal digits for all the
 # irrational square roots.
 # 
-# Answer:
 
 import decimal
 

@@ -25,7 +25,6 @@
 # For m = 50, find the least value of n for which the fill-count
 # function first exceeds one million.
 #
-# Answer: 168
 # Solved 09/12/10
 # 126 problems solved
 # Position #532 on level 3

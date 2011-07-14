@@ -13,7 +13,6 @@
 # How many distinct sets containing each of the digits one through
 # nine exactly once contain only prime elements?
 #
-# Answer: 
 # Solved ??/??/10
 # ?? problems solved
 # Position #??? on level ?

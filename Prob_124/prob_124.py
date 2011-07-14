@@ -29,7 +29,6 @@
 # 
 # If rad(n) is sorted for 1 <= n <= 100000, find E(10000).
 #
-# Answer: 21417
 # Solved 09/05/10
 # 122 problems solved
 # Position #656 on level 3

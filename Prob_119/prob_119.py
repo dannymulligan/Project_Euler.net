@@ -13,7 +13,6 @@
 # 
 # Find a_(30).
 #
-# Answer:
 # Solved 11/?/09
 # 10? solved
 # Position #???? on level 3

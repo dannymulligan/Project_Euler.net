@@ -14,7 +14,6 @@
 # with integral side lengths and area and whose perimeters do not
 # exceed one billion (1,000,000,000).
 #
-# Answer:
 
 # From http://en.wikipedia.org/wiki/Triangle
 #

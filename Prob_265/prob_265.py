@@ -29,7 +29,6 @@
 # 
 # Find S(5).
 #
-# Answer: 209110240768
 # Solved 12/19/09
 # 111 problems solved
 # Position #813 on level 3

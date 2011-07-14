@@ -26,7 +26,6 @@
 # Find the value of D <= 1000 in minimal solutions of x for which the
 # largest value of x is obtained.
 #
-# Answer: 661
 # Solved 10/31/09
 # 94 problems solved
 # Position #74 on level 2

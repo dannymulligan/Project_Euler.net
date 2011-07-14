@@ -13,7 +13,6 @@
 # Find the sum of all n, 0 < n < 64,000,000 such that phi2(n) is a
 # perfect square.
 #
-# Answer: 1922364685
 # Solved 09/07/10
 # 123 problems solved
 # Position #636 on level 3

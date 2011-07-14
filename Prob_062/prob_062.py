@@ -10,7 +10,6 @@
 # Find the smallest cube for which exactly five permutations of its
 # digits are cube.
 #
-# Answer: 127035954683 (5027**3)
 # Solved 10/20/09
 # 79 problems solved
 # Position #338 on level 2

@@ -29,7 +29,6 @@
 # How many chains, with a starting number below one million, contain
 # exactly sixty non-repeating terms?
 #
-# Answer: 402
 # Solved 10/22/09
 # 84 problems solved
 # Position #242 on level 2

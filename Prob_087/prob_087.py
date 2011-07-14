@@ -14,7 +14,6 @@
 # How many numbers below fifty million can be expressed as the sum of
 # a prime square, prime cube, and prime fourth power?
 # 
-# Answer: 1097343
 # Solved 10/27/09
 # 90 problems solved
 # Position #142 on level 2

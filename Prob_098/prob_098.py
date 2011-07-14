@@ -20,7 +20,6 @@
 # 
 # NOTE: All anagrams formed must be contained in the given text file.
 #
-# Answer: 19769
 # ['BOARD', 'BROAD'], length = 5, test 100 to 316, (100^2 = 10000, 316^2 = 99856)
 #    133^2=BOARD=17689, 137^2=BROAD=18769
 # Found new answer = 18769

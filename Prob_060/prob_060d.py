@@ -11,7 +11,6 @@
 # Find the lowest sum for a set of five primes for which any two
 # primes concatenate to produce another prime.
 #
-# Answer: 26033
 # Solved 10/28/09
 # 93 problems solved
 # Position #106 on level 2

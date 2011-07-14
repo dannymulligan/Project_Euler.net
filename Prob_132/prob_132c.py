@@ -13,8 +13,7 @@
 #
 # Find the sum of the first forty prime factors of R(10^9).
 #
-# Answer: 843296
-# Solved 05/11/10
+# Solved 05/11/11
 # 136 problems solved
 # Position #308 on level 3
 

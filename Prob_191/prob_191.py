@@ -25,7 +25,6 @@
 #
 # How many "prize" strings exist over a 30-day period?
 #
-# Answer: 1918080160
 # Solved 08/07/10
 # 115 problems solved
 # Position #868 on level 3 (previously #900 on level 3)

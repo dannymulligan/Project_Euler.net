@@ -59,7 +59,6 @@
 # Find the sum of digits in the numerator of the 100th convergent of
 # the continued fraction for e.
 #
-# Answer: 272
 # Solved 10/26/09
 # 89 problems solved
 # Position #156 on level 2

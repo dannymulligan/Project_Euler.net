@@ -21,7 +21,6 @@
 # Find the maximum prize fund that should be allocated to a single
 # game in which fifteen turns are played.
 #
-# Answer: 2269
 # Solved 09/11/10
 # 125 problems solved
 # Position #568 on level 3

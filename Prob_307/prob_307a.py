@@ -14,7 +14,6 @@
 # Give your answer rounded to 10 decimal places in the form
 # 0.abcdefghij
 #
-# Answer: 
 # Solved ??/??/10
 # ?? problems solved
 # Position #??? on level ?

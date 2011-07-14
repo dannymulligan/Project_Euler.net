@@ -12,7 +12,6 @@
 # Find how many positive integers less than 10^(16) are divisible by
 # at least four distinct primes less than 100.
 #
-# Answer: 785478606870985
 # Solved 12/16/09
 # 108 problems solved
 # Position #927 on level 3

@@ -23,7 +23,6 @@
 # 
 # NOTE: This problem is related to problems 103 and 105.
 #
-# Answer:
 # Solved:
 # ? problems solved
 # Position #??? on level ?

@@ -17,7 +17,6 @@
 # 
 # How many starting numbers below ten million will arrive at 89?
 #
-# Answer: 8581146
 # Solved 10/22/09
 # 82 problems solved
 # Position #273 on level 2

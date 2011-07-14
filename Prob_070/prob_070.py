@@ -17,7 +17,6 @@
 # Find the value of n, 1 < n < 10^(7), for which phi(n) is a permutation
 # of n and the ratio n/phi(n) produces a minimum.
 #
-# Answer: 9819823
 # Solved 10/26/09
 # 88 problems solved
 # Position #174 on level 2

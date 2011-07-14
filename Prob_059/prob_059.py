@@ -33,7 +33,6 @@
 # English words, decrypt the message and find the sum of the ASCII
 # values in the original text.
 #
-# Answer: 107359
 
 # Most common words in the English language:
 #     1: the and to of a I in was he that

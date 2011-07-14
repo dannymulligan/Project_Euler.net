@@ -31,7 +31,6 @@
 #
 # What is sum(N(n)) for 1 <= n <= 10?
 #
-# Answer: 209566
 # Solved 07/09/10
 # 147 problems solved
 # Position #56 on level 3

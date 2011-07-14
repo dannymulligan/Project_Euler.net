@@ -14,7 +14,6 @@
 # with integral side lengths and area and whose perimeters do not
 # exceed one billion (1,000,000,000).
 #
-# Answer: 518408346
 # Solved 11/5/09
 # 96 problems solved
 # Position #43 on level 2

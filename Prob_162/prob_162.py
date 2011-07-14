@@ -25,7 +25,6 @@
 # e.g. 1A3F and not: 1a3f and not 0x1a3f and not $1A3F and not #1A3F
 # and not 0000001A3F)
 #
-# Answer: 3D58725572C62302
 # Solved 08/26/10
 # 120 problems solved
 # Position #722 on level 3

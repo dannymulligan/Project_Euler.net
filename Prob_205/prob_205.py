@@ -16,7 +16,6 @@
 # What is the probability that Pyramidal Pete beats Cubic Colin? Give
 # your answer rounded to seven decimal places in the form 0.abcdefg
 #
-# Answer: 0.5731441
 # Solved 11/07/10
 # 129 problems solved
 # Position #460 on level 3

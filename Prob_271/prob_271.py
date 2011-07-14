@@ -14,7 +14,6 @@
 #
 # Find S(13082761331670030).
 #
-# Answer: 
 # Solved ??/??/10
 # ?? problems solved
 # Position #??? on level ?

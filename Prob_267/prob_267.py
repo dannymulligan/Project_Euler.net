@@ -26,7 +26,6 @@
 # your answer rounded to 12 digits behind the decimal point in the
 # form 0.abcdefghijkl.
 #
-# Answer: 
 # Solved 12/18/09
 # 109 problems solved
 # Position #886 on level 3

@@ -19,7 +19,6 @@
 # immediately to the left of 3/7.
 #
 #
-# Answer: 428570
 # Solved 10/24/09
 # 86 problems solved
 # Position #209 on level 2

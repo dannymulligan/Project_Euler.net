@@ -14,7 +14,6 @@
 # Given that 0 <= x1, y1, x2, y2 <= 50, how many right triangles can
 # be formed?
 #
-# Answer: 14,234
 
 
 # For a coordinate system up to N, we have...

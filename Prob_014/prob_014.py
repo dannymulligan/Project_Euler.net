@@ -21,7 +21,6 @@
 # 
 # NOTE: Once the chain starts the terms are allowed to go above one million.
 # 
-# Answer: 837799  (Need to verify)
 # Calculated in 42 seconds
 
 

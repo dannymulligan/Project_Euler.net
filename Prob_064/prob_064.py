@@ -97,7 +97,6 @@
 # 
 # How many continued fractions for N <= 10000 have an odd period?
 #
-# Answer: 1322
 # Solved 10/28/09
 # 93 problems solved
 # Position #85 on level 2

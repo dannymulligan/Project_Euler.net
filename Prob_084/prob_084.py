@@ -77,7 +77,6 @@
 # If, instead of using two 6-sided dice, two 4-sided dice are used,
 # find the six-digit modal string.
 #
-# Answer: 101524
 # Solved 11/6/09
 # 97 problems solved
 # Position #31 on level 2

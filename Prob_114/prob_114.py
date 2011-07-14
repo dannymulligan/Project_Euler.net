@@ -28,7 +28,6 @@
 # example, on a row measuring eight units in length you could use red
 # (3), black (1), and red (4).
 #
-# Answer: 16475640049
 # Solved 09/12/10
 # 127 problems solved
 # Position #504 on level 3

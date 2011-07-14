@@ -52,7 +52,6 @@
 # removing redundant edges whilst ensuring that the network remains
 # connected.
 #
-# Answer:
 # Solved:
 # ? problems solved
 # Position #??? on level ?

@@ -17,7 +17,6 @@
 # 
 # Find the least value of n for which A(n) first exceeds one-million.
 #
-# Answer: 
 # Solved ??/??/10
 # ?? problems solved
 # Position #??? on level ?

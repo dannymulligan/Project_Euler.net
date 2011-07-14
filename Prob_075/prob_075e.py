@@ -28,7 +28,6 @@
 # Note: This problem has been changed recently, please check that you
 # are using the right parameters.
 #
-# Answer: 161667
 # 10/9/09:
 # Solved 76 problems, position 406 on Level 2 table
 

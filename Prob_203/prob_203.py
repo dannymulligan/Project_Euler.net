@@ -30,7 +30,6 @@
 # Find the sum of the distinct squarefree numbers in the first 51 rows
 # of Pascal's triangle.
 #
-# Answer: 34029210557338
 # Solved 08/09/10
 # 117 problems solved
 # Position #793 on level 3 (previously #825 on level 3)

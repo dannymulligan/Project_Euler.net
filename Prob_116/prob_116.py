@@ -39,7 +39,6 @@
 # 
 # NOTE: This is related to problem 117.
 #
-# Answer: 20492570929
 # Solved 07/03/11
 # 142 problems solved
 # Position #176 on level 3

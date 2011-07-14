@@ -14,7 +14,6 @@
 #
 # Find f(1,000,000,000,000)
 #
-# Answer: 
 # Solved ??/??/10
 # ?? problems solved
 # Position #??? on level ?

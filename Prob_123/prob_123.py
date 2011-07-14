@@ -13,7 +13,6 @@
 # Find the least value of n for which the remainder first exceeds
 # 10^10.
 #
-# Answer: 21035
 # Solved 11/22/09
 # 107 solved
 # Position #944 on level 3

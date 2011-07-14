@@ -15,7 +15,6 @@
 # How many composite integers, n < 10^(8), have precisely two, not
 # necessarily distinct, prime factors?
 #
-# Answer: 17427258
 # Solved 08/04/10
 # 114 problems solved
 # Position #900 on level 3

@@ -48,7 +48,6 @@
 # 
 # Find the sum of FITs for the BOPs.
 #
-# Answer: 37076114526
 # Solved: 11/10/09
 # 102 problems solved
 # Position #1180 on level 3

@@ -18,7 +18,6 @@
 # Find sum(S) for every pair of consecutive primes with 5 <= p1 <=
 # 1000000.
 #
-# Answer: 18613426663617118
 # Solved 06/18/11
 # 141 problems solved
 # Position #202 on level 3

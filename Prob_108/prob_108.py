@@ -28,7 +28,6 @@
 # NOTE: This problem is an easier version of problem 110; it is
 # strongly advised that you solve this one first.
 #
-# Answer: 180180
 # Solved: 07/03/11
 # 143 problems solved
 # Position #139 on level 3

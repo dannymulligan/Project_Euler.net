@@ -22,7 +22,6 @@
 # NOTE: The first two examples in the file represent the triangles in
 # the example given above.
 #
-# Answer: 228
 # Solved: 11/22/09
 # 106 problems solved
 # Position #976 on level 3

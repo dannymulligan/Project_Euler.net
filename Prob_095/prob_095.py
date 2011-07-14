@@ -22,7 +22,6 @@
 # Find the smallest member of the longest amicable chain with no
 # element exceeding one million.
 #
-# Answer: 14316
 # Solved 10/22/09
 # 81 problems solved
 # Position #290 on level 2

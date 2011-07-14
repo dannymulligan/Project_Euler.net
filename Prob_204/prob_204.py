@@ -17,8 +17,7 @@
 # How many generalised Hamming numbers of type 100 are there which
 # don't exceed 10^9?
 #
-# Answer: 2944730
-# Solved 05/14/10
+# Solved 05/14/11
 # 139 problems solved
 # Position #232 on level 3
 

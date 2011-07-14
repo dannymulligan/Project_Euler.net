@@ -17,7 +17,6 @@
 # fractions for d <= 1,000,000?
 # 
 #
-# Answer: 303963552391
 # Solved 10/26/09
 # 87 problems solved
 # Position #194 on level 2

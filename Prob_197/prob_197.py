@@ -14,18 +14,17 @@
 # Find u(n) + u(n+1) for n = 1012.
 # Give your answer with 9 digits after the decimal point.
 #
-# Answer: 1.710637717
 # Solved 07/10/10
-# ?? problems solved
-# Position #??? on level ?
+# 149 problems solved
+# Position #22 on level 3
 
+# Trivia (but not relevant to this problem)
 # 30,403,243,784 = 8 * 149 * 163 * 167 * 937
-
-
 
 N = 30403243784
 
-# 
+# Store values multiplied by 1,000,000,000 to allow us to store 9
+# digits of precision in an integer
 u = [-1000000000]  # u[0] = -1
 print "u[{0}] = {1}".format(0,u[0])
 

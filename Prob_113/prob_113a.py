@@ -17,7 +17,6 @@
 #
 # How many numbers below a googol (10^100) are not bouncy?
 #
-# Answer: 51161058134250
 # Solved 07/04/11
 # 145 problems solved
 # Position #107 on level 3

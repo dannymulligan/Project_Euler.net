@@ -56,7 +56,6 @@
 #
 #
 #
-# Answer: 6531031914842725
 # Solved 10/22/09
 # 85 problems solved
 # Position #225 on level 2

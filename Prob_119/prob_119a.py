@@ -13,7 +13,6 @@
 # 
 # Find a_(30).
 #
-# Answer: 248155780267521
 # Solved 11/10/09
 # 103 solved
 # Position #1114 on level 3

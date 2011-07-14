@@ -12,7 +12,6 @@
 # What is the sum of all such integers n below 150 million?
 #
 #
-# Answer: 676333270
 # Solved 12/14/10
 # 134 problems solved
 # Position #334 on level 3

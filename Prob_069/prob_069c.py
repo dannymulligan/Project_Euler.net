@@ -22,7 +22,6 @@
 # 
 # Find the value of n <= 1,000,000 for which n/phi(n) is a maximum.
 # 
-# Answer: 510510
 
 LIMIT_D =      10
 #LIMIT_D =    1000

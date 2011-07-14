@@ -22,7 +22,6 @@
 # 
 # NOTE: This problem is related to problems 103 and 106.
 #
-# Answer: 73702
 # Solved: 06/04/11
 # 140 problems solved
 # Position #216 on level 3

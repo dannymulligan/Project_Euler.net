@@ -9,7 +9,6 @@
 # How many 20 digit numbers n (without any leading zero) exist such
 # that no three consecutive digits of n have a sum greater than 9?
 #
-# Answer: 378158756814587
 # Solved 11/13/10
 # 131 problems solved
 # Position #398 on level 3

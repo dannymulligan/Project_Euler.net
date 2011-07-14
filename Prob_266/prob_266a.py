@@ -14,7 +14,6 @@
 # Let p be the product of the primes below 190.
 # Find PSR(p) mod 10^16.
 #
-# Answer: 1096883702440585
 # Solved 12/18/09
 # 110 problems solved
 # Position #853 on level 3

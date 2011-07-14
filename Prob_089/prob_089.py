@@ -31,7 +31,6 @@
 # Note: You can assume that all the Roman numerals in the file contain
 # no more than four consecutive identical units.
 # 
-# Answer: 743
 # Solved 10/27/09
 # 91 problems solved
 # Position #125 on level 2

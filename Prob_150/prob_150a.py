@@ -41,7 +41,6 @@
 #
 # Find the smallest possible sub-triangle sum.
 # 
-# Answer: -271248680
 # Solved 07/10/10
 # 140 problems solved
 # Position #789 on level 4

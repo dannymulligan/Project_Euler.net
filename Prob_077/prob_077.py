@@ -12,7 +12,6 @@
 # 
 # What is the first value which can be written as the sum of primes in over five thousand different ways?
 # 
-# Answer: 71
 
 import sys
 

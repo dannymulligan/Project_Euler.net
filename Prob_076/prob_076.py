@@ -18,7 +18,6 @@
 # least two positive integers?
 # 
 #
-# Answer: 190569291
 # Solved ??/??/09
 # ?? problems solved
 # Position #??? on level ?

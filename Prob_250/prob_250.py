@@ -9,7 +9,6 @@
 # 250250^(250250)}, the sum of whose elements is divisible by
 # 250. Enter the rightmost 16 digits as your answer.
 #
-# Answer: 
 # Solved ??/??/10
 # ?? problems solved
 # Position #??? on level ?

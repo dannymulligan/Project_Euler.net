@@ -28,7 +28,6 @@
 # Using up to one million tiles how many different square laminae can
 # be formed?
 #
-# Answer: 1572729
 # Solved 11/13/10
 # 132 problems solved
 # Position #373 on level 3

@@ -55,7 +55,6 @@
 # How many distinct ways can a player checkout with a score less than
 # 100?
 #
-# Answer:
 # Solved:
 # ? problems solved
 # Position #??? on level ?

@@ -35,7 +35,6 @@
 # 
 # NOTE: This problem is related to problems 105 and 106.
 #
-# Answer:
 # Solved:
 # ? problems solved
 # Position #??? on level ?

@@ -19,7 +19,6 @@
 # and as it is well beyond the limitations of a brute force approach
 # it requires a clever implementation.
 #
-# Answer: 9350130049860600
 # Solved: 7/7/11
 # 146 problems solved
 # Position #83 on level 3

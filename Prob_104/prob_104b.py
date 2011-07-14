@@ -15,7 +15,6 @@
 # Given that F_(k) is the first Fibonacci number for which the first
 # nine digits AND the last nine digits are 1-9 pandigital, find k.
 #
-# Answer: 329468
 # Solved: 11/11/09
 # 105 problems solved
 # Position #1016 on level 3

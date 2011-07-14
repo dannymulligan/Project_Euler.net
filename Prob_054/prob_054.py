@@ -55,7 +55,6 @@
 #
 # How many hands does Player 1 win?
 #
-# Answer: 376
 # Wed 10/14/09
 # This is my 77th problem solved
 # I am ranked at position #382 in Level 2

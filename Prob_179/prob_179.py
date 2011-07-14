@@ -9,7 +9,6 @@
 # the same number of positive divisors. For example, 14 has the
 # positive divisors 1, 2, 7, 14 while 15 has 1, 3, 5, 15.
 #
-# Answer: 986262
 # Solved 08/24/10
 # 119 problems solved
 # Position #754 on level 3

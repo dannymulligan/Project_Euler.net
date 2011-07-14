@@ -22,7 +22,6 @@
 #
 # What is Z(10^16)?
 #
-# Answer:
 # Solved ??/??/09
 # ?? problems solved
 # Position #??? on level ?

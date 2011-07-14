@@ -31,7 +31,6 @@
 # 
 # For 1 <= k <= 200, find sum(m(k)).
 #
-# Answer: 
 # Solved ??/??/10
 # ??? problems solved
 # Position #??? on level 3

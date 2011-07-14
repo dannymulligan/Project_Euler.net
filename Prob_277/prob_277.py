@@ -34,7 +34,6 @@
 # "UDDDUdddDDUDDddDdDddDDUDDdUUDd"?
 # 
 #
-# Answer: 
 # Solved 07/05/10
 # 112 problems solved
 # Position #963 on level 3

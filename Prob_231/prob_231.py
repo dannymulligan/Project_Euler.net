@@ -19,7 +19,6 @@
 # Find the sum of the terms in the prime factorisation of C (          )
 #                                                           ( 15000000 )
 #
-# Answer: 7526965179680
 # Solved 05/14/11
 # 137 problems solved
 # Position #289 on level 3

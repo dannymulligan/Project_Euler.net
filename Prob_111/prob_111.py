@@ -37,23 +37,58 @@
 # 
 # Find the sum of all S(10, d).
 #
-# Answer: 
 # Solved ??/??/10
 # ??? problems solved
 # Position #??? on level 3
 
-MAX = 10000  # 4 digit primes
+MAX_PRIME = 10000  # 4 digit primes
 
-prime_table = [True]*(MAX)  # largest factor, 1 means this number is prime
+prime_table = [True]*(MAX_PRIME)  # prime_table[N] == True means this N is prime
+primes = []  # List of prime numbers
 def calculate_primes():
     i = 2
-    while (i <= (MAX/2)):
+    while (i <= (MAX_PRIME/2)):
         if (prime_table[i] == True):
+            primes.append(i)
             j = i*2
-            while (j < MAX):
-                prime_table[j] = True
+            while (j < MAX_PRIME):
+                prime_table[j] = False
                 j += i
         i += 1
+    while (i < MAX_PRIME):
+        if (prime_table[i] == True):
+            primes.append(i)
+        i += 1
 
-print "Calculating primes up to", (MAX-1)
+def is_prime(n):
+    if (n > MAX_PRIME*MAX_PRIME):
+        print "Error: checking n = {0}, which is larger than MAX_PRIME^2 (MAX_PRIME = {1})".format(n, MAX_PRIME)
+        sys.exit()
+    elif (n < MAX_PRIME):
+        return (prime_table[n])
+    else:
+        for i in primes:
+            if ((n % i) == 0):
+                return False
+            if (i*i > n):
+                return True
+        return True
+
+print "Calculating primes up to", (MAX_PRIME-1)
 calculate_primes()
+
+candidates = [ 1112, 1113, 1114, 1115, 1116, 1117, 1118, 1119, 
+               1121, 1131, 1141, 1151, 1161, 1171, 1181, 1191, 
+               1211, 1311, 1411, 1511, 1611, 1711, 1811, 1911,
+               2111, 3111, 4111, 5111, 6111, 7111, 8111, 9111 ]
+
+Answer = 0
+Count = 0
+for i in candidates:
+    if is_prime(i):
+        Count += 1
+        Answer += i
+
+print "Count =", Count
+print "Answer =", Answer
+

@@ -13,7 +13,6 @@
 # 
 # For 3 <= a <= 1000, find sum(max(r)).
 #
-# Answer: 333082500
 # Solved 09/11/10
 # 124 problems solved
 # Position #607 on level 3

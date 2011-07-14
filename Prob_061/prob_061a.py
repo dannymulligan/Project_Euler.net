@@ -31,7 +31,6 @@
 # hexagonal, heptagonal, and octagonal, is represented by a different
 # number in the set.
 #
-# Answer:
 
 def p3 (n):
     return n*(n+1)/2

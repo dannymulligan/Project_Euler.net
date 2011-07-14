@@ -14,7 +14,6 @@
 # Find the sum of all the even-valued terms in the sequence which do
 # not exceed four million.
 #
-# Answer: 4613732
 # Solved ??/??/09
 # ?? problems solved
 # Position #??? on level ?

@@ -13,7 +13,6 @@
 #
 # Give your answer rounded to 12 places behind the decimal point.
 #
-# Answer: 1.002322108633
 # Solved 05/14/11
 # 138 problems solved
 # Position #254 on level 3

@@ -11,50 +11,75 @@
 # 
 # How many numbers t(n) are prime for n <= 50,000,000 ?
 #
-# Answer: 
 # Solved ??/??/09
 # ?? problems solved
 # Position #??? on level ?
 
-N = 50000000
-#N = 10000  # answer should be 2202
+import sys
+import time
+
+N = 100      # Answer = 45 out of 100, total time taken = 0.000621 seconds
+#N = 10000    # Answer = 2202 out of 10000, total time taken = 0.628397 seconds
+#N = 100000   # Answer = 17185 out of 100000, total time taken = 35.386885 seconds
+#N = 1000000  # Answer = 141444 out of 1000000, total time taken = 2323.737389 seconds
+#N = 50000000
 #N = 9  # Answer should be 6
 
 MAX = 2*N*N-1
 LIMIT_PRIME = 1+int(MAX**.5)
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
+primes = []
 
 def calculate_primes():
     i = 2
     while (i < (LIMIT_PRIME/2)):
         if (prime_table[i] == 1):
+            primes.append(i)
             j = i*2
             while (j < LIMIT_PRIME):
                 prime_table[j] = i
                 j += i
         i += 1
+    while (i < LIMIT_PRIME):
+        if (prime_table[i] == 1):
+            primes.append(i)
+        i += 1
+
 
 def is_prime(n):
-    if (n < LIMIT_PRIME):
+    if (n > LIMIT_PRIME*LIMIT_PRIME):
+        print "Error: checking n = {0}, which is larger than LIMIT_PRIME^2 (LIMIT_PRIME = {1})".format(n, LIMIT_PRIME)
+        sys.exit()
+    elif (n < LIMIT_PRIME):
         return (prime_table[n] == 1)
     else:
-        for i in range(2,LIMIT_PRIME):
-            if (prime_table[i] == 1):
-                if ((n % i) == 0):
-                    return False
+        for i in primes:
+            if ((n % i) == 0):
+                return False
+            if (i*i > n):
+                return True
         return True
 
 def t(n):
     return 2*n*n-1
 
+start_time = time.clock()
 calculate_primes()
-print "Done calculating primes"
+print "There are", len(primes), "primes less than", LIMIT_PRIME
+#print "They are", primes
+print "The highest prime is", primes[-1]
+print "Time taken to calculate primes =", time.clock() - start_time, "seconds"
 
 answer = 0
+prev_time = time.clock()
 for i in range(2,N+1):
-    if (is_prime(t(i))):
+    n = t(i)
+    if (is_prime(n)):
+        #print "i =", i, "n =", n, "is prime, answer =", answer
         answer += 1
     if ((i % 10000) == 0):
-        print "Working on i=", i
+        curr_time = time.clock()
+        print "Calculating {0}, last 10,000 numbers took {1} seconds.".format(i, curr_time-prev_time)
+        prev_time = curr_time
 
-print "Answer =", answer
+print "Answer = {0} out of {1}, total time taken = {2} seconds".format(answer, i, time.clock() - start_time)

@@ -11,7 +11,6 @@
 # 
 # How many numbers t(n) are prime for n <= 50,000,000 ?
 #
-# Answer: 
 # Solved ??/??/09
 # ?? problems solved
 # Position #??? on level ?

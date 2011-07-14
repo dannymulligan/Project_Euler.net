@@ -21,7 +21,6 @@
 # <= 9 so that each row, each column, and both diagonals have the same
 # sum?
 #
-# Answer: 7130034
 # Solved 08/07/10
 # 116 problems solved
 # Position #825 on level 3 (previously #868 on level 3)

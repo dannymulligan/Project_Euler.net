@@ -24,7 +24,6 @@
 # What is the value of the first triangle number to have over five
 # hundred divisors?
 #
-# Answer: 76576500
 # Ran in ~68 seconds
 
 

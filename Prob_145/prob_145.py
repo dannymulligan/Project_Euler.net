@@ -15,7 +15,6 @@
 #
 # How many reversible numbers are there below one-billion (10^9)?
 #
-# Answer: 
 # Solved 11/09/10
 # 130 problems solved
 # Position #423 on level 3

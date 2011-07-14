@@ -16,7 +16,6 @@
 #
 # Find the last 8 digits of 1777^^1855.
 #
-# Answer: 95962097
 # Solved 11/26/10
 # 133 problems solved
 # Position #350 on level 3

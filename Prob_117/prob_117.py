@@ -28,10 +28,9 @@
 # 
 # NOTE: This is related to problem 116.
 #
-# Answer: 100808458960497
 # Solved 07/04/11
 # 144 problems solved
-# Position #176 on level 3
+# Position #121 on level 3
 
 
 import sys

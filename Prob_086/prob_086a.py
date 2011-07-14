@@ -29,7 +29,6 @@
 # Find the least value of M such that the number of solutions first
 # exceeds one million.
 #
-# Answer: 1818
 # Solved 11/8/09
 # 99 problems solved
 # Position #10 on level 2

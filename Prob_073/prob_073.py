@@ -18,7 +18,6 @@
 # 
 # Note: The upper limit has been changed recently.
 #
-# Answer: 7295372
 # Solved 10/22/09
 # 83 problems solved
 # Position #266 on level 2

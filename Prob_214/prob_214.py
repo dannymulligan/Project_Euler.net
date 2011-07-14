@@ -28,7 +28,6 @@
 # What is the sum of all primes less than 40000000 which generate a
 # chain of length 25?
 #
-# Answer: 1677366278943
 # Solved 07/10/10
 # 148 problems solved
 # Position #39 on level 3
