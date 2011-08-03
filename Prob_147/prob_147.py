@@ -43,23 +43,6 @@ def scnt(x,y):  # Square count
     return result
 
 
-##def dcnt(x,y):  # Diagonal count
-##    tot = 0
-##    solo = 0
-##    a = max(x,y)
-##    b = min(x,y)
-##    for i in range(2,b*2-1,2):
-##        print "len =", i
-##        tot += 2*(i*(i+1)/2)
-##        solo += 2*i
-##    maxl = 2*b-1
-##    tot += (a-b)*(maxl*(maxl+1)/2)
-##    sol += (a-b)*maxl
-##    result = tot*2 - solo
-##    return result
-##    # Bug: only counts 1x1 & 1xN rectangles
-##    # doesn't count anything 2xN or higher
-
 def dcnt(x,y):  # Diagonal count
     #print "dcnt({0},{1})".format(x,y)
 
@@ -216,40 +199,16 @@ def cbcnt(x,y):  # Cumulative both count
 #else:
 #    print "OK: cscnt(1970,2430) = {0} as expected".format(answer)
 
-
-answer = cbcnt(3,2)
-expected = 72
-if (answer != expected):
-    print "Error: cbcnt(3,2) = {0} but expecting {1}".format(answer,expected)
-    sys.exit()
-else:
-    print "OK: cbcnt(3,2) = {0} as expected".format(answer)
+#answer = cbcnt(3,2)
+#expected = 72
+#if (answer != expected):
+#    print "Error: cbcnt(3,2) = {0} but expecting {1}".format(answer,expected)
+#    sys.exit()
+#else:
+#    print "OK: cbcnt(3,2) = {0} as expected".format(answer)
 
 answer = cbcnt(47,43)
 print "Answer =", answer
 
 end_time = time.clock()
 print "Time taken = {0} seconds".format(end_time-start_time)
-
-
-sys.exit()
-
-# grid 0: 1x1 count = 2, loc_maxl = 2
-# grid 1: 1x1 count = 3, loc_maxl = 3
-# grid 2: 1x1 count = 2, loc_maxl = 2
-# 
-# grid 0: 1x2 count = 1, loc_maxl = 2
-# grid 1: 1x2 count = 2, loc_maxl = 3
-# grid 2: 1x2 count = 1, loc_maxl = 2
-# 
-# grid 0: 1x3 count = 1, loc_maxl = 2  # wrong
-# grid 1: 1x3 count = 1, loc_maxl = 3
-# grid 2: 1x3 count = 1, loc_maxl = 2  # wrong
-# 
-# grid 0: 2x2 count = 1, loc_maxl = 2
-# grid 1: 2x2 count = 1, loc_maxl = 2
-# 
-# grid 0: 2x3 count = 1, loc_maxl = 2  # wrong
-# grid 1: 2x3 count = 1, loc_maxl = 2  # wrong
-# 
-# grid 0: 3x3 count = 1, loc_maxl = 0
