@@ -30,9 +30,9 @@
 #
 # Find sum(D(N)) for 5 <= N <= 10000.
 #
-# Solved ??/??/10
-# ?? problems solved
-# Position #??? on level ?
+# Solved 08/05/11
+# 156 problems solved
+# Position #608 on level 4
 
 import sys
 import cProfile
@@ -41,48 +41,41 @@ import fractions
 
 start_time = time.clock()
 
-def is_terminating(n):
-    d = n.denominator
-    while ((d % 2) == 0):  d /= 2
-    while ((d % 5) == 0):  d /= 5
-    if (d == 1):  return True
-    else:         return False
-
 def Pmax(n):
     #print "Pmax({0})".format(n)
     found = False
     bestP = fractions.Fraction(0)
     bestK = 0
-    k = n * 32 / 100
-    #k = 1
-    while not found:
-        g = fractions.gcd(n,k)
-        n1 = n/g
-        k1 = k/g
-        P = fractions.Fraction(n1**k,k1**k)
-        #print "Pmax({0}) = ({0}/{1})^{1} = {2} = {3}".format(n,k,float(P),P)
-        if (P >= bestP):
-            bestP = P
-            bestK = k
-        elif (P < bestP):
-            #print "bestK = {0} which is {1:5.2f}% of {2}".format(bestK, 100.0*bestK/n, n)
-            return bestP
+    k = 1
+    #k = n * 32 / 100
+    nf = float(n)
+    kf = float(k)
+    tf = nf*((kf/(kf+1.0))**k)/(kf+1.0)
+    while (tf > 1.0):
         k += 1
+        kf = float(k)
+        tf = nf*((kf/(kf+1.0))**k)/(kf+1.0)
+    P = fractions.Fraction(n,k)
+    #print "Pmax({0}) = ({0}/{1})^{1} = {2} = {3}".format(n,k,float(P),P)
+    d = P.denominator
+    while ((d % 2) == 0):  d /= 2
+    while ((d % 5) == 0):  d /= 5
+    if (d == 1):  return True
+    else:         return False
 
 def main():
     ans = 0
     #ans = 452936  # Answer with n = 1000
     #ans = 9692530  # Answer with n = 4500
-    ans = 25004666  # Answer with n = 7200
+    #ans = 25004666  # Answer with n = 7200
     now_time = start_time
     prev_time = start_time
     #for n in range(5,101):
-    #for n in range(5,10001):
+    for n in range(5,10001):
     #for n in range(4501,10001):
-    for n in range(7201,10001):
-        Pm = Pmax(n)
+    #for n in range(7201,10001):
         print "Pmax({0}) =".format(n),
-        if is_terminating(Pm):
+        if Pmax(n):
             print "terminating"
             ans -= n
         else:
@@ -100,4 +93,5 @@ def main():
     print "Answer =", ans
     print "Time taken =", time.clock() - start_time, "seconds"
 
-cProfile.run('main()')
+main()
+#cProfile.run('main()')
