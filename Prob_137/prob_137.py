@@ -35,9 +35,10 @@
 #
 # Find the 15th golden nugget.
 #
-# Solved ??/??/10
-# ?? problems solved
-# Position #??? on level ?
+# Solved 08/08/11
+# 159 problems solved
+# Position #537 on level 4
+
 
 #           Af(x) = xF(1) + x^2F(2) + x^3F(3) + ... + x^nF(n  ) + ...
 #      -   xAf(x) =         x^2F(1) + x^3F(2) + ... + x^nF(n-1) + ...
