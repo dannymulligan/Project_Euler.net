@@ -148,6 +148,16 @@
 #148: Problem 214, solved 07/10/11
 #149: Problem 197, solved 07/10/11
 #150: Problem 150, solved 07/10/11
+#151: Problem 149, solved 07/18/11
+#152: Problem 147, solved 07/26/11
+#153: Problem 135, solved 08/03/11
+#154: Problem 136, solved 08/03/11
+#155: Problem 129, solved 08/03/11
+#156: Problem 183, solved 08/05/11
+#157: Problem 127, solved 08/05/11
+#158: Problem 138, solved 08/07/11
+#159: Problem 137, solved 08/08/11
+#160: Problem 144, solved 08/09/11
 
 
 
@@ -230,7 +240,7 @@ Total    = 7,197
 
 I have solved 143 problems and am at position 136 on level 3, this puts me at position 1,550 overall, or 21.54%.
 Solving 50 more problems would put me at 193 solved, position 59 on level 4, 692 overall, or 9.6%
-Solving 48 more problems would put me at 193 solved, position 79 on level 4, 712 overall, or 9.9%
+Solving 48 more problems would put me at 191 solved, position 79 on level 4, 712 overall, or 9.9%
 Solving 6 more problems would put me at 149 solved, position 18 on level 3, 1,432 overall, or 19.9%
 
 As of 7/3/11
@@ -280,3 +290,92 @@ Level 1  = 1,919
 Total    = 7,178
 I have solved 150 problems and am at position 788 on level 4, this puts me at position 1,427 overall, or 19.88%.
 There are 176,754 users overall, I'm at 0.807%.
+
+As of 7/18/11
+Veterans =   153
+Level 6  =   147
+Level 5  =   345
+Level 4  =   797
+Level 3  = 2,485
+Level 2  = 1,304
+Level 1  = 1,863
+Total    = 7,094
+I have solved 151 problems and am at position 756 on level 4, this puts me at position 1,401 overall, or 19.75%.
+There are 173,968 users overall, I'm at 0.805%.
+
+As of 7/26/11
+Veterans =   155
+Level 6  =   149
+Level 5  =   345
+Level 4  =   800
+Level 3  = 2,513
+Level 2  = 1,281
+Level 1  = 1,752
+Total    = 6,995
+I have solved 152 problems and am at position 721 on level 4, this puts me at position 1,370 overall, or 19.59%.
+There are 175,312 users overall, I'm at 0.781%.  If I were 56 places higher, I would be in the top 0.75%.
+
+As of 8/03/11
+Veterans =   159
+Level 6  =   151
+Level 5  =   345
+Level 4  =   800
+Level 3  = 2,539
+Level 2  = 1,276
+Level 1  = 1,696
+Total    = 6,966
+
+I have solved 155 problems and am at position 638 on level 4, this puts me at position 1,293 overall, or 18.48%.
+There are 177,440 users overall, I'm at 0.729%.  If I were 405 places higher, I would be in the top 0.5%.
+
+As of 8/05/11
+Veterans =   159
+Level 6  =   153
+Level 5  =   344
+Level 4  =   803
+Level 3  = 2,541
+Level 2  = 1,266
+Level 1  = 1,676
+Total    = 6,942
+
+I have solved 157 problems and am at position 588 on level 4, this puts me at position 1,244 overall, or 17.92%.
+There are 177,869 users overall, I'm at 0.699%.  If I were 355 places higher (178 problems solved), I would be in the top 0.5%.
+
+As of 8/07/11
+Veterans =   159
+Level 6  =   153
+Level 5  =   346
+Level 4  =   802
+Level 3  = 2,542
+Level 2  = 1,272
+Level 1  = 1,621
+Total    = 6,925
+
+I have solved 158 problems and am at position 562 on level 4, this puts me at position 1,220 overall, or 17.62%.
+There are 178,224 users overall, I'm at 0.685%.  If I were 329 places higher (179 problems solved), I would be in the top 0.5%.
+
+As of 8/08/11
+Veterans =   159
+Level 6  =   153
+Level 5  =   347
+Level 4  =   802
+Level 3  = 2,547
+Level 2  = 1,274
+Level 1  = 1,676
+Total    = 6,958
+
+I have solved 159 problems and am at position 537 on level 4, this puts me at position 1,196 overall, or 17.19%.
+There are 178,532 users overall, I'm at 0.670%.  If I were 304 places higher (179 problems solved), I would be in the top 0.5%.
+
+As of 8/09/11
+Veterans =   159
+Level 6  =   154
+Level 5  =   347
+Level 4  =   803
+Level 3  = 2,546
+Level 2  = 1,272
+Level 1  = 1,663
+Total    = 6,944
+
+I have solved 160 problems and am at position 517 on level 4, this puts me at position 1,177 overall, or 16.95%.
+There are 178,822 users overall, I'm at 0.658%.  If I were 283 places higher (179 problems solved), I would be in the top 0.5%.
