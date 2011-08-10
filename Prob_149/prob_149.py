@@ -33,9 +33,9 @@
 # Finally, find the greatest sum of (any number of) adjacent entries
 # in any direction (horizontal, vertical, diagonal or anti-diagonal).
 #
-# Solved ??/??/10
-# ?? problems solved
-# Position #??? on level ?
+# Solved 07/18/11
+# 151 problems solved
+# Position #756 on level 4
 
 SIZEX = 100
 SIZEY = 100
