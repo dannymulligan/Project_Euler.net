@@ -41,9 +41,9 @@
 # gcd(e,phi) = 1, so that the number of unconcealed messages for this
 # value of e is at a minimum.
 #
-# Solved ??/??/11
-# ?? problems solved
-# Position #??? on level ?
+# Solved 08/11/11
+# 163 problems solved
+# Position #459 on level 4
 
 import sys
 import time
@@ -83,30 +83,26 @@ best_unconcealed = n
 best_count = 0
 answer = 0
 print "best_unconcealed = {0}".format(best_unconcealed)
+print "(p,q) = ({0},{1}), n={2}, phi={3}".format(p,q,n,phi,)
 
-for e in xrange(2,phi/8000):
+for e in xrange(2,phi):
     if (gcd(e,phi) != 1):  continue
 
-    print "(p,q) = ({0},{1}), n={2}, phi={3}, e={4}".format(p,q,n,phi,e),
 
-    unconcealed = 0
-    for m in xrange(n):
-        if (encrypt(m,e,n) == m):
-            unconcealed += 1
-        if (unconcealed > best_unconcealed):
-            break
+    # From: http://www.security-forums.com/viewtopic.php?t=29782&sid=52f7bd8d3db98a9ef52348124bb2c252
+    unconcealed = (gcd(e-1,p-1)+1)*(gcd(e-1,q-1)+1)
 
     if (unconcealed == best_unconcealed):
         best_count += 1
         answer += e
-        print "    unconcealed={0}, match previous best, count={1}, answer={2}".format(unconcealed, best_count, answer)
+#        print "e={0}  unconcealed={1}, match previous best, count={2}, answer={3}".format(e, unconcealed, best_count, answer)
     elif (unconcealed < best_unconcealed):
         best_count = 1
         best_unconcealed = unconcealed
         answer = e
-        print "    unconcealed={0}, new best, count={1}, answer={2}".format(unconcealed, best_count, answer)
-    else:
-        print "    unconcealed={0}".format(unconcealed)
+#        print "e={0}  unconcealed={1}, new best, count={2}, answer={3}".format(e, unconcealed, best_count, answer)
+#    else:
+#        print "e={0}  unconcealed={1}".format(e, unconcealed)
 
 print "Answer =", answer
 print "Time taken = {0} seconds".format(time.clock() - start_time)
