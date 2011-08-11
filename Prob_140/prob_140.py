@@ -30,6 +30,144 @@
 #
 # Find the sum of the first thirty golden nuggets.
 #
-# Solved ??/??/11
-# ?? problems solved
-# Position #??? on level ?
+# Solved 08/11/11
+# 162 problems solved
+# Position #476 on level 4
+
+
+#           AG(x) = xG(1) + x^2G(2) + x^3G(3) + ... + x^nG(n  ) + ...
+#      -   xAG(x) =         x^2G(1) + x^3G(2) + ... + x^nG(n-1) + ...
+#      - x^2AG(x) =                   x^3G(1) + ... + x^nG(n-2) + ...
+# --------------------------------------------------------------
+# AG(x)*(1-x-x^2) = xG(1) + x^2(G(2)-G(1)) + 0 + ... + 0 + ...
+# AG(x)*(1-x-x^2) = x + 3x^2
+#
+#            x + 3x^2
+# AG(x) = -------------
+#         (1 - x - x^2)
+#
+# for known AG(x) = N
+#     N - N.X - N.X^2 = X + 3.X^2
+# or
+#     (N+3).X^2 + (N+1).X - N = 0
+# which is of the form
+#     a.X^2 + b.X + c = 0
+# so
+#         -b +/- sqrt(b^2 - 4ac)
+#     X = ----------------------
+#                 2a
+# so
+#         -(N+1) +/- sqrt(N^2 + 2N + 1 + 4N.(N+3))
+#     X = ----------------------------------------
+#                      2(N+3)
+#
+#         +/- sqrt(5N^2 + 14N + 1) - (N+1)
+#     X = -------------------------------
+#                      2N+6
+#
+# We're only using the +sqrt solution here (-sqrt works too)
+#
+#         sqrt(5N^2 + 14N + 1) - (N+1)
+#     X = ----------------------------
+#                     2N+6
+# 
+# For N = 1:
+#         sqrt(5N^2 + 14N + 1) - (N+1)   sqrt(20) - 2   sqrt(5) - 1
+#     X = ---------------------------- = ------------ = -----------
+#                     2N+6                    8              4
+#       = sqrt(2) - 1
+#
+# For N = 2:
+#         sqrt(5N^2 + 14N + 1) - (N+1)   sqrt(49) - 3   7 - 3    2
+#     X = ---------------------------- = ------------ = ----- = ---
+#                     2N+6                    10         10      5
+#
+# For N = 3:
+#         sqrt(5N^2 + 14N + 1) - (N+1)   sqrt(88) - 4   sqrt(22) - 2
+#     X = ---------------------------- = ------------ = ------------
+#                     2N+6                    12              6
+#
+# So the solution will be rational if sqrt(5N^2 + 14N + 1) is rational
+# which will happen if (5N^2 + 14N + 1) is a square
+#
+# If we assume that 5N^2 + 14N + 1 = M^2, then
+#     5N^2 + 14N + (1-M^2) = 0
+
+
+
+import time
+import sys
+import cProfile
+
+start_time = time.clock()
+
+def even(N):
+    if ((N%2) == 1):  return False
+    else:             return True
+
+def f(N):
+    return (5*N**2 + 14*N + 1)
+
+def main():
+    answer = 0
+    soln_cnt = 0
+    N = 1
+    M = 1
+    prev_M = 1
+    while (soln_cnt < 30):
+        #print "    M={0}, M^2={1}, N={2}, f(N)={3}".format(M, M**2, N, f(N))
+
+        while (f(N) < M**2):
+            N += 1
+            #print "    N={0}, f({0})={1}".format(N,f(N))
+
+        if (f(N) == M**2):
+            soln_cnt += 1
+            answer += N
+            print "Golden nugget {0}: Af(x) = {1} has a rational x, (M,N) = ({2},{3})".format(soln_cnt, N, M,N),
+
+            print "M={0}, prev_M={1}, ratio={2}".format(M,prev_M,1.0*M/prev_M),
+            prev_M = M
+
+            if (soln_cnt < 2):
+                M += 1
+            elif (soln_cnt < 12):
+                if even(soln_cnt):
+                    M = M * 353 / 100
+                    N = N * 353 / 100
+                else:
+                    M = M * 193 / 100
+                    N = N * 193 / 100
+            elif (soln_cnt < 20):
+                if even(soln_cnt):
+                    M = M * 353532 / 100000
+                    N = N * 353532 / 100000
+                else:
+                    M = M * 193874 / 100000
+                    N = N * 193874 / 100000
+            else:
+                if even(soln_cnt):
+                    M = M * 35353221 / 10000000
+                    N = N * 35353221 / 10000000
+                else:
+                    M = M * 19387489 / 10000000
+                    N = N * 19387489 / 10000000
+
+            print "new (M,N)=({0},{1})".format(M,N)
+
+            #elif (soln_cnt < 5):
+            #    M = M * 685 / 100
+            #    N = N * 685 / 100
+            #else:
+            #    M = M * 68541 / 10000
+            #    N = N * 68541 / 10000
+            #print "    starting off search for next golden nugget with M={0}, N={1}".format(M,N)
+            # Examinging the first 10 results shows that M grows by 6.8-6.85410197x from solution to solution
+        else:
+            M += 1
+
+    print "Answer = ", answer
+    print "Time taken =", time.clock() - start_time, "seconds"
+
+#cProfile.run('main()')
+main()
