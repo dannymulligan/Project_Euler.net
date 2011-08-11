@@ -3,7 +3,7 @@
 #
 # Project Euler.net Problem 182
 #
-# Problem summary
+# RSA encryption
 #
 # The RSA encryption is based on the following procedure:
 # 
@@ -47,7 +47,66 @@
 
 import sys
 import time
-
 start_time = time.clock()
 
+########################################
+def odd(n):
+    if (n % 2):  return True
+    else:        return False
+
+########################################
+def gcd(a,b):
+    if (b > a):
+        a,b = b,a
+    while b:
+        a, b = b, a%b
+    return a
+
+########################################
+def encrypt(m,e,n):
+    m_e = 1
+    while e:
+        if odd(e):
+            m_e = (m_e * m) % n
+            e -= 1
+        else:
+            m = (m*m)%n
+            e /= 2
+    return m_e
+
+########################################
+p,q = 1009,3643
+n = p*q
+phi = (p-1)*(q-1)
+
+best_unconcealed = n
+best_count = 0
+answer = 0
+print "best_unconcealed = {0}".format(best_unconcealed)
+
+for e in xrange(2,phi/10000):
+    if (gcd(e,phi) != 1):  continue
+
+    print "(p,q) = ({0},{1}), n={2}, phi={3}, e={4}".format(p,q,n,phi,e),
+
+    unconcealed = 0
+    for m in xrange(n):
+        if (encrypt(m,e,n) == m):
+            unconcealed += 1
+        if (unconcealed > best_unconcealed):
+            break
+
+    if (unconcealed == best_unconcealed):
+        best_count += 1
+        answer += e
+        print "    unconcealed={0}, match previous best, count={1}, answer={2}".format(unconcealed, best_count, answer)
+    elif (unconcealed < best_unconcealed):
+        best_count = 1
+        best_unconcealed = unconcealed
+        answer = e
+        print "    unconcealed={0}, new best, count={1}, answer={2}".format(unconcealed, best_count, answer)
+    else:
+        print "    unconcealed={0}".format(unconcealed)
+
+print "Answer =", answer
 print "Time taken = {0} seconds".format(time.clock() - start_time)
