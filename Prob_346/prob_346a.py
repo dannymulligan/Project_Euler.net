@@ -92,15 +92,21 @@
 # 31 = 11_B30
 # 43 = 111_B6
 # 43 = 11_B42
-#
-# Observation: every repunit with more than two 1's (e.g. 111_Bx) but
-# less than MAX will be a strong repunit, since it will at least match
-# the repunit 11_By, where y = (111_Bx - 1)
 
+# Observation: every repunit with three or more 1's (e.g. 111_Bx) will
+# be a strong repunit, since there is a repunit with two 1's
+# (e.g. 11_By) for every possible number below MAX.
+#
+# We do still need to watch for duplicates in our list of strong
+# repunits, for example, 31 = 11111_B2 = 111_B5 = 11_B30.  If we make
+# a list of all strong repunits, 31 would be listed twice.  Therefore
+# we need to trim our list of strong repunits for duplicates before we
+# sum it to find the answer
 
 import sys
 import time
 start_time = time.clock()
+MAX = 50
 MAX = int(1e12)
 print "Running with MAX={0}".format(MAX)
 
@@ -132,7 +138,13 @@ for b in xrange(2,max_b+1):
 # Note: this approach does not preserve the order of the list, but we
 # don't care about that
 c_answer = {}.fromkeys(answer).keys()
+# {}.fromkeys(answer) creates a dictionary from the list answer
+# .keys() creates a list from the keys in that dictionary
+
+# Turns out that there are only 2 strong repunits that are duplicated
+# in our answer list, they are 31 and 8191.  These are the only
+# numbers that are repunits in more than 2 bases.  There are no
+# numbers that are repunits in more than 3 bases.
 
 print "Answer =", sum(c_answer)
-
 print "Time taken = {0} seconds".format(time.clock() - start_time)
