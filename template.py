@@ -11,6 +11,10 @@
 # ?? problems solved
 # Position #??? on level ?
 
+#import numpy as np
+#import scipy as sp
+#import matplotlib as mpl
+
 #import cProfile
 #cProfile.run('main()')
 
