@@ -206,17 +206,15 @@ def func_m(n,k,m):
     # than the numerator.  The numbers in the denominator start with
     # 1, which is as far as possible away from m, m^2, m^3, ..., etc.
     # The numbers in the denominator can start anywhere relative to
-    # the nearest n, n^2, n^3, ..., etc, so there will always be at
+    # the nearest m, m^2, m^3, ..., etc, so there will always be at
     # least as many factors of m in the numerator as in the
     # denominator.
     #
     # We have to look for factors of m, m^2, etc.
     for i in xrange(1,8):
-        #print "(m**i) = ({0}**{1}) = {2}".format(m,i,m**i)
         if ((m**i) <= k):
             # There is at least one multiple of m^i in the denominator
             # Check if there are more in the numerator than in the denominator
-            #print "n % (m**i) = {0} % {1} = {2}".format(n,m**i,n%(m**i))
             if ((n % (m**i)) < (k % (m**i))):
                 return 0
         else:
@@ -231,7 +229,7 @@ def func_m(n,k,m):
     # result to the power of l, and multiply by the result of a loop
     # of r
     (l, r) = (k / m, k % m)
-    #print "l = ", l, "r =", r, "m =", m    
+    #print "l = ", l, "r =", r, "m =", m
 
     c = 1
     for i in xrange(r):
@@ -282,31 +280,72 @@ def func_m(n,k,m):
 #i = 120; print "InvMod({0},5) = {1}".format(i, InvMod(i,5))
 #i = 24; print "InvMod({0},5) = {1}".format(i, InvMod(i,5))
 
-# Test data for func_m(n,k)
-(n,k,m) = ( 4, 2,   3);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
-(n,k,m) = ( 4, 3,   3);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
-(n,k,m) = (12, 5, 997);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
-(n,k,m) = (12, 7, 997);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
-(n,k,m) = (12, 5,   5);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
-(n,k,m) = (19, 7, 719);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
-(n,k,m) = (19, 7, 137);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
-(n,k,m) = (19, 9, 307);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
-
-for i in primes[20:300]:
-    (n,k,m) = (19,  9, i);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
-    (n,k,m) = (37, 12, i);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
-
+## Test data for func_m(n,k)
+#(n,k,m) = ( 4, 2,   3);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
+#(n,k,m) = ( 4, 3,   3);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
+#(n,k,m) = (12, 5, 997);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
+#(n,k,m) = (12, 7, 997);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
+#(n,k,m) = (12, 5,   5);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
+#(n,k,m) = (19, 7, 719);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
+#(n,k,m) = (19, 7, 137);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
+#(n,k,m) = (19, 9, 307);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
+#
+#for i in primes[20:300]:
+#    (n,k,m) = (19,  9, i);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
+#    (n,k,m) = (37, 12, i);  x = func_m(n,k,m);  e = (binomial(n,k) % m);  print "func_m({0},{1},{2}) = {3} ({4} {5})".format(n,k,m,x,(x==e),e)
+#
 #print "{0}".format(False)
+
+n = 10**POW_n
+k = 10**POW_k
+
+c_n_k_m = []
+non_zero = 0
+for m in pqr:
+    x = func_m(n,k,m)
+    c_n_k_m.append(x)
+    if (x != 0):
+        non_zero += 1
+        print "func_m({0},{1},{2}) = {3}".format(n,k,m,x)
+print "Found {0} non-zero M(n,k,m) results".format(non_zero)
 
 
 ########################################
-#poss = 0
-#for ri in range(2,len(pqr)):
-#    for qi in range(1,ri):
-#        for pi in range(0,qi):
-#            poss += 1
-#            #print "{0}-{1}-{2} = {3} * {4} * {5} = {6}".format(pi,qi,ri, pqr[pi],pqr[qi],pqr[ri], pqr[pi]*pqr[qi]*pqr[ri])
-#print "Considered {0} possibilities".format(poss)
+poss = 0
+ans = 0
+for ri in range(2,len(pqr)):
+    if ((ri % 100) == 0):
+        print "ri =", ri
+    if (c_n_k_m[ri] == 0):
+        continue
+    for qi in range(1,ri):
+        if (c_n_k_m[qi] == 0):
+            continue
+        for pi in range(0,qi):
+            if (c_n_k_m[pi] == 0):
+                continue
+            poss += 1
 
+            x = (c_n_k_m[pi] * pqr[qi]*pqr[ri] * InvMod(pqr[qi]*pqr[ri],pqr[pi])) \
+              + (c_n_k_m[qi] * pqr[pi]*pqr[ri] * InvMod(pqr[pi]*pqr[ri],pqr[qi])) \
+              + (c_n_k_m[ri] * pqr[pi]*pqr[qi] * InvMod(pqr[pi]*pqr[qi],pqr[ri]))
+            x = x % (pqr[pi]*pqr[qi]*pqr[ri])
+            ans += x
+
+            #print "{0}-{1}-{2} = {3} * {4} * {5} = {6}".format(pi,qi,ri, pqr[pi],pqr[qi],pqr[ri], pqr[pi]*pqr[qi]*pqr[ri])
+
+            #print "M(10^18,10^9,{0}) = {1}, ".format(pqr[pi], c_n_k_m[pi]),
+            #print "M(10^18,10^9,{0}) = {1}, ".format(pqr[qi], c_n_k_m[qi]),
+            #print "M(10^18,10^9,{0}) = {1} => ".format(pqr[ri], c_n_k_m[ri]),
+            #print "M(10^18,10^9,{0}) = {1} ".format(pqr[pi]*pqr[qi]*pqr[ri], x)
+
+            #print "x = {0} * {1} * {2}".format(c_n_k_m[pi], pqr[qi]*pqr[ri], InvMod(pqr[qi]*pqr[ri],pqr[pi])),
+            #print  " + {0} * {1} * {2}".format(c_n_k_m[qi], pqr[pi]*pqr[ri], InvMod(pqr[pi]*pqr[ri],pqr[qi])),
+            #print  " + {0} * {1} * {2}".format(c_n_k_m[ri], pqr[pi]*pqr[qi], InvMod(pqr[pi]*pqr[qi],pqr[ri])),
+            #print " = {0}".format(x)
+ 
+
+print "We considered {0} possibilities".format(poss)
+print "Answer = {0}".format(ans)
 print "Time taken = {0} seconds".format(time.clock() - start_time)
 
