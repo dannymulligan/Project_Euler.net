@@ -381,14 +381,14 @@ ans = 0
 for ri in range(2,len(c_n_k_m)):
 #    if ((ri % 10) == 0):
 #        print "ri =", ri
-    if (c_n_k_m[ri] == 0):
-        continue
+#    if (c_n_k_m[ri] == 0):
+#        continue
     for qi in range(1,ri):
-        if (c_n_k_m[qi] == 0):
-            continue
+#        if (c_n_k_m[qi] == 0):
+#            continue
         for pi in range(0,qi):
-            if (c_n_k_m[pi] == 0):
-                continue
+#            if (c_n_k_m[pi] == 0):
+#                continue
             poss += 1
 
             x = (c_n_k_m[pi] * pqr[qi]*pqr[ri] * InvMod(pqr[qi]*pqr[ri],pqr[pi])) \
