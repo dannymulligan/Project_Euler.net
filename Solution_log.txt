@@ -125,7 +125,7 @@
 #125: Problem 121, solved 09/11/10
 #126: Problem 115, solved 09/12/10
 #127: Problem 114, solved 09/12/10
-#128: 
+#128: Problem 307, solved ??/??/10 (suspect solution)
 #129: Problem 205, solved 11/07/10
 #130: Problem 145, solved 11/09/10
 #131: Problem 164, solved 11/13/10
@@ -158,6 +158,20 @@
 #158: Problem 138, solved 08/07/11
 #159: Problem 137, solved 08/08/11
 #160: Problem 144, solved 08/09/11
+#161: Problem 139, solved 08/11/11
+#162: Problem 140, solved 08/11/11
+#163: Problem 182, solved 08/11/11
+#164: Problem 160, solved 08/19/11
+#165: Problem 165, solved 08/23/11
+#166: Problem 345, solved 09/09/11
+#167: Problem 349, solved 09/10/11
+#168: Problem 347, solved 09/11/11
+#169: Problem 348, solved 09/12/11
+#170: Problem 346, solved 09/12/11
+#171: Problem 243, solved 09/28/11
+#172: Problem 234, solved 09/30/11
+#173: Problem 207, solved ??/??/11
+#174: Problem 365, solved 01/05/12
 
 
 
@@ -379,3 +393,475 @@ Total    = 6,944
 
 I have solved 160 problems and am at position 517 on level 4, this puts me at position 1,177 overall, or 16.95%.
 There are 178,822 users overall, I'm at 0.658%.  If I were 283 places higher (179 problems solved), I would be in the top 0.5%.
+
+As of 8/11/11
+Veterans =   159
+Level 6  =   155
+Level 5  =   347
+Level 4  =   807
+Level 3  = 2,549
+Level 2  = 1,270
+Level 1  = 1,628
+Total    = 6,915
+
+I have solved 163 problems and am at position 459 on level 4, this puts me at position 1,120 overall, or 16.20%.
+There are 179,342 users overall, I'm at 0.625%.  If I were 224 places higher (179 problems solved), I would be in the top 0.5%.
+
+As of 8/19/11
+Veterans =   160
+Level 6  =   157
+Level 5  =   345
+Level 4  =   813
+Level 3  = 2,566
+Level 2  = 1,288
+Level 1  = 1,654
+Total    = 6,983
+
+I have solved 164 problems and am at position 453 on level 4, this puts me at position 1,115 overall, or 15.97%.
+There are 178,905 users overall, I'm at 0.623%.  If I were 220 places higher (180 problems solved), I would be in the top 0.5%.
+
+As of 8/23/11
+Veterans =   160
+Level 6  =   158
+Level 5  =   348
+Level 4  =   813
+Level 3  = 2,568
+Level 2  = 1,283
+Level 1  = 1,626
+Total    = 6,956
+
+I have solved 165 problems and am at position 432 on level 4, this puts me at position 1,098 overall, or 15.78%.
+There are 179,840 users overall, I'm at 0.611%.  If I were 199 places higher (180 problems solved), I would be in the top 0.5%.
+
+As of 9/09/11
+Veterans =   165
+Level 6  =   162
+Level 5  =   351
+Level 4  =   837
+Level 3  = 2,599
+Level 2  = 1,290
+Level 1  = 1,568
+Total    = 6,972
+
+I have solved 166 problems and am at position 432 on level 4, this puts me at position 1,110 overall, or 15.92%.
+There are 184,077 users overall, I'm at 0.603%.
+
+As of 9/10/11
+Veterans =   165
+Level 6  =   162
+Level 5  =   357
+Level 4  =   832
+Level 3  = 2,599
+Level 2  = 1,282
+Level 1  = 1,575
+Total    = 6,972
+
+I have solved 167 problems and am at position 407 on level 4, this puts me at position 1,091 overall, or 15.64%.
+There are 182,075 users overall, I'm at 0.599%.
+
+As of 9/11/11
+Veterans =   165
+Level 6  =   162
+Level 5  =   357
+Level 4  =   833
+Level 3  = 2,600
+Level 2  = 1,269
+Level 1  = 1,590
+Total    = 6,976
+
+I have solved 168 problems and am at position 393 on level 4, this puts me at position 1,077 overall, or 15.43%.
+There are 182,331 users overall, I'm at 0.591%.
+
+As of 9/12/11
+Veterans =   165
+Level 6  =   163
+Level 5  =   357
+Level 4  =   835
+Level 3  = 2,599
+Level 2  = 1,277
+Level 1  = 1,594
+Total    = 6,990
+
+I have solved 170 problems and am at position 362 on level 4, this puts me at position 1,047 overall, or 14.98%.
+There are 182,630 users overall, I'm at 0.573%.
+
+As of 9/28/11:
+I have solved 171 problems and am at position 51 on level 6, this puts me at position 1,041+9 = 1,050 overall.
+There are 182,302 users overall, I'm at 0.571%.
+
+As of 9/30/11:
+I have solved 172 problems and am at position 44 on level 6, this puts me at position 1,034+14 = 1,048 overall.
+There are 182,720 users overall, I'm at 0.566%.
+
+
+001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, 
+002 - Solved, Prime Obsession, Fibonacci Fever, 
+003 - Solved, Prime Obsession, Fibonacci Fever, Triangle Trophy, Lucky Luke, 
+004 - Solved, Unlucky Squares, 
+005 - Solved, Prime Obsession, Fibonacci Fever, 
+006 - Solved, Triangle Trophy, 
+007 - Solved, Prime Obsession, Lucky Luke, 
+008 - Solved, Fibonacci Fever, 
+009 - Solved, Unlucky Squares, Lucky Luke, 
+010 - Solved, Triangle Trophy, 
+011 - Solved, Prime Obsession, 
+012 - Solved, 
+013 - Solved, Prime Obsession, Fibonacci Fever, Lucky Luke, 
+014 - Solved, 
+015 - Solved, Triangle Trophy, Lucky Luke, 
+016 - Solved, Unlucky Squares, 
+017 - Solved, Prime Obsession, 
+018 - Solved, 
+019 - Solved, Prime Obsession, 
+020 - Solved, 
+021 - Solved, Fibonacci Fever, Triangle Trophy, Lucky Luke, 
+022 - Solved, 
+023 - Solved, Prime Obsession, 
+024 - Solved, 
+025 - Solved, Unlucky Squares, Lucky Luke, 
+026 - Solved, 
+027 - Solved, 
+028 - Solved, Triangle Trophy, 
+029 - Solved, Prime Obsession, 
+030 - Solved, 
+031 - Solved, Prime Obsession, Lucky Luke, 
+032 - Solved, 
+033 - Solved, Lucky Luke, 
+034 - Solved, Fibonacci Fever, 
+035 - Solved, 
+036 - Solved, Unlucky Squares, Triangle Trophy, 
+037 - Solved, Prime Obsession, Lucky Luke, 
+038 - Solved, 
+039 - Solved, 
+040 - Solved, 
+041 - Solved, Prime Obsession, 
+042 - Solved, 
+043 - Solved, Prime Obsession, Lucky Luke, 
+044 - Solved, 
+045 - Solved, Triangle Trophy, 
+046 - Solved, 
+047 - Solved, Prime Obsession, 
+048 - Solved, 
+049 - Solved, Unlucky Squares, Lucky Luke, 
+050 - Solved, 
+051 - Solved, Lucky Luke, 
+052 - Solved, 
+053 - Solved, Prime Obsession, 
+054 - Solved, 
+055 - Solved, Fibonacci Fever, Triangle Trophy, 
+056 - Solved, 
+057 - Solved, 
+058 - Solved, 
+059 - Solved, 
+060 - Solved, 
+061 - Solved, Prime Obsession, 
+062 - Solved, 
+063 - Solved, Lucky Luke, 
+064 - Solved, Unlucky Squares, 
+065 - Solved, 
+066 - Solved, Triangle Trophy, 
+067 - Solved, Prime Obsession, Lucky Luke, 
+068 - Solved, 
+069 - Solved, Lucky Luke, 
+070 - Solved, 
+071 - Solved, Prime Obsession, 
+072 - Solved, 
+073 - Solved, Prime Obsession, Lucky Luke, 
+074 - Solved, 
+075 - Solved, Lucky Luke, 
+076 - Solved, 
+077 - Solved, 
+078 - Solved, Triangle Trophy, 
+079 - Solved, Prime Obsession, Lucky Luke, 
+080 - Solved, 
+081 - Solved, Unlucky Squares, 
+082 - Solved, 
+083 - Solved, Prime Obsession, 
+084 - Solved, 
+085 - Solved, 
+086 - Solved, 
+087 - Solved, Lucky Luke, 
+088 - Solved, 
+089 - Solved, Prime Obsession, Fibonacci Fever, 
+090 - Solved, 
+091 - Solved, Triangle Trophy, 
+092 - Solved, 
+093 - Solved, Lucky Luke, 
+094 - Solved, 
+095 - Solved, 
+096 - Solved, 
+097 - Solved, Prime Obsession, 
+098 - Solved, 
+099 - Solved, Lucky Luke, 
+100 - Solved, Unlucky Squares, 
+101 - Solved, Prime Obsession, 
+102 - Solved, 
+103 - Prime Obsession, 
+104 - Solved, 
+105 - Solved, Triangle Trophy, Lucky Luke, 
+106 - 
+107 - Prime Obsession, 
+108 - Solved, 
+109 - Prime Obsession, 
+110 - Solved, 
+111 - Lucky Luke, 
+112 - Solved, 
+113 - Solved, Prime Obsession, 
+114 - Solved, 
+115 - Solved, Lucky Luke, 
+116 - Solved, 
+117 - Solved, 
+118 - 
+119 - Solved, 
+120 - Solved, Triangle Trophy, 
+121 - Solved, Unlucky Squares, 
+122 - 
+123 - Solved, 
+124 - Solved, 
+125 - Solved, 
+126 - 
+127 - Solved, Prime Obsession, Lucky Luke, 
+128 - 
+129 - Solved, Lucky Luke, 
+130 - 
+131 - Prime Obsession, 
+132 - Solved, 
+133 - Lucky Luke, 
+134 - Solved, 
+135 - Solved, Lucky Luke, 
+136 - Solved, Triangle Trophy, 
+137 - Solved, Prime Obsession, 
+138 - Solved, 
+139 - Solved, Prime Obsession, 
+140 - Solved, 
+141 - Lucky Luke, 
+142 - Solved, 
+143 - 
+144 - Solved, Unlucky Squares, Fibonacci Fever, 
+145 - Solved, 
+146 - Solved, 
+147 - Solved, 
+148 - Solved, 
+149 - Solved, Prime Obsession, 
+150 - Solved, 
+151 - Prime Obsession, Lucky Luke, 
+152 - 
+153 - Triangle Trophy, 
+154 - 
+155 - 
+156 - 
+157 - Prime Obsession, 
+158 - 
+159 - Lucky Luke, 
+160 - Solved, 
+161 - 
+162 - Solved, 
+163 - Prime Obsession, Lucky Luke, 
+164 - Solved, 
+165 - Solved, 
+166 - Solved, 
+167 - Prime Obsession, 
+168 - 
+169 - Unlucky Squares, Lucky Luke, 
+170 - 
+171 - Triangle Trophy, Lucky Luke, 
+172 - 
+173 - Solved, Prime Obsession, 
+174 - Solved, 
+175 - 
+176 - 
+177 - 
+178 - 
+179 - Solved, Prime Obsession, 
+180 - 
+181 - Prime Obsession, 
+182 - Solved, 
+183 - Solved, 
+184 - 
+185 - 
+186 - 
+187 - Solved, 
+188 - Solved, 
+189 - Lucky Luke, 
+190 - Triangle Trophy, 
+191 - Solved, Prime Obsession, 
+192 - 
+193 - Prime Obsession, Lucky Luke, 
+194 - 
+195 - Lucky Luke, 
+196 - Unlucky Squares, 
+197 - Solved, Prime Obsession, 
+198 - 
+199 - Prime Obsession, 
+200 - 
+201 - Lucky Luke, 
+202 - 
+203 - Solved, 
+204 - Solved, 
+205 - Solved, Lucky Luke, 
+206 - Solved, 
+207 - Solved
+208 - 
+209 - 
+210 - Triangle Trophy, 
+211 - Solved, Prime Obsession, Lucky Luke, 
+212 - 
+213 - 
+214 - Solved, 
+215 - 
+216 - Solved, 
+217 - 
+218 - 
+219 - Lucky Luke, 
+220 - 
+221 - 
+222 - 
+223 - Prime Obsession, Lucky Luke, 
+224 - 
+225 - Unlucky Squares, 
+226 - 
+227 - Prime Obsession, 
+228 - 
+229 - Prime Obsession, 
+230 - 
+231 - Solved, Triangle Trophy, Lucky Luke, 
+232 - 
+233 - Prime Obsession, Fibonacci Fever
+234 - Solved
+235 - Solved, Lucky Luke, 
+236 - 
+237 - Lucky Luke, 
+238 - 
+239 - Prime Obsession, 
+240 - 
+241 - Prime Obsession, Lucky Luke, 
+242 - 
+243 - Solved, 
+244 - 
+245 - 
+246 - 
+247 - 
+248 - 
+249 - 
+250 - 
+251 - Prime Obsession, 
+252 - 
+253 - Triangle Trophy, 
+254 - 
+255 - 
+256 - Unlucky Squares, 
+257 - Prime Obsession, 
+258 - 
+259 - Lucky Luke, 
+260 - 
+261 - Lucky Luke, 
+262 - 
+263 - Prime Obsession, 
+264 - 
+265 - Solved, 
+266 - Solved, 
+267 - Solved, Lucky Luke, 
+268 - Solved, 
+269 - Prime Obsession, 
+270 - 
+271 - Prime Obsession, 
+272 - 
+273 - Lucky Luke, 
+274 - 
+275 - 
+276 - Triangle Trophy, 
+277 - Solved, Prime Obsession, 
+278 - 
+279 - 
+280 - 
+281 - Prime Obsession, 
+282 - 
+283 - Prime Obsession, Lucky Luke, 
+284 - 
+285 - Lucky Luke, 
+286 - 
+287 - 
+288 - 
+289 - Unlucky Squares, Lucky Luke, 
+290 - 
+291 - 
+292 - 
+293 - Prime Obsession, 
+294 - 
+295 - 
+296 - 
+297 - Lucky Luke, 
+298 - 
+299 - 
+300 - Triangle Trophy, 
+301 - 
+302 - 
+303 - Lucky Luke, 
+304 - 
+305 - 
+306 - 
+307 - Solved, Prime Obsession, Lucky Luke, 
+308 - 
+309 - 
+310 - 
+311 - Prime Obsession, 
+312 - 
+313 - Prime Obsession, 
+314 - 
+315 - 
+316 - 
+317 - Prime Obsession, 
+318 - 
+319 - Lucky Luke, 
+320 - 
+321 - Lucky Luke, 
+322 - 
+323 - 
+324 - Unlucky Squares, 
+325 - Triangle Trophy, 
+326 - 
+327 - Lucky Luke, 
+328 - 
+329 - 
+330 - 
+331 - Prime Obsession, Lucky Luke, 
+332 - 
+333 - 
+334 - 
+335 - 
+336 - 
+337 - Prime Obsession, 
+338 - 
+339 - Lucky Luke, 
+340 - 
+341 - 
+342 - 
+343 - 
+344 - 
+345 - Solved, 
+346 - Solved, 
+347 - Solved, Prime Obsession, 
+348 - Solved, 
+349 - Solved, Prime Obsession, Lucky Luke, 
+350 - 
+351 - Triangle Trophy, 
+352 - 
+353 - Prime Obsession, 
+354 - 
+355 - 
+356 - 
+357 - 
+358 - 
+359 - Prime Obsession, 
+360 - 
+361 - 
+362 - 
+363 - 
+364 - 
+365 - Solved, 
+
+Solved 12 out of 13 Unlucky Squares (169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576)
+Solved 39 out of 50 Prime Obsession (103, 107, 109, 131, 151, 157, 163, 167, 181, 193, 199, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 281, 283, 293, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
+Solved 11 out of 12 Fibonacci Fever (233)
+Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325, 351, 378, 406, 435, 465, 496)
+Solved 35 out of 50 Lucky Luke (111, 133, 141, 151, 159, 163, 169, 171, 189, 193, 195, 201, 219, 223, 237, 241, 259, 261, 273, 283, 285, 289, 297, 303, 319, 321, 327, 331, 339)
