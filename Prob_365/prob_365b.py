@@ -12,9 +12,8 @@
 #
 # Calculate M(10^18,10^9,p*q*r) for 1000<p<q<r<5000 and p,q,r prime.
 #
-# Solved ??/??/11
-# ?? problems solved
-# Position #??? on level ?
+# Solved 01/05/12
+# 174 problems solved
 
 
 #import numpy as np
