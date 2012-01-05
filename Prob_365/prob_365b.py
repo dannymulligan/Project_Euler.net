@@ -379,31 +379,29 @@ print "Found {0} non-zero M(n,k,m) results".format(non_zero)
 poss = 0
 ans = 0
 for ri in range(2,len(c_n_k_m)):
-#    if ((ri % 10) == 0):
-#        print "ri =", ri
-#    if (c_n_k_m[ri] == 0):
-#        continue
+    if ((ri % 10) == 0):
+        print "ri =", ri
+
     for qi in range(1,ri):
-#        if (c_n_k_m[qi] == 0):
-#            continue
         for pi in range(0,qi):
-#            if (c_n_k_m[pi] == 0):
-#                continue
-            poss += 1
-
-            x = (c_n_k_m[pi] * pqr[qi]*pqr[ri] * InvMod(pqr[qi]*pqr[ri],pqr[pi])) \
-              + (c_n_k_m[qi] * pqr[pi]*pqr[ri] * InvMod(pqr[pi]*pqr[ri],pqr[qi])) \
-              + (c_n_k_m[ri] * pqr[pi]*pqr[qi] * InvMod(pqr[pi]*pqr[qi],pqr[ri]))
-            x = x % (pqr[pi]*pqr[qi]*pqr[ri])
-            ans += x
-
-
             #print "{0}-{1}-{2} = {3} * {4} * {5} = {6}".format(pi,qi,ri, pqr[pi],pqr[qi],pqr[ri], pqr[pi]*pqr[qi]*pqr[ri])
 
-            #print "M(-,-,{2}) = {3}, ".format(n, k, pqr[pi], c_n_k_m[pi]),
-            #print "M(-,-,{2}) = {3}, ".format(n, k, pqr[qi], c_n_k_m[qi]),
-            #print "M(-,-,{2}) = {3}  ".format(n, k, pqr[ri], c_n_k_m[ri]),
-            #print "=> M(-,-,{2}) = {3} ".format(n, k, pqr[pi]*pqr[qi]*pqr[ri], x)
+            xp = 0
+            xq = 0
+            xr = 0
+            if (c_n_k_m[pi] != 0):  xp = c_n_k_m[pi] * pqr[qi]*pqr[ri] * InvMod(pqr[qi]*pqr[ri],pqr[pi])
+            if (c_n_k_m[qi] != 0):  xq = c_n_k_m[qi] * pqr[pi]*pqr[ri] * InvMod(pqr[pi]*pqr[ri],pqr[qi])
+            if (c_n_k_m[ri] != 0):  xr = c_n_k_m[ri] * pqr[pi]*pqr[qi] * InvMod(pqr[pi]*pqr[qi],pqr[ri])
+
+            x = (xp + xq + xr) % (pqr[pi]*pqr[qi]*pqr[ri])
+
+            ans += x
+
+            #if (x != 0):
+            #    print "M(-,-,{2}) = {3}, ".format(n, k, pqr[pi], c_n_k_m[pi]),
+            #    print "M(-,-,{2}) = {3}, ".format(n, k, pqr[qi], c_n_k_m[qi]),
+            #    print "M(-,-,{2}) = {3}  ".format(n, k, pqr[ri], c_n_k_m[ri]),
+            #    print "=> M(-,-,{2}) = {3} ".format(n, k, pqr[pi]*pqr[qi]*pqr[ri], x)
 
             #print "binomial({0},{1}) % {2} = {3}".format(n,k,pqr[pi],b%pqr[pi])
             #print "binomial({0},{1}) % {2} = {3}".format(n,k,pqr[qi],b%pqr[qi])
