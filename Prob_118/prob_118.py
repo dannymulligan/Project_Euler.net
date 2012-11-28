@@ -17,37 +17,60 @@
 # ?? problems solved
 # Position #??? on level ?
 
-import itertools
+import sys
+import time
+start_time = time.clock()
 
-MAX =  10**6
+LIMIT_PRIME = 10**7
+prime_table = [1]*LIMIT_PRIME  # table of largest factor
+primes = []
 
-factor_table = [1]*(1+MAX)  # largest factor, 1 means this number is prime
-def calculate_factors():
+def calculate_primes():
     i = 2
-    while (i <= (MAX/2)):
-        if (factor_table[i] == 1):
-            j = i*2
-            while (j <= MAX):
-                factor_table[j] = i
-                #print "factor_table[{0}] = {1}".format(j, i)
-                j += i
+    #primes.append(i)
+    j = i*2
+    while (j < LIMIT_PRIME):
+        prime_table[j] = i
+        j += i
+
+    i = 3
+    while (i*i < LIMIT_PRIME):
+        if (prime_table[i] == 1):
+            #primes.append(i)
+            j = i*3
+            while (j < LIMIT_PRIME):
+                prime_table[j] = i
+                j += 2*i
+        i += 2
+    #while (i < LIMIT_PRIME):
+    #    if (prime_table[i] == 1):
+    #        primes.append(i)
+    #    i += 1
+
+def valid_prime(x):
+    digits = list("{0:d}".format(x))
+    dedupd = list(set(digits))
+    digits.sort()
+    dedupd.sort()
+    return (digits == dedupd)
+
+def build_valid_list():
+    i = 2
+    while (i < LIMIT_PRIME):
+        if (prime_table[i] == 1):
+            if valid_prime(i):
+                primes.append(i)
         i += 1
-
-
-def is_prime(n):
-    if (factor_table[n] == 1):  return True
-    else:                       return False
-
-
-print "Calculating factors with MAX={0}".format(MAX)
-calculate_factors()
-
-digits = range(1,6)
-
-for n in itertools.permutations(digits):
-    print n
     
 
-def try (digits):
-    for l in range(len(digits)-1):
-        if digits
+calculate_primes()
+build_valid_list()
+print "There are", len(primes), "primes less than", LIMIT_PRIME
+print "They are primes =",
+for p in primes:
+    print p
+print
+
+print "Time taken = {0} seconds".format(time.clock() - start_time)
+
+
