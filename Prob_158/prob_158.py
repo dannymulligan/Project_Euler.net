@@ -1,35 +1,35 @@
 #!/usr/bin/python
 # coding=utf-8
 #
-# Project Euler.net Problem 128
+# Project Euler.net Problem 158
 #
-# Which tiles in the hexagonal arrangement have prime differences with
-# neighbours?
+# Exploring strings for which only one character comes
+# lexicographically after its neighbour to the left.
 #
-# A hexagonal tile with number 1 is surrounded by a ring of six
-# hexagonal tiles, starting at "12 o'clock" and numbering the tiles 2
-# to 7 in an anti-clockwise direction.
+# Taking three different letters from the 26 letters of the alphabet,
+# character strings of length three can be formed.
 #
-# New rings are added in the same fashion, with the next rings being
-# numbered 8 to 19, 20 to 37, 38 to 61, and so on. The diagram below
-# shows the first three rings.
+# Examples are 'abc', 'hat' and 'zyx'.
 #
-# By finding the difference between tile n and each its six neighbours
-# we shall define PD(n) to be the number of those differences which
-# are prime.
+# When we study these three examples we see that for 'abc' two
+# characters come lexicographically after its neighbour to the left.
 #
-# For example, working clockwise around tile 8 the differences are 12,
-# 29, 11, 6, 1, and 13. So PD(8) = 3.
+# For 'hat' there is exactly one character that comes
+# lexicographically after its neighbour to the left. For 'zyx' there
+# are zero characters that come lexicographically after its neighbour
+# to the left.
 #
-# In the same way, the differences around tile 17 are 1, 17, 16, 1,
-# 11, and 10, hence PD(17) = 2.
+# In all there are 10400 strings of length 3 for which exactly one
+# character comes lexicographically after its neighbour to the left.
 #
-# It can be shown that the maximum value of PD(n) is 3.
+# We now consider strings of n <= 26 different characters from the
+# alphabet.
 #
-# If all of the tiles for which PD(n) = 3 are listed in ascending
-# order to form a sequence, the 10th tile would be 271.
+# For every n, p(n) is the number of strings of length n for which
+# exactly one character comes lexicographically after its neighbour to
+# the left.
 #
-# Find the 2000th tile in this sequence.
+# What is the maximum value of p(n)?
 #
 # Solved ??/??/10
 # ?? problems solved
@@ -38,6 +38,7 @@
 import sys
 import time
 start_time = time.clock()
+import cProfile
 
 MAX = 3
 
@@ -129,15 +130,18 @@ def p(n):
 
 
 ########################################
-results = []
-best_result = 0
-best_n = 0
-for n in xrange(4,4+1):
-    a = p(n)
-    print "p({0}) = {1}".format(n,a)
-    if (a > best_result):
-        best_result = a
-        best_n = n
+def main():
+    results = []
+    best_result = 0
+    best_n = 0
+    for n in xrange(2,8+1):
+        a = p(n)
+        print "p({0}) = {1}".format(n,a)
+        if (a > best_result):
+            best_result = a
+            best_n = n
 
-print "Answer =", best_result
-print "Time taken = {0} seconds".format(time.clock() - start_time)
+    print "Answer =", best_result
+    print "Time taken = {0} seconds".format(time.clock() - start_time)
+
+cProfile.run('main()')

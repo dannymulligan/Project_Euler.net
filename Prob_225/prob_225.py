@@ -43,20 +43,20 @@ def tribonacci(mod):
 
     (a, b, c) = (b, c, (a+b+c)%mod)
     yield c
-    
+
     (a, b, c) = (b, c, (a+b+c)%mod)
     yield c
-    
+
     (a, b, c) = (b, c, (a+b+c)%mod)
     yield c
-    
+
     looped = False
     while (not looped):
         (a, b, c) = (b, c, (a+b+c)%mod)
         looped = ((a == 3) & (b == 5) & (c == 9))
         yield c
 
-    
+
 matches = []
 for mod in range(3, 20000, 2):
     count = 0
@@ -67,7 +67,7 @@ for mod in range(3, 20000, 2):
             divisible = True
             break
 
-    if divisible:    
+    if divisible:
         #print "The tribonacci sequence is divisible by {} at element {}".format(mod, count)
         pass
     else:
@@ -77,9 +77,8 @@ for mod in range(3, 20000, 2):
     if (len(matches) == 124):
         break
 
-print "Found {} matches".format(len(matches))        
-print "matches =", matches        
+print "Found {} matches".format(len(matches))
+print "matches =", matches
 print "The answer is", matches[123]
 
 print "Time taken = {0} seconds".format(time.clock() - start_time)
-

@@ -41,54 +41,82 @@
 # ??? problems solved
 # Position #??? on level 3
 
-MAX_PRIME = 10000  # 4 digit primes
+import sys
+import time
+start_time = time.clock()
 
-prime_table = [True]*(MAX_PRIME)  # prime_table[N] == True means this N is prime
-primes = []  # List of prime numbers
+LIMIT_PRIME = 10**9 # ~? seconds
+LIMIT_PRIME = 5*10**8 # ~216 seconds
+LIMIT_PRIME = 2*10**8 # ~84.1 seconds
+LIMIT_PRIME = 10**8 # ~40.9 seconds
+LIMIT_PRIME = 5*10**7 # ~19.9 seconds
+#LIMIT_PRIME = 2*10**7 # ~7.9 seconds
+#LIMIT_PRIME = 10**7 # ~3.9 seconds
+#LIMIT_PRIME = 10**6 # ~0.35 seconds
+prime_table = [1]*LIMIT_PRIME  # table of largest factor
+
 def calculate_primes():
-    i = 2
-    while (i <= (MAX_PRIME/2)):
-        if (prime_table[i] == True):
-            primes.append(i)
-            j = i*2
-            while (j < MAX_PRIME):
-                prime_table[j] = False
-                j += i
-        i += 1
-    while (i < MAX_PRIME):
-        if (prime_table[i] == True):
-            primes.append(i)
-        i += 1
+    prime_table[0] = 0  # 0 is not a prime number
+    prime_table[1] = 0  # 1 is not a prime number
 
-def is_prime(n):
-    if (n > MAX_PRIME*MAX_PRIME):
-        print "Error: checking n = {0}, which is larger than MAX_PRIME^2 (MAX_PRIME = {1})".format(n, MAX_PRIME)
-        sys.exit()
-    elif (n < MAX_PRIME):
-        return (prime_table[n])
-    else:
-        for i in primes:
-            if ((n % i) == 0):
+    # Special case 2 = the only even prime
+    pcnt = 1
+    j = 4
+    while (j < LIMIT_PRIME):
+        prime_table[j] = 2
+        j += 2
+
+    # Deal with all the odd primes starting with 3
+    i = 3
+    while (i*i < LIMIT_PRIME):
+        if (prime_table[i] == 1):
+            pcnt += 1
+            j = i*3  # can skip i*2, already covered
+            while (j < LIMIT_PRIME):
+                prime_table[j] = i
+                j += 2*i
+        i += 2
+
+    # Keep counting if we want an accurate count
+    while (i < LIMIT_PRIME):
+        if (prime_table[i] == 1):
+            pcnt += 1
+        i += 2
+    return pcnt
+
+def is_prime(x):
+    if (x < LIMIT_PRIME):
+        return (prime_table[x] == 1)
+    for i in range(2,LIMIT_PRIME):
+        if (prime_table[i] == 1):
+            if ((x % i) == 0):
                 return False
-            if (i*i > n):
-                return True
-        return True
+        if (i*i > x):
+            return True
+    return True
 
-print "Calculating primes up to", (MAX_PRIME-1)
-calculate_primes()
+def to_int(nums):
+    res = 0
+    for i in nums:
+        res = 10*res + int(i)
+    return res
 
-candidates = [ 1112, 1113, 1114, 1115, 1116, 1117, 1118, 1119, 
-               1121, 1131, 1141, 1151, 1161, 1171, 1181, 1191, 
-               1211, 1311, 1411, 1511, 1611, 1711, 1811, 1911,
-               2111, 3111, 4111, 5111, 6111, 7111, 8111, 9111 ]
+def rep_digit_primes(n, r, x):
+    # n = number of digits in the number
+    # r = repeating digit, x = number of repetitions
+    import itertools
 
-Answer = 0
-Count = 0
-for i in candidates:
-    if is_prime(i):
-        Count += 1
-        Answer += i
+    poss_dig = set([range(1,10)])
+    a = set([r])
+    poss_dig = poss_dig - a
+    for b in itertools.permutations(poss_dig, 
 
-print "Count =", Count
-print "Answer =", Answer
+answer = 0
+for a in rep_digit_primes(4, 1, 3):
+    print a
+    answer += 1
+
+print "Answer =", answer
+print "Time taken = {0} seconds".format(time.clock() - start_time)
+
 

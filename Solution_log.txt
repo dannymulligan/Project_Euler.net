@@ -172,6 +172,9 @@
 #172: Problem 234, solved 09/30/11
 #173: Problem 207, solved ??/??/11
 #174: Problem 365, solved 01/05/12
+#175: Problem 118, solved 11/27/12
+#176: Problem 225, solved 06/26/13
+#177: Problem 293, solved 06/28/13
 
 
 
@@ -493,6 +496,17 @@ As of 9/30/11:
 I have solved 172 problems and am at position 44 on level 6, this puts me at position 1,034+14 = 1,048 overall.
 There are 182,720 users overall, I'm at 0.566%.
 
+As of 11/27/12:
+I have solved 175 problems and am at position 392 on level 7, this puts me at position 1,394 overall.
+
+As of 6/28/13:
+
+I have solved 177 problems and am at position 395 on level 7, this puts me at position 1,532 overall.
+My precentage rank is 0.48%.
+7 months have passed since the last update, and I would have falled back about 1587-1394=193 places without solving
+any problems  Since I just solved 2 problems, I am now only 1532-1394=138 places back from where I was before.  I
+would need to have solved 183 problems to be at the same absolute position.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, 
 002 - Solved, Prime Obsession, Fibonacci Fever, 
@@ -611,7 +625,7 @@ There are 182,720 users overall, I'm at 0.566%.
 115 - Solved, Lucky Luke, 
 116 - Solved, 
 117 - Solved, 
-118 - 
+118 - Solved
 119 - Solved, 
 120 - Solved, Triangle Trophy, 
 121 - Solved, Unlucky Squares, 
@@ -718,7 +732,7 @@ There are 182,720 users overall, I'm at 0.566%.
 222 - 
 223 - Prime Obsession, Lucky Luke, 
 224 - 
-225 - Unlucky Squares, 
+225 - Solved, Unlucky Squares, 
 226 - 
 227 - Prime Obsession, 
 228 - 
@@ -786,7 +800,7 @@ There are 182,720 users overall, I'm at 0.566%.
 290 - 
 291 - 
 292 - 
-293 - Prime Obsession, 
+293 - Solved, Prime Obsession, 
 294 - 
 295 - 
 296 - 
@@ -860,8 +874,7 @@ There are 182,720 users overall, I'm at 0.566%.
 364 - 
 365 - Solved, 
 
-Solved 12 out of 13 Unlucky Squares (169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576)
-Solved 39 out of 50 Prime Obsession (103, 107, 109, 131, 151, 157, 163, 167, 181, 193, 199, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 281, 283, 293, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
+Solved 40 out of 50 Prime Obsession (103, 107, 109, 131, 151, 157, 163, 167, 181, 193, 199, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
 Solved 11 out of 12 Fibonacci Fever (233)
 Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325, 351, 378, 406, 435, 465, 496)
 Solved 35 out of 50 Lucky Luke (111, 133, 141, 151, 159, 163, 169, 171, 189, 193, 195, 201, 219, 223, 237, 241, 259, 261, 273, 283, 285, 289, 297, 303, 319, 321, 327, 331, 339)

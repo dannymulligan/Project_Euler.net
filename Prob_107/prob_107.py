@@ -63,15 +63,11 @@ net = mini_network.net
 
 nvert = len(net)
 
-# Zero out the bottom half of the matrix
-for i in range(nvert):
-    for j in range(nvert):
-        if (j <= i):
-            net[i][j] = 0
+locked = [[False]*nvert for _ in range(nvert)]  # This is how you create a 2D array in python!
 
 # Print the matrix
-#for i in net:
-#    print i
+for i in net:
+    print i
 
 # Calculate the Network Weight & count the Network Vertices
 nweight = 0
@@ -90,12 +86,16 @@ print "Network Vertices =", nvert
 print "Network Edges =", nedges
 
 # Count the connections
-conns = [0]*nvert
-print conns
+conns_x = [0]*nvert
+conns_y = [0]*nvert
 for i in range(nvert):
     for j in range(nvert):
         if (net[j][i] != 0):
-            conns[i] += 1
-            conns[j] += 1
-print conns
+            conns_x[i] += 1
+            conns_y[j] += 1
+print "conns_x =", conns_x
+print "conns_y =", conns_y
+
+for i in locked:
+    print i
 
