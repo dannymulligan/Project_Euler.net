@@ -41,7 +41,71 @@ import time
 start_time = time.clock()
 
 ########################################
+from fractions import Fraction
 
+reachable_cache = {
+    (1,1): {'1': Fraction(1,1)}, 
+    (2,2): {'2': Fraction(2,1)},
+    (3,3): {'3': Fraction(3,1)}, 
+    (4,4): {'4': Fraction(4,1)},
+    (5,5): {'5': Fraction(5,1)}, 
+    (6,6): {'6': Fraction(6,1)},
+    (7,7): {'7': Fraction(7,1)}, 
+    (8,8): {'8': Fraction(8,1)},
+    (9,9): {'9': Fraction(9,1)},
+}
+
+########################################
+
+def reachable(lnum, rnum):
+    #print "reachable({},{})".format(lnum,rnum)
+    
+    # Save time if we've already calculated this one
+    if reachable_cache.has_key((lnum,rnum)):
+        return reachable_cache[(lnum,rnum)]
+
+    # Don't have to handle the case with only a single digit,
+    #   taken care of in cache initiatization
+
+    # Divide and conquer
+    length = (rnum - lnum)
+    result = {}
+    for i in range(0,length):
+        lreachable = reachable(lnum, lnum+i)
+        rreachable = reachable(lnum+i+1, rnum)
+        #print "lreachable =", lreachable
+        #print "rreachable =", rreachable
+        for lkey in lreachable:
+            lres = lreachable[lkey]
+            for rkey in rreachable:
+                rres = rreachable[rkey]
+                result['(' + lkey + '+' + rkey + ')'] = (lres + rres)
+                result['(' + lkey + '-' + rkey + ')'] = (lres - rres)
+                result['(' + lkey + '*' + rkey + ')'] = (lres * rres)
+                if (rres != 0):
+                    result['(' + lkey + '/' + rkey + ')'] = (lres / rres)
+
+    reachable_cache[(lnum,rnum)] = result            
+    return result
+
+    
+top = 8
+print "Calculating reachable(1,{})".format(top)    
+results = reachable(1,top)
+print "len(results) =", len(results)
+
+reachable_set = set()
+
+for rkey in results:
+    res = results[rkey]
+    if (res.denominator != 1):
+        continue
+    if (res <= 0):
+        continue
+    reachable_set.add(res.numerator)
+
+print reachable_set
+print "Answer =", sum(reachable_set)
 
 print "Time taken = {0} seconds".format(time.clock() - start_time)
 
