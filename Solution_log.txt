@@ -175,7 +175,8 @@
 #175: Problem 118, solved 11/27/12
 #176: Problem 225, solved 06/26/13
 #177: Problem 293, solved 06/28/13
-
+#178: Problem 259, solved 07/02/13
+#179: Problem 237, solved 08/18/13
 
 
 -rwxrwxrwx  1 dannymulligan  staff    1577 May  3  2009 Prob_004/prob_004.c
@@ -500,381 +501,425 @@ As of 11/27/12:
 I have solved 175 problems and am at position 392 on level 7, this puts me at position 1,394 overall.
 
 As of 6/28/13:
-
 I have solved 177 problems and am at position 395 on level 7, this puts me at position 1,532 overall.
 My precentage rank is 0.48%.
 7 months have passed since the last update, and I would have falled back about 1587-1394=193 places without solving
 any problems  Since I just solved 2 problems, I am now only 1532-1394=138 places back from where I was before.  I
 would need to have solved 183 problems to be at the same absolute position.
 
+As of 7/02/13:
+I have solved 178 problems and am at position 360 on level 7, this puts me at position 1,499 overall.
+My precentage rank is 0.469%.  My best ever rank was 1,048, I'd need to have solved 208 problems to be at that
+same level today, which is 30 more than I have currently solved.
 
-001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, 
-002 - Solved, Prime Obsession, Fibonacci Fever, 
-003 - Solved, Prime Obsession, Fibonacci Fever, Triangle Trophy, Lucky Luke, 
-004 - Solved, Unlucky Squares, 
-005 - Solved, Prime Obsession, Fibonacci Fever, 
-006 - Solved, Triangle Trophy, 
-007 - Solved, Prime Obsession, Lucky Luke, 
-008 - Solved, Fibonacci Fever, 
-009 - Solved, Unlucky Squares, Lucky Luke, 
-010 - Solved, Triangle Trophy, 
-011 - Solved, Prime Obsession, 
-012 - Solved, 
-013 - Solved, Prime Obsession, Fibonacci Fever, Lucky Luke, 
-014 - Solved, 
-015 - Solved, Triangle Trophy, Lucky Luke, 
-016 - Solved, Unlucky Squares, 
-017 - Solved, Prime Obsession, 
-018 - Solved, 
-019 - Solved, Prime Obsession, 
-020 - Solved, 
-021 - Solved, Fibonacci Fever, Triangle Trophy, Lucky Luke, 
-022 - Solved, 
-023 - Solved, Prime Obsession, 
-024 - Solved, 
-025 - Solved, Unlucky Squares, Lucky Luke, 
-026 - Solved, 
-027 - Solved, 
-028 - Solved, Triangle Trophy, 
-029 - Solved, Prime Obsession, 
-030 - Solved, 
-031 - Solved, Prime Obsession, Lucky Luke, 
-032 - Solved, 
-033 - Solved, Lucky Luke, 
-034 - Solved, Fibonacci Fever, 
-035 - Solved, 
-036 - Solved, Unlucky Squares, Triangle Trophy, 
-037 - Solved, Prime Obsession, Lucky Luke, 
-038 - Solved, 
-039 - Solved, 
-040 - Solved, 
-041 - Solved, Prime Obsession, 
-042 - Solved, 
-043 - Solved, Prime Obsession, Lucky Luke, 
-044 - Solved, 
-045 - Solved, Triangle Trophy, 
-046 - Solved, 
-047 - Solved, Prime Obsession, 
-048 - Solved, 
-049 - Solved, Unlucky Squares, Lucky Luke, 
-050 - Solved, 
-051 - Solved, Lucky Luke, 
-052 - Solved, 
-053 - Solved, Prime Obsession, 
-054 - Solved, 
-055 - Solved, Fibonacci Fever, Triangle Trophy, 
-056 - Solved, 
-057 - Solved, 
-058 - Solved, 
-059 - Solved, 
-060 - Solved, 
-061 - Solved, Prime Obsession, 
-062 - Solved, 
-063 - Solved, Lucky Luke, 
-064 - Solved, Unlucky Squares, 
-065 - Solved, 
-066 - Solved, Triangle Trophy, 
-067 - Solved, Prime Obsession, Lucky Luke, 
-068 - Solved, 
-069 - Solved, Lucky Luke, 
-070 - Solved, 
-071 - Solved, Prime Obsession, 
-072 - Solved, 
-073 - Solved, Prime Obsession, Lucky Luke, 
-074 - Solved, 
-075 - Solved, Lucky Luke, 
-076 - Solved, 
-077 - Solved, 
-078 - Solved, Triangle Trophy, 
-079 - Solved, Prime Obsession, Lucky Luke, 
-080 - Solved, 
-081 - Solved, Unlucky Squares, 
-082 - Solved, 
-083 - Solved, Prime Obsession, 
-084 - Solved, 
-085 - Solved, 
-086 - Solved, 
-087 - Solved, Lucky Luke, 
-088 - Solved, 
-089 - Solved, Prime Obsession, Fibonacci Fever, 
-090 - Solved, 
-091 - Solved, Triangle Trophy, 
-092 - Solved, 
-093 - Solved, Lucky Luke, 
-094 - Solved, 
-095 - Solved, 
-096 - Solved, 
-097 - Solved, Prime Obsession, 
-098 - Solved, 
-099 - Solved, Lucky Luke, 
-100 - Solved, Unlucky Squares, 
-101 - Solved, Prime Obsession, 
-102 - Solved, 
-103 - Prime Obsession, 
-104 - Solved, 
-105 - Solved, Triangle Trophy, Lucky Luke, 
-106 - 
-107 - Prime Obsession, 
-108 - Solved, 
-109 - Prime Obsession, 
-110 - Solved, 
-111 - Lucky Luke, 
-112 - Solved, 
-113 - Solved, Prime Obsession, 
-114 - Solved, 
-115 - Solved, Lucky Luke, 
-116 - Solved, 
-117 - Solved, 
+As of 8/18/13:
+I have solved 179 problems and am at position 344 on level 7, this puts me at position 1,495 overall.
+My precentage rank is 0.451%.  My best ever rank was 1,048, I'd need to have solved 207 problems to be at that
+same level today, which is 28 more than I have currently solved.
+
+
+001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke,
+002 - Solved, Prime Obsession, Fibonacci Fever,
+003 - Solved, Prime Obsession, Fibonacci Fever, Triangle Trophy, Lucky Luke,
+004 - Solved, Unlucky Squares,
+005 - Solved, Prime Obsession, Fibonacci Fever,
+006 - Solved, Triangle Trophy,
+007 - Solved, Prime Obsession, Lucky Luke,
+008 - Solved, Fibonacci Fever,
+009 - Solved, Unlucky Squares, Lucky Luke,
+010 - Solved, Triangle Trophy,
+011 - Solved, Prime Obsession,
+012 - Solved,
+013 - Solved, Prime Obsession, Fibonacci Fever, Lucky Luke,
+014 - Solved,
+015 - Solved, Triangle Trophy, Lucky Luke,
+016 - Solved, Unlucky Squares,
+017 - Solved, Prime Obsession,
+018 - Solved,
+019 - Solved, Prime Obsession,
+020 - Solved,
+021 - Solved, Fibonacci Fever, Triangle Trophy, Lucky Luke,
+022 - Solved,
+023 - Solved, Prime Obsession,
+024 - Solved,
+025 - Solved, Unlucky Squares, Lucky Luke,
+026 - Solved,
+027 - Solved,
+028 - Solved, Triangle Trophy,
+029 - Solved, Prime Obsession,
+030 - Solved,
+031 - Solved, Prime Obsession, Lucky Luke,
+032 - Solved,
+033 - Solved, Lucky Luke,
+034 - Solved, Fibonacci Fever,
+035 - Solved,
+036 - Solved, Unlucky Squares, Triangle Trophy,
+037 - Solved, Prime Obsession, Lucky Luke,
+038 - Solved,
+039 - Solved,
+040 - Solved,
+041 - Solved, Prime Obsession,
+042 - Solved,
+043 - Solved, Prime Obsession, Lucky Luke,
+044 - Solved,
+045 - Solved, Triangle Trophy,
+046 - Solved,
+047 - Solved, Prime Obsession,
+048 - Solved,
+049 - Solved, Unlucky Squares, Lucky Luke,
+050 - Solved,
+051 - Solved, Lucky Luke,
+052 - Solved,
+053 - Solved, Prime Obsession,
+054 - Solved,
+055 - Solved, Fibonacci Fever, Triangle Trophy,
+056 - Solved,
+057 - Solved,
+058 - Solved,
+059 - Solved,
+060 - Solved,
+061 - Solved, Prime Obsession,
+062 - Solved,
+063 - Solved, Lucky Luke,
+064 - Solved, Unlucky Squares,
+065 - Solved,
+066 - Solved, Triangle Trophy,
+067 - Solved, Prime Obsession, Lucky Luke,
+068 - Solved,
+069 - Solved, Lucky Luke,
+070 - Solved,
+071 - Solved, Prime Obsession,
+072 - Solved,
+073 - Solved, Prime Obsession, Lucky Luke,
+074 - Solved,
+075 - Solved, Lucky Luke,
+076 - Solved,
+077 - Solved,
+078 - Solved, Triangle Trophy,
+079 - Solved, Prime Obsession, Lucky Luke,
+080 - Solved,
+081 - Solved, Unlucky Squares,
+082 - Solved,
+083 - Solved, Prime Obsession,
+084 - Solved,
+085 - Solved,
+086 - Solved,
+087 - Solved, Lucky Luke,
+088 - Solved,
+089 - Solved, Prime Obsession, Fibonacci Fever,
+090 - Solved,
+091 - Solved, Triangle Trophy,
+092 - Solved,
+093 - Solved, Lucky Luke,
+094 - Solved,
+095 - Solved,
+096 - Solved,
+097 - Solved, Prime Obsession,
+098 - Solved,
+099 - Solved, Lucky Luke,
+100 - Solved, Unlucky Squares,
+101 - Solved, Prime Obsession,
+102 - Solved,
+103 - Prime Obsession,
+104 - Solved,
+105 - Solved, Triangle Trophy, Lucky Luke,
+106 -
+107 - Prime Obsession,
+108 - Solved,
+109 - Prime Obsession,
+110 - Solved,
+111 - Lucky Luke,
+112 - Solved,
+113 - Solved, Prime Obsession,
+114 - Solved,
+115 - Solved, Lucky Luke,
+116 - Solved,
+117 - Solved,
 118 - Solved
-119 - Solved, 
-120 - Solved, Triangle Trophy, 
-121 - Solved, Unlucky Squares, 
-122 - 
-123 - Solved, 
-124 - Solved, 
-125 - Solved, 
-126 - 
-127 - Solved, Prime Obsession, Lucky Luke, 
-128 - 
-129 - Solved, Lucky Luke, 
-130 - 
-131 - Prime Obsession, 
-132 - Solved, 
-133 - Lucky Luke, 
-134 - Solved, 
-135 - Solved, Lucky Luke, 
-136 - Solved, Triangle Trophy, 
-137 - Solved, Prime Obsession, 
-138 - Solved, 
-139 - Solved, Prime Obsession, 
-140 - Solved, 
-141 - Lucky Luke, 
-142 - Solved, 
-143 - 
-144 - Solved, Unlucky Squares, Fibonacci Fever, 
-145 - Solved, 
-146 - Solved, 
-147 - Solved, 
-148 - Solved, 
-149 - Solved, Prime Obsession, 
-150 - Solved, 
-151 - Prime Obsession, Lucky Luke, 
-152 - 
-153 - Triangle Trophy, 
-154 - 
-155 - 
-156 - 
-157 - Prime Obsession, 
-158 - 
-159 - Lucky Luke, 
-160 - Solved, 
-161 - 
-162 - Solved, 
-163 - Prime Obsession, Lucky Luke, 
-164 - Solved, 
-165 - Solved, 
-166 - Solved, 
-167 - Prime Obsession, 
-168 - 
-169 - Unlucky Squares, Lucky Luke, 
-170 - 
-171 - Triangle Trophy, Lucky Luke, 
-172 - 
-173 - Solved, Prime Obsession, 
-174 - Solved, 
-175 - 
-176 - 
-177 - 
-178 - 
-179 - Solved, Prime Obsession, 
-180 - 
-181 - Prime Obsession, 
-182 - Solved, 
-183 - Solved, 
-184 - 
-185 - 
-186 - 
-187 - Solved, 
-188 - Solved, 
-189 - Lucky Luke, 
-190 - Triangle Trophy, 
-191 - Solved, Prime Obsession, 
-192 - 
-193 - Prime Obsession, Lucky Luke, 
-194 - 
-195 - Lucky Luke, 
-196 - Unlucky Squares, 
-197 - Solved, Prime Obsession, 
-198 - 
-199 - Prime Obsession, 
-200 - 
-201 - Lucky Luke, 
-202 - 
-203 - Solved, 
-204 - Solved, 
-205 - Solved, Lucky Luke, 
-206 - Solved, 
+119 - Solved,
+120 - Solved, Triangle Trophy,
+121 - Solved, Unlucky Squares,
+122 -
+123 - Solved,
+124 - Solved,
+125 - Solved,
+126 -
+127 - Solved, Prime Obsession, Lucky Luke,
+128 -
+129 - Solved, Lucky Luke,
+130 -
+131 - Prime Obsession,
+132 - Solved,
+133 - Lucky Luke,
+134 - Solved,
+135 - Solved, Lucky Luke,
+136 - Solved, Triangle Trophy,
+137 - Solved, Prime Obsession,
+138 - Solved,
+139 - Solved, Prime Obsession,
+140 - Solved,
+141 - Lucky Luke,
+142 - Solved,
+143 -
+144 - Solved, Unlucky Squares, Fibonacci Fever,
+145 - Solved,
+146 - Solved,
+147 - Solved,
+148 - Solved,
+149 - Solved, Prime Obsession,
+150 - Solved,
+151 - Prime Obsession, Lucky Luke,
+152 -
+153 - Triangle Trophy,
+154 -
+155 -
+156 -
+157 - Prime Obsession,
+158 -
+159 - Lucky Luke,
+160 - Solved,
+161 -
+162 - Solved,
+163 - Prime Obsession, Lucky Luke,
+164 - Solved,
+165 - Solved,
+166 - Solved,
+167 - Prime Obsession,
+168 -
+169 - Unlucky Squares, Lucky Luke,
+170 -
+171 - Triangle Trophy, Lucky Luke,
+172 -
+173 - Solved, Prime Obsession,
+174 - Solved,
+175 -
+176 -
+177 -
+178 -
+179 - Solved, Prime Obsession,
+180 -
+181 - Prime Obsession,
+182 - Solved,
+183 - Solved,
+184 -
+185 -
+186 -
+187 - Solved,
+188 - Solved,
+189 - Lucky Luke,
+190 - Triangle Trophy,
+191 - Solved, Prime Obsession,
+192 -
+193 - Prime Obsession, Lucky Luke,
+194 -
+195 - Lucky Luke,
+196 - Unlucky Squares,
+197 - Solved, Prime Obsession,
+198 -
+199 - Prime Obsession,
+200 -
+201 - Lucky Luke,
+202 -
+203 - Solved,
+204 - Solved,
+205 - Solved, Lucky Luke,
+206 - Solved,
 207 - Solved
-208 - 
-209 - 
-210 - Triangle Trophy, 
-211 - Solved, Prime Obsession, Lucky Luke, 
-212 - 
-213 - 
-214 - Solved, 
-215 - 
-216 - Solved, 
-217 - 
-218 - 
-219 - Lucky Luke, 
-220 - 
-221 - 
-222 - 
-223 - Prime Obsession, Lucky Luke, 
-224 - 
-225 - Solved, Unlucky Squares, 
-226 - 
-227 - Prime Obsession, 
-228 - 
-229 - Prime Obsession, 
-230 - 
-231 - Solved, Triangle Trophy, Lucky Luke, 
-232 - 
+208 -
+209 -
+210 - Triangle Trophy,
+211 - Solved, Prime Obsession, Lucky Luke,
+212 -
+213 -
+214 - Solved,
+215 -
+216 - Solved,
+217 -
+218 -
+219 - Lucky Luke,
+220 -
+221 -
+222 -
+223 - Prime Obsession, Lucky Luke,
+224 -
+225 - Solved, Unlucky Squares,
+226 -
+227 - Prime Obsession,
+228 -
+229 - Prime Obsession,
+230 -
+231 - Solved, Triangle Trophy, Lucky Luke,
+232 -
 233 - Prime Obsession, Fibonacci Fever
 234 - Solved
-235 - Solved, Lucky Luke, 
-236 - 
-237 - Lucky Luke, 
-238 - 
-239 - Prime Obsession, 
-240 - 
-241 - Prime Obsession, Lucky Luke, 
-242 - 
-243 - Solved, 
-244 - 
-245 - 
-246 - 
-247 - 
-248 - 
-249 - 
-250 - 
-251 - Prime Obsession, 
-252 - 
-253 - Triangle Trophy, 
-254 - 
-255 - 
-256 - Unlucky Squares, 
-257 - Prime Obsession, 
-258 - 
-259 - Lucky Luke, 
-260 - 
-261 - Lucky Luke, 
-262 - 
-263 - Prime Obsession, 
-264 - 
-265 - Solved, 
-266 - Solved, 
-267 - Solved, Lucky Luke, 
-268 - Solved, 
-269 - Prime Obsession, 
-270 - 
-271 - Prime Obsession, 
-272 - 
-273 - Lucky Luke, 
-274 - 
-275 - 
-276 - Triangle Trophy, 
-277 - Solved, Prime Obsession, 
-278 - 
-279 - 
-280 - 
-281 - Prime Obsession, 
-282 - 
-283 - Prime Obsession, Lucky Luke, 
-284 - 
-285 - Lucky Luke, 
-286 - 
-287 - 
-288 - 
-289 - Unlucky Squares, Lucky Luke, 
-290 - 
-291 - 
-292 - 
-293 - Solved, Prime Obsession, 
-294 - 
-295 - 
-296 - 
-297 - Lucky Luke, 
-298 - 
-299 - 
-300 - Triangle Trophy, 
-301 - 
-302 - 
-303 - Lucky Luke, 
-304 - 
-305 - 
-306 - 
-307 - Solved, Prime Obsession, Lucky Luke, 
-308 - 
-309 - 
-310 - 
-311 - Prime Obsession, 
-312 - 
-313 - Prime Obsession, 
-314 - 
-315 - 
-316 - 
-317 - Prime Obsession, 
-318 - 
-319 - Lucky Luke, 
-320 - 
-321 - Lucky Luke, 
-322 - 
-323 - 
-324 - Unlucky Squares, 
-325 - Triangle Trophy, 
-326 - 
-327 - Lucky Luke, 
-328 - 
-329 - 
-330 - 
-331 - Prime Obsession, Lucky Luke, 
-332 - 
-333 - 
-334 - 
-335 - 
-336 - 
-337 - Prime Obsession, 
-338 - 
-339 - Lucky Luke, 
-340 - 
-341 - 
-342 - 
-343 - 
-344 - 
-345 - Solved, 
-346 - Solved, 
-347 - Solved, Prime Obsession, 
-348 - Solved, 
-349 - Solved, Prime Obsession, Lucky Luke, 
-350 - 
-351 - Triangle Trophy, 
-352 - 
-353 - Prime Obsession, 
-354 - 
-355 - 
-356 - 
-357 - 
-358 - 
-359 - Prime Obsession, 
-360 - 
-361 - 
-362 - 
-363 - 
-364 - 
-365 - Solved, 
+235 - Solved, Lucky Luke,
+236 -
+237 - Solved, Lucky Luke,
+238 -
+239 - Prime Obsession,
+240 -
+241 - Prime Obsession, Lucky Luke,
+242 -
+243 - Solved,
+244 -
+245 -
+246 -
+247 -
+248 -
+249 -
+250 -
+251 - Prime Obsession,
+252 -
+253 - Triangle Trophy,
+254 -
+255 -
+256 - Unlucky Squares,
+257 - Prime Obsession,
+258 -
+259 - Solved, Lucky Luke,
+260 -
+261 - Lucky Luke,
+262 -
+263 - Prime Obsession,
+264 -
+265 - Solved,
+266 - Solved,
+267 - Solved, Lucky Luke,
+268 - Solved,
+269 - Prime Obsession,
+270 -
+271 - Prime Obsession,
+272 -
+273 - Lucky Luke,
+274 -
+275 -
+276 - Triangle Trophy,
+277 - Solved, Prime Obsession,
+278 -
+279 -
+280 -
+281 - Prime Obsession,
+282 -
+283 - Prime Obsession, Lucky Luke,
+284 -
+285 - Lucky Luke,
+286 -
+287 -
+288 -
+289 - Unlucky Squares, Lucky Luke,
+290 -
+291 -
+292 -
+293 - Solved, Prime Obsession,
+294 -
+295 -
+296 -
+297 - Lucky Luke,
+298 -
+299 -
+300 - Triangle Trophy,
+301 -
+302 -
+303 - Lucky Luke,
+304 -
+305 -
+306 -
+307 - Solved, Prime Obsession, Lucky Luke,
+308 -
+309 -
+310 -
+311 - Prime Obsession,
+312 -
+313 - Prime Obsession,
+314 -
+315 -
+316 -
+317 - Prime Obsession,
+318 -
+319 - Lucky Luke,
+320 -
+321 - Lucky Luke,
+322 -
+323 -
+324 - Unlucky Squares,
+325 - Triangle Trophy,
+326 -
+327 - Lucky Luke,
+328 -
+329 -
+330 -
+331 - Prime Obsession, Lucky Luke,
+332 -
+333 -
+334 -
+335 -
+336 -
+337 - Prime Obsession,
+338 -
+339 - Lucky Luke,
+340 -
+341 -
+342 -
+343 -
+344 -
+345 - Solved,
+346 - Solved,
+347 - Solved, Prime Obsession,
+348 - Solved,
+349 - Solved, Prime Obsession, Lucky Luke,
+350 -
+351 - Triangle Trophy,
+352 -
+353 - Prime Obsession,
+354 -
+355 -
+356 -
+357 - Lucky Luke,
+358 -
+359 - Prime Obsession,
+360 -
+361 - Lucky Luke,
+362 -
+363 -
+364 -
+365 - Solved,
+367 - Prime Obsession, Lucky Luke,
+368 -
+369 -
+370 -
+371 -
+372 -
+373 - Prime Obsession,
+374 -
+375 -
+376 -
+377 - Fibonacci Fever,
+378 - Triangle Trophy,
+379 - Prime Obsession,
+380 -
+381 -
+382 -
+383 - Prime Obsession,
+384 -
+385 - Lucky Luke,
+386 -
+387 -
+388 -
+389 - Prime Obsession,
+390 -
+391 - Lucky Luke,
+392 -
+393 - Lucky Luke,
+394 -
+395 -
+396 -
+397 - Prime Obsession,
+398 -
+399 - Lucky Luke,
+400 -
+
 
 Solved 40 out of 50 Prime Obsession (103, 107, 109, 131, 151, 157, 163, 167, 181, 193, 199, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
-Solved 11 out of 12 Fibonacci Fever (233)
+Solved 11 out of 12 Fibonacci Fever (233, 377)
 Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325, 351, 378, 406, 435, 465, 496)
-Solved 35 out of 50 Lucky Luke (111, 133, 141, 151, 159, 163, 169, 171, 189, 193, 195, 201, 219, 223, 237, 241, 259, 261, 273, 283, 285, 289, 297, 303, 319, 321, 327, 331, 339)
+Solved 37 out of 50 Lucky Luke (111, 133, 141, 151, 159, 163, 169, 171, 189, 193, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 303, 319, 321, 327, 331, 339, 357, 361, 367, 385, 391, 393, 399
