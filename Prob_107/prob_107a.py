@@ -56,10 +56,10 @@
 # ? problems solved
 # Position #??? on level ?
 
-import mini_network
-weights = mini_network.weights
-#import network
-#weights = network.weights
+#import mini_network
+#weights = mini_network.weights
+import network
+weights = network.weights
 
 
 ########################################
@@ -74,6 +74,19 @@ for i in range(nsize):
             starting_vertices += 1
             starting_weight += weights[i][j]
 print "There are {} vertices, weighing {}".format(starting_vertices, starting_weight)
+
+
+########################################
+# Build a useful data structure
+links = []
+for n in range(nsize):
+    links_from_n = []
+    for i in range(nsize):
+        if (i == n):
+            continue
+        if (weights[i][n] != 0):
+            links_from_n.append(i)
+    links.append(links_from_n)
 
 
 ########################################
@@ -107,69 +120,39 @@ def print_network():
         print
     print "There are {} vertices, which is {:.1f}% of the starting number of vertices of {}".format(nvertices, 100.0*nvertices/starting_vertices, starting_vertices)
     print "The weight is {}, which is {:.1f}% of the starting weight of {}".format(nweight, 100.0*nweight/starting_weight, starting_weight)
+
+    print "links = "
+    for ll in range(len(links)):
+        print "   {} is linked to {}".format(ll, links[ll])
     print "----"
 
 
 ########################################
-def find_loop(start_node, max_length):
-    dist = [[-1]*nsize for _ in range(nsize)]
+def find_loop():
+    all_connections = []
+
+    # Build initial list of connections - start nodes
+    connections = []
     for i in range(nsize):
-        dist[i][i] = 0
-    print "dist = "
-    for dd in dist:
-        print "    {}".format(dd)
+        if (len(links[i]) > 1):
+            connections.append([i])
+    all_connections.append(connections)
 
-    for d in range(max_length):
-        for n in range(nsize):
-            print "Searching for nodes that are {} step(s) from {}".format(d+1, n)
-            for i in range(nsize):
-                if (dist[n][i] == d):
-                    for j in range(nsize):
-                        if (j == i):
-                            continue
-                        print "    weight[{}][{}] = {}, dist[{}][{}] = {}".format(i, j, weights[i][j], n, j, dist[n][j])
-                        if (weights[i][j] != 0):
-                            if (dist[n][j] == -1):
-                                dist[n][j] = d+1
-                                print "node {} is {} from node {} because weight[{}][{}] = {}".format(j, d+1, n, i, j, weights[i][j])
-                            elif ((d + 1 + dist[n][j]) >= 3):
-                                print "Found a loop of distance {}, start_node = {}".format((d + 1 + dist[n][j]), n)
-                                print "    dist[{}] = {}".format(n, dist[n])
-                                print "    intermediate nodes = {} & {}, weights[{}][{}] = {}".format(i, j, i, j, weights[i][j])
-                                loop = [i, j]
-                                    
-                                print "starting to build loop, loop = {}".format(loop)
-                                print "dist[{}] = {}".format(n, dist[n])
-                                
-                                # Backtrack to the start of the loop
-                                print "range({}, 0, -1) = {}".format((dist[n][i]-1), range(dist[n][i]-1, 0, -1))
-                                for dist_b in range(dist[n][i]-1, 0, -1):
-                                    for b in range(nsize):
-                                        if (dist[n][b] == dist_b):
-                                            if (weights[loop[0]][b] != 0):
-                                                loop.insert(0, b)
-                                                break
-                                print "done backtracking, loop = {}".format(loop)
-                                            
-                                # The loop starts with n
-                                loop.insert(0, n)
-                                print "added start, loop = {}".format(loop)
-                                
-                                # Forward to the end of the loop
-                                for dist_f in range(dist[n][j]-1, 0, -1):
-                                    for b in range(nsize):
-                                        if (dist[n][b] == dist_f):
-                                            if (weights[loop[-1]][b] != 0):
-                                                loop.append(b)
-                                                break
-                                            
-                                print "done forward tracking, loop = {}".format(loop)
-                                
-                                return loop
-
-        print "dist = "
-        for dd in dist:
-            print "    {}".format(dd)
+    # Build longer lists of connections by extending current connections
+    for length in range(1, nsize):
+        connections = []
+        for con in all_connections[-1]:
+            for next in links[con[-1]]:
+                if ((next == con[0]) & (len(con) >= 3)):
+                    # We've found a loop
+                    return con
+                elif next in con:
+                    # This next loops back to earlier part of path
+                    continue
+                else:
+                    # Create a longer path that adds next
+                    connections.append(con + [next])
+        all_connections.append(connections)
 
     return []
 
@@ -197,7 +180,10 @@ def disconnect_loop(loop):
     print "Disconnecting {}-{} (weight = {})".format(best_start, best_end, best_weight)
     weights[best_start][best_end] = 0
     weights[best_end][best_start] = 0
+    links[best_start].remove(best_end)
+    links[best_end].remove(best_start)
     return
+
 
 ########################################
 # Report some statistics on the network before we begin
@@ -220,29 +206,14 @@ for i in range(nsize):
 progress = True
 while(progress):
     progress = False
+    loop = find_loop()
+    if (len(loop) > 0):
+        progress = True
+        print "Found {}, a loop of length {}".format(loop, len(loop))
+        disconnect_loop(loop)
+        #print_network()
 
-    # Count the number of connections for each node
-    nconnections = [0] * nsize
-    for i in range(nsize):
-        for j in range(i,nsize):
-            if (weights[i][j] != 0):
-                nconnections[i] += 1
-                nconnections[j] += 1
-
-    # Try to break a loop of length 3, 4, 5, etc
-    for loop_length in range(3,nsize):
-        for start_node in range(nsize):
-            if (nconnections[start_node] > 1):
-                loop = find_loop(start_node=start_node, max_length=loop_length)
-                if (len(loop) > 0):
-                    progress = True
-                    print "Found {}, a loop of length {}".format(loop, loop_length)
-                    disconnect_loop(loop)
-                    break
-        if (progress):
-            break
-
-    print_network()
+print_network()
 
 print "No further progress can be made, this is the final network"
 nweight = 0
@@ -250,7 +221,7 @@ for i in range(nsize):
     for j in range(i,nsize):
         if (weights[i][j] != 0):
             nweight += weights[i][j]
-print "Answer = {}".format(nweight)
+print "Answer = {}".format(starting_weight - nweight)
 
 ## Code to test disconnect_loop using the example problem
 #print "\ndisconnect_loop([0, 1, 3])"
