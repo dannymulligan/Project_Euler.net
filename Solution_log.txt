@@ -182,6 +182,7 @@
 #182: Problem 107, solved 09/04/13
 #183: Problem 109, solved 09/05/13
 #184: Problem 133, solved 09/06/13
+#185: Problem 130, solved 09/06/13
 
 
 -rwxrwxrwx  1 dannymulligan  staff    1577 May  3  2009 Prob_004/prob_004.c
@@ -543,9 +544,9 @@ My precentage rank is 0.424%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 25 more than I have currently solved.
 
 As of 9/06/13:
-I have solved 184 problems and am at position 244 on level 7, this puts me at position 1,410 overall.
-My precentage rank is 0.419%.  My best ever rank was 1,048, I'd need to have solved 208 problems to be at that
-same level today, which is 24 more than I have currently solved.
+I have solved 185 problems and am at position 233 on level 7, this puts me at position 1,401 overall.
+My precentage rank is 0.416%.  My best ever rank was 1,048, I'd need to have solved 208 problems to be at that
+same level today, which is 23 more than I have currently solved.
 
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke,
@@ -665,7 +666,7 @@ same level today, which is 24 more than I have currently solved.
 115 - Solved, Lucky Luke,
 116 - Solved,
 117 - Solved,
-118 - Solved
+118 - Solved,
 119 - Solved,
 120 - Solved, Triangle Trophy,
 121 - Solved, Unlucky Squares,
@@ -675,9 +676,9 @@ same level today, which is 24 more than I have currently solved.
 125 - Solved,
 126 -
 127 - Solved, Prime Obsession, Lucky Luke,
-128 - Solved
+128 - Solved,
 129 - Solved, Lucky Luke,
-130 -
+130 - Solved,
 131 - Prime Obsession,
 132 - Solved,
 133 - Solved, Lucky Luke,
@@ -754,7 +755,7 @@ same level today, which is 24 more than I have currently solved.
 204 - Solved,
 205 - Solved, Lucky Luke,
 206 - Solved,
-207 - Solved
+207 - Solved,
 208 -
 209 -
 210 - Triangle Trophy,
@@ -961,8 +962,7 @@ Target list for the next few months (unsolved problems <= 150):
 103 - Prime Obsession, (solved by 3,599)
 111 - Lucky Luke, (solved by 3,422)
 106 - (solved by 2,906)
-130 - (solved by 2,840)
 126 - (solved by 2,077)
 141 - Lucky Luke, (solved by 1,740)
 143 - (solved by 1,265)
-10 problems, sorted by number of people solved as of 8/30/13
+8 problems, sorted by number of people solved as of 8/30/13
