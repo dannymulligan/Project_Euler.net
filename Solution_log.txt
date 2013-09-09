@@ -183,6 +183,7 @@
 #183: Problem 109, solved 09/05/13
 #184: Problem 133, solved 09/06/13
 #185: Problem 130, solved 09/06/13
+#186: Problem 103, solved 09/09/13
 
 
 -rwxrwxrwx  1 dannymulligan  staff    1577 May  3  2009 Prob_004/prob_004.c
@@ -548,6 +549,11 @@ I have solved 185 problems and am at position 233 on level 7, this puts me at po
 My precentage rank is 0.416%.  My best ever rank was 1,048, I'd need to have solved 208 problems to be at that
 same level today, which is 23 more than I have currently solved.
 
+As of 9/09/13:
+I have solved 186 problems and am at position 222 on level 7, this puts me at position 1,391 overall.
+My precentage rank is 0.412%.  My best ever rank was 1,048, I'd need to have solved 208 problems to be at that
+same level today, which is 22 more than I have currently solved.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -651,7 +657,7 @@ same level today, which is 23 more than I have currently solved.
 100 - Solved, Unlucky Squares,
 101 - Solved, Prime Obsession,
 102 - Solved,
-103 - Prime Obsession,
+103 - Solved, Prime Obsession,
 104 - Solved,
 105 - Solved, Triangle Trophy, Lucky Luke,
 106 -
@@ -950,7 +956,7 @@ same level today, which is 23 more than I have currently solved.
 400 -
 
 
-Solved 42 out of 50 Prime Obsession (103, 131, 151, 157, 163, 167, 181, 193, 199, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
+Solved 43 out of 50 Prime Obsession (131, 151, 157, 163, 167, 181, 193, 199, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
 Solved 11 out of 12 Fibonacci Fever (233, 377)
 Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325, 351, 378, 406, 435, 465, 496)
 Solved 38 out of 50 Lucky Luke (111, 141, 151, 159, 163, 169, 171, 189, 193, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 303, 319, 321, 327, 331, 339, 357, 361, 367, 385, 391, 393, 399
@@ -959,10 +965,9 @@ Solved 38 out of 50 Lucky Luke (111, 141, 151, 159, 163, 169, 171, 189, 193, 195
 Target list for the next few months (unsolved problems <= 150):
 122 - (solved by 3,666)
 131 - Prime Obsession, (solved by 3,614)
-103 - Prime Obsession, (solved by 3,599)
 111 - Lucky Luke, (solved by 3,422)
 106 - (solved by 2,906)
 126 - (solved by 2,077)
 141 - Lucky Luke, (solved by 1,740)
 143 - (solved by 1,265)
-8 problems, sorted by number of people solved as of 8/30/13
+7 problems, sorted by number of people solved as of 8/30/13
