@@ -9,7 +9,7 @@
 # integer, n, such that the expression n^3 + p*n^2 is a perfect cube.
 #
 # For example, when p = 19, 83 + 82×19 = 123.
-# 
+#
 # What is perhaps most surprising is that for each prime with this
 # property the value of n is unique, and there are only four such
 # primes below one-hundred.
@@ -64,8 +64,8 @@ def r_eqn(n, m):
 #      N^3 + P * N^2 = N^3 + 3*N^2*M + 3*N*M^2 + M^3
 #            P * N^2 =       3*N^2*M + 3*N*M^2 + M^3
 #            P * N^2 = N^2*3*M + 3*N*M^2 + M^3
-#            P * N^2 = N^2(3*M - P) + 3*N*M^2 + M^3
-#    N^2 * (P - 3*M) = M^3
+#                  0 = N^2(3*M - P) + 3*N*M^2 + M^3
+#    N^2 * (P - 3*M) -3*N*M^2 = M^3
 #
 # For every value of P, we need to search N and M looking for cases
 # where this equation is true.

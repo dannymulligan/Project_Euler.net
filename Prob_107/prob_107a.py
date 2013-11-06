@@ -56,6 +56,9 @@
 # ? problems solved
 # Position #??? on level ?
 
+import time
+start_time = time.clock()
+
 #import mini_network
 #weights = mini_network.weights
 import network
@@ -222,6 +225,7 @@ for i in range(nsize):
         if (weights[i][j] != 0):
             nweight += weights[i][j]
 print "Answer = {}".format(starting_weight - nweight)
+print "Time taken = {0} seconds".format(time.clock() - start_time)
 
 ## Code to test disconnect_loop using the example problem
 #print "\ndisconnect_loop([0, 1, 3])"
