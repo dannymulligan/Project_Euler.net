@@ -5,7 +5,7 @@
 #
 # A huge binomial coefficient
 #
-# The binomial coeffient C(10^18,10^9) is a number with more than 9
+# The binomial coefficient C(10^18,10^9) is a number with more than 9
 # billion (9x10^9) digits.
 #
 # Let M(n,k,m) denote the binomial coefficient C(n,k) modulo m.

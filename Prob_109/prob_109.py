@@ -70,11 +70,11 @@ treble = ['T1',  'T2',  'T3',  'T4',  'T5',  'T6',  'T7',  'T8',  'T9',  'T10',
           'T11', 'T12', 'T13', 'T14', 'T15', 'T16', 'T17', 'T18', 'T19', 'T20']
 
 def score(dart):
-    if (dart[0] == 'S'):
+    if dart[0] == 'S':
         return 1 * int(dart[1:])
-    elif (dart[0] == 'D'):
+    elif dart[0] == 'D':
         return 2 * int(dart[1:])
-    elif (dart[0] == 'T'):
+    elif dart[0] == 'T':
         return 3 * int(dart[1:])
     else:
         assert False, "First character in a dart should be S, D, or T"

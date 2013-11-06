@@ -1,6 +1,6 @@
 One of the Python documents at http://docs.python.org (it's called
 "Idioms and Anti-Idioms in Python") talks about do's and dont's in
-Python, and it specifically mentiones using backslashes as a "bad
+Python, and it specifically mentions using backslashes as a "bad
 idea".
 
 By wah of example, my first version of the solution to this program
@@ -20,7 +20,7 @@ gotten a synthax error - for a character that I can't easily see in my
 editor.
 
 The Python document goes on to point out that at least I had gotten a
-syntax error, and gives an example of a simpilar problem which would
+syntax error, and gives an example of a similar problem which would
 have instead have caused a subtle programming difference that would
 have been very difficult to have found.
 
