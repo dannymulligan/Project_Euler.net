@@ -35,7 +35,6 @@
 # 187 problems solved
 # Position #204 on level 7
 
-import sys
 import time
 start_time = time.clock()
 
@@ -51,12 +50,12 @@ def find_best_way(d, max_d, path):
     #print "find_best_way({}, {}, {})".format(d, max_d, path)
     for m in path:
         res = m + path[-1]
-        if (res <= SIZE):
+        if res <= SIZE:
             best = best_path[res]
-            if ((best[0] == -1) or (best[0] > d+1)):
+            if (best[0] == -1) or (best[0] > d+1):
                 best_path[res] = (d+1, path + [res])
                 print "Found new path for x^{} = {} steps, {}".format(res, d+1, path+[res])
-            if (d < max_d-1):
+            if d < max_d-1:
                 find_best_way(d+1, max_d, path+[res])
 
 find_best_way(0, MAX_DEPTH, [1])

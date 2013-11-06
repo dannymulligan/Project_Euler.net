@@ -115,24 +115,24 @@ for d in range(1, SIZE):
     print("Calculating layers of depth {d}, they start with {t} cubes".format(d=d, t=t))
     for x in range(1, SIZE**2):
         cx = 4*d
-        if ((t + (x-1)*cx) > RES_SIZE):
+        if (t + (x-1)*cx) > RES_SIZE:
             break
         for y in range(1, x+1):
             cy = 4*d + 2*(x-1)
-            if ((t + (x-1)*cx + (y-1)*cy) > RES_SIZE):
+            if (t + (x-1)*cx + (y-1)*cy) > RES_SIZE:
                 break
             for z in range(1, y+1):
                 cz = 4*d + 2*(x-1) + 2*(y-1)
                 a = t + (x-1)*cx + (y-1)*cy + (z-1)*cz
                 #res = "{x}x{y}x{z}-{d} (a={a}, t={t}, cx={cx}, cy={cy}, cz={cz})".format(x=x, y=y, z=z, d=d, a=a, t=t, cx=cx, cy=cy, cz=cz)
                 #print(res)
-                if (a < RES_SIZE):
+                if a < RES_SIZE:
                     results[a] += 1
                 else:
                     break
 
 for a in range(RES_SIZE):
-    if (results[a] == 1000):
+    if results[a] == 1000:
         print("answer = {a}".format(a=a))
         print "Time taken = {0} seconds".format(time.clock() - start_time)
         sys.exit()

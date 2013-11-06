@@ -35,11 +35,11 @@
 
 
 def gcd(a,b):
-    if (b > a):
+    if b > a:
         t = a
         a = b
         b = t
-    while ((a != b) & (b != 0)):
+    while (a != b) & (b != 0):
         t = b
         b = a % b
         a = t
@@ -50,11 +50,11 @@ def a(n):
     #print "a({0}) =".format(n),
     ans = 2
     num = 11
-    while (num != 0):
-        if (num < n):
+    while num != 0:
+        if num < n:
             num = num*10 + 1
             ans += 1
-        elif (num >= n):
+        elif num >= n:
             num = (num % n)
     #print ans
     return ans
@@ -65,18 +65,18 @@ def a(n):
 
 best = 0
 for n in range(1000000,2000000):
-    if ((n % 1000) == 0):
+    if (n % 1000) == 0:
         print "Trying n = {0}".format(n)
 
-    if (gcd(n,10) != 1):
+    if gcd(n,10) != 1:
         continue
 
     an = a(n)
 
-    if (an > best):
+    if an > best:
         best = an
         print "    n = {0}, a({0}) = {1}".format(n, an)
 
-    if (an >= 1000000):
+    if an >= 1000000:
         print "Answer found with n = {0}, a({0}) = {1}".format(n, an)
         break

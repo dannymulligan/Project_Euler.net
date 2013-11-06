@@ -23,16 +23,16 @@ primes = [0]  # Pad with a dummy item, to make primes[n] return the right thing
 def calculate_primes():
     prime_table = [1]*LIMIT_PRIME  # table of largest factor
     i = 2
-    while (i < (LIMIT_PRIME/2)):
-        if (prime_table[i] == 1):
+    while i < (LIMIT_PRIME/2):
+        if prime_table[i] == 1:
             primes.append(i)
             j = i*2
-            while (j < LIMIT_PRIME):
+            while j < LIMIT_PRIME:
                 prime_table[j] = i
                 j += i
         i += 1
-    while (i < LIMIT_PRIME):
-        if (prime_table[i] == 1):
+    while i < LIMIT_PRIME:
+        if prime_table[i] == 1:
             primes.append(i)
         i += 1
     del prime_table
@@ -59,7 +59,7 @@ for i in range(2,len(primes)):
 #    if (res > max_res):
 #        max_res = res
 #        print "Found p({0}) = {1}, remainder = {2}".format(i, primes[i], res)
-    if (res > 10**10):
+    if res > 10**10:
         print "Answer =", i
         exit()
 print "Finished without finding result"

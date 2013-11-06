@@ -41,18 +41,15 @@
 # 3. a + b = c; 5 + 27 = 32
 # 4. rad(5*27*32) = 5 * 3 * 2 = 30 < 32
 
-import sys
-import pdb
-import cProfile
 import time
 
 start_time = time.clock()
 
 
-MAX = 1000   # 31: (a,b,c) = (343,625,968), answer so far = 12523, time = 0.916671 seconds
-MAX = 2000   # 40: (a,b,c) = (81,1600,1681), answer so far = 24423, time = 2.77918 seconds
-MAX = 5000   # 80: (a,b,c) = (49,4864,4913), answer so far = 150401, time = 24.647695 seconds
-MAX = 10000  # 120: (a,b,c) = (3125,6859,9984), answer so far = 441085, time = 105.277711 seconds
+#MAX = 1000   # 31: (a,b,c) = (343,625,968), answer so far = 12523, time = 0.916671 seconds
+#MAX = 2000   # 40: (a,b,c) = (81,1600,1681), answer so far = 24423, time = 2.77918 seconds
+#MAX = 5000   # 80: (a,b,c) = (49,4864,4913), answer so far = 150401, time = 24.647695 seconds
+#MAX = 10000  # 120: (a,b,c) = (3125,6859,9984), answer so far = 441085, time = 105.277711 seconds
 MAX = 120000
 LIMIT_PRIME = 1+MAX
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
@@ -62,16 +59,16 @@ radicals = []
 
 def calculate_primes():
     i = 2
-    while (i < (LIMIT_PRIME/2)):
-        if (prime_table[i] == 1):
+    while i < (LIMIT_PRIME/2):
+        if prime_table[i] == 1:
             primes.append(i)
             j = i*2
-            while (j < LIMIT_PRIME):
+            while j < LIMIT_PRIME:
                 prime_table[j] = i
                 j += i
         i += 1
-    while (i < LIMIT_PRIME):
-        if (prime_table[i] == 1):
+    while i < LIMIT_PRIME:
+        if prime_table[i] == 1:
             primes.append(i)
         i += 1
 
@@ -80,7 +77,7 @@ def calculate_radicals():
     radicals.append([])  # 0 has no factors
     for n in range(1,LIMIT_PRIME):
         factors = []
-        while (prime_table[n] != 1):
+        while prime_table[n] != 1:
             if prime_table[n] not in factors:
                 factors.append(prime_table[n])
             n /= prime_table[n]
@@ -99,14 +96,14 @@ def main():
     for c in range(1,MAX):
         for b in range(c/2,c):
             a = c - b
-            if (a >= b): continue
+            if a >= b: continue
 
-            next = False
+            nxt = False
             for i in radicals[b]:
                 if i in radicals[a]:
-                    next = True
+                    nxt = True
                     continue
-            if (next):  continue
+            if nxt:  continue
 
             #for i in factors_c:
             #    if i in factors_abc:
@@ -119,7 +116,7 @@ def main():
             for i in radicals[a]:  rad_abc *= i
             for i in radicals[b]:  rad_abc *= i
             for i in radicals[c]:  rad_abc *= i
-            if (rad_abc > c):  continue
+            if rad_abc > c:  continue
 
             ans += c
             cnt += 1

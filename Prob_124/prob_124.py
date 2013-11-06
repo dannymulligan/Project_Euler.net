@@ -38,10 +38,10 @@ MAX =  100000+1
 factor_table = [1]*(1+MAX)  # largest factor, 1 means this number is prime
 def calculate_factors():
     i = 2
-    while (i <= (MAX/2)):
-        if (factor_table[i] == 1):
+    while i <= (MAX/2):
+        if factor_table[i] == 1:
             j = i*2
-            while (j <= MAX):
+            while j <= MAX:
                 factor_table[j] = i
                 #print "factor_table[{0}] = {1}".format(j, i)
                 j += i
@@ -57,18 +57,18 @@ for n in range(1,MAX):
     prev_factor = n
 
     # Prime number
-    if (factor_table[nn] == 1):
+    if factor_table[nn] == 1:
         factors.append(nn)
 
     # Not a prime number
-    while (factor_table[nn] != 1):
+    while factor_table[nn] != 1:
         #print "    {0} is divisible by {1}".format(nn, factor_table[nn])
-        if (factor_table[nn] != prev_factor):
+        if factor_table[nn] != prev_factor:
             factors.append(factor_table[nn])
             prev_factor = factor_table[nn]
         nn /= factor_table[nn]
 
-    if (nn != prev_factor):
+    if nn != prev_factor:
         factors.append(nn)
 
     # Calculate rad(n)

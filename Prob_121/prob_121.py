@@ -8,15 +8,15 @@
 # turn the disc is returned to the bag, an extra red disc is added,
 # and another disc is taken at random.
 # 
-# The player pays £1 to play and wins if they have taken more blue
+# The player pays ï¿½1 to play and wins if they have taken more blue
 # discs than red discs at the end of the game.
 # 
 # If the game is played for four turns, the probability of a player
 # winning is exactly 11/120, and so the maximum prize fund the banker
-# should allocate for winning in this game would be £10 before they
+# should allocate for winning in this game would be ï¿½10 before they
 # would expect to incur a loss. Note that any payout will be a whole
-# number of pounds and also includes the original £1 paid to play the
-# game, so in the example given the player actually wins £9.
+# number of pounds and also includes the original ï¿½1 paid to play the
+# game, so in the example given the player actually wins ï¿½9.
 # 
 # Find the maximum prize fund that should be allocated to a single
 # game in which fifteen turns are played.
@@ -87,16 +87,16 @@ for i in range(2**MAX):
     iodds = 1
     ii = i
     for n in range(MAX):
-        if ((ii % 2) == 1):
+        if (ii % 2) == 1:
             #print " b ",
             rcnt += 1
             iodds *= 1
         else:
             #print " r ",
             iodds *= (n+2 - 1)
-        ii = ii / 2
+        ii /= 2
     #print "P = {0}/{1}".format(odds, div),
-    if (rcnt > MAX/2):
+    if rcnt > MAX/2:
         #print "Winner"
         odds += iodds
     #else:  print

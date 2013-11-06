@@ -39,16 +39,16 @@ import sys
 import time
 start_time = time.clock()
 
-RINGS = 5000  # The sum(answers) below counts on this being 5000
+#RINGS = 5000  # The sum(answers) below counts on this being 5000
 RINGS = 100000
 TARGET = 2000
 
 ##############################
 def first_num_in_ring(ring):
-    if (ring == 0):
+    if ring == 0:
         return 1
     else:
-        return 2 + 6 * (ring)*(ring-1)/2
+        return 2 + 6 * ring *(ring-1)/2
 
 ##############################
 LIMIT_PRIME = first_num_in_ring(RINGS+2) - 1 - first_num_in_ring(RINGS)
@@ -56,16 +56,16 @@ prime_table = [1]*LIMIT_PRIME  # table of largest factor
 primes = []
 def calculate_primes():
     i = 2
-    while (i < (LIMIT_PRIME/2)):
-        if (prime_table[i] == 1):
+    while i < (LIMIT_PRIME/2):
+        if prime_table[i] == 1:
             primes.append(i)
             j = i*2
-            while (j < LIMIT_PRIME):
+            while j < LIMIT_PRIME:
                 prime_table[j] = i
                 j += i
         i += 1
-    while (i < LIMIT_PRIME):
-        if (prime_table[i] == 1):
+    while i < LIMIT_PRIME:
+        if prime_table[i] == 1:
             primes.append(i)
         i += 1
 
@@ -78,9 +78,8 @@ print "There are", len(primes), "primes less than", LIMIT_PRIME
 
 ##############################
 def all_prime(numbers):
-    result = 0
     for num in numbers:
-        if (prime_table[num] != 1):
+        if prime_table[num] != 1:
             return False
     return True
 
@@ -96,7 +95,7 @@ for ring in range(1, RINGS+1):
     # The 12:00 number and the last number in the ring are neighbors
     # If the difference between them is not prime, then neither one can have P(n) = 3
     d = ring*6-1
-    if (prime_table[d] != 1):
+    if prime_table[d] != 1:
         continue
     
     # 12:00 number in this ring
@@ -113,7 +112,7 @@ for ring in range(1, RINGS+1):
         ans_cnt += 1
         print "{}: PD({}) == 3".format(ans_cnt, n)
         answers.append(n)
-        if (ans_cnt == TARGET):
+        if ans_cnt == TARGET:
             print "Answer =", n
             print "Time taken = {0} seconds".format(time.clock() - start_time)
             sys.exit(1)
@@ -133,7 +132,7 @@ for ring in range(1, RINGS+1):
         ans_cnt += 1
         print "{}: PD({}) == 3".format(ans_cnt, n)
         answers.append(n)
-        if (ans_cnt == TARGET):
+        if ans_cnt == TARGET:
             print "Answer =", n
             print "Time taken = {0} seconds".format(time.clock() - start_time)
             sys.exit(1)

@@ -52,11 +52,11 @@
 # so
 #     (a-1)^(2a+n) modulus a^2 = (a-1)^2a modulus a^2 * (a-1)^n modulus a^2
 #                              = (a-1)^n modulus a^2
-# and similarily
+# and similarly
 #     (a+1)^(2a+n) modulus a^2 = (a-1)^n modulus a^2
 #
 # So we don't need to check n = multiples of 2, as r is always = 2
-# and we dont' need to check n > 2a, as these are just repeats of n <= 2a
+# and we don't need to check n > 2a, as these are just repeats of n <= 2a
 
 MAX = 1000
 
@@ -66,7 +66,7 @@ for a in range(3, MAX+1):
     print "a = {0}:".format(a)
     for n in range(1, a*2, 2):
         r = ((a-1)**n + (a+1)**n) % (a**2)
-        if (r > rmax):  rmax = r
+        if r > rmax:  rmax = r
         #print "    n = {1}, r = {2}, rmax = {3}".format(a, n, r, rmax)
     answer += rmax
 
