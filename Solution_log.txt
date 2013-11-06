@@ -185,6 +185,7 @@
 #185: Problem 130, solved 09/06/13
 #186: Problem 103, solved 09/09/13
 #187: Problem 122, solved 10/03/13
+#188: Problem 126, solved 10/15/13
 
 
 -rwxrwxrwx  1 dannymulligan  staff    1577 May  3  2009 Prob_004/prob_004.c
@@ -560,6 +561,11 @@ I have solved 187 problems and am at position 204 on level 7, this puts me at po
 My precentage rank is 0.403%.  My best ever rank was 1,048, I'd need to have solved 209 problems to be at that
 same level today, which is 22 more than I have currently solved.
 
+As of 10/15/13:
+I have solved 188 problems and am at position 187 on level 7, this puts me at position 1,379 overall.
+My precentage rank is 0.397%.  My best ever rank was 1,048, I'd need to have solved 210 problems to be at that
+same level today, which is 22 more than I have currently solved.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -686,7 +692,7 @@ same level today, which is 22 more than I have currently solved.
 123 - Solved,
 124 - Solved,
 125 - Solved,
-126 -
+126 - Solved,
 127 - Solved, Prime Obsession, Lucky Luke,
 128 - Solved,
 129 - Solved, Lucky Luke,
@@ -972,7 +978,6 @@ Target list for the next few months (unsolved problems <= 150):
 131 - Prime Obsession, (solved by 3,614)
 111 - Lucky Luke, (solved by 3,422)
 106 - (solved by 2,906)
-126 - (solved by 2,077)
 141 - Lucky Luke, (solved by 1,740)
 143 - (solved by 1,265)
-6 problems, sorted by number of people solved as of 8/30/13
+5 problems, sorted by number of people solved as of 8/30/13
