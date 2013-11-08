@@ -96,64 +96,61 @@
 
 
 import time
-import sys
-import cProfile
 
 start_time = time.clock()
 
-def even(N):
-    if ((N%2) == 1):  return False
-    else:             return True
+def even(n):
+    return not(n%2)
 
-def f(N):
-    return (5*N**2 + 14*N + 1)
+def f(n):
+    return 5*n**2 + 14*n + 1
 
 def main():
     answer = 0
     soln_cnt = 0
-    N = 1
-    M = 1
-    prev_M = 1
-    while (soln_cnt < 30):
+    n = 1
+    m = 1
+    prev_m = 1
+    while soln_cnt < 30:
         #print "    M={0}, M^2={1}, N={2}, f(N)={3}".format(M, M**2, N, f(N))
 
-        while (f(N) < M**2):
-            N += 1
+        while f(n) < m**2:
+            n += 1
             #print "    N={0}, f({0})={1}".format(N,f(N))
 
-        if (f(N) == M**2):
+        if f(n) == m**2:
             soln_cnt += 1
-            answer += N
-            print "Golden nugget {0}: Af(x) = {1} has a rational x, (M,N) = ({2},{3})".format(soln_cnt, N, M,N),
+            answer += n
+            print "Golden nugget {0}: Af(x) = {1} has a rational x, (M,N) = ({2},{3})".format(soln_cnt, n, m,n),
 
-            print "M={0}, prev_M={1}, ratio={2}".format(M,prev_M,1.0*M/prev_M),
-            prev_M = M
+            print "M={0}, prev_M={1}, ratio={2}".format(m,prev_m,1.0*m/prev_m),
+            prev_m = m
 
-            if (soln_cnt < 2):
-                M += 1
-            elif (soln_cnt < 12):
+            if soln_cnt < 2:
+                m += 1
+            elif soln_cnt < 12:
                 if even(soln_cnt):
-                    M = M * 353 / 100
-                    N = N * 353 / 100
+                    m = m * 353 / 100
+                    n = n * 353 / 100
                 else:
-                    M = M * 193 / 100
-                    N = N * 193 / 100
-            elif (soln_cnt < 20):
+                    m = m * 193 / 100
+                    n = n * 193 / 100
+            elif soln_cnt < 20:
                 if even(soln_cnt):
-                    M = M * 353532 / 100000
-                    N = N * 353532 / 100000
+                    m = m * 353532 / 100000
+                    n = n * 353532 / 100000
                 else:
-                    M = M * 193874 / 100000
-                    N = N * 193874 / 100000
+                    m = m * 193874 / 100000
+                    n = n * 193874 / 100000
             else:
                 if even(soln_cnt):
-                    M = M * 35353221 / 10000000
-                    N = N * 35353221 / 10000000
+                    m = m * 35353221 / 10000000
+                    n = n * 35353221 / 10000000
                 else:
-                    M = M * 19387489 / 10000000
-                    N = N * 19387489 / 10000000
+                    m = m * 19387489 / 10000000
+                    n = n * 19387489 / 10000000
 
-            print "new (M,N)=({0},{1})".format(M,N)
+            print "new (M,N)=({0},{1})".format(m,n)
 
             #elif (soln_cnt < 5):
             #    M = M * 685 / 100
@@ -162,9 +159,9 @@ def main():
             #    M = M * 68541 / 10000
             #    N = N * 68541 / 10000
             #print "    starting off search for next golden nugget with M={0}, N={1}".format(M,N)
-            # Examinging the first 10 results shows that M grows by 6.8-6.85410197x from solution to solution
+            # Examining the first 10 results shows that M grows by 6.8-6.85410197x from solution to solution
         else:
-            M += 1
+            m += 1
 
     print "Answer = ", answer
     print "Time taken =", time.clock() - start_time, "seconds"
