@@ -25,30 +25,35 @@ LIMIT_PRIME = 10**9 # ~? seconds
 LIMIT_PRIME = 5*10**8 # ~216 seconds
 LIMIT_PRIME = 2*10**8 # ~84.1 seconds
 LIMIT_PRIME = 10**8 # ~40.9 seconds
+LIMIT_PRIME = 5*10**7 # ~19.9 seconds
 #LIMIT_PRIME = 2*10**7 # ~7.9 seconds
 #LIMIT_PRIME = 10**7 # ~3.9 seconds
 #LIMIT_PRIME = 10**6 # ~0.35 seconds
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
 
 def calculate_primes():
-    pcnt = 1
     prime_table[0] = 0  # 0 is not a prime number
     prime_table[1] = 0  # 1 is not a prime number
-    i = 2
-    j = i*2
-    while (j < LIMIT_PRIME):
-        prime_table[j] = i
-        j += i
 
+    # Special case 2 = the only even prime
+    pcnt = 1
+    j = 4
+    while (j < LIMIT_PRIME):
+        prime_table[j] = 2
+        j += 2
+
+    # Deal with all the odd primes starting with 3
     i = 3
     while (i*i < LIMIT_PRIME):
         if (prime_table[i] == 1):
             pcnt += 1
-            j = i*3
+            j = i*3  # can skip i*2, already covered
             while (j < LIMIT_PRIME):
                 prime_table[j] = i
                 j += 2*i
         i += 2
+
+    # Keep counting if we want an accurate count
     while (i < LIMIT_PRIME):
         if (prime_table[i] == 1):
             pcnt += 1
@@ -129,6 +134,7 @@ print "Prime search took {0} seconds".format(time.clock() - start_time)
 #for i in range(2,LIMIT_PRIME):
 #    if (prime_table[i] == 1):
 #        print i
+sys.exit()
 
 nums = set(range(1,10))
 
