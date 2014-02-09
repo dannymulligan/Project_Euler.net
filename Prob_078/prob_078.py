@@ -18,7 +18,8 @@
 
 #import array
 #ways_cache = array.array('l', [0]*100*100)
-ways_cache = [0]*100*100
+CACHE_N = 100
+ways_cache = [0]*CACHE_N*CACHE_N
 
 def ways(n, max_n):
 
@@ -28,14 +29,15 @@ def ways(n, max_n):
     if (max_n == 2):
         return (1+(n/2))
 
-    if (ways_cache[n*100+max_n] != 0):
-        return ways_cache[n*100+max_n]
+    if (max_n < CACHE_N):
+        if (ways_cache[n*100+max_n] != 0):
+            return ways_cache[n*100+max_n]
 
     ans = 0
     for i in range(min(n,max_n), 0, -1):
-         if (n-i,i) in ways_cache:
-             ans = ans + ways_cache[(n-i, i)]  # i coins, followed by all possible combinations of n-i
-         else:
+        if (n-i,i) in ways_cache:
+            ans = ans + ways_cache[(n-i, i)]  # i coins, followed by all possible combinations of n-i
+        else:
             ans = ans + ways(n-i, i)  # i coins, followed by all possible combinations of n-i
 #    ans = ans % 1000000
     ways_cache[n*100+max_n] = ans
