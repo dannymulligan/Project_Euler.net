@@ -16,16 +16,18 @@
 #
 # How many primes below one million have this remarkable property?
 #
-# Solved ??/??/11
-# 139 problems solved
-# Position #232 on level 3
+# Solved 02/09/14
+# 189 problems solved
+# Position #191 on level 7
+
+import time
+start_time = time.clock()
 
 LIMIT_PRIME = 1000000  # There are 78,498 primes less than 1,000,000
-LIMIT_PRIME = 100000   # There are 9,592 primes less than 100,000
-LIMIT_PRIME = 10000    # There are 1,229 primes less than 10,000
-LIMIT_PRIME = 1000     # There are 168 primes less than 1,000
-LIMIT_PRIME = 100      # There are 25 primes less than 100
-#LIMIT_PRIME = 25       # There are 9 primes less than 25
+#LIMIT_PRIME = 100000   # There are 9,592 primes less than 100,000
+#LIMIT_PRIME = 10000    # There are 1,229 primes less than 10,000
+#LIMIT_PRIME = 1000     # There are 168 primes less than 1,000
+#LIMIT_PRIME = 100      # There are 25 primes less than 100
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
 primes = []
 
@@ -49,62 +51,79 @@ calculate_primes()
 print "There are", len(primes), "primes less than", LIMIT_PRIME
 
 
-def l_eqn(p, n):
-    return p * n**2
-
-def r_eqn(n, m):
-    return 3*(n**2 * m) + 3*(n * m**2) + m**3
-
-# Assume X^3 is a perfect cube, and X = (M + N)
-# Then
-#     X^3 = (N + M)^3 = N^3 + 3(N^2 * M) + 3(N * M^2) + M^3
+#     N^3 + P * N^2 = M^3
 #
-# If we have N^3 + P * N^2 as a perfect cube, then we have
+#           (    P)
+#  => N^3 * (1 + -) = M^3
+#           (    N)
 #
-#      N^3 + P * N^2 = N^3 + 3*N^2*M + 3*N*M^2 + M^3
-#            P * N^2 =       3*N^2*M + 3*N*M^2 + M^3
-#            P * N^2 = N^2*3*M + 3*N*M^2 + M^3
-#                  0 = N^2(3*M - P) + 3*N*M^2 + M^3
-#    N^2 * (P - 3*M) -3*N*M^2 = M^3
+#           (N + P)
+#  => N^3 * (-----) = M^3
+#           (  N  )
 #
-# For every value of P, we need to search N and M looking for cases
-# where this equation is true.
-# We fix P and N, and increment M looking for a solution.
-# If the right side is larger than the left, we need to move to the next N.
-# If the right side is larger then the left when M = 1, we need to go to the next P.
-# If we run out of P then we are done.
+# Take the cube root of each side
+#             _____
+#            /N + P
+#  => N *   / ----- = M
+#        \3/    N
+#
+# Therefore
+#
+# Since M is an integer, then
+#              ______
+#           \3/ N + P
+# must be an integer, therefore N+P is a perfect cube, say N+P = X^3
+#
+# Similarily
+#              ___
+#           \3/ N
+# must be an integer, therefore N is a perfect cube, say N = Y^3
+#
+# Thus P = X^3 - Y^3 = (X - Y) * (X^2 + XY + Y^2)
+#
+# Then, since P is prime, (X - Y) has to be 1
+#
+# So we must search for results where P =  X^3 - Y^3 is prime, with X = Y + 1
+#
+# Beautiful solution from: http://www.mathblog.dk/project-euler-131-primes-perfect-cube/
 
-solns = []
+def int_cube_root(x3):
+    #print "find_p(m={m}, n={n})".format(m=m, n=n)
+    min_x = 1
+    max_x = x3
+    while ((max_x - min_x) > 1):
+        x = (min_x + max_x)/2
+        if (x**3 == x3):
+            return x
+        elif (x**3 < x3):
+            min_x = x
+        else:
+            max_x = x
+    x = max_x
+    if (x**3 == x3):
+        return x
+    else:
+        return 0
+
+assert int_cube_root(9) == 0
+assert int_cube_root(8) == 2
+
+
 answer = 0
-for p in primes:
-    print "**** Searching with p = {0}".format(p)
-    n = 1
-    m = 1
-    l = l_eqn(p,n)
-    r = r_eqn(n,m)
 
-    #print "Trying (n,m,p) = ({0},{1},{2}), l={3}, r={4}".format(n,m,p,l,r)
-    if (l == r):
-       solns.append((n,m,p))
-       print "    Found solution ({0},{1},{2})".format(n,m,p)
-       continue
+for x in range(2, LIMIT_PRIME):
+    y = x - 1
+    p = x**3 - y**3
+    n = y**3
 
-    while ((l > r) & (n < p)):
-        # Searching larger value of N
+    if (p > LIMIT_PRIME):
+        print "Terminating with X={x}, Y={y}, N={n}, P={p}, M={m}".format(x=x, y=y, m=m, n=n, p=p)
+        break
 
-        while (l > r):
-            # Searching larger values of M
-            m += 1
-            r = r_eqn(n,m)
-            #print "Trying (n,m,p) = ({0},{1},{2}), l={3}, r={4}".format(n,m,p,l,r)
-            if (l == r):
-               solns.append((n,m,p))
-               print "    Found solution ({0},{1},{2})".format(n,m,p)
+    if p in primes:
+        m = int_cube_root(n**3 + p * n**2)
+        print "    N={n}, P={p}, M={m}: {n}^3 + {p}*{n}^2 = {m}^3  (VALID SOLUTION)".format(m=m, n=n, p=p)
+        answer += 1
 
-        n += 1
-        m = 1
-        l = l_eqn(p,n)
-        r = r_eqn(n,m)
-        #print "Trying (n,m,p) = ({0},{1},{2}), l={3}, r={4}".format(n,m,p,l,r)
-
-print solns
+print "The answer is", answer
+print "Time taken =", time.clock() - start_time, "seconds"
