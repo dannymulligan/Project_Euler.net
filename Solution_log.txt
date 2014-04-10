@@ -187,6 +187,7 @@
 #187: Problem 122, solved 10/03/13
 #188: Problem 126, solved 10/15/13
 #189: Problem 131, solved 02/09/14
+#190: Problem 141, solved 04/09/14
 
 
 -rwxrwxrwx  1 dannymulligan  staff    1577 May  3  2009 Prob_004/prob_004.c
@@ -572,22 +573,28 @@ I have solved 189 problems and am at position 191 on level 7, this puts me at po
 My precentage rank is 0.396%.  My best ever rank was 1,048, I'd need to have solved 214 problems to be at that
 same level today, which is 25 more than I have currently solved.
 
+As of 04/10/14:
+I have solved 190 problems and am at position 168 on level 7, this puts me at position 1,445 overall.
+My precentage rank is 0.379%.  My best ever rank was 1,048, I'd need to have solved 215 problems to be at that
+same level today, which is 25 more than I have currently solved.  There are currently 381,353 users with 1 or
+more problems solved.  There are 60,798 users with 25 or more problems solved, which is 15.943% of all.
 
-001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke,
+
+001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
-003 - Solved, Prime Obsession, Fibonacci Fever, Triangle Trophy, Lucky Luke,
+003 - Solved, Prime Obsession, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph, As Easy As Pi,
 004 - Solved, Unlucky Squares,
 005 - Solved, Prime Obsession, Fibonacci Fever,
 006 - Solved, Triangle Trophy,
 007 - Solved, Prime Obsession, Lucky Luke,
 008 - Solved, Fibonacci Fever,
-009 - Solved, Unlucky Squares, Lucky Luke,
+009 - Solved, Unlucky Squares, Lucky Luke, Trinary Triumph,
 010 - Solved, Triangle Trophy,
 011 - Solved, Prime Obsession,
 012 - Solved,
 013 - Solved, Prime Obsession, Fibonacci Fever, Lucky Luke,
-014 - Solved,
-015 - Solved, Triangle Trophy, Lucky Luke,
+014 - Solved, As Easy As Pi,
+015 - Solved, Triangle Trophy, Lucky Luke, As Easy As Pi,
 016 - Solved, Unlucky Squares,
 017 - Solved, Prime Obsession,
 018 - Solved,
@@ -599,18 +606,18 @@ same level today, which is 25 more than I have currently solved.
 024 - Solved,
 025 - Solved, Unlucky Squares, Lucky Luke,
 026 - Solved,
-027 - Solved,
+027 - Solved, Trinary Triumph,
 028 - Solved, Triangle Trophy,
 029 - Solved, Prime Obsession,
 030 - Solved,
 031 - Solved, Prime Obsession, Lucky Luke,
-032 - Solved,
+032 - Solved, As Easy As Pi,
 033 - Solved, Lucky Luke,
 034 - Solved, Fibonacci Fever,
-035 - Solved,
+035 - Solved, As Easy As Pi,
 036 - Solved, Unlucky Squares, Triangle Trophy,
 037 - Solved, Prime Obsession, Lucky Luke,
-038 - Solved,
+038 - Solved, As Easy As Pi,
 039 - Solved,
 040 - Solved,
 041 - Solved, Prime Obsession,
@@ -618,7 +625,7 @@ same level today, which is 25 more than I have currently solved.
 043 - Solved, Prime Obsession, Lucky Luke,
 044 - Solved,
 045 - Solved, Triangle Trophy,
-046 - Solved,
+046 - Solved, As Easy As Pi,
 047 - Solved, Prime Obsession,
 048 - Solved,
 049 - Solved, Unlucky Squares, Lucky Luke,
@@ -637,7 +644,7 @@ same level today, which is 25 more than I have currently solved.
 062 - Solved,
 063 - Solved, Lucky Luke,
 064 - Solved, Unlucky Squares,
-065 - Solved,
+065 - Solved, As Easy As Pi,
 066 - Solved, Triangle Trophy,
 067 - Solved, Prime Obsession, Lucky Luke,
 068 - Solved,
@@ -651,9 +658,9 @@ same level today, which is 25 more than I have currently solved.
 076 - Solved,
 077 - Solved,
 078 - Solved, Triangle Trophy,
-079 - Solved, Prime Obsession, Lucky Luke,
+079 - Solved, Prime Obsession, Lucky Luke, As Easy As Pi,
 080 - Solved,
-081 - Solved, Unlucky Squares,
+081 - Solved, Unlucky Squares, Trinary Triumph,
 082 - Solved,
 083 - Solved, Prime Obsession,
 084 - Solved,
@@ -661,10 +668,10 @@ same level today, which is 25 more than I have currently solved.
 086 - Solved,
 087 - Solved, Lucky Luke,
 088 - Solved,
-089 - Solved, Prime Obsession, Fibonacci Fever,
+089 - Solved, Prime Obsession, Fibonacci Fever, As Easy As Pi,
 090 - Solved,
 091 - Solved, Triangle Trophy,
-092 - Solved,
+092 - Solved, As Easy As Pi,
 093 - Solved, Lucky Luke,
 094 - Solved,
 095 - Solved,
@@ -713,7 +720,7 @@ same level today, which is 25 more than I have currently solved.
 138 - Solved,
 139 - Solved, Prime Obsession,
 140 - Solved,
-141 - Lucky Luke,
+141 - Solved, Lucky Luke,
 142 - Solved,
 143 -
 144 - Solved, Unlucky Squares, Fibonacci Fever,
@@ -805,7 +812,7 @@ same level today, which is 25 more than I have currently solved.
 230 -
 231 - Solved, Triangle Trophy, Lucky Luke,
 232 -
-233 - Prime Obsession, Fibonacci Fever
+233 - Prime Obsession, Fibonacci Fever,
 234 - Solved
 235 - Solved, Lucky Luke,
 236 -
@@ -815,7 +822,7 @@ same level today, which is 25 more than I have currently solved.
 240 -
 241 - Prime Obsession, Lucky Luke,
 242 -
-243 - Solved,
+243 - Solved, Trinary Triumph,
 244 -
 245 -
 246 -
@@ -923,7 +930,7 @@ same level today, which is 25 more than I have currently solved.
 348 - Solved,
 349 - Solved, Prime Obsession, Lucky Luke,
 350 -
-351 - Triangle Trophy,
+351 - 
 352 -
 353 - Prime Obsession,
 354 -
@@ -948,8 +955,8 @@ same level today, which is 25 more than I have currently solved.
 374 -
 375 -
 376 -
-377 - Fibonacci Fever,
-378 - Triangle Trophy,
+377 - 
+378 - 
 379 - Prime Obsession,
 380 -
 381 -
@@ -975,14 +982,13 @@ same level today, which is 25 more than I have currently solved.
 
 
 Solved 44 out of 50 Prime Obsession (151, 157, 163, 167, 181, 193, 199, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
-Solved 11 out of 12 Fibonacci Fever (233, 377)
-Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325, 351, 378, 406, 435, 465, 496)
-Solved 38 out of 50 Lucky Luke (111, 141, 151, 159, 163, 169, 171, 189, 193, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 303, 319, 321, 327, 331, 339, 357, 361, 367, 385, 391, 393, 399
+Solved 11 out of 12 Fibonacci Fever (233)
+Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325)
+Solved 39 out of 50 Lucky Luke (111, 151, 159, 163, 169, 171, 189, 193, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 303, 319, 321, 327, 331, 339, 357, 361, 367, 385, 391, 393, 399
 
 
 Target list for the next few months (unsolved problems <= 150):
 111 - Lucky Luke, (solved by 3,422)
 106 - (solved by 2,906)
-141 - Lucky Luke, (solved by 1,740)
 143 - (solved by 1,265)
 5 problems, sorted by number of people solved as of 8/30/13
