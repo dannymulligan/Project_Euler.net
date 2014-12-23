@@ -45,51 +45,69 @@
 # ?? problems solved
 # Position #??? on level ?
 
+import sys
 import time
-import random
-
-ICNT = 100000000
 start_time = time.clock()
 
-count = 0
-for i in range(ICNT):
-    # Assumes the first batch already done
-    A2 = 1
-    A3 = 1
-    A4 = 1
-    A5 = 1
+answer = 0.0
+inventory = []
+inventory.append({(1,0,0,0,0): 1.000})  # Start off with a single sheet of A1
 
-    for j in range(14):
-        # Check for single sheet of paper
-        if ((A2 + A3 + A4 + A5) == 1):
-            count += 1
+for round in range(1,16):
+    print("==== Round {} ========".format(round))
+    for config in inventory[round-1].keys():
+        prob = inventory[round-1][config]
+        inventory.append(dict())
+        lconfig = list(config)
 
-        # Pick a piece of paper from the envelope
-        choice = random.randint(1,(A2+A3+A4+A5))
-        if    (choice                 <= A2):  piece = 2
-        elif ((choice - A2          ) <= A3):  piece = 3
-        elif ((choice - A2 - A3     ) <= A4):  piece = 4
-        else:                                  piece = 5
+        for i in range(5):
+            if (lconfig[i] != 0):
+                nprob = prob * lconfig[i]/sum(lconfig)
+                print("Printer randomly selects an A{} sheet from configuration {} with probability {}".format(i+1, config, nprob)),
+                nconfig = list(lconfig)
+                nconfig[i] -= 1
+                for j in range(i+1,5):
+                    nconfig[j] += 1
+                print("and ends up with configuration {} with probability {}".format(tuple(nconfig), nprob))
 
-        # Process that piece of paper
-        if (piece == 2):
-            A2 -= 1
-            A3 += 1
-            A4 += 1
-            A5 += 1
-            #print "Chose an A2 sheet, A2 = {0}, A3 = {1}, A4 = {2}, A5 = {3}, total sheets = {4}".format(A2,A3,A4,A5, (A2+A3+A4+A5))
-        elif (piece == 3):
-            A3 -= 1
-            A4 += 1
-            A5 += 1
-            #print "Chose an A3 sheet, A2 = {0}, A3 = {1}, A4 = {2}, A5 = {3}, total sheets = {4}".format(A2,A3,A4,A5, (A2+A3+A4+A5))
-        elif (piece == 4):
-            A4 -= 1
-            A5 += 1
-            #print "Chose an A4 sheet, A2 = {0}, A3 = {1}, A4 = {2}, A5 = {3}, total sheets = {4}".format(A2,A3,A4,A5, (A2+A3+A4+A5))
-        elif (piece == 5):
-            A5 -= 1
-            #print "Chose an A5 sheet, A2 = {0}, A3 = {1}, A4 = {2}, A5 = {3}, total sheets = {4}".format(A2,A3,A4,A5, (A2+A3+A4+A5))
+                if tuple(nconfig) in inventory[round]:
+                    inventory[round][tuple(nconfig)] += nprob
+                else:
+                    inventory[round][tuple(nconfig)] = nprob
 
-    if (((i+1) % 100000) == 0):
-        print "Answer = {0:12.10f}, count = {1}, iterations = {2}, time = {3}".format((float(count)/float(i+1)), count, (i+1), (time.clock() - start_time))
+    print("---- End result is as follows ----")
+    for config in inventory[round].keys():
+        if (sum(config) == 1):
+            print("--> configuration {} with probability {} <-- single sheet".format(config, inventory[round][config]))
+            answer += inventory[round][config]
+        else:
+            print("    configuration {} with probability {}".format(config, inventory[round][config]))
+
+print("Answer = {:0.6f}".format(answer - 1.0))  # Subtract 2 to account for the 1.0 answer in round 15
+
+print "Time taken = {0} seconds".format(time.clock() - start_time)
+
+
+# State will be of form A1, A2, A3, A4, A5.
+#
+# For round 1, we have the following possibilities
+#    1.000  1, 0, 0, 0, 0  <- single sheet
+# Total = 16*A5 remaining
+#
+# For round 2, we have the following possibilities
+#    1.000  0, 1, 1, 1, 1
+# Total = 15*A5 remaining
+#
+# For round 3, we have the following possibilities
+#    0.250  0, 1, 1, 1, 0
+#    0.250  0, 1, 1, 0, 2
+#    0.250  0, 1, 0, 2, 2
+#    0.250  0, 0, 2, 2, 2
+# Total = 14*A5 remaining
+#
+# For round 4, we have the following possibilities
+#    0.250  0, 1, 1, 1, 0
+#    0.250  0, 1, 1, 0, 2
+#    0.250  0, 1, 0, 2, 2
+#    0.250  0, 0, 2, 2, 2
+# Total = 13*A5 remaining
