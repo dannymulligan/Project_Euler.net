@@ -607,6 +607,12 @@ My percentage rank is 0.323%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 24 more than I have currently solved.  There are currently 442,182 users with 1 or
 more problems solved.  There are 67,133 users with 25 or more problems solved, which is 15.183% of all.
 
+As of 12/26/14:
+I have solved 195 problems and am at position 39 on level 7, this puts me at position 1,414 overall.
+My percentage rank is 0.319%.  My best ever rank was 1,048, I'd need to have solved 218 problems to be at that
+same level today, which is 23 more than I have currently solved.  There are currently 443,119 users with 1 or
+more problems solved.  There are 67,234 users with 25 or more problems solved, which is 15.173% of all.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -911,7 +917,7 @@ more problems solved.  There are 67,133 users with 25 or more problems solved, w
 301 -
 302 -
 303 - Lucky Luke,
-304 -
+304 - Solved
 305 -
 306 -
 307 - Solved, Prime Obsession, Lucky Luke,
