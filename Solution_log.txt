@@ -194,6 +194,7 @@
 #194: Problem 151, solved 12/22/14
 #195: Problem 304, solved 12/26/14
 #196: Problem 111, solved 01/24/15
+#197: Problem 500, solved 02/06/15
 
 
 -rwxrwxrwx  1 dannymulligan  staff    1577 May  3  2009 Prob_004/prob_004.c
@@ -621,6 +622,12 @@ My percentage rank is 0.313%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 24 more than I have currently solved.  There are currently 453,311 users with 1 or
 more problems solved.  There are 68,394 users with 25 or more problems solved, which is 15.088% of all.
 
+As of 02/06/15:
+I have solved 197 problems and am at position 19 on level 7, this puts me at position 1,407 overall.
+My percentage rank is 0.307%.  My best ever rank was 1,048, I'd need to have solved 220 problems to be at that
+same level today, which is 23 more than I have currently solved.  There are currently 458,446 users with 1 or
+more problems solved.  There are 68,874 users with 25 or more problems solved, which is 15.023% of all.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -972,7 +979,7 @@ more problems solved.  There are 68,394 users with 25 or more problems solved, w
 348 - Solved,
 349 - Solved, Prime Obsession, Lucky Luke,
 350 -
-351 - Triangle Trophy,
+351 -
 352 -
 353 - Prime Obsession,
 354 -
@@ -998,7 +1005,7 @@ more problems solved.  There are 68,394 users with 25 or more problems solved, w
 375 -
 376 -
 377 -
-378 - Triangle Trophy,
+378 -
 379 - Prime Obsession,
 380 -
 381 -
@@ -1021,11 +1028,111 @@ more problems solved.  There are 68,394 users with 25 or more problems solved, w
 398 -
 399 - Lucky Luke,
 400 -
+401 - Prime Obsession,
+402 -
+403 -
+404 -
+405 -
+406 -
+407 -
+408 -
+409 - Prime Obsession,
+410 -
+411 -
+412 -
+413 -
+414 -
+415 -
+416 -
+417 -
+418 -
+419 - Prime Obsession,
+420 -
+421 - Prime Obsession,
+422 -
+423 -
+424 -
+425 -
+426 -
+427 -
+428 -
+429 -
+430 -
+431 - Prime Obsession,
+432 -
+433 - Prime Obsession,
+434 -
+435 -
+436 -
+437 -
+438 -
+439 - Prime Obsession,
+440 -
+441 -
+442 -
+443 - Prime Obsession,
+444 -
+445 -
+446 -
+447 -
+448 -
+449 - Prime Obsession,
+450 -
+451 -
+452 -
+453 -
+454 -
+455 -
+456 -
+457 - Prime Obsession,
+458 -
+459 -
+460 -
+461 - Prime Obsession,
+462 -
+463 - Prime Obsession,
+464 -
+465 -
+467 - Prime Obsession,
+468 -
+469 -
+470 -
+471 -
+472 -
+473 -
+474 -
+475 -
+476 -
+477 -
+478 -
+479 - Prime Obsession,
+480 -
+481 -
+482 -
+483 -
+484 -
+485 -
+486 -
+487 - Prime Obsession,
+488 -
+489 -
+490 -
+491 - Prime Obsession,
+492 -
+493 -
+494 -
+495 -
+496 -
+497 -
+498 -
+499 - Prime Obsession,
+500 -
+501 -
 
 
 Solved 47 out of 50 Prime Obsession (157, 163, 167, 181, 199, 223, 227, 229, 233, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
 Solved 11 out of 12 Fibonacci Fever (233)
-Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325, 351, 378)
+Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325)
 Solved 43 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 303, 319, 321, 327, 331, 339, 357, 361, 367, 385, 391, 393, 399)
 
 
