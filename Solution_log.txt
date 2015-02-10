@@ -196,6 +196,7 @@
 #196: Problem 111, solved 01/24/15
 #197: Problem 500, solved 02/06/15
 #198: Problem 200, solved 02/08/15
+#199: Problem 200, solved 02/09/15
 
 
 -rwxrwxrwx  1 dannymulligan  staff    1577 May  3  2009 Prob_004/prob_004.c
@@ -635,6 +636,12 @@ My percentage rank is 0.304%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 22 more than I have currently solved.  There are currently 458,916 users with 1 or
 more problems solved.  There are 68,926 users with 25 or more problems solved, which is 15.019% of all.
 
+As of 02/09/15:
+I have solved 199 problems and am at position 6 on level 7, this puts me at position 1,382 overall.
+My percentage rank is 0.301%.  My best ever rank was 1,048, I'd need to have solved 220 problems to be at that
+same level today, which is 21 more than I have currently solved.  There are currently 459,409 users with 1 or
+more problems solved.  There are 68,979 users with 25 or more problems solved, which is 15.015% of all.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -741,7 +748,7 @@ more problems solved.  There are 68,926 users with 25 or more problems solved, w
 103 - Solved, Prime Obsession,
 104 - Solved,
 105 - Solved, Triangle Trophy, Lucky Luke,
-106 -
+106 - Solved,
 107 - Solved, Prime Obsession,
 108 - Solved,
 109 - Solved, Prime Obsession,
@@ -1144,7 +1151,6 @@ Solved 43 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261
 
 
 Target list for the next few months (get to 200 solved, finish all problems <= 150, finish Fibonacci Fever):
-106 - (solved by 3,537)
 171 - Triangle Trophy, Lucky Luke, (solved by 1,568)
 143 - (solved by 1,479)
 233 - Prime Obsession, Fibonacci Fever, (solved by 1,239)
