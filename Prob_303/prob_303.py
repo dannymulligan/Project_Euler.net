@@ -20,9 +20,6 @@
 
 import sys
 import time
-start_time = time.clock()
-
-########################################
 
 def test_012(n):
     valid = True
@@ -36,82 +33,89 @@ def test_012(n):
         power += 1
     return valid, msd, power-1
 
-assert test_012( 1221) == (True, 1, 3)
-assert test_012(11021) == (True, 1, 4)
-assert test_012(  221) == (True, 2, 2)
-assert test_012(50021) == (False, 5, 4)
+def digit(n, x):
+    '''Return digit n of number x'''
+    return ((x/10**n) % 10)
 
-########################################
-
-def fn(n):
-    x = 0
-    if   ((n % 10) == 0):  rep = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    elif ((n % 10) == 1):  rep = [1, 1, 8]
-    elif ((n % 10) == 2):  rep = [1, 4, 1, 4]
-    elif ((n % 10) == 3):  rep = [4, 3, 3]
-    elif ((n % 10) == 4):  rep = [3, 2, 3, 2]
-    elif ((n % 10) == 5):  rep = [2, 2, 2, 2, 2]
-    elif ((n % 10) == 6):  rep = [2, 3, 2, 3]
-    elif ((n % 10) == 7):  rep = [3, 3, 4]
-    elif ((n % 10) == 8):  rep = [4, 1, 4, 1]
-    elif ((n % 10) == 9):  rep = [8, 1, 1]
-
-    #print("startup x={}, rep={}".format(x, rep))
+def fn_backup(x):
+    # Only works for cases where x = 99, 999, 9999
+    n = 1
+    power = 0
     while True:
-        for dx in rep:
-            x += dx
-            nx = n*x % 10
-            (valid, msd, power) = test_012(n*x)
-            #print("x={}, n={}, n*x={}, valid={}".format(x, n, n*x, valid))
+        while True:
+            #print("n={}, x={}, n*x={}, digit({}, {})={}".format(n, x, n*x, power, n*x, digit(power, n*x)))
+            valid, msd, xxx = test_012(n*x)
             if valid:
-                return x
+                return n
+            if (digit(power, n*x) <= 2):
+                break
+            n += 10**power
+        power += 1
+        if power > 20:
+            return
 
-        # Skip ahead if we can
-        if (msd > 2):
-            # Skip x ahead so that n*x is at least 10**(power+1)
-            #print("    skipping ahead msd={}, x={}, n={}, n*x={}".format(msd, x, n, n*x))
-            x = 10**(power+1)/n
+def small_digit_recurse(top, digits):
+    if top and (digits == 1):
+        yield 1
+        yield 2
+    elif top and (digits > 1):
+        for n in small_digit_recurse(top=False, digits=digits-1):
+            yield 1*(10**(digits-1)) + n
+        for n in small_digit_recurse(top=False, digits=digits-1):
+            yield 2*(10**(digits-1)) + n
+    elif (digits == 1):
+        yield 0
+        yield 1
+        yield 2
+    else:
+        for n in small_digit_recurse(top=False, digits=digits-1):
+            yield                      n
+        for n in small_digit_recurse(top=False, digits=digits-1):
+            yield 1*(10**(digits-1)) + n
+        for n in small_digit_recurse(top=False, digits=digits-1):
+            yield 2*(10**(digits-1)) + n
 
-            # Check values of x until we can use fancy skipping logic again
-            x = x - (x % 10)
-            (valid, msd, power) = test_012(n*x)
-            #print("x={}, n={}, n*x={}, valid={}".format(x, n, n*x, valid))
-            if valid:
-                return x
-
-            for dx in rep:
-                x += dx
-                nx = n*x % 10
-                (valid, msd, power) = test_012(n*x)
-                #print("x={}, n={}, n*x={}, valid={}".format(x, n, n*x, valid))
-                if valid:
-                    return x
-            #print("    skipped ahead x = {}/{} = {}".format(10**(power+1), n, x))
-
-
-start_time = time.clock()
-assert fn(  2) ==  1  # 2*1=2
-assert fn(  3) ==  4  # 3*4=12
-assert fn(  7) ==  3  # 7*3=21
-assert fn( 42) ==  5  # 42*5 = 210
-assert fn( 89) == 12598  # 89*12598=1121222
-assert fn( 99) == 11335578  # 99*11335578=1122222222
-assert fn(495) == 22671156  # 495*22671156=11222222220
+def small_digit_num(digits):
+    '''Generate numbers up to digits in length
+    that only use digits <= 2'''
+    for d in range(1, digits+1):
+        for n in small_digit_recurse(top=True, digits=d):
+            yield n
 
 
-print("Starting")
+def fn(x):
+    if ((x == 99)
+     or (x == 999)
+     or (x == 9999)):
+        return fn_backup(x)
+
+    for n in small_digit_num(30):
+        #print("n={n}, x={x}, {n}%{x}={r}".format(n=n, x=x, r=n%x))
+        if ((n % x) == 0):
+            #print("fn({x}) = {d}, because {d}*{x}={n}".format(n=n, x=x, d=n/x))
+            return n/x
+
+
 start_time = time.clock()
 answer = 0
 biggest = 0
-for n in range(1,101):
-    #if ((n % 25) == 0):
-    #    print("n={}".format(n))
+for n in range(1,10001):
     result = fn(n)
     answer += result
     if (result > biggest):
         biggest = result
-        print("fn({}) = {}, {}*{}={}".format(n, result, n, result, n*result))
+        print(">>> fn({}) = {}".format(n, result))
+    else:
+        print("fn({}) = {}".format(n, result))
 
-print answer
+print("Answer = {}".format(answer))
 print("Calculated in {:.3f} seconds".format(time.clock()-start_time))
-assert answer == 11363107
+
+
+# This solution is too slow (~2 hours), but the vast majority of the
+# time is spent on fn(9999), and to a lesser degree, on fn(999), &
+# fn(99).
+#
+# With a hack that uses a different method for fn(99), fn(999), &
+# fn(9999), I'm able to run the program in a little over 7 minutes,
+# which is good enough for me.  Moving on...
