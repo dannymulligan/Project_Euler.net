@@ -715,7 +715,7 @@ more problems solved.  There are 69,470 users with 25 or more problems solved, w
 056 - Solved,
 057 - Solved,
 058 - Solved,
-059 - Solved,
+059 - Solved, Prime Obsession,
 060 - Solved,
 061 - Solved, Prime Obsession,
 062 - Solved,
@@ -1156,9 +1156,28 @@ more problems solved.  There are 69,470 users with 25 or more problems solved, w
 499 - Prime Obsession,
 500 - Solved
 501 -
+502 -
+503 - Prime Obsession,
+504 -
+505 -
+506 -
+507 -
+508 -
+509 - Prime Obsession,
+510 -
+511 -
+
+512 -
+513 -
+514 -
+515 -
+516 -
+517 -
+518 -
+519 -
 
 
-Solved 47 out of 50 Prime Obsession (157, 163, 167, 181, 199, 223, 227, 229, 233, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
+Solved 48 out of 50 Prime Obsession (157, 163, 167, 181, 199, 223, 227, 229, 233, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
 Solved 11 out of 12 Fibonacci Fever (233)
 Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325)
 Solved 44 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 319, 321, 327, 331, 339, 357, 361, 367, 385, 391, 393, 399)
@@ -1170,6 +1189,7 @@ Target list for the next few months (finish all problems <= 150, finish Fibonacc
 233 - Prime Obsession, Fibonacci Fever, (solved by 1,239)
 3 problems, sorted by number of people solved as of 01/24/15
 
+
 Other problems that contribute to multiple trophies (as of 01/24/15)
 163 - Prime Obsession, Lucky Luke, (solved by 1,065)
 223 - Prime Obsession, Lucky Luke, (solved by 899)
@@ -1177,7 +1197,11 @@ Other problems that contribute to multiple trophies (as of 01/24/15)
 283 - Prime Obsession, Lucky Luke, (solved by 429)
 367 - Prime Obsession, Lucky Luke, (solved by 284)
 331 - Prime Obsession, Lucky Luke, (solved by 219)
-
+491 - Prime Obsession (solved by 651, easiest prime number problem)
+359 - Prime Obsession (solved by 745, 2nd easiest prime number problem)
+401 - Prime Obsession (solved by 1201, 3rd easiest prime number problem)
+479 - Prime Obsession (solved by 466, 4th easiest prime number problem)
+313 - Prime Obsession (solved by 775, 5th easiest prime number problem)
 
 Solutions in progress
 387 - Harshad Numbers
@@ -1186,3 +1210,4 @@ Solutions in progress
 152 - Writing 1/2 as a sum of inverse squares
 190 - Maximizing a weighted product (Triangle Trophy)
 143 - Investigating the Torricelli point of a triangle (Complete 1-150)
+357 - Prime generating integers
