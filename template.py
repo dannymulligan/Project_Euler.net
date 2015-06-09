@@ -7,7 +7,7 @@
 #
 # Problem text
 #
-# Solved ??/??/13
+# Solved ??/??/15
 # ?? problems solved
 # Position #??? on level ?
 
@@ -28,5 +28,4 @@ start_time = time.clock()
 ########################################
 
 
-print "Time taken = {0} seconds".format(time.clock() - start_time)
-
+print("Time taken = {0} seconds".format(time.clock() - start_time))
