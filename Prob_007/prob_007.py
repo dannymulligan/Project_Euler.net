@@ -24,7 +24,7 @@ def calculate_primes():
 
 calculate_primes()
 
-print "Done calculating primes"
+print("Done calculating primes")
 
 cnt = 0
 i = 1
@@ -32,4 +32,4 @@ while (cnt < 10001):
     i += 1
     if (prime_table[i] == 1):
         cnt += 1
-print "Answer is", i
+print("Answer is {}".format(i))
