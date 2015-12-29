@@ -44,7 +44,7 @@ int main()
 
             if (n < 0) {
                 printf("Overflow: n = %d, len=%d\n", i, len);
-                exit(1);
+                return 1;
             }
 
             len++;
@@ -55,7 +55,7 @@ int main()
             max_len = len;
             max_n = i;
             printf("Sequence starting with %d has %d terms", i, len);
-            printf("(maximum length was %d from starting with %d)\n", max_len, max_n);
+            printf(" (maximum length was %d from starting with %d)\n", max_len, max_n);
         }
 
     }
