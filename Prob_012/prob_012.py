@@ -24,11 +24,46 @@
 # What is the value of the first triangle number to have over five
 # hundred divisors?
 #
-# Ran in 308.5 minutes = ~6 hours
+# Ran in ~68 seconds
 
 
-MAX = 76576501
+#MAX = 100
+MAX = 12376  # t(12375) = 76576500 with 576 divisors
 GOAL = 500
+
+LIMIT_PRIME = MAX*(MAX+1)/2 + 1
+prime_table = [1]*LIMIT_PRIME  # table of largest factor
+
+
+def calculate_primes():
+    print("Calculating primes up to {0}".format(LIMIT_PRIME))
+    i = 2
+    while (i < (LIMIT_PRIME/2)):
+        if (prime_table[i] == 1):
+            j = i*2
+            while (j < LIMIT_PRIME):
+                prime_table[j] = i
+                j += i
+        i += 1
+    print("Done calculating primes")
+
+calculate_primes()
+
+
+def prime_factors(n):
+    factors = []
+    while (n != 1):
+        if (prime_table[n] == 1):
+            # n is a prime
+            factors.append(n)
+            n = 1
+        else:
+            # n is a composite number
+            factors.append(prime_table[n])
+            n /= prime_table[n]
+    factors.reverse()
+    return factors
+
 
 def triangle(n):
     t = 0
@@ -37,29 +72,38 @@ def triangle(n):
         yield t
 
 
-def divs(n):
-    d = 0
-    for i in xrange(1,(n/2)+1):
-        if ((n % i) == 0):
-            d += 1
-    d += 1  # The number is a divisor of itself
-    return d
+def divisors(n):
+    d = prime_factors(n)
+
+    divs = 1
+    mult = 2
+    prev_factor = 0
+    for factor in d:
+        if (factor == prev_factor):
+            divs /= mult
+            mult += 1
+        else:
+            mult = 2
+        divs *= mult
+        prev_factor = factor
+    return divs
+
 
 max_divs = 0
 i = 0
 for t in triangle(MAX):
     i += 1
 
-    d = divs(t)
-    if (d > max_divs):
-        max_divs = d
-        print "{0}: Triangle number {1} had {2} divisors".format(i, t, d)
+    divs = divisors(t)
+
+    if (divs > max_divs):
+        max_divs = divs
+        print("{0}: Triangle number {1} has {2} divisors".format(i, t, divs))
 
     if ((i % 1000) == 0):
-        print "    {0}: Triangle number {1} had {2} divisors".format(i, t, d)
+        print("    {0}: Triangle number {1} has {2} divisors".format(i, t, divs))
 
-    if (d > GOAL):
-        print t, divs(t)
-        print "Answer =", t
+    if (divs > GOAL):
+        print("t = {}, divs = {}".format(t, divs))
+        print("Answer = {}".format(t))
         exit()
-
