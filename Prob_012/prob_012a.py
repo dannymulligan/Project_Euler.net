@@ -27,15 +27,16 @@
 # Ran in ~68 seconds
 
 
-#MAX = 10
+#MAX = 100
 MAX = 12376  # t(12375) = 76576500 with 576 divisors
 GOAL = 500
 
 LIMIT_PRIME = MAX*(MAX+1)/2 + 1
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
 
+
 def calculate_primes():
-    print "Calculating primes up to {0}".format(LIMIT_PRIME)
+    print("Calculating primes up to {0}".format(LIMIT_PRIME))
     i = 2
     while (i < (LIMIT_PRIME/2)):
         if (prime_table[i] == 1):
@@ -44,9 +45,10 @@ def calculate_primes():
                 prime_table[j] = i
                 j += i
         i += 1
-    print "Done calculating primes"
+    print("Done calculating primes")
 
 calculate_primes()
+
 
 def prime_factors(n):
     factors = []
@@ -62,6 +64,7 @@ def prime_factors(n):
     factors.reverse()
     return factors
 
+
 def triangle(n):
     t = 0
     for i in xrange(1,n+1):
@@ -69,20 +72,8 @@ def triangle(n):
         yield t
 
 
-#def divs(n):
-#    d = 0
-#    for i in xrange(1,(n/2)+1):
-#        if ((n % i) == 0):
-#            d += 1
-#    d += 1  # The number is a divisor of itself
-#    return d
-
-max_divs = 0
-i = 0
-for t in triangle(MAX):
-    i += 1
-
-    d = prime_factors(t)
+def divisors(n):
+    d = prime_factors(n)
 
     divs = 1
     mult = 2
@@ -95,17 +86,24 @@ for t in triangle(MAX):
             mult = 2
         divs *= mult
         prev_factor = factor
+    return divs
 
-    #print t, factors, d
+
+max_divs = 0
+i = 0
+for t in triangle(MAX):
+    i += 1
+
+    divs = divisors(t)
 
     if (divs > max_divs):
         max_divs = divs
-        print "{0}: Triangle number {1} has {2} divisors".format(i, t, divs)
+        print("{0}: Triangle number {1} has {2} divisors".format(i, t, divs))
 
     if ((i % 1000) == 0):
-        print "    {0}: Triangle number {1} has {2} divisors".format(i, t, divs)
+        print("    {0}: Triangle number {1} has {2} divisors".format(i, t, divs))
 
     if (divs > GOAL):
-        print t, divs
-        print "Answer =", t
+        print("t = {}, divs = {}".format(t, divs))
+        print("Answer = {}".format(t))
         exit()
