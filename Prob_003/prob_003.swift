@@ -9,7 +9,7 @@
 // What is the largest prime factor of the number 600851475143 ?
 //
 
-import Darwin
+import Foundation
 
 let TARGET = 600851475143
 let SQRT_TARGET = 1 + Int(floor(sqrt(Float(TARGET))))
