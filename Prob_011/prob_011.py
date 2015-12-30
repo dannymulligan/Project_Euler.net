@@ -4,7 +4,7 @@
 #
 # In the 20x20 grid below, four numbers along a diagonal line have
 # been marked in red.
-# 
+#
 #     08  02  22  97  38  15  00  40  00  75  04  05  07  78  52  12  50  77  91  08
 #     49  49  99  40  17  81  18  57  60  87  17  40  98  43  69  48  04  56  62  00
 #     81  49  31  73  55  79  14  29  93  71  40  67  53  88  30  03  49  13  36  65
@@ -25,9 +25,9 @@
 #     20  69  36  41  72  30  23  88  34  62  99  69  82  67  59  85  74  04  36  16
 #     20  73  35  29  78  31  90  01  74  31  49  71  48  86  81  16  23  57  05  54
 #     01  70  54  71  83  51  54  69  16  92  33  48  61  43  52  01  89  19  67  48
-# 
+#
 # The product of these numbers is 26 x 63 x 78 x 14 = 1788696.
-# 
+#
 # What is the greatest product of four adjacent numbers in any
 # direction (up, down, left, right, or diagonally) in the 20x20 grid?
 #
@@ -55,10 +55,10 @@ d = [[ 8,  2, 22, 97, 38, 15,  0, 40,  0, 75,  4,  5,  7, 78, 52, 12, 50, 77, 91
 
 # Print back the table
 for x in range(len(d[0])):
-    print "    ", 
+    print("    "),
     for y in range(len(d)):
-        print "{0:2}".format(d[x][y]),
-    print
+        print("{0:2}".format(d[x][y])),
+    print("")
 
 # Search for horizontal results
 max_h = 0
@@ -67,7 +67,7 @@ for x in range(20-3):
         res = d[x][y] * d[x+1][y] * d[x+2][y] * d[x+3][y]
         if (res > max_h):
             max_h = res
-print "max_h =", max_h
+print("max_h = {}".format(max_h))
 
 # Search for vertical results
 max_v = 0
@@ -76,7 +76,7 @@ for x in range(20):
         res = d[x][y] * d[x][y+1] * d[x][y+2] * d[x][y+3]
         if (res > max_v):
             max_v = res
-print "max_v =", max_v
+print("max_v = {}".format(max_v))
 
 # Search for diagonal NW/SE results
 max_nw = 0
@@ -85,7 +85,7 @@ for x in range(20-3):
         res = d[x][y] * d[x+1][y+1] * d[x+2][y+2] * d[x+3][y+3]
         if (res > max_nw):
             max_nw = res
-print "max_nw =", max_nw
+print("max_nw = {}".format(max_nw))
 
 # Search for diagonal NE/SW results
 max_ne = 0
@@ -94,7 +94,7 @@ for x in range(20-3):
         res = d[x][y] * d[x+1][y-1] * d[x+2][y-2] * d[x+3][y-3]
         if (res > max_ne):
             max_ne = res
-print "max_ne =", max_ne
+print("max_ne = {}".format(max_ne))
 
-print
-print "Answer =", max(max_h, max_v, max_nw, max_ne)
+print("")
+print("Answer = {}".format(max(max_h, max_v, max_nw, max_ne)))
