@@ -72,33 +72,14 @@ func prime_factors(n: Int) -> [Int] {
 }
 
 
-struct triangle: SequenceType
-{
-    let n: Int
-    
-    struct Generator: GeneratorType {
-        typealias Element = Int
-        var i: Int = 1
-        var t: Int = 0
-        var n: Int
-        
-        init(end: Int) {
-            n = end
-        }
-        
-        mutating func next() -> Element? {
-            t += i
-            i += 1
-            return (i <= n+1) ? t : nil
-        }
-    }
-    
-    init(end: Int) {
-        self.n = end
-    }
-    
-    func generate() -> Generator {
-        return Generator(end: self.n)
+func triangle(end: Int) -> AnyGenerator<Int> {
+    var i: Int = 1
+    var t: Int = 0
+
+    return anyGenerator {
+        t += i
+        i += 1
+        return (i <= end+1) ? t : nil
     }
 }
 
@@ -125,7 +106,7 @@ func divisors(n: Int) -> Int {
 
 var max_divs = 0
 var i = 0
-for t in triangle(end: MAX) {
+for t in triangle(MAX) {
     i += 1
 
     let divs = divisors(t)
@@ -140,7 +121,7 @@ for t in triangle(end: MAX) {
     }
 
     if (divs > GOAL) {
-        print("t = \(t), divs = \(divs)}")
+        print("t = \(t), divs = \(divs)")
         print("Answer =", t)
         //exit()
     }
