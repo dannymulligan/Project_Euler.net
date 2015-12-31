@@ -4,8 +4,7 @@
 //     http://iosdeveloperzone.com/2014/10/13/swift-standard-library-generators-sequences-and-collections/
 
 
-struct TriangleSequence : SequenceType
-{
+struct TriangleSequence: SequenceType {
     let n: Int
     
     struct Generator: GeneratorType {
