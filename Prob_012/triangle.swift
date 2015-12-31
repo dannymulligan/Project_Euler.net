@@ -3,8 +3,6 @@
 // Based on code from:
 //     http://iosdeveloperzone.com/2014/10/13/swift-standard-library-generators-sequences-and-collections/
 
-import Foundation
-
 
 struct TriangleSequence : SequenceType
 {
