@@ -31,7 +31,7 @@
 MAX = 12376  # t(12375) = 76576500 with 576 divisors
 GOAL = 500
 
-LIMIT_PRIME = MAX*(MAX+1)/2 + 1
+LIMIT_PRIME = (MAX*(MAX+1)/2 + 1)
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
 
 
