@@ -14,7 +14,6 @@ def calculate_primes(limit=LIMIT_PRIME):
 
     # Optimization to allow us to increment i by 2 for the rest of the algoritm
     i = 2
-    prime_table[i] = i
     primes.append(i)
     j = i**2
     while (j < limit):
