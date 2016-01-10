@@ -656,6 +656,12 @@ My percentage rank is 0.291%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 19 more than I have currently solved.  There are currently 464,324 users with 1 or
 more problems solved.  There are 69,470 users with 25 or more problems solved, which is 14.962% of all.
 
+As of 01/10/16:
+I have solved 202 problems and am at position 195 on level 8, this puts me at position 1,505 overall.
+My percentage rank is 0.269%.  My best ever rank was 1,048, I'd need to have solved 231 problems to be at that
+same level today, which is 19 more than I have currently solved.  There are currently 559,098 users with 1 or
+more problems solved.  There are 78,552 users with 25 or more problems solved, which is 14.050% of all.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -1013,7 +1019,7 @@ more problems solved.  There are 69,470 users with 25 or more problems solved, w
 354 -
 355 -
 356 -
-357 - Lucky Luke,
+357 - Solved, Lucky Luke,
 358 -
 359 - Prime Obsession,
 360 -
@@ -1180,7 +1186,7 @@ more problems solved.  There are 69,470 users with 25 or more problems solved, w
 Solved 48 out of 50 Prime Obsession (157, 163, 167, 181, 199, 223, 227, 229, 233, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
 Solved 11 out of 12 Fibonacci Fever (233)
 Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325)
-Solved 44 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 319, 321, 327, 331, 339, 357, 361, 367, 385, 391, 393, 399)
+Solved 45 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 319, 321, 327, 331, 339, 361, 367, 385, 391, 393, 399)
 
 
 Target list for the next few months (finish all problems <= 150, finish Fibonacci Fever):
@@ -1210,4 +1216,3 @@ Solutions in progress
 152 - Writing 1/2 as a sum of inverse squares
 190 - Maximizing a weighted product (Triangle Trophy)
 143 - Investigating the Torricelli point of a triangle (Complete 1-150)
-357 - Prime generating integers
