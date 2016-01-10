@@ -114,11 +114,10 @@ assert is_prime(5678039) == True
 ############################################################
 def factors(n):
     answer = []
-    i = 0
-    while n != 1:
-        if (n % primes[i]) == 0:
-            n /= primes[i]
-            answer.append(primes[i])
-        else:
-            i += 1
-    return answer
+    while True:
+        if prime_table[n] == 1:
+            answer.append(n)
+            answer.sort()
+            return answer
+        answer.append(prime_table[n])
+        n /= prime_table[n]
