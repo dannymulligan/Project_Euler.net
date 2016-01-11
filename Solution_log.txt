@@ -662,6 +662,12 @@ My percentage rank is 0.269%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 19 more than I have currently solved.  There are currently 559,098 users with 1 or
 more problems solved.  There are 78,552 users with 25 or more problems solved, which is 14.050% of all.
 
+As of 01/10/16:
+I have solved 203 problems and am at position 184 on level 8, this puts me at position 1,480 overall.
+My percentage rank is 0.265%.  My best ever rank was 1,048, I'd need to have solved 230 problems to be at that
+same level today, which is 17 more than I have currently solved.  There are currently 559,177 users with 1 or
+more problems solved.  There are 78,561 users with 25 or more problems solved, which is 14.049% of all.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -1048,7 +1054,7 @@ more problems solved.  There are 78,552 users with 25 or more problems solved, w
 384 -
 385 - Lucky Luke,
 386 -
-387 -
+387 - Solved,
 388 -
 389 - Prime Obsession,
 390 -
@@ -1210,7 +1216,6 @@ Other problems that contribute to multiple trophies (as of 01/24/15)
 313 - Prime Obsession (solved by 775, 5th easiest prime number problem)
 
 Solutions in progress
-387 - Harshad Numbers
 501 - Eight Divisors
 202 - Find the 200th prime-proof sqube containing the contiguous sub-string "200"
 152 - Writing 1/2 as a sum of inverse squares
