@@ -199,6 +199,8 @@
 #199: Problem 106, solved 02/09/15
 #200: Problem 493, solved 02/23/15
 #201: Problem 303, solved 02/24/15
+#202: Problem 357, solved 01/10/16
+#203: Problem 387, solved 01/10/16
 
 
 -rwxrwxrwx  1 dannymulligan  staff    1577 May  3  2009 Prob_004/prob_004.c
