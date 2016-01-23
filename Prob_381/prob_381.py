@@ -5,9 +5,9 @@
 #
 # (prime-k) factorial
 #
-# For a prime p let S(p) = ((p-k)!) mod(p) for 1<=k<=5.
+# For a prime p let S(p) = ((p-k)!) mod(p) for 1 <= k <= 5.
 #
-# For example, if p=7,
+# For example, if p = 7,
 #     (7-1)! + (7-2)! + (7-3)! + (7-4)! + (7-5)!
 #   = 6! + 5! + 4! + 3! + 2!
 #   = 720+120+24+6+2
@@ -19,16 +19,25 @@
 # Find S(p) for 5 <= p <= 10^8.
 #
 
+# S(100)   = 480
+# S(200)   = 2248
+# S(500)   = 10623
+# S(10**3) = 38140
+# S(10**4) = 2882332
+# S(10**5) = 226591981
+# S(10**6) = 18773749932
+# S(10**7) = 1601954022810
+
 import sys
 import time
 start_time = time.clock()
 
 ########################################
-LIMIT = 10**5
+LIMIT = 10**8
 
 
 ########################################
-LIMIT_PRIME = LIMIT
+LIMIT_PRIME = LIMIT+1
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
 primes = []
 #prime_table = [1,2]*(LIMIT_PRIME/2)  # table of largest factor
@@ -60,6 +69,34 @@ def is_prime(x):
 
 
 ########################################
+
+# Simpler but slower
+#def modinv(n, p):
+#    return (n**(p-2)) % p
+
+def egcd(a, b):
+    if a == 0:
+        return (b, 0, 1)
+    else:
+        g, y, x = egcd(b % a, a)
+        return (g, x - (b // a) * y, y)
+
+def modinv(a, m):
+    g, x, y = egcd(a, m)
+    if g != 1:
+        raise Exception('modular inverse does not exist')
+    else:
+        return x % m
+
+#assert modinv(6, 7) == 6
+#assert modinv(5, 7) == 3
+#assert modinv(4, 7) == 2
+#assert modinv(3, 7) == 5
+#assert modinv(2, 7) == 4
+#assert modinv(1, 7) == 1
+
+
+########################################
 def fact(n, p):
     f = 1
     for i in range(n, 1, -1):
@@ -80,31 +117,23 @@ def s(p):
     answer = 0
 
     # fact(p-1,p) is always p-1
-    #x = fact(p-1, p)
-    #answer = (answer + x) % p
-    #print(" {:3}".format(x)),
-
     # fact(p-2,p) is always 1
-    #x = fact(p-2, p)
-    #answer = (answer + x) % p
-    #print("+ {:3}".format(x)),
+    # These two terms sum to p, or 0 after the modulus
 
-    # fact(p-3,p) is always (p-1)/2
-    x = (p-1)/2
-    #x = fact(p-3, p)
-    answer = (answer + x) % p
+    # fact(p-3,p) is equal to fact(p-2)/(p-2)
+    x = (1 * modinv(p-2, p)) % p
     #print("+ {:3}".format(x)),
+    answer = (answer + x) % p
 
-    # fact(p-5,p) varies
-    x = fact(p-5, p)
-    answer = (answer + x) % p
+    # fact(p-4,p) is equal to fact(p-3)/(p-3)
+    x = (x * modinv(p-3, p)) % p
     #print("+ {:3}".format(x)),
+    answer = (answer + x) % p
 
-    # fact(p-4,p) varies
-    #x = fact(p-4, p)
-    x = (x * (p - 4)) % p
-    answer = (answer + x) % p
+    # fact(p-5,p) is equal to fact(p-4)/(p-4)
+    x = (x * modinv(p-4, p)) % p
     #print("+ {:3}".format(x)),
+    answer = (answer + x) % p
 
     #print(" = {}".format(answer))
 
@@ -114,17 +143,26 @@ def s(p):
 
 
 ########################################
+def sum_s(n):
+    sum_s = 0
+    for p in range(5, n+1):
+        if (p % 100000) == 0:
+            print p
+        if not is_prime(p):
+            continue
+        x = s(p)
+        sum_s += x
+    return sum_s
 
-answer = 0
-for p in range(5, LIMIT):
-    if (p % 1000) == 0:
-        print p
-    if not is_prime(p):
-        continue
-    x = s(p)
-    #print("s({}) = {}".format(p, x))
-    answer += x
+#assert sum_s(100)  ==   480
+#assert sum_s(200)  ==  2248
+#assert sum_s(500)  == 10623
+#assert sum_s(1000) == 38140
 
-print("Answer = {}".format(answer))
+
+########################################
+
+answer = sum_s(LIMIT)
+print("Answer for 5 <= p <= {} is {}".format(LIMIT, answer))
 
 print("Time taken = {0} seconds".format(time.clock() - start_time))
