@@ -24,7 +24,14 @@ start_time = time.clock()
 
 ############################################################
 SIZE = 100
-
+# SIZE = 4, answer = 42
+# SIZE = 6, answer = 156
+# SIZE = 8, answer = 376
+# SIZE = 10, answer = 862
+# SIZE = 20, answer = 5582
+# SIZE = 30, answer = 19281
+# SIZE = 40, answer = 45655
+# SIZE = 50, answer = 88013
 
 ############################################################
 # Generator to calculate squares
@@ -111,12 +118,17 @@ print("Searching for solutions up to SIZE={}".format(SIZE))
 answer = 0
 for a in range(1, SIZE+1):
     for b in range(1, SIZE+1):
-        for c in range(1, SIZE+1):
-            for d in range(1, SIZE+1):
+        for c in range(1, a+1):
+            for d in range(1, b+1):
                 count = quad[a][b] + quad[b][c] + quad[c][d] + quad[d][a] + a + b + c + d - 3
                 if is_square(count):
-                    #print("solution: count={x} a={a} b={b} c={c} d={d}".format(a=a, b=b, c=c, d=d, x=count))
-                    answer += 1
+                    answers_found = 1
+                    if a != c:
+                        answers_found *= 2
+                    if b != d:
+                        answers_found *= 2
+                    #print("{n} solutions found: count={x} a={a} b={b} c={c} d={d}".format(n=answers_found, a=a, b=b, c=c, d=d, x=count))
+                    answer += answers_found
                     if (answer % 10000) == 0:
                         print("{} solutions found".format(answer))
 
@@ -143,4 +155,25 @@ print("Answer = {}".format(answer))
 #
 #print("rev_inside = {}".format(rev_inside))
 
+if   SIZE == 4:
+    assert answer == 42
+elif SIZE == 6:
+    assert answer == 156
+elif SIZE == 8:
+    assert answer == 376
+elif SIZE == 10:
+    assert answer == 862
+elif SIZE == 20:
+    assert answer == 5582
+elif SIZE == 30:
+    assert answer == 19281
+elif SIZE == 40:
+    assert answer == 45655
+elif SIZE == 50:
+    assert answer == 88013
+
 print("Time taken = {0} seconds".format(time.clock() - start_time))
+
+# Algorithm improvements (exploting symmetry so that c <= a, d <= b)
+# speed up the algorithm from 466.763071 seconds to 122.268225 seconds
+# for SIZE=100 = a 3.82x speedup
