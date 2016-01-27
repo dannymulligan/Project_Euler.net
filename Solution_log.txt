@@ -205,6 +205,8 @@
 #205: Problem 381, solved 01/23/16
 #206: Problem 329, solved 01/23/16
 #207: Problem 504, solved 01/25/16
+#208: Problem 323, solved 01/26/16
+#209: Problem 315, solved 01/27/16
 
 
 -rwxrwxrwx  1 dannymulligan  staff    1577 May  3  2009 Prob_004/prob_004.c
@@ -692,6 +694,12 @@ My percentage rank is 0.246%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 12 more than I have currently solved.  There are currently 564,069 users with 1 or
 more problems solved.  There are 78,999 users with 25 or more problems solved, which is 14.005% of all.
 
+As of 01/27/16:
+I have solved 209 problems and am at position 128 on level 8, this puts me at position 1,373 overall.
+My percentage rank is 0.243%.  My best ever rank was 1,048, I'd need to have solved 230 problems to be at that
+same level today, which is 11 more than I have currently solved.  There are currently 564,569 users with 1 or
+more problems solved.  There are 79,029 users with 25 or more problems solved, which is 13.998% of all.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -1007,7 +1015,7 @@ more problems solved.  There are 78,999 users with 25 or more problems solved, w
 312 -
 313 - Prime Obsession,
 314 -
-315 -
+315 - Solved
 316 -
 317 - Prime Obsession,
 318 -

@@ -197,7 +197,7 @@ save[6][8] = 6
 save[6][9] = 5
 
 save[7][8] = 4
-save[7][9] = 6
+save[7][9] = 4
 
 save[8][9] = 6
 
@@ -221,31 +221,64 @@ for x in range(10):
 #        print(save[x][y]),
 #    print
 
+# 6 2 4 4 3 4 5 4 6 5
+# 2 2 1 2 2 1 1 2 2 2
+# 4 1 5 4 2 3 4 2 5 4
+# 4 2 4 5 3 4 4 3 5 5
+# 3 2 2 3 4 3 3 3 4 4
+# 4 1 3 4 3 5 5 3 5 5
+# 5 1 4 4 3 5 6 3 6 5
+# 4 2 2 3 3 3 3 4 4 4
+# 6 2 5 5 4 5 6 4 7 6
+# 5 2 4 5 4 5 5 4 6 6
+
 
 ############################################################
 def power_saving(x, y):
+    #print("power_saving({x},{y})".format(x=x, y=y))
     ans = 0
     while (x > 0) & (y > 0):
         x0 = x % 10  # lowest digit
         y0 = y % 10  # lowest digit
         ans += 2*save[x0][y0]
+        #print("x0={x0} y0={y0} x={x} y={y} ans={a}".format(x0=x0, y0=y0, x=x, y=y, a=ans))
         x /= 10
         y /= 10
     return ans
 
 #assert power_saving(137, 11) + power_saving(11, 2) == 10
+#assert power_saving(17, 8) == 8
+#print("power_saving(37, 10) = {}".format(power_saving(37, 10)))
+#assert power_saving(37, 10) == 12
+#print("power_saving(10, 1) = {}".format(power_saving(10, 1)))
+#assert power_saving(10, 1) == 4
+#print("power_saving(1999, 28) = {}".format(power_saving(1999, 28)))
+#assert  power_saving(1999, 28) == 20
 
 
 ############################################################
 def count_savings(n):
     ans = 0
-    while (n > 10):
+    while (n >= 10):
         prev = n
         n = digital_root(n)
         ans += power_saving(prev, n)
+        #print("prev={p} n={n} ans={a}".format(p=prev, n=n, a=ans))
     return ans
 
-assert count_savings(137) == 10
+#assert count_savings(17) == 8
+#assert count_savings(19) == 18
+#assert count_savings(23) == 8
+#assert count_savings(29) == 8
+#assert count_savings(31) == 4
+#assert count_savings(37) == 16
+#assert count_savings(41) == 2
+#assert count_savings(43) == 6
+#assert count_savings(47) == 10
+#assert count_savings(53) == 10
+#assert count_savings(59) == 16
+#assert count_savings(137) == 10
+#assert count_savings(1999993) == 38
 
 
 ############################################################
@@ -254,6 +287,9 @@ prime_count = 0
 for p in primes_between(LOW, HIGH):
     prime_count += 1
     answer += count_savings(p)
+    #if prime_count < 100:
+    #    print("p={p} answer={a} count_savings({p})={c}".format(p=p, a=answer, c=count_savings(p)))
+
 print("Found {p} primes between {low} and {high}".format(p=prime_count, low=LOW, high=HIGH))
 print("Answer = {}".format(answer))
 
