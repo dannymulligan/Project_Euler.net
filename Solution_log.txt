@@ -207,73 +207,7 @@
 #207: Problem 504, solved 01/25/16
 #208: Problem 323, solved 01/26/16
 #209: Problem 315, solved 01/27/16
-
-
--rwxrwxrwx  1 dannymulligan  staff    1577 May  3  2009 Prob_004/prob_004.c
--rwxrwxrwx  1 dannymulligan  staff   12221 May  3  2009 Prob_008/prob_008.c
--rwxrwxrwx  1 dannymulligan  staff    1309 May  3  2009 Prob_007/prob_007.c
--rwxrwxrwx  1 dannymulligan  staff     749 May  4  2009 Prob_009/prob_009.c
--rwxrwxrwx  1 dannymulligan  staff    1272 May  5  2009 Prob_010/prob_010.c
--rwxrwxrwx  1 dannymulligan  staff   10510 May  6  2009 Prob_011/prob_011.c
--rwxrwxrwx  1 dannymulligan  staff    1633 May  7  2009 Prob_012/prob_012.c
--rwxrwxrwx  1 dannymulligan  staff   31232 May  8  2009 Prob_015/prob_015.xls
--rwxrwxrwx  1 dannymulligan  staff    1558 May  8  2009 Prob_020/prob_020.c
--rwxrwxrwx  1 dannymulligan  staff    1661 May  8  2009 Prob_016/prob_016.c
--rwxrwxrwx  1 dannymulligan  staff   29696 May  8  2009 Prob_018/prob_018.xls
--rwxrwxrwx  1 dannymulligan  staff  226304 May  8  2009 Prob_067/prob_067.xls
--rwxrwxrwx  1 dannymulligan  staff    2615 May  8  2009 Prob_025/prob_025.c
--rwxrwxrwx  1 dannymulligan  staff    1601 May  8  2009 Prob_014/prob_014.c
--rwxrwxrwx  1 dannymulligan  staff    3875 May  8  2009 Prob_017/prob_017.c
--rwxrwxrwx  1 dannymulligan  staff    3056 May  9  2009 Prob_019/prob_019.c
--rwxrwxrwx  1 dannymulligan  staff    1692 May  9  2009 Prob_021/prob_021.c
--rwxrwxrwx  1 dannymulligan  staff    2838 May  9  2009 Prob_023/prob_023.c
--rwxrwxrwx  1 dannymulligan  staff    4295 May 10  2009 Prob_043/prob_043.c
--rwxrwxrwx  1 dannymulligan  staff    5301 May 10  2009 Prob_035/prob_035.c
--rwxrwxrwx  1 dannymulligan  staff    6384 May 10  2009 Prob_037/prob_037.c
--rwxrwxrwx  1 dannymulligan  staff    2054 May 10  2009 Prob_027/prob_027.c  #30 done
--rwxrwxrwx  1 dannymulligan  staff    2412 May 10  2009 Prob_030/prob_030.c
--rwxrwxrwx  1 dannymulligan  staff    2453 May 10  2009 Prob_028/prob_028.c
--rwxrwxrwx  1 dannymulligan  staff    3106 May 13  2009 Prob_050/prob_050.c
--rwxrwxrwx  1 dannymulligan  staff    5550 May 13  2009 Prob_029/prob_029.c
--rwxrwxrwx  1 dannymulligan  staff   14328 May 13  2009 Prob_041/prob_041.c
--rwxrwxrwx  1 dannymulligan  staff    2898 May 13  2009 Prob_031/prob_031.c
--rwxrwxrwx  1 dannymulligan  staff    2933 May 14  2009 Prob_034/prob_034.c
--rwxrwxrwx  1 dannymulligan  staff    1340 May 15  2009 Prob_022/prob_022.c  #37 done
--rwxrwxrwx  1 dannymulligan  staff    4555 May 15  2009 Prob_036/prob_036.c
--rwxrwxrwx  1 dannymulligan  staff    2505 May 15  2009 Prob_048/prob_048.c
--rwxrwxrwx  1 dannymulligan  staff    8463 May 16  2009 Prob_038/prob_038.c
--rwxrwxrwx  1 dannymulligan  staff    3942 May 16  2009 Prob_032/prob_032.c
--rwxrwxrwx  1 dannymulligan  staff    2060 May 16  2009 Prob_045/prob_045.c
--rwxrwxrwx  1 dannymulligan  staff    2769 May 17  2009 Prob_040/prob_040.c
--rwxrwxrwx  1 dannymulligan  staff    2972 May 17  2009 Prob_026/prob_026.c
--rwxrwxrwx  1 dannymulligan  staff    2032 May 17  2009 Prob_042/prob_042.c
--rwxrwxrwx  1 dannymulligan  staff    2173 May 17  2009 Prob_039/prob_039.c
--rwxrwxrwx  1 dannymulligan  staff    1336 May 17  2009 Prob_044/prob_044.c
--rwxrwxrwx  1 dannymulligan  staff    1876 May 17  2009 Prob_047/prob_047.c
--rwxrwxrwx  1 dannymulligan  staff    2674 May 18  2009 Prob_033/prob_033.c
--rwxrwxrwx  1 dannymulligan  staff    2304 May 21  2009 Prob_046/prob_046.c
--rwxrwxrwx  1 dannymulligan  staff    1839 May 22  2009 Prob_056/prob_056.c
--rwxrwxrwx  1 dannymulligan  staff    2905 May 25  2009 Prob_082/prob_082.c
--rwxrwxrwx  1 dannymulligan  staff    3581 May 25  2009 Prob_083/prob_083.c
--rwxrwxrwx  1 dannymulligan  staff    2846 May 25  2009 Prob_081/prob_081.c
--rwxrwxrwx  1 dannymulligan  staff   24116 May 26  2009 Prob_096/prob_096.c
--rwxrwxrwx  1 dannymulligan  staff    2408 Jun  7  2009 Prob_097/prob_097.c
--rwxrwxrwx  1 dannymulligan  staff    3487 Jun  7  2009 Prob_057/prob_057.c
--rwxrwxrwx  1 dannymulligan  staff    4753 Jun  7  2009 Prob_049/prob_049.c
--rwxrwxrwx  1 dannymulligan  staff    2916 Jun  8  2009 Prob_058/prob_058.c
--rwxrwxrwx  1 dannymulligan  staff    4535 Sep  1  2009 Prob_051/prob_051.c
--rwxr-xr-x  1 dannymulligan  staff    6468 Oct  5  2009 Prob_078/prob_078e.c
--rwxr-xr-x  1 dannymulligan  staff    7072 Oct  5  2009 Prob_078/prob_078d.c
--rwxr-xr-x  1 dannymulligan  staff    6508 Oct  5  2009 Prob_078/prob_078c.c
--rwxr-xr-x  1 dannymulligan  staff    4252 Oct  5  2009 Prob_078/prob_078b.c
--rwxr-xr-x  1 dannymulligan  staff    4544 Oct  5  2009 Prob_078/prob_078a.c
--rwxr-xr-x  1 dannymulligan  staff    4196 Oct  5  2009 Prob_078/prob_078.c
--rwxr-xr-x  1 dannymulligan  staff    4266 Oct 20  2009 Prob_069/prob_069b.c
--rwxr-xr-x  1 dannymulligan  staff    4018 Oct 20  2009 Prob_069/prob_069a.c
--rw-r--r--  1 dannymulligan  staff   95232 Oct 20  2009 Prob_099/prob_099.xls
--rw-r--r--  1 dannymulligan  staff    2970 Oct 20  2009 Prob_052/prob_052.c
--rwxr-xr-x  1 dannymulligan  staff    2583 Oct 25  2009 Prob_072/prob_072b.c
--rwxrwxrwx  1 dannymulligan  staff    1118 Nov 20  2009 Prob_006/prob_006.c
+#210: Problem 336, solved 01/31/16
 
 
 As of 7/3/11
@@ -700,6 +634,12 @@ My percentage rank is 0.243%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 11 more than I have currently solved.  There are currently 564,569 users with 1 or
 more problems solved.  There are 79,029 users with 25 or more problems solved, which is 13.998% of all.
 
+As of 01/31/16:
+I have solved 210 problems and am at position 114 on level 8, this puts me at position 1,348 overall.
+My percentage rank is 0.238%.  My best ever rank was 1,048, I'd need to have solved 230 problems to be at that
+same level today, which is 10 more than I have currently solved.  There are currently 565,807 users with 1 or
+more problems solved.  There are 79,137 users with 25 or more problems solved, which is 13.987% of all.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -1036,7 +976,7 @@ more problems solved.  There are 79,029 users with 25 or more problems solved, w
 333 -
 334 -
 335 -
-336 -
+336 - Solved
 337 - Prime Obsession,
 338 -
 339 - Lucky Luke,

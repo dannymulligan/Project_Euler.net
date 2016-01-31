@@ -45,11 +45,77 @@
 # Find the 2011th lexicographic maximix arrangement for eleven
 # carriages.
 
+import itertools
 import sys
 import time
 start_time = time.clock()
 
-########################################
+################################################################################
+SIZE = 6
+GOAL = 10
+SIZE = 11
+GOAL = 2011
 
+
+################################################################################
+def to_ascii(p):
+    ans = ""
+    for i in p:
+        ans += chr(i+ord('A'))
+    return ans
+
+
+################################################################################
+def swaps(p):
+    ans = 0
+    plen = len(p)
+    #print("plen={}".format(plen))
+    for i in range(plen-1):
+
+        if p[i] == i:
+            # Swap not needed
+            # By definition this can't be a maximix arrangement, so stop looking
+            return 0
+
+        # Swap is needed, search for the next item
+        for j in range(i+1,plen-1):
+            if p[j] == i:
+                for k in range(j, j+(plen-j)/2):
+                    p[k], p[plen-k+j-1] = p[plen-k+j-1], p[k]
+                ans += 1
+
+        # Swap is needed, swap next item into correct place
+        for k in range(i, i+(plen-i)/2):
+            p[k], p[plen-k+i-1] = p[plen-k+i-1], p[k]
+        ans += 1
+
+    return ans
+
+
+################################################################################
+print("Running with SIZE = {} and GOAL = {}".format(SIZE, GOAL))
+
+carriages = [x for x in range(SIZE)]
+
+maxi_size = (SIZE-2)*2+1
+maxi_count = 0
+
+for cnt, p in enumerate(itertools.permutations(carriages)):
+    #print("Processing {}, {}".format(p, to_ascii(p)))
+
+    p_swaps = swaps(list(p))
+    if p_swaps == maxi_size:
+        maxi_count += 1
+        if (maxi_count % 100) == 0:
+            print("Working on {} = {}".format(p, to_ascii(p))),
+            print("    cnt={}, p_swaps={}, maxi_count={}".format(cnt, p_swaps, maxi_count))
+        if maxi_count == GOAL:
+            print("Found {} = {}".format(p, to_ascii(p))),
+            print("    cnt={}, p_swaps={}, maxi_count={}".format(cnt, p_swaps, maxi_count))
+            print("Time taken = {0} seconds".format(time.clock() - start_time))
+            sys.exit(0)
+
+
+print("{} permutations examined without finding {} maximix".format(cnt, GOAL))
 
 print("Time taken = {0} seconds".format(time.clock() - start_time))
