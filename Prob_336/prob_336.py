@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 #
 # Project Euler.net Problem 336
@@ -58,35 +58,38 @@ GOAL = 2011
 
 
 ################################################################################
-def to_ascii(p):
+def to_ascii(perm):
+    """Convert a carriage permutation to a printable form"""
     ans = ""
-    for i in p:
+    for i in perm:
         ans += chr(i+ord('A'))
     return ans
 
 
 ################################################################################
-def swaps(p):
+def swaps(perm):
+    """Calculate the number of swaps needed to fix the order of the carriages
+    using the 'simple' method"""
     ans = 0
-    plen = len(p)
+    plen = len(perm)
     #print("plen={}".format(plen))
     for i in range(plen-1):
 
-        if p[i] == i:
+        if perm[i] == i:
             # Swap not needed
             # By definition this can't be a maximix arrangement, so stop looking
             return 0
 
         # Swap is needed, search for the next item
-        for j in range(i+1,plen-1):
-            if p[j] == i:
-                for k in range(j, j+(plen-j)/2):
-                    p[k], p[plen-k+j-1] = p[plen-k+j-1], p[k]
+        for j in range(i+1, plen-1):
+            if perm[j] == i:
+                for k in range(j, j+(plen-j)//2):
+                    perm[k], perm[plen-k+j-1] = perm[plen-k+j-1], perm[k]
                 ans += 1
 
         # Swap is needed, swap next item into correct place
-        for k in range(i, i+(plen-i)/2):
-            p[k], p[plen-k+i-1] = p[plen-k+i-1], p[k]
+        for k in range(i, i+(plen-i)//2):
+            perm[k], perm[plen-k+i-1] = perm[plen-k+i-1], perm[k]
         ans += 1
 
     return ans
@@ -107,10 +110,10 @@ for cnt, p in enumerate(itertools.permutations(carriages)):
     if p_swaps == maxi_size:
         maxi_count += 1
         if (maxi_count % 100) == 0:
-            print("Working on {} = {}".format(p, to_ascii(p))),
+            print("Working on {} = {}".format(p, to_ascii(p)), end='')
             print("    cnt={}, p_swaps={}, maxi_count={}".format(cnt, p_swaps, maxi_count))
         if maxi_count == GOAL:
-            print("Found {} = {}".format(p, to_ascii(p))),
+            print("Found {} = {}".format(p, to_ascii(p)), end='')
             print("    cnt={}, p_swaps={}, maxi_count={}".format(cnt, p_swaps, maxi_count))
             print("Time taken = {0} seconds".format(time.clock() - start_time))
             sys.exit(0)
