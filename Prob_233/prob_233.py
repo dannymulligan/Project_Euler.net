@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 #
 # Project Euler.net Problem 233
@@ -17,11 +17,95 @@
 # Position #??? on level ?
 
 import sys
+#print(sys.version)
+from fractions import gcd
 import time
 start_time = time.clock()
 
 ########################################
 
+def even(n):
+    return (n % 2) == 0
 
-print "Time taken = {0} seconds".format(time.clock() - start_time)
+def odd(n):
+    return (n % 2) == 1
 
+
+########################################
+
+def pythagorean_triple(limit):
+    '''Return pythagorean triples (a, b, c)
+    where a**2 + b**2 = c**3
+    with a < b
+    and c < limit'''
+    p = 1
+    while True:
+        p += 1
+        if (p**2 + 1) >= limit:
+            break
+
+        for q in range(1, p):
+            a = 2*p*q
+            b = (p*p - q*q)
+            c = (p*p + q*q)
+
+            if gcd(a, b) != 1:
+                continue
+            if a > b:
+                b, a = a, b
+
+            if c > limit:
+                break
+
+            yield (a, b, c)
+            n = 2
+            while n*c < limit:
+                yield (n*a, n*b, n*c)
+                n += 1
+    return
+
+if False:
+    # Test code
+    expected_answer_count = 20  # 20 pythagorean triples with c < 51
+    answer_count = 0
+    for (a, b, c) in pythagorean_triple(51):
+        if a**2 + b**2 - c**2 == 0:
+            answer_count += 1
+            if gcd(a, b) == 1:
+                print("({:2}, {:2}, {:2})".format(a, b, c))
+            else:
+                print("({:2}, {:2}, {:2}) = {:2} * ({:2}, {:2}, {:2})".format(a, b, c,
+                    gcd(a, b), a/gcd(a,b), b/gcd(a,b), c/gcd(a,b)))
+        else:
+            print("ERROR p = {}, q = {}, (a, b, c) = ({}, {}, {})".format(p, q, a, b, c))
+    assert answer_count == expected_answer_count
+
+########################################
+
+Now = time.clock()
+for n in range(10**0, 10**7):
+    if (n % 10**3) == 0:
+        PrevNow = Now
+        Now = time.clock()
+        TotalTime = Now - start_time
+        DeltaTime = Now - PrevNow
+        print("N = {:,} after {:,.1f} seconds, delta {:,.1f} seconds".format(n, TotalTime, DeltaTime))
+
+    ncnt = 4  # the 4 given points
+    for x in range(1, n//2):
+        y = ((n**2)/2 - (x-n/2)**2)**0.5 + n/2
+        yint, yfrac = divmod(y, 1)
+        yint = int(yint)
+        check = (n**2)/2 - (x-n/2)**2 - (yint-n/2)**2
+        if check < 0.00001:
+            ncnt += 8  # because of symmetry
+            #print("N = {:,}: x = {:6,}, y = {:6,}".format(n, x, yint))
+
+    if ncnt >= 420:
+        if ncnt == 420:
+            print("F({:,}) = {:,} = Match!".format(n, ncnt))
+        else:
+            print("F({:,}) = {:,}".format(n, ncnt))
+
+
+print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
