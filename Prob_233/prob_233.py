@@ -16,6 +16,36 @@
 # ?? problems solved
 # Position #??? on level ?
 
+#
+#              |
+#              |          ***************
+#              |     *****               *****
+#              | ****                         ****
+#             *+*                                 *+*
+#           ** |                                     **
+#         **   |                                       **
+#        *     |                                         *
+#       *      |                                          *
+#      *       |                                           *
+#     *        |                                            *
+#    *         |                                             *
+#    *         |                                             *
+#    *         |                 +                           *
+#    *         |                                             *
+#    *         |                                             *
+#     *        |                                            *
+#      *       |                                           *
+#       *      |                                          *
+#        *     |                                         *
+#         **   |                                       **
+#           ** |                                     **
+#  -----------*+*---------------------------------*+*-----------
+#              | ****                         ****
+#              |     *****               *****
+#              |          ***************
+#              |
+#
+
 import sys
 from fractions import gcd
 import time
@@ -65,7 +95,7 @@ def pythagorean_triple(limit):
                 n += 1
     return
 
-if True:
+if False:
     # Test code
     expected_answer_count = 20  # 20 pythagorean triples with c < 51
     answer_count = 0
@@ -88,8 +118,12 @@ if True:
 
 ########################################
 
+# 2016-08-08 searched to N = 110,000 and found 0 cases with 420 lattice points
+# 2016-08-08 searched to N = 10,000 and found 60 cases with 108 lattice points
+
+MatchCount = 0
 Now = time.clock()
-for n in range(10**0, 10**7):
+for n in range(10**0, 10**4):
     if (n % 10**3) == 0:
         PrevNow = Now
         Now = time.clock()
@@ -108,9 +142,10 @@ for n in range(10**0, 10**7):
             ncnt += 8  # because of symmetry
             #print("N = {:,}: x = {:6,}, y = {:6,}".format(n, x, yint))
 
-    if ncnt >= 420:
-        if ncnt == 420:
-            print("F({:,}) = {:,} = Match!".format(n, ncnt))
+    if ncnt >= 100:
+        if ncnt == 108:
+            MatchCount += 1
+            print("F({:,}) = {:,} = Match {}".format(n, ncnt, MatchCount))
         else:
             print("F({:,}) = {:,}".format(n, ncnt))
 
