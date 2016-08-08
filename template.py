@@ -7,7 +7,7 @@
 #
 # Problem text
 #
-# Solved ??/??/15
+# Solved ??/??/16
 # ?? problems solved
 # Position #??? on level ?
 
@@ -22,10 +22,11 @@
 #pdb.set_trace()
 
 import sys
+#print(sys.version)
 import time
 start_time = time.clock()
 
 ########################################
 
 
-print("Time taken = {0} seconds".format(time.clock() - start_time))
+print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
