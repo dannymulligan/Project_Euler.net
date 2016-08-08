@@ -5,7 +5,7 @@
 # Let p(n) represent the number of different ways in which n coins can
 # be separated into piles. For example, five coins can separated into
 # piles in exactly seven different ways, so p(5)=7.
-# 
+#
 #     OOOOO
 #     OOOO O
 #     OOO OO
@@ -13,8 +13,13 @@
 #     OO OO O
 #     OO O O O
 #     O O O O O
-# 
+#
 # Find the least value of n for which p(n) is divisible by one million.
+#
+# This sequence is the same as...
+#     http://www.research.att.com/~njas/sequences/b000041.txt
+#     10001 terms of OEIS sequence A000041
+#     Computed by David W. Wilson 2006/10/18
 
 import cProfile
 
@@ -53,7 +58,7 @@ for i in range(0,3000,100):
     n = ways(i,i)
     if (n == 0):
         print "Found!!!   ways(%d,%d) %% 1000000 = %d" %(i, i, n)
-    if ((i % 25) == 0): 
+    if ((i % 25) == 0):
         print "ways(%d,%d) %% 1000000 = %d" %(i, i, n)
         print "len(ways_cache) = %d" %(len(ways_cache))
 
@@ -61,7 +66,7 @@ for i in range(5000,25000):
     n = ways(i,i)
     if (n == 0):
         print "Found!!!   ways(%d,%d) %% 1000000 = %d" %(i, i, n)
-    if ((i % 25) == 0): 
+    if ((i % 25) == 0):
         print "ways(%d,%d) %% 1000000 = %d" %(i, i, n)
         print "len(ways_cache) = %d" %(len(ways_cache))
 

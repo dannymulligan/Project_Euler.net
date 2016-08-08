@@ -1,4 +1,4 @@
-#!/usr/bin/swift
+#!/usr/bin/swift -I .
 //
 // Project Euler.net Problem 12
 //
@@ -29,26 +29,7 @@
 let MAX = 12376  // t(12375) = 76576500 with 576 divisors
 let GOAL = 500
 
-let LIMIT_PRIME = (MAX*(MAX+1)/2 + 1)
-var prime_table = [Int](count: LIMIT_PRIME, repeatedValue: 1)   // table of largest factor
-
-
-func calculate_primes() {
-    print("Calculating primes up to \(LIMIT_PRIME)")
-    var i = 2
-    var j: Int
-    while (i < (LIMIT_PRIME/2)) {
-        if (prime_table[i] == 1) {
-            j = i*2
-            while (j < LIMIT_PRIME) {
-                prime_table[j] = i
-                j += i
-            }
-        }
-        i += 1
-    }
-    print("Done calculating primes")
-}
+import primes
 
 calculate_primes()
 

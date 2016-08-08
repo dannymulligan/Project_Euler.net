@@ -32,6 +32,8 @@
 # number in the set.
 #
 
+import sys
+
 def p3 (n):
     return n*(n+1)/2
 def p4 (n):
@@ -69,7 +71,7 @@ def self_test():
     s6 += ", ..."
     s7 += ", ..."
     s8 += ", ..."
-    
+
     failed = False
     if (s3 == "1, 3, 6, 10, 15, ..." ):
         print "P(3,n) = {0}".format(s3)
@@ -156,7 +158,7 @@ print "{0} 4-digit numbers total (not counting {1} duplicates)".format(len(la), 
 for i0 in l8:
     t0 = 'p8'
     b1 = (i0 % 100) * 100
-    
+
     for i1 in range(b1, b1+100):
         if (i1 in la):
             if   (i1 in l8):  t1 = 'p8'
@@ -166,6 +168,7 @@ for i0 in l8:
             elif (i1 in l4):  t1 = 'p4'
             elif (i1 in l3):  t1 = 'p3'
 
+            #print "-22-: {0}={1}, {2}={3}".format(t0,i0, t1,i1)
             b2 = (i1 % 100) * 100
 
             for i2 in range(b2, b2+100):
@@ -177,6 +180,7 @@ for i0 in l8:
                     elif (i2 in l4):  t2 = 'p4'
                     elif (i2 in l3):  t2 = 'p3'
 
+                    #print "-333-: {0}={1}, {2}={3}, {4}={5}".format(t0,i0, t1,i1, t2,i2)
                     b3 = (i2 % 100) * 100
 
                     for i3 in range(b3, b3+100):
@@ -188,6 +192,7 @@ for i0 in l8:
                             elif (i3 in l4):  t3 = 'p4'
                             elif (i3 in l3):  t3 = 'p3'
 
+                            #print "-4444-: {0}={1}, {2}={3}, {4}={5}, {6}={7}".format(t0,i0, t1,i1, t2,i2, t3,i3)
                             b4 = (i3 % 100) * 100
 
                             for i4 in range(b4, b4+100):
@@ -199,6 +204,7 @@ for i0 in l8:
                                     elif (i4 in l4):  t4 = 'p4'
                                     elif (i4 in l3):  t4 = 'p3'
 
+                                    #print "-55555-: {0}={1}, {2}={3}, {4}={5}, {6}={7}, {8}={9}".format(t0,i0, t1,i1, t2,i2, t3,i3, t4,i4)
                                     b5 = (i4 % 100) * 100
 
                                     for i5 in range(b5, b5+100):
@@ -217,3 +223,4 @@ for i0 in l8:
                                                     temp = [t0, t1, t2, t3, t4, t5]  # t0 already known to be 'p(8,n)'
                                                     if (('p7' in temp) & ('p6' in temp) & ('p5' in temp) & ('p4' in temp) & ('p3' in temp)):
                                                         print "Found: {0}={1}, {2}={3}, {4}={5}, {6}={7}, {8}={9}, {10}={11}, sum={12}".format(t0,i0, t1,i1, t2,i2, t3,i3, t4,i4, t5,i5, (i0+i1+i2+i3+i4+i5))
+                                                        sys.exit(0)

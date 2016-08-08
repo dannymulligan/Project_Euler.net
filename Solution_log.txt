@@ -783,7 +783,7 @@ more problems solved.  There are 79,137 users with 25 or more problems solved, w
 140 - Solved,
 141 - Solved, Lucky Luke,
 142 - Solved,
-143 -
+143 - 65%
 144 - Solved, Unlucky Squares, Fibonacci Fever,
 145 - Solved,
 146 - Solved,
@@ -792,115 +792,115 @@ more problems solved.  There are 79,137 users with 25 or more problems solved, w
 149 - Solved, Prime Obsession,
 150 - Solved,
 151 - Solved, Prime Obsession, Lucky Luke,
-152 -
-153 - Triangle Trophy,
-154 -
-155 -
-156 -
-157 - Prime Obsession,
-158 -
-159 - Lucky Luke,
+152 - 65%
+153 - 65%,  Triangle Trophy,
+154 - 65%
+155 - 60%
+156 - 70%
+157 - 65%, Prime Obsession,
+158 - 55%
+159 - 60%, Lucky Luke,
 160 - Solved,
-161 -
+161 - 70%
 162 - Solved,
-163 - Prime Obsession, Lucky Luke,
+163 - 70%, Prime Obsession, Lucky Luke,
 164 - Solved,
 165 - Solved,
 166 - Solved,
-167 - Prime Obsession,
-168 -
+167 - 75%, Prime Obsession,
+168 - 65%
 169 - Solved, Unlucky Squares, Lucky Luke,
-170 -
-171 - Triangle Trophy, Lucky Luke,
-172 -
+170 - 70%
+171 - 65%, Triangle Trophy, Lucky Luke,
+172 - 55%
 173 - Solved, Prime Obsession,
 174 - Solved,
-175 -
-176 -
-177 -
-178 -
+175 - 70%
+176 - 70%
+177 - 80%
+178 - 55%
 179 - Solved, Prime Obsession,
-180 -
-181 - Prime Obsession,
+180 - 75%
+181 - 70%, Prime Obsession,
 182 - Solved,
 183 - Solved,
-184 -
-185 -
-186 -
+184 - 75%
+185 - 55%
+186 - 60%
 187 - Solved,
 188 - Solved,
-189 - Lucky Luke,
-190 - Triangle Trophy,
+189 - 70%, Lucky Luke,
+190 - 50%, Triangle Trophy,
 191 - Solved, Prime Obsession,
-192 -
+192 - 75%
 193 - Solved, Prime Obsession, Lucky Luke,
-194 -
-195 - Lucky Luke,
-196 - Unlucky Squares,
+194 - 75%
+195 - 75%, Lucky Luke,
+196 - 65%, Unlucky Squares,
 197 - Solved, Prime Obsession,
-198 -
-199 - Prime Obsession,
+198 - 80%
+199 - 70%, Prime Obsession,
 200 - Solved,
-201 - Lucky Luke,
-202 -
+201 - 65%, Lucky Luke,
+202 - 60%
 203 - Solved,
 204 - Solved,
 205 - Solved, Lucky Luke,
 206 - Solved,
 207 - Solved,
-208 -
-209 -
-210 - Triangle Trophy,
+208 - 70%
+209 - 60%
+210 - 70%, Triangle Trophy,
 211 - Solved, Prime Obsession, Lucky Luke,
-212 -
-213 -
+212 - 70%
+213 - 60%
 214 - Solved,
-215 -
+215 - 50%
 216 - Solved,
-217 -
-218 -
-219 - Lucky Luke,
-220 -
-221 -
-222 -
-223 - Prime Obsession, Lucky Luke,
-224 -
+217 - 70%
+218 - 55%
+219 - 70%, Lucky Luke,
+220 - 55%
+221 - 65%
+222 - 60%
+223 - 70%, Prime Obsession, Lucky Luke,
+224 - 75%
 225 - Solved, Unlucky Squares,
-226 -
-227 - Prime Obsession,
-228 -
-229 - Prime Obsession,
-230 -
+226 - 65%
+227 - 65%, Prime Obsession,
+228 - 70%
+229 - 70%, Prime Obsession,
+230 - 50%
 231 - Solved, Triangle Trophy, Lucky Luke,
-232 -
-233 - Prime Obsession, Fibonacci Fever,
+232 - 65%
+233 - 70%, Prime Obsession, Fibonacci Fever,
 234 - Solved
 235 - Solved, Lucky Luke,
-236 -
+236 - 80%
 237 - Solved, Lucky Luke,
-238 -
+238 - 75%
 239 - Solved, Prime Obsession,
-240 -
-241 - Prime Obsession, Lucky Luke,
-242 -
+240 - 60%
+241 - 80%, Prime Obsession, Lucky Luke,
+242 - 75%
 243 - Solved, Trinary Triumph,
-244 -
-245 -
-246 -
-247 -
-248 -
-249 -
-250 -
-251 - Prime Obsession,
-252 -
-253 - Triangle Trophy,
-254 -
-255 -
-256 - Unlucky Squares,
-257 - Prime Obsession,
-258 -
+244 - 70%
+245 - 80%
+246 - 80%
+247 - 65%
+248 - 70%
+249 - 60%
+250 - 55%
+251 - 70%, Prime Obsession,
+252 - 80%
+253 - 75%, Triangle Trophy,
+254 - 75%
+255 - 75%
+256 - 80%, Unlucky Squares,
+257 - 85%, Prime Obsession,
+258 - 70%
 259 - Solved, Lucky Luke,
-260 -
+260 - 70%
 261 - Lucky Luke,
 262 -
 263 - Prime Obsession,

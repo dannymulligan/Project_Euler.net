@@ -122,7 +122,7 @@ for x in range(10000, 99999):
         continue
 
     answer = x
-    #break
+    break
 
 print "Answer =", answer
 now_time = time.clock()
