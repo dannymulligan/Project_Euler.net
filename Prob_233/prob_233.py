@@ -17,15 +17,16 @@
 # Position #??? on level ?
 
 import sys
-#print(sys.version)
 from fractions import gcd
 import time
 start_time = time.clock()
 
 ########################################
 
+
 def even(n):
     return (n % 2) == 0
+
 
 def odd(n):
     return (n % 2) == 1
@@ -64,21 +65,26 @@ def pythagorean_triple(limit):
                 n += 1
     return
 
-if False:
+if True:
     # Test code
     expected_answer_count = 20  # 20 pythagorean triples with c < 51
     answer_count = 0
     for (a, b, c) in pythagorean_triple(51):
         if a**2 + b**2 - c**2 == 0:
             answer_count += 1
+            print("({:2}, {:2}, {:2})".format(a, b, c), end='')
             if gcd(a, b) == 1:
-                print("({:2}, {:2}, {:2})".format(a, b, c))
+                print()
             else:
-                print("({:2}, {:2}, {:2}) = {:2} * ({:2}, {:2}, {:2})".format(a, b, c,
-                    gcd(a, b), a/gcd(a,b), b/gcd(a,b), c/gcd(a,b)))
+                print(" = {:2} * ({:2}, {:2}, {:2})"
+                      .format(gcd(a, b),
+                              a//gcd(a, b),
+                              b//gcd(a, b),
+                              c//gcd(a, b)))
         else:
-            print("ERROR p = {}, q = {}, (a, b, c) = ({}, {}, {})".format(p, q, a, b, c))
+            print("ERROR (a, b, c) = ({}, {}, {})".format(a, b, c))
     assert answer_count == expected_answer_count
+    sys.exit()
 
 ########################################
 
@@ -89,7 +95,8 @@ for n in range(10**0, 10**7):
         Now = time.clock()
         TotalTime = Now - start_time
         DeltaTime = Now - PrevNow
-        print("N = {:,} after {:,.1f} seconds, delta {:,.1f} seconds".format(n, TotalTime, DeltaTime))
+        print("N = {:,} after {:,.1f} seconds, delta {:,.1f} seconds"
+              .format(n, TotalTime, DeltaTime))
 
     ncnt = 4  # the 4 given points
     for x in range(1, n//2):
