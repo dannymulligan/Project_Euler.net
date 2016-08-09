@@ -120,10 +120,13 @@ if False:
 
 # 2016-08-08 searched to N = 110,000 and found 0 cases with 420 lattice points
 # 2016-08-08 searched to N = 10,000 and found 60 cases with 108 lattice points
+# 2016-08-08 searched to N = 1,000 and found 8 cases with 60 lattice points
+# 2016-08-08 searched to N = 100 and found 2 cases with 36 lattice points
+# 2016-08-08 searched to N = 30 and found 1 cases with 20 lattice points
 
 MatchCount = 0
 Now = time.clock()
-for n in range(10**0, 10**4):
+for n in range(1, 30):
     if (n % 10**3) == 0:
         PrevNow = Now
         Now = time.clock()
@@ -140,10 +143,10 @@ for n in range(10**0, 10**4):
         check = (n**2)/2 - (x-n/2)**2 - (yint-n/2)**2
         if check < 0.00001:
             ncnt += 8  # because of symmetry
-            #print("N = {:,}: x = {:6,}, y = {:6,}".format(n, x, yint))
+            print("N = {:,}: x = {:6,}, y = {:6,}".format(n, x, yint))
 
-    if ncnt >= 100:
-        if ncnt == 108:
+    if ncnt >= 10:
+        if ncnt == 20:
             MatchCount += 1
             print("F({:,}) = {:,} = Match {}".format(n, ncnt, MatchCount))
         else:

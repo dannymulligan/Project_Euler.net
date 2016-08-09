@@ -1048,31 +1048,31 @@ more problems solved.  There are 79,137 users with 25 or more problems solved, w
 406 -
 407 -
 408 -
-409 - Prime Obsession,
+409 - Prime Obsession, Lucky Luke,
 410 -
 411 -
 412 -
 413 -
 414 -
-415 -
+415 - Lucky Luke,
 416 -
 417 -
 418 -
 419 - Prime Obsession,
 420 -
-421 - Prime Obsession,
+421 - Prime Obsession, Lucky Luke,
 422 -
 423 -
 424 -
 425 -
 426 -
-427 -
+427 - Lucky Luke,
 428 -
-429 -
+429 - Lucky Luke,
 430 -
 431 - Prime Obsession,
 432 -
-433 - Prime Obsession,
+433 - Prime Obsession, Lucky Luke,
 434 -
 435 -
 436 -
@@ -1090,7 +1090,7 @@ more problems solved.  There are 79,137 users with 25 or more problems solved, w
 448 -
 449 - Prime Obsession,
 450 -
-451 -
+451 - Lucky Luke,
 452 -
 453 -
 454 -
@@ -1102,7 +1102,7 @@ more problems solved.  There are 79,137 users with 25 or more problems solved, w
 460 -
 461 - Prime Obsession,
 462 -
-463 - Prime Obsession,
+463 - Prime Obsession, Lucky Luke,
 464 -
 465 -
 467 - Prime Obsession,
@@ -1113,27 +1113,27 @@ more problems solved.  There are 79,137 users with 25 or more problems solved, w
 472 -
 473 -
 474 -
-475 -
+475 - Lucky Luke,
 476 -
-477 -
+477 - Lucky Luke,
 478 -
 479 - Prime Obsession,
 480 -
 481 -
 482 -
-483 -
+483 - Lucky Luke,
 484 -
 485 -
 486 -
-487 - Prime Obsession,
+487 - Prime Obsession, Lucky Luke,
 488 -
-489 -
+489 - Lucky Luke,
 490 -
 491 - Prime Obsession,
 492 -
 493 - Solved
 494 -
-495 -
+495 - Lucky Luke,
 496 -
 497 -
 498 -
@@ -1149,23 +1149,68 @@ more problems solved.  There are 79,137 users with 25 or more problems solved, w
 508 -
 509 - Prime Obsession,
 510 -
-511 -
-
+511 - Lucky Luke,
 512 -
 513 -
 514 -
 515 -
 516 -
-517 -
+517 - Lucky Luke,
 518 -
-519 -
+519 - Lucky Luke,
+520 -
+521 - Prime Obsession,
+522 -
+523 - Prime Obsession,
+524 -
+525 -
+526 -
+527 -
+528 -
+529 - Lucky Luke,
+530 -
+531 -
+532 -
+533 -
+534 -
+535 - Lucky Luke,
+536 -
+537 - Lucky Luke,
+538 -
+539 -
+540 -
+541 - Prime Obsession, Lucky Luke,
+542 -
+543 -
+544 -
+545 -
+546 -
+547 - Prime Obsession,
+548 -
+549 -
+550 -
+551 -
+552 -
+553 - Lucky Luke,
+554 -
+555 -
+556 -
+557 - Prime Obsession,
+558 -
+559 - Lucky Luke,
+560 -
+561 -
+562 -
+563 - Prime Obsession,
+564 -
+565 -
+566 -
 
 
-Solved 48 out of 50 Prime Obsession (157, 163, 167, 181, 199, 223, 227, 229, 233, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499)
+Solved 48 out of 50 Prime Obsession (157, 163, 167, 181, 199, 223, 227, 229, 233, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563)
 Solved 11 out of 12 Fibonacci Fever (233)
 Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325)
-Solved 45 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 319, 321, 327, 331, 339, 361, 367, 385, 391, 393, 399)
-
+Solved 45 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 319, 321, 327, 331, 339, 361, 367, 385, 391, 393, 399, 409, 415, 421, 427, 429, 433, 451, 463, 475, 477, 483, 487, 489, 495, 511, 517, 519, 529, 535, 537, 541, 553, 559, 577)
 
 Target list for the next few months (finish all problems <= 150, finish Fibonacci Fever):
 171 - Triangle Trophy, Lucky Luke, (solved by 1,568)
