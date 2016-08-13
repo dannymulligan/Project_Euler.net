@@ -135,7 +135,7 @@ LearningRate = 0.01
 if Test:
     Steps = 5000
 else:
-    Steps = 50000
+    Steps = 100000
 tf.set_random_seed(42)
 ProbKeepInput = tf.placeholder("float")
 
@@ -151,19 +151,22 @@ y = tf.matmul(x, W)                                                        # No 
 # Training data
 y_ = tf.placeholder(tf.float32, shape=[None, 1], name='y_')
 
-LossPrediction = tf.reduce_mean(tf.square(y - y_))  # mean square error
-#LossPrediction = tf.reduce_mean(tf.abs((y - y_) * y))
-LossTooBig     = tf.reduce_mean(tf.maximum(W,1.0)-1.0)
-LossTooSmall   = tf.reduce_mean(-1.0*tf.minimum(W,0.0))
-LossRange      = tf.reduce_mean(tf.abs((W - 1.0) * W))
-LossSums       = tf.reduce_mean(tf.abs(tf.reduce_sum(tf.split(0, ClueLength, W), 1) - 1.0))
+LossPrediction  = tf.reduce_mean(tf.square(y - y_))  # mean square error
+#LossPrediction  = tf.reduce_mean(tf.abs((y - y_) * y))
+LossTooBig      = tf.reduce_mean(tf.maximum(W,1.0)-1.0)
+LossTooSmall    = tf.reduce_mean(-1.0*tf.minimum(W,0.0))
+LossRangeSharp  = tf.reduce_mean(tf.abs((W - 1.0) * W))
+LossRangeSmooth = tf.reduce_mean((W - 1.0) * (W - 1.0) * W * W)
+LossSums        = tf.reduce_mean(tf.abs(tf.reduce_sum(tf.split(0, ClueLength, W), 1) - 1.0))
 #Loss = LossPrediction + 0.5*LossTooBig + 0.5*LossTooSmall + 0.1*LossSums
-Loss = LossPrediction + 0.25*LossRange + 0.25*LossSums
+LossSmooth = LossPrediction + 0.25*LossRangeSmooth + 0.25*LossSums
+LossSharp  = LossPrediction + 0.5*LossRangeSharp  + 0.2*LossSums
 
 # Minimize the loss
 Optimizer = tf.train.MomentumOptimizer(learning_rate=LearningRate, momentum=0.9)
 #Optimizer = tf.train.GradientDescentOptimizer(learning_rate=LearningRate)
-Train = Optimizer.minimize(loss=Loss)
+TrainSmooth = Optimizer.minimize(loss=LossSmooth)
+TrainSharp  = Optimizer.minimize(loss=LossSharp)
 
 # Launch the graph.
 Sess = tf.Session()
@@ -171,15 +174,13 @@ Sess.run(tf.initialize_all_variables())
 
 # Run training
 for Step in range(Steps+1):
-    Sess.run(Train, feed_dict = {x: TrainFeatures, y_:TrainLabels, ProbKeepInput: 0.8})
+    Sess.run(TrainSmooth, feed_dict = {x: TrainFeatures, y_:TrainLabels, ProbKeepInput: 0.8})
 
     if (Step % 500) == 0:
-        TrainLoss = Sess.run(Loss, feed_dict = {x: TrainFeatures, y_:TrainLabels, ProbKeepInput: 1.0})
+        TrainLoss = Sess.run(LossSmooth, feed_dict = {x: TrainFeatures, y_:TrainLabels, ProbKeepInput: 1.0})
         TrainLossPrediction = Sess.run(LossPrediction, feed_dict = {x: TrainFeatures, y_: TrainLabels, ProbKeepInput: 1.0})
-        TrainLossTooBig     = Sess.run(LossTooBig    )
-        TrainLossTooSmall   = Sess.run(LossTooSmall  )
-        TrainLossRange      = Sess.run(LossRange     )
-        TrainLossSums       = Sess.run(LossSums      )
+        TrainLossRange      = Sess.run(LossRangeSmooth)
+        TrainLossSums       = Sess.run(LossSums       )
         print("Step {:7,}: Train Loss = {:.4f}, LossPrediction = {:.4f}, LossRange = {:.4f}, LossSums = {:.4f}".format(
             Step, TrainLoss, TrainLossPrediction, TrainLossRange, TrainLossSums))
 
@@ -195,6 +196,21 @@ for Step in range(Steps+1):
         print("    w =")
         print(CurrentW.reshape(ClueLength,10))
         print("   <0>    <1>    <2>    <3>    <4>    <5>    <6>    <7>    <8>    <9>")
+
+for Step in range(5000):
+    Sess.run(TrainSharp, feed_dict = {x: TrainFeatures, y_:TrainLabels, ProbKeepInput: 0.8})
+    if (Step % 50) == 0:
+        TrainLoss = Sess.run(LossSharp, feed_dict = {x: TrainFeatures, y_:TrainLabels, ProbKeepInput: 1.0})
+        TrainLossPrediction = Sess.run(LossPrediction, feed_dict = {x: TrainFeatures, y_: TrainLabels, ProbKeepInput: 1.0})
+        TrainLossRange      = Sess.run(LossRangeSharp )
+        TrainLossSums       = Sess.run(LossSums       )
+        print("Step {:7,}: Train Loss = {:.4f}, LossPrediction = {:.4f}, LossRange = {:.4f}, LossSums = {:.4f}".format(
+            Step, TrainLoss, TrainLossPrediction, TrainLossRange, TrainLossSums))
+
+CurrentW = Sess.run(W)
+print("    w =")
+print(CurrentW.reshape(ClueLength,10))
+print("   <0>    <1>    <2>    <3>    <4>    <5>    <6>    <7>    <8>    <9>")
 
 np.savetxt("W.csv", CurrentW.reshape(1,ClueLength*10), delimiter=',')
 np.savetxt("TrainFeatures.csv", TrainFeatures, delimiter=',')
@@ -218,86 +234,94 @@ print("Answer =", Answer)
 now_time = time.clock()
 print("Total time taken = {:,.2f} seconds".format(now_time - start_time))
 
-
-# Solution log:
-#
-# - Found solutions for the simultaneous equations that made no sense
-# because some elements of W were < 0.0 or > 1.0, so I had to add
-# LossTooSmall & LossTooLarge loss function to penalize elements of W
-# that were > 1.0 or < 0.0.
-#
-# - Found solutions where each of the parameters for the one-hot
-# encoding of a single digit didn't add up to 1.0.  Added LossSums to
-# the loss function to penalize this.
-#
-# - Found solutions where some of the parameters for a single one-hot
-# encoding added to 1.0 but were distributed between multiple values.
-# Replaced LossTooSmall and LossTooLarge with LossRange to penalise
-# this.
-#
-# - Found solid solutions to the test problem, but not quite there for
-# the real problem.  LossPrediction is essentially 0, but LossRange
-# stalls at about 0.0232.  The W coefficients show high confidence for
-# many digits in the solution, but some digits are still not clear.
-
-#      01 23 45 67  89 ab cd ef
-#      -- -- -- --  -- -- -- --
-#  1   38 47 43 96  47 29 _0 _7  1 correct
-#  5   31 74 24 84  39 46 5_ 58  1 correct
-#  8   81 57 _5 _3  4_ 11 84 83  1 correct
-#  b   6_ 75 71 19  15 07 70 50  1 correct
-#  c   69 13 85 9_  73 12 13 60  1 correct
-#  i   48 95 72 26  52 19 03 06  1 correct
-#
-#  0   56 16 1_ 56  50 51 82 93  2 correct
-#  6   45 13 55 90  9_ 14 61 17  2 correct
-#  9   _6 15 25 07  4_ _8 68 99  2 correct
-#  d   64 42 8_ 90  55 04 27 68  2 correct
-#  f   __ _6 50 94  71 27 14 _8  2 correct
-#  g   52 5_ 5_ 33  79 64 43 22  2 correct
-#  l   _6 59 86 26  37 _1 6_ 67  2 correct
-#
-#  2   58 55 46 29  40 81 05 87  3 correct
-#  3   97 42 85 55  _7 06 83 53  3 correct
-#  4   42 96 84 96  43 6_ 75 _3  3 correct
-#  7   78 90 97 15  48 9_ 80 67  3 correct
-#  a   86 90 09 58  51 52 62 54  3 correct
-#  h   17 48 27 04  76 75 82 76  3 correct
-#  j   30 4_ 63 1_  17 22 46 3_  3 correct
-#  k   18 4_ 23 _4  5_ _2 45 89  3 correct
-#
-#      00 00 00 00  .0 0. 00 00
-#      11 1. 11 1.  11 11 11 1?
-#      .2 .2 22 22  22 22 22 22
-#      3. 33 .3 33  33 .3 .3 33
-#      44 44 44 44  4. 44 44 .4
-#      55 55 55 55  55 55 55 5.
-#      66 66 66 .6  66 66 66 66
-#      77 77 77 77  77 77 77 77
-#      88 88 8. 88  88 88 8. 88
-#      99 99 99 99  99 99 99 99
-#
-#  e   23 21 38 61  04 30 38 45  0 correct
-#
-# Possible algorithm to solve
-#
-# - Set up a list for each digit in each location, and mark digits as
-#     * definitely true
-#     * possibly true
-#     * unknown
-#     * possibly false
-#     * definitely false
-#
-# - For each unknown digit in each of the clues with 1 match, set the digit
-#   to possibly true, and look for logical impossibilities.  If any are found
-#   then that digit id definitely false.
-#
-# - For each unknown digit in each of the clues with 1 match, set the digit
-#   to possibly false, and look for logical impossibilities.  If any are found
-#   then that digit id definitely true.
-#
-# - Whenever we make any progress, restart with the simpler problem.
 commentary = '''
+Solution log:
+
+- Found solutions for the simultaneous equations that made no sense
+because some elements of W were < 0.0 or > 1.0, so I had to add
+LossTooSmall & LossTooLarge loss function to penalize elements of W
+that were > 1.0 or < 0.0.
+
+- Found solutions where each of the parameters for the one-hot
+encoding of a single digit didn't add up to 1.0.  Added LossSums to
+the loss function to penalize this.
+
+- Found solutions where some of the parameters for a single one-hot
+encoding added to 1.0 but were distributed between multiple values.
+Replaced LossTooSmall and LossTooLarge with LossRange to penalise
+this.
+
+- Found solid solutions to the test problem, but not quite there for
+the real problem.  LossPrediction is essentially 0, but LossRange
+stalls at about 0.0232.  The W coefficients show high confidence for
+many digits in the solution, but some digits are still not clear.
+
+- Tried a smoother loss function to drive coefficients towards 0.0 or
+1.0, I used...
+    LossRange = tf.reduce_mean((W - 1.0) * (W - 1.0) * W * W)
+instead of...
+    LossRange = tf.reduce_mean(tf.abs((W - 1.0) * W))
+
+
+     01 23 45 67  89 ab cd ef
+     -- -- -- --  -- -- -- --
+ 1   38 47 43 96  47 29 _0 _7  1 correct
+ 5   31 74 24 84  39 46 5_ 58  1 correct
+ 8   81 57 _5 _3  4_ 11 84 83  1 correct
+ b   6_ 75 71 19  15 07 70 50  1 correct
+ c   69 13 85 9_  73 12 13 60  1 correct
+ i   48 95 72 26  52 19 03 06  1 correct
+
+ 0   56 16 1_ 56  50 51 82 93  2 correct
+ 6   45 13 55 90  9_ 14 61 17  2 correct
+ 9   _6 15 25 07  4_ _8 68 99  2 correct
+ d   64 42 8_ 90  55 04 27 68  2 correct
+ f   __ _6 50 94  71 27 14 _8  2 correct
+ g   52 5_ 5_ 33  79 64 43 22  2 correct
+ l   _6 59 86 26  37 _1 6_ 67  2 correct
+
+ 2   58 55 46 29  40 81 05 87  3 correct
+ 3   97 42 85 55  _7 06 83 53  3 correct
+ 4   42 96 84 96  43 6_ 75 _3  3 correct
+ 7   78 90 97 15  48 9_ 80 67  3 correct
+ a   86 90 09 58  51 52 62 54  3 correct
+ h   17 48 27 04  76 75 82 76  3 correct
+ j   30 4_ 63 1_  17 22 46 3_  3 correct
+ k   18 4_ 23 _4  5_ _2 45 89  3 correct
+
+     00 00 00 00  .0 0. 00 00
+     11 1. 11 1.  11 11 11 1?
+     .2 .2 22 22  22 22 22 22
+     3. 33 .3 33  33 .3 .3 33
+     44 44 44 44  4. 44 44 .4
+     55 55 55 55  55 55 55 5.
+     66 66 66 .6  66 66 66 66
+     77 77 77 77  77 77 77 77
+     88 88 8. 88  88 88 8. 88
+     99 99 99 99  99 99 99 99
+
+ e   23 21 38 61  04 30 38 45  0 correct
+
+Possible algorithm to solve
+
+- Set up a list for each digit in each location, and mark digits as
+    * definitely true
+    * possibly true
+    * unknown
+    * possibly false
+    * definitely false
+
+- For each unknown digit in each of the clues with 1 match, set the digit
+  to possibly true, and look for logical impossibilities.  If any are found
+  then that digit id definitely false.
+
+- For each unknown digit in each of the clues with 1 match, set the digit
+  to possibly false, and look for logical impossibilities.  If any are found
+  then that digit id definitely true.
+
+- Whenever we make any progress, restart with the simpler problem.
+
+
 With Dropout
 
     w =
