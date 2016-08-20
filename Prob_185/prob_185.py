@@ -68,7 +68,7 @@ np.set_printoptions(precision=3, suppress=True)
 
 start_time = time.clock()
 Test = True
-Test = False
+#Test = False
 
 if Test:
     Clues = [
@@ -106,19 +106,18 @@ else:
     ]
 
 ########################################
-# Convert the clue inputs to 1-hot
+# Convert the clue inputs to individual inputs
 
-def onehot(Clue):
+def split(Clue):
     Result = []
     for Char in Clue:
-        for N in "0123456789":
-            Result.append(1.0 if (Char == N) else 0.0)
+        Result.append(float(Char))
     return Result
 
 Inputs = []
 Outputs = []
 for Clue in Clues:
-    Inputs.append(onehot(Clue[0]))
+    Inputs.append(split(Clue[0]))
     Outputs.append(Clue[1])
 
 ClueLength = len(Clues[0][0])
@@ -127,62 +126,96 @@ NInputs = len(Inputs[0])
 TrainFeatures = np.asarray(Inputs)
 TrainLabels = np.asarray(Outputs).reshape(len(Outputs), 1)
 
+print("TrainFeatures =", TrainFeatures)
+print("TrainLabels   =", TrainLabels  )
+print("ClueLength    =", ClueLength   )
+print("NClues        =", NClues       )
+print("NInputs       =", NInputs      )
+
 
 ########################################
 # Build a Neural Network to process the data
 
-LearningRate = 0.01
+LearningRate = 0.25
+Power = 2.0
 if Test:
-    Steps = 5000
+    Steps = 25000
 else:
     Steps = 100000
 tf.set_random_seed(42)
-ProbKeepInput = tf.placeholder("float")
 
 # Placeholder for the input data
-x = tf.placeholder(tf.float32, shape=[None, NInputs], name='x')
-x = tf.nn.dropout(x, keep_prob=ProbKeepInput)  # Dropout
+x = tf.placeholder(tf.float32, shape=[NClues, NInputs], name='x')
 
 # Build the Neural Network
-WInit = (1.0 / NInputs) ** 0.5
-W = tf.Variable(tf.random_uniform([NInputs, 1], -WInit, WInit), name='W')  # Weights
-y = tf.matmul(x, W)                                                        # No activation function!
+i = tf.constant(1.0, shape=[NClues, 1])                               # shape = [NClues, 1]
+b = tf.Variable(tf.random_uniform([1, NInputs],-0.5, 9.5), name='b')  # shape = [1, NInputs]
+y1 = tf.pow(tf.abs(x - tf.matmul(i, b)), Power)                       # shape = [NClues, NInputs]
+y2 = 1.0/(1.0+y1)                                                     # shape = [NClues, NInputs]
+y = tf.reduce_sum(y2, 1)                                              # shape = [NClues,]
+y = tf.reshape(y, [NClues,1])                                         # shape = [NClues,1]
+
+#               1
+#  y = -------------------
+#      1 + (x - i*b)^Power
 
 # Training data
-y_ = tf.placeholder(tf.float32, shape=[None, 1], name='y_')
+y_ = tf.placeholder(tf.float32, shape=[NClues, 1], name='y_')
 
-LossPrediction  = tf.reduce_mean(tf.square(y - y_))  # mean square error
-#LossPrediction  = tf.reduce_mean(tf.abs((y - y_) * y))
-LossTooBig      = tf.reduce_mean(tf.maximum(W,1.0)-1.0)
-LossTooSmall    = tf.reduce_mean(-1.0*tf.minimum(W,0.0))
-LossRangeSharp  = tf.reduce_mean(tf.abs((W - 1.0) * W))
-LossRangeSmooth = tf.reduce_mean((W - 1.0) * (W - 1.0) * W * W)
-LossSums        = tf.reduce_mean(tf.abs(tf.reduce_sum(tf.split(0, ClueLength, W), 1) - 1.0))
-#Loss = LossPrediction + 0.5*LossTooBig + 0.5*LossTooSmall + 0.1*LossSums
-LossSmooth = LossPrediction + 0.25*LossRangeSmooth + 0.25*LossSums
-LossSharp  = LossPrediction + 0.5*LossRangeSharp  + 0.2*LossSums
+LossDelta = y - y_   # shape = [NClues,1]
+LossPrediction = tf.reduce_mean(tf.square(y - y_))
+LossTooBig     = tf.reduce_mean(tf.maximum(b-9.5, 0.0))       # Each coefficient in W must be <  9.5
+LossTooSmall   = tf.reduce_mean(-1.0*tf.minimum(b+0.5, 0.0))  # Each coefficient in W must be > -0.5
+#LossQuantize   = tf.reduce_mean(tf.mul(tf.mod(tf.abs(b), 1.0), (1.0-tf.mod(tf.abs(b),1.0))))  # Each coefficient in W must be > -0.5
+LossRange      = LossTooBig + LossTooSmall
+Loss = LossPrediction + 0.5*LossRange
 
 # Minimize the loss
 Optimizer = tf.train.MomentumOptimizer(learning_rate=LearningRate, momentum=0.9)
 #Optimizer = tf.train.GradientDescentOptimizer(learning_rate=LearningRate)
-TrainSmooth = Optimizer.minimize(loss=LossSmooth)
-TrainSharp  = Optimizer.minimize(loss=LossSharp)
+Train = Optimizer.minimize(loss=Loss)
 
 # Launch the graph.
 Sess = tf.Session()
 Sess.run(tf.initialize_all_variables())
 
+#Pb = Sess.run(b)
+#print("b =\n", Pb)
+#print("b.shape =\n", Pb.shape)
+#
+#Py1 = Sess.run(y1, feed_dict = {x: TrainFeatures})
+#print("y1 =\n", Py1)
+#print("y1.shape =\n", Py1.shape)
+#
+#Py2 = Sess.run(y2, feed_dict = {x: TrainFeatures})
+#print("y2 =\n", Py2)
+#print("y2.shape =\n", Py2.shape)
+#
+#Py = Sess.run(y, feed_dict = {x: TrainFeatures})
+#print("y =\n", Py)
+#print("y.shape =\n", Py.shape)
+#
+#print("y_ =\n", TrainLabels)
+#print("y_.shape =\n", TrainLabels.shape)
+#
+#PLossDelta = Sess.run(LossDelta, feed_dict = {x: TrainFeatures, y_:TrainLabels})
+#print("LossDelta =\n", PLossDelta)
+#print("LossDelta.shape =\n", PLossDelta.shape)
+#
+#PLossPrediction = Sess.run(LossPrediction, feed_dict = {x: TrainFeatures, y_:TrainLabels})
+#print("LossPrediction =\n", PLossPrediction)
+#print("LossPrediction.shape =\n", PLossPrediction.shape)
+
 # Run training
 for Step in range(Steps+1):
-    Sess.run(TrainSmooth, feed_dict = {x: TrainFeatures, y_:TrainLabels, ProbKeepInput: 0.8})
+    Sess.run(Train, feed_dict = {x: TrainFeatures, y_:TrainLabels})
 
     if (Step % 500) == 0:
-        TrainLoss = Sess.run(LossSmooth, feed_dict = {x: TrainFeatures, y_:TrainLabels, ProbKeepInput: 1.0})
-        TrainLossPrediction = Sess.run(LossPrediction, feed_dict = {x: TrainFeatures, y_: TrainLabels, ProbKeepInput: 1.0})
-        TrainLossRange      = Sess.run(LossRangeSmooth)
-        TrainLossSums       = Sess.run(LossSums       )
-        print("Step {:7,}: Train Loss = {:.4f}, LossPrediction = {:.4f}, LossRange = {:.4f}, LossSums = {:.4f}".format(
-            Step, TrainLoss, TrainLossPrediction, TrainLossRange, TrainLossSums))
+        TrainLoss = Sess.run(Loss, feed_dict = {x: TrainFeatures, y_:TrainLabels})
+        TrainLossPrediction = Sess.run(LossPrediction, feed_dict = {x: TrainFeatures, y_: TrainLabels})
+        TrainLossRange      = Sess.run(LossRange)
+        print("Step {:7,}: Train Loss = {:.4f}, LossPrediction = {:.4f}, LossRange = {:.4f}".format(
+            Step, TrainLoss, TrainLossPrediction, TrainLossRange))
 
         #TestLoss  = Sess.run(Loss, feed_dict = {x: TestFeatures, y_: TestLabels})
         #print("    Test Loss = {:.4f}".format(TestLoss))
@@ -191,37 +224,20 @@ for Step in range(Steps+1):
         Sess.close()
         sys.exit("ERROR, neural network parameters have diverged, aborting training at step {:,}".format(Step))
 
-    if ((Step % 10000) == 0) or (Step == Steps):
-        CurrentW = Sess.run(W)
-        print("    w =")
-        print(CurrentW.reshape(ClueLength,10))
-        print("   <0>    <1>    <2>    <3>    <4>    <5>    <6>    <7>    <8>    <9>")
+    if ((Step % 5000) == 0) or (Step == Steps):
+        CurrentB = Sess.run(b)
+        print("    b        =", CurrentB.reshape([NInputs]))
 
-for Step in range(5000):
-    Sess.run(TrainSharp, feed_dict = {x: TrainFeatures, y_:TrainLabels, ProbKeepInput: 0.8})
-    if (Step % 50) == 0:
-        TrainLoss = Sess.run(LossSharp, feed_dict = {x: TrainFeatures, y_:TrainLabels, ProbKeepInput: 1.0})
-        TrainLossPrediction = Sess.run(LossPrediction, feed_dict = {x: TrainFeatures, y_: TrainLabels, ProbKeepInput: 1.0})
-        TrainLossRange      = Sess.run(LossRangeSharp )
-        TrainLossSums       = Sess.run(LossSums       )
-        print("Step {:7,}: Train Loss = {:.4f}, LossPrediction = {:.4f}, LossRange = {:.4f}, LossSums = {:.4f}".format(
-            Step, TrainLoss, TrainLossPrediction, TrainLossRange, TrainLossSums))
-
-CurrentW = Sess.run(W)
-print("    w =")
-print(CurrentW.reshape(ClueLength,10))
-print("   <0>    <1>    <2>    <3>    <4>    <5>    <6>    <7>    <8>    <9>")
-
-np.savetxt("W.csv", CurrentW.reshape(1,ClueLength*10), delimiter=',')
-np.savetxt("TrainFeatures.csv", TrainFeatures, delimiter=',')
+        CurrentLossDelta = Sess.run(LossDelta, feed_dict = {x: TrainFeatures, y_:TrainLabels})
+        print("    LossDelta =", CurrentLossDelta.reshape([NClues]))
 
 
-########################################
-# Dump the best solution for the training vectors
-Results = Sess.run(y, feed_dict = {x: TrainFeatures, ProbKeepInput: 1.0})
-for Clue, Result in zip(Clues, Results.reshape(NClues)):
-    print("Clue = {} match = {} NN = {:.6f}, delta = {:.6f}".format(
-        Clue[0], Clue[1], Result, Clue[1]-Result))
+#########################################
+## Dump the best solution for the training vectors
+#Results = Sess.run(y, feed_dict = {x: TrainFeatures})
+#for Clue, Result in zip(Clues, Results.reshape(NClues)):
+#    print("Clue = {} match = {} NN = {:.6f}, delta = {:.6f}".format(
+#        Clue[0], Clue[1], Result, Clue[1]-Result))
 
 
 ########################################
