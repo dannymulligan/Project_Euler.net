@@ -83,11 +83,9 @@
 # must calculate the probability of finding him in a square numbered
 # room in the 1000 by 1000 lair in which he has been wandering.
 #
-#(Give your answer rounded to 12 decimal places)
+# (Give your answer rounded to 12 decimal places)
 #
-# Solved ??/??/16
-# ?? problems solved
-# Position #??? on level ?
+# Solved 11/06/16
 
 import numpy as np
 import sys
@@ -100,7 +98,7 @@ Debug = False
 
 
 ########################################
-SIZE = 5
+SIZE = 1000
 print("Running with SIZE = {}".format(SIZE))
 INIT_VALUE = 1.0 / (SIZE * SIZE)
 TableA = [[INIT_VALUE for x in range(SIZE)] for y in range(SIZE)]
@@ -228,7 +226,6 @@ def ApplyUpdate(Table, Update, Scale):
 ########################################
 def CalcAnswer(Table):
     Answer = 0
-    n = 1
     for n in range(SIZE):
         Lookup = (n+1)**2
         LookupY = (Lookup - 1) // SIZE
@@ -239,79 +236,223 @@ def CalcAnswer(Table):
 
 
 ########################################
+# Calculated solution, turns out to be much too slow
 
-AbsSumA = 1.0
-IterationA = 1
-while (AbsSumA > 1.0e-13):
-    #print("====================")
+if False:
+    AbsSumA = 1.0
+    IterationA = 1
+    while (AbsSumA > 1.0e-14):
+        #print("====================")
+        #print("TableA =")
+        #PrintTable(TableA)
+
+        UpdateA = UpdateTable(TableA, 'A')
+        AbsSumA = AbsSumTable(UpdateA)
+        TableA = ApplyUpdate(TableA, UpdateA, 1.0)
+
+        #print("UpdateA =")
+        #PrintTable(UpdateA)
+        #print("Sum = {}".format(SumTable(UpdateA)))
+
+        if (IterationA % 500) == 0:
+            print("{}: AbsSumA = {:.13f}".format(IterationA, AbsSumA))
+        IterationA += 1
+
     #print("TableA =")
     #PrintTable(TableA)
-
-    UpdateA = UpdateTable(TableA, 'A')
-    AbsSumA = AbsSumTable(UpdateA)
-    TableA = ApplyUpdate(TableA, UpdateA, 1.0)
-
     #print("UpdateA =")
     #PrintTable(UpdateA)
-    #print("Sum = {}".format(SumTable(UpdateA)))
 
-    if (IterationA % 500) == 0:
-        print("{}: AbsSumA = {:.13f}".format(IterationA, AbsSumA))
-    IterationA += 1
-
-#print("TableA =")
-#PrintTable(TableA)
-#print("UpdateA =")
-#PrintTable(UpdateA)
-
-AnswerA = CalcAnswer(TableA)
-#AnswerA = TableA[0][0] + TableA[3][0] + TableA[3][1] + TableA[0][3] + TableA[4][4]
-print("Calculated Answer A = {} after {:,} iterations".format(AnswerA, IterationA))
+    AnswerA = CalcAnswer(TableA)
+    #AnswerA = TableA[0][0] + TableA[3][0] + TableA[3][1] + TableA[0][3] + TableA[4][4]
+    print("Calculated Answer A = {} after {:,} iterations".format(AnswerA, IterationA))
 
 
-AbsSumB = 1.0
-IterationB = 1
-while (AbsSumB > 1.0e-13):
-    #print("====================")
+    AbsSumB = 1.0
+    IterationB = 1
+    while (AbsSumB > 1.0e-14):
+        #print("====================")
+        #print("TableB =")
+        #PrintTable(TableB)
+
+        UpdateB = UpdateTable(TableB, 'B')
+        AbsSumB = AbsSumTable(UpdateB)
+        TableB = ApplyUpdate(TableB, UpdateB, 1.0)
+
+        #print("UpdateA =")
+        #PrintTable(UpdateA)
+        #print("Sum = {}".format(SumTable(UpdateA)))
+
+        if (IterationB % 500) == 0:
+            print("{}: AbsSumB = {:.13f}".format(IterationB, AbsSumB))
+        IterationB += 1
+
     #print("TableB =")
     #PrintTable(TableB)
-
-    UpdateB = UpdateTable(TableB, 'B')
-    AbsSumB = AbsSumTable(UpdateB)
-    TableB = ApplyUpdate(TableB, UpdateB, 1.0)
-
-    #print("UpdateA =")
-    #PrintTable(UpdateA)
-    #print("Sum = {}".format(SumTable(UpdateA)))
-
-    if (IterationB % 500) == 0:
-        print("{}: AbsSumB = {:.13f}".format(IterationB, AbsSumB))
-    IterationB += 1
-
-#print("TableB =")
-#PrintTable(TableB)
-#print("UpdateB =")
-#PrintTable(UpdateB)
+    #print("UpdateB =")
+    #PrintTable(UpdateB)
 
 
-AnswerB = CalcAnswer(TableB)
-print("Calculated Answer B = {} after {:,} iterations".format(AnswerB, IterationB))
+    AnswerB = CalcAnswer(TableB)
+    print("Calculated Answer B = {} after {:,} iterations".format(AnswerB, IterationB))
 
-print("Final solution = {:.12f}".format(0.5*(AnswerA + AnswerB)))
+    print("Final solution = {:.12f}".format(0.5*(AnswerA + AnswerB)))
 
-AnswerString = "{:.12f}".format(0.5*(AnswerA + AnswerB))
-if   (SIZE ==  5) and (AnswerString == "0.177976190476"):  print("Answer matches example for SIZE = 5")
-elif (SIZE == 10) and (AnswerString == "0.092572463768"):  print("Answer matches example for SIZE = 10")
-elif (SIZE == 15) and (AnswerString == "0.061343058350"):  print("Answer matches example for SIZE = 15")
-elif (SIZE == 20) and (AnswerString == "0.045874451755"):  print("Answer matches example for SIZE = 20")
-elif (SIZE == 25) and (AnswerString == "0.036637396694"):  print("Answer matches example for SIZE = 25")
-elif (SIZE == 30) and (AnswerString == "0.031528499449"):  print("Answer matches example for SIZE = 30")
-elif (SIZE == 35) and (AnswerString == "0.027251339132"):  print("Answer matches example for SIZE = 35")
-elif (SIZE == 40) and (AnswerString == "0.023129251701"):  print("Answer matches example for SIZE = 40")
+    AnswerString = "{:.12f}".format(0.5*(AnswerA + AnswerB))
+    if   (SIZE ==  5) and (AnswerString == "0.177976190476"):  print("Answer matches example for SIZE = 5")
+    elif (SIZE == 10) and (AnswerString == "0.092572463768"):  print("Answer matches example for SIZE = 10")
+    elif (SIZE == 15) and (AnswerString == "0.061343058350"):  print("Answer matches example for SIZE = 15")
+    elif (SIZE == 20) and (AnswerString == "0.045874451755"):  print("Answer matches example for SIZE = 20")
+    elif (SIZE == 25) and (AnswerString == "0.036637396694"):  print("Answer matches example for SIZE = 25")
+    elif (SIZE == 30) and (AnswerString == "0.031528499449"):  print("Answer matches example for SIZE = 30")
+    elif (SIZE == 35) and (AnswerString == "0.027251339132"):  print("Answer matches example for SIZE = 35")
+    elif (SIZE == 40) and (AnswerString == "0.023129251701"):  print("Answer matches example for SIZE = 40")
 
-print("TableA =")
-PrintTable(TableA)
-print("TableB =")
-PrintTable(TableB)
+
+########################################
+# Analytical solution, much faster :-)
+
+
+# Assume the following values in the matrix...
+#
+#    +---+---+---+-   -+---+
+#    | a | b | b | ... | a |
+#    +---+---+---+-   -+---+
+#    | b | c | c | ... | b |
+#    +---+---+---+-   -+---+
+#    | b | c | c | ... | b |
+#    +---+---+---+-   -+---+
+#    | b | c | c | ... | b |
+#    +---+---+---+-   -+---+
+#     ... ... ...       ...
+#    +---+---+---+-   -+---+
+#    | a | b | b | ... | a |
+#    +---+---+---+-   -+---+
+#
+# At convergence, the amount flowing from any <a> to an adjacent <b>
+# is the same as the amount flowing from the <b> to the <a>.  Ditto
+# the amount flowing from any <b> to an adjacent <c> is the same as
+# the amount flowing from the <c> to the <b>.
+#
+# By definition the amount flowing from any <b> to an adjacent <b>
+# just be exactly equal to the amount flowing in the opposite
+# direction.  Ditto flows between adjacent <c>s.
+#
+# For this version of the problem...
+#
+#    +------+------+------+
+#    |      |      |      |
+#    | 1/4  |      |      |
+#    |  ^   |      |      |
+#    +--|---+------+------+
+#    |  |   |      |      |
+#    | 1/4 --> 1/4 |      |
+#    |  |   |      |      |
+#    +--|---+------+------+
+#    |  v   |      |      |
+#    | 1/4  |      |      |
+#    |      |      |      |
+#    +------+------+------+
+#   (i) Probability of
+#       remaining related
+#       to number of exits
+#
+# ... the amount flowing from <a> to an adjacent <b> is <a>/3, the
+# amount flowing from the <b> to the <a> is <b>/4.  Thus...
+#
+#    a / 3 = b / 4
+# so
+#    a = 3/4 b
+
+AfromB1 = 3.0/4.0
+
+# similarily
+#
+#    b = 4/5 c
+
+BfromC1 = 4.0/5.0
+
+# For this version of the problem...
+#
+#    +------+------+------+
+#    |      |      |      |
+#    | 1/6  |      |      |
+#    |  ^   |      |      |
+#    +--|---+------+------+
+#    |  |   |      |      |
+#    | 1/2 --> 1/6 |      |
+#    |  |   |      |      |
+#    +--|---+------+------+
+#    |  v   |      |      |
+#    | 1/6  |      |      |
+#    |      |      |      |
+#    +------+------+------+
+#   (ii) Fixed 50% probability
+#        of remaining
+#
+# ... the amount flowing from <a> to an adjacent <b> is <a>/3, the
+# amount flowing from the <b> to the <a> is <b>/4.  Thus...
+#
+#    a / 4 = b / 6
+# so
+#    a = 2/3 b
+
+AfromB2 = 2.0/3.0
+
+# similarily
+#
+#    b = 3/4 c
+
+BfromC2 = 3.0/4.0
+
+
+# Finally
+#
+#    1.0 = 4 * a + (SIZE-2) * 4 * b + (SIZE-2)^2 * c
+
+ACoeff = 4
+BCoeff = (SIZE-2)*4
+CCoeff = (SIZE-2)**2
+
+# Version (i)
+C1 = 1.0 / (ACoeff * AfromB1 * BfromC1 + BCoeff * BfromC1 + CCoeff)
+B1 = BfromC1 * C1
+A1 = AfromB1 * B1
+
+# Version (ii)
+C2 = 1.0 / (ACoeff * AfromB2 * BfromC2 + BCoeff * BfromC2 + CCoeff)
+B2 = BfromC2 * C2
+A2 = AfromB2 * B2
+
+
+########################################
+def AnalyticalCalcAnswer(A, B, C):
+    Answer = 0
+    for n in range(SIZE):
+        Lookup = (n+1)**2
+        LookupY = (Lookup - 1) // SIZE
+        LookupX = (Lookup - 1) - SIZE * LookupY
+
+        if ((LookupX == 0) or (LookupX == SIZE-1)) and ((LookupY == 0) or (LookupY == SIZE-1)):
+            #print("{} => ({},{}) => A = {}".format(Lookup, LookupX, LookupY, A))
+            Answer += A
+
+        elif (LookupX == 0) or (LookupX == SIZE-1) or (LookupY == 0) or (LookupY == SIZE-1):
+            #print("{} => ({},{}) => B = {}".format(Lookup, LookupX, LookupY, B))
+            Answer += B
+        else:
+            #print("{} => ({},{}) => C = {}".format(Lookup, LookupX, LookupY, C))
+            Answer += C
+
+    return Answer
+
+Answer1 = AnalyticalCalcAnswer(A1, B1, C1)
+Answer2 = AnalyticalCalcAnswer(A2, B2, C2)
+
+print("Calculated Answer 1 = {}".format(Answer1))
+print("Calculated Answer 2 = {}".format(Answer2))
+
+AnswerString = "{:.12f}".format(0.5*(Answer1 + Answer2))
+print("Final solution = {}".format(AnswerString))
 
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
