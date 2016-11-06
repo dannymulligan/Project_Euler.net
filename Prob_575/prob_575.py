@@ -89,12 +89,11 @@
 # ?? problems solved
 # Position #??? on level ?
 
-#import numpy as np
-
-
+import numpy as np
 import sys
 #print(sys.version)
 import time
+
 start_time = time.clock()
 Debug = False
 #Debug = True
@@ -217,83 +216,6 @@ def UpdateTable(Table, Type):
 
 
 ########################################
-def UpdateMatrix(Type):
-    Delta = [[0.0 for x in range(SIZE)] for y in range(SIZE)]
-    if Type == 'A':
-        Dcorner, Dedge, Dcore = (1.0/3.0, 1.0/4.0, 1.0/5.0)
-    else:
-        Dcorner, Dedge, Dcore = (1.0/4.0, 1.0/6.0, 1.0/8.0)
-
-    # Corners
-    if Debug:
-        print("Corners")
-
-    for (x, y, dx, dy) in [
-        (     0,      0,  1,  1),
-        (SIZE-1,      0, -1,  1),
-        (     0, SIZE-1,  1, -1),
-        (SIZE-1, SIZE-1, -1, -1),
-    ]:
-        Delta[x][y]    -= Table[x][y] * 2.0 * Dcorner
-        Delta[x+dx][y] += Table[x][y] * Dcorner
-        Delta[x][y+dy] += Table[x][y] * Dcorner
-
-        if Debug:
-            print("({},{}) = {:.3f}".format(x, y, Table[x][y]))
-            print("({},{}) -> {:.3f} ".format(x, y, -Table[x][y] * 2.0 * Dcorner))
-            print("({},{}) -> {:.3f} -> ({},{})".format(x, y, Table[x][y] * Dcorner, x+dx, y))
-            print("({},{}) -> {:.3f} -> ({},{})".format(x, y, Table[x][y] * Dcorner, x, y+dy))
-            print("----")
-
-    # Edges
-    if Debug:
-        print("Edges")
-
-    for (x, y, dx1, dy1, dx2, dy2) in \
-        [ (     x,      0, 1, 0,  0,  1) for x in range(1, SIZE-1) ] + \
-        [ (     x, SIZE-1, 1, 0,  0, -1) for x in range(1, SIZE-1) ] + \
-        [ (     0,      y, 0, 1,  1,  0) for y in range(1, SIZE-1) ] + \
-        [ (SIZE-1,      y, 0, 1, -1,  0) for y in range(1, SIZE-1) ]:
-
-        Delta[x][y]         -= Table[x][y] * 3.0 * Dedge
-        Delta[x-dx1][y-dy1] += Table[x][y] * Dedge
-        Delta[x+dx1][y+dy1] += Table[x][y] * Dedge
-        Delta[x+dx2][y+dy2] += Table[x][y] * Dedge
-
-        if Debug:
-            print("({},{}) = {:.3f}".format(x, y, Table[x][y]))
-            print("({},{}) -> {:.3f} ".format(x, y, -Table[x][y] * 3.0 * Dedge))
-            print("({},{}) -> {:.3f} -> ({},{})".format(x, y, Table[x][y] * Dedge, x-dx1, y-dy1))
-            print("({},{}) -> {:.3f} -> ({},{})".format(x, y, Table[x][y] * Dedge, x+dx1, y+dy1))
-            print("({},{}) -> {:.3f} -> ({},{})".format(x, y, Table[x][y] * Dedge, x+dx2, y+dy2))
-            print("----")
-
-    # Core
-    if Debug:
-        print("Core")
-
-    for y in range(1, SIZE-1):
-        for x in range(1, SIZE-1):
-
-            Delta[x][y]   -= Table[x][y] * 4.0 * Dcore
-            Delta[x-1][y] += Table[x][y] * Dcore
-            Delta[x+1][y] += Table[x][y] * Dcore
-            Delta[x][y-1] += Table[x][y] * Dcore
-            Delta[x][y+1] += Table[x][y] * Dcore
-
-            if Debug:
-                print("({},{}) = {:.3f}".format(x, y, Table[x][y]))
-                print("({},{}) -> {:.3f} ".format(x, y, -Table[x][y] * 4.0 * Dcore))
-                print("({},{}) -> {:.3f} -> ({},{})".format(x, y, Table[x][y] * Dcore, x-1,   y))
-                print("({},{}) -> {:.3f} -> ({},{})".format(x, y, Table[x][y] * Dcore, x+1,   y))
-                print("({},{}) -> {:.3f} -> ({},{})".format(x, y, Table[x][y] * Dcore,   x, y-1))
-                print("({},{}) -> {:.3f} -> ({},{})".format(x, y, Table[x][y] * Dcore,   x, y+1))
-                print("----")
-
-    return Delta
-
-
-########################################
 def ApplyUpdate(Table, Update, Scale):
     Result = [[0.0 for x in range(SIZE)] for y in range(SIZE)]
     for y in range(SIZE):
@@ -301,6 +223,19 @@ def ApplyUpdate(Table, Update, Scale):
             Result[x][y] = Table[x][y] + Scale*Update[x][y]
 
     return Result
+
+
+########################################
+def CalcAnswer(Table):
+    Answer = 0
+    n = 1
+    for n in range(SIZE):
+        Lookup = (n+1)**2
+        LookupY = (Lookup - 1) // SIZE
+        LookupX = (Lookup - 1) - SIZE * LookupY
+        #print("    Table[{}][{}] = {}".format(LookupX, LookupY, Table[LookupX][LookupY]))
+        Answer += Table[LookupX][LookupY]
+    return Answer
 
 
 ########################################
@@ -329,7 +264,8 @@ while (AbsSumA > 1.0e-13):
 #print("UpdateA =")
 #PrintTable(UpdateA)
 
-AnswerA = TableA[0][0] + TableA[3][0] + TableA[3][1] + TableA[0][3] + TableA[4][4]
+AnswerA = CalcAnswer(TableA)
+#AnswerA = TableA[0][0] + TableA[3][0] + TableA[3][1] + TableA[0][3] + TableA[4][4]
 print("Calculated Answer A = {} after {:,} iterations".format(AnswerA, IterationA))
 
 
@@ -357,12 +293,25 @@ while (AbsSumB > 1.0e-13):
 #print("UpdateB =")
 #PrintTable(UpdateB)
 
-AnswerB = TableB[0][0] + TableB[3][0] + TableB[3][1] + TableB[0][3] + TableB[4][4]
+
+AnswerB = CalcAnswer(TableB)
 print("Calculated Answer B = {} after {:,} iterations".format(AnswerB, IterationB))
 
 print("Final solution = {:.12f}".format(0.5*(AnswerA + AnswerB)))
+
 AnswerString = "{:.12f}".format(0.5*(AnswerA + AnswerB))
-if (AnswerString == "0.177976190476"):
-    print("Answer matches example")
+if   (SIZE ==  5) and (AnswerString == "0.177976190476"):  print("Answer matches example for SIZE = 5")
+elif (SIZE == 10) and (AnswerString == "0.092572463768"):  print("Answer matches example for SIZE = 10")
+elif (SIZE == 15) and (AnswerString == "0.061343058350"):  print("Answer matches example for SIZE = 15")
+elif (SIZE == 20) and (AnswerString == "0.045874451755"):  print("Answer matches example for SIZE = 20")
+elif (SIZE == 25) and (AnswerString == "0.036637396694"):  print("Answer matches example for SIZE = 25")
+elif (SIZE == 30) and (AnswerString == "0.031528499449"):  print("Answer matches example for SIZE = 30")
+elif (SIZE == 35) and (AnswerString == "0.027251339132"):  print("Answer matches example for SIZE = 35")
+elif (SIZE == 40) and (AnswerString == "0.023129251701"):  print("Answer matches example for SIZE = 40")
+
+print("TableA =")
+PrintTable(TableA)
+print("TableB =")
+PrintTable(TableB)
 
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
