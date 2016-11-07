@@ -8,8 +8,6 @@
 # Problem text
 #
 # Solved ??/??/16
-# ?? problems solved
-# Position #??? on level ?
 
 #import numpy as np
 #import scipy as sp
