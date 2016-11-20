@@ -35,42 +35,103 @@ import sys
 #print(sys.version)
 import time
 start_time = time.clock()
-SIZE = 6
+SIZE = 1000
 
 ########################################
-def H(n):
-    if n < 3:
-        return 0
-    elif n == 3:
-        return 1
-    elif n == 4:
-        return 3
-    else:
-        Answer = H(n-3)
+def HexagonXRange(dx, dy):
+    if False:
+        print("H({}, {})".format(x, y))
 
-        for x in range(1, n//3+1):
-            NormalHexagons = 0
-            if n == 3*x:
-                NormalHexagons = 1
-            elif n > 3*x:
-                NormalHexagons = 3*(n-2*x-1)
-            print("{} normal hexagons of size {} fix into a triangle of size {}"
-                  .format(NormalHexagons, x, n))
-            Answer += NormalHexagons
+    x1, y1 = dx, dy
+    x2, y2 = (x1      - dy), (y1 + dx + dy)
+    x3, y3 = (x2 - dx - dy), (y2 + dx     )
+    x4, y4 = (x3 - dx     ), (y3      - dy)
+    x5, y5 = (x4      + dy), (y4 - dx - dy)
+    x6, y6 = (x5 + dx + dy), (y5 - dx     )
+    assert x6 == 0
+    assert y6 == 0
 
-        for x in range(1, n//6+1):
-            VerticalHexagons = 0
-            if n == 6*x:
-                VerticalHexagons = 1
-            elif n > 6*x:
-                VerticalHexagons = 3*(n-6*x-1)
-            print("{} vertical hexigons of size {} fix into a triangle of size {}"
-                  .format(VerticalHexagons, x, n))
-            Answer += VerticalHexagons
+    MaxX = max((x1+y1), (x2+y2), (x3+y3), (x4+y4), (x5+y5), (x6+y6))
+    MinX = min(x1, x2, x3, x4, x5, x6)
 
-        return Answer
+    if False:
+        print("   p1 ({},{})".format(x1, y1))
+        print("   p2 ({},{})".format(x2, y2))
+        print("   p3 ({},{})".format(x3, y3))
+        print("   p4 ({},{})".format(x4, y4))
+        print("   p5 ({},{})".format(x5, y5))
+        print("   p6 ({},{})".format(x6, y6))
+        print("   range = ({} ... {})".format(MinX, MaxX))
+
+    return MaxX - MinX
 
 
+########################################
+Ranges = dict()
+for x in range(1, SIZE+1):
+    for y in range(x+1):
+        Ranges[(x, y)] = HexagonXRange(x, y)
+
+#for (x, y) in sorted(Ranges.keys()):
+#    if (x == y):
+#        print("Range({}, {}) = {} (symmetric)".format(x, y, Ranges[(x, y)]))
+#    else:
+#        print("Range({}, {}) = {}".format(x, y, Ranges[(x, y)]))
 
 
+########################################
+H = 0
+Hlist = list()
+Hlist.append(H)  # H(0)
+Hlist.append(H)  # H(1)
+Hlist.append(H)  # H(2)
+Debug = False
+
+for n in range(3, SIZE+1):
+#    if (n == 80) or (n == 180):
+#        Debug = True
+#    else:
+#        Debug = False
+
+    H = Hlist[n-3]
+    if Debug:
+        print("----------------------------------------")
+        print("Calculating H({})".format(n))
+        print("    Starting with H({}) = {}".format(n-3, H))
+
+    for x in range(1, n+1):
+        for y in range(x+1):
+            Range = Ranges[(x, y)]
+            if (Range <= n) and Debug:
+                print("    Range[({}, {})] is {}".format(x, y, Range))
+
+            if (x == y) or (y == 0):
+                # Symmetric cases
+                if Range == n:
+                    H += 1
+                    if Debug:
+                        print("    H = H + 1 = {}".format(H))
+
+                elif Range < n:
+                    H += (n-Range)*3
+                    if Debug:
+                        print("    H = H + ({})*3 = H + {} = {}".format(n-Range, (n-Range)*3, H))
+            else:
+                # Not-symmetric cases
+                if Range == n:
+                    H += 2
+                    if Debug:
+                        print("    H = H + 1*2 = {} symmetry".format(H))
+
+                elif Range < n:
+                    H += (n-Range)*3*2
+                    if Debug:
+                        print("    H = H + ({})*3*2 = H + {} = {} symmetry".format(n-Range, (n-Range)*3*2, H))
+
+    Hlist.append(H)
+
+    if ((n % 10) == 0) or Debug:
+        print("H({}) = {}".format(n, H))
+
+print("Answer = H({}) = {}".format(n, H))
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
