@@ -210,6 +210,7 @@
 #210: Problem 336, solved 01/31/16
 #211: Problem 549, solved 08/29/16
 #212: Problem 575, solved 11/06/16
+#213: Problem 577, solved 11/21/16
 
 
 As of 7/3/11
@@ -603,50 +604,56 @@ more problems solved.  There are 69,470 users with 25 or more problems solved, w
 As of 01/10/16:
 I have solved 202 problems and am at position 195 on level 8, this puts me at position 1,505 overall.
 My percentage rank is 0.269%.  My best ever rank was 1,048, I'd need to have solved 231 problems to be at that
-same level today, which is 19 more than I have currently solved.  There are currently 559,098 users with 1 or
+same level today, which is 29 more than I have currently solved.  There are currently 559,098 users with 1 or
 more problems solved.  There are 78,552 users with 25 or more problems solved, which is 14.050% of all.
 
 As of 01/10/16:
 I have solved 203 problems and am at position 184 on level 8, this puts me at position 1,480 overall.
 My percentage rank is 0.265%.  My best ever rank was 1,048, I'd need to have solved 230 problems to be at that
-same level today, which is 17 more than I have currently solved.  There are currently 559,177 users with 1 or
+same level today, which is 27 more than I have currently solved.  There are currently 559,177 users with 1 or
 more problems solved.  There are 78,561 users with 25 or more problems solved, which is 14.049% of all.
 
 As of 01/22/16:
 I have solved 204 problems and am at position 173 on level 8, this puts me at position 1,465 overall.
 My percentage rank is 0.260%.  My best ever rank was 1,048, I'd need to have solved 230 problems to be at that
-same level today, which is 16 more than I have currently solved.  There are currently 562,689 users with 1 or
+same level today, which is 26 more than I have currently solved.  There are currently 562,689 users with 1 or
 more problems solved.  There are 78,893 users with 25 or more problems solved, which is 14.021% of all.
 
 As of 01/23/16:
 I have solved 206 problems and am at position 151 on level 8, this puts me at position 1,423 overall.
 My percentage rank is 0.253%.  My best ever rank was 1,048, I'd need to have solved 230 problems to be at that
-same level today, which is 14 more than I have currently solved.  There are currently 563,063 users with 1 or
+same level today, which is 24 more than I have currently solved.  There are currently 563,063 users with 1 or
 more problems solved.  There are 78,927 users with 25 or more problems solved, which is 14.017% of all.
 
 As of 01/26/16:
 I have solved 208 problems and am at position 138 on level 8, this puts me at position 1,388 overall.
 My percentage rank is 0.246%.  My best ever rank was 1,048, I'd need to have solved 230 problems to be at that
-same level today, which is 12 more than I have currently solved.  There are currently 564,069 users with 1 or
+same level today, which is 22 more than I have currently solved.  There are currently 564,069 users with 1 or
 more problems solved.  There are 78,999 users with 25 or more problems solved, which is 14.005% of all.
 
 As of 01/27/16:
 I have solved 209 problems and am at position 128 on level 8, this puts me at position 1,373 overall.
 My percentage rank is 0.243%.  My best ever rank was 1,048, I'd need to have solved 230 problems to be at that
-same level today, which is 11 more than I have currently solved.  There are currently 564,569 users with 1 or
+same level today, which is 21 more than I have currently solved.  There are currently 564,569 users with 1 or
 more problems solved.  There are 79,029 users with 25 or more problems solved, which is 13.998% of all.
 
 As of 01/31/16:
 I have solved 210 problems and am at position 114 on level 8, this puts me at position 1,348 overall.
 My percentage rank is 0.238%.  My best ever rank was 1,048, I'd need to have solved 230 problems to be at that
-same level today, which is 10 more than I have currently solved.  There are currently 565,807 users with 1 or
+same level today, which is 20 more than I have currently solved.  There are currently 565,807 users with 1 or
 more problems solved.  There are 79,137 users with 25 or more problems solved, which is 13.987% of all.
 
 As of 08/29/16:
 I have solved 211 problems and am at position 95 on level 8, this puts me at position 1,413 overall.
 My percentage rank is 0.226%.  My best ever rank was 1,048, I'd need to have solved 237 problems to be at that
-same level today, which is 16 more than I have currently solved.  There are currently 626,557 users with 1 or
+same level today, which is 26 more than I have currently solved.  There are currently 626,557 users with 1 or
 more problems solved.  There are 84,869 users with 25 or more problems solved, which is 13.545% of all.
+
+As of 11/21/16:
+I have solved 213 problems and am at position 83 on level 8, this puts me at position 1,427 overall.
+My percentage rank is 0.219%.  My best ever rank was 1,048, I'd need to have solved 239 problems to be at that
+same level today, which is 26 more than I have currently solved.  There are currently 653,017 users with 1 or
+more problems solved.  There are 86,953 users with 25 or more problems solved, which is 13.316% of all.
 
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
@@ -1213,12 +1220,27 @@ more problems solved.  There are 84,869 users with 25 or more problems solved, w
 564 -
 565 -
 566 -
+567 -
+568 -
+569 - Prime Obsession,
+570 -
+571 - Prime Obsession,
+572 -
+573 -
+574 -
+575 - Solved
+576 -
+577 - Solved, Prime Obsession, Lucky Luke
+578 -
+579 -
+580 -
+581 -
 
 
-Solved 48 out of 50 Prime Obsession (157, 163, 167, 181, 199, 223, 227, 229, 233, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563)
+Solved 49 out of 50 Prime Obsession (157, 163, 167, 181, 199, 223, 227, 229, 233, 241, 251, 257, 263, 269, 271, 281, 283, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 587)
 Solved 11 out of 12 Fibonacci Fever (233)
 Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325)
-Solved 45 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 319, 321, 327, 331, 339, 361, 367, 385, 391, 393, 399, 409, 415, 421, 427, 429, 433, 451, 463, 475, 477, 483, 487, 489, 495, 511, 517, 519, 529, 535, 537, 541, 553, 559, 577)
+Solved 46 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 319, 321, 327, 331, 339, 361, 367, 385, 391, 393, 399, 409, 415, 421, 427, 429, 433, 451, 463, 475, 477, 483, 487, 489, 495, 511, 517, 519, 529, 535, 537, 541, 553, 559, 579, 583, 591, 601, 613, 615, 619)
 
 Target list for the next few months (finish all problems <= 150, finish Fibonacci Fever):
 171 - Triangle Trophy, Lucky Luke, (solved by 1,568)

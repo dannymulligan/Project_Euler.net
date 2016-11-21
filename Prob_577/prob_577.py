@@ -19,23 +19,12 @@
 #
 # Find sum(n=1..12345) H(n).
 #
-# Solved ??/??/16
+# Solved 11/21/16
 
-#import numpy as np
-#import scipy as sp
-#import matplotlib as mpl
-
-#import cProfile
-#cProfile.run('main()')
-
-#import pdb
-#pdb.set_trace()
-
-import sys
-#print(sys.version)
 import time
 start_time = time.clock()
-SIZE = 1000
+
+SIZE = 12345
 
 ########################################
 def HexagonXRange(dx, dy):
@@ -67,71 +56,82 @@ def HexagonXRange(dx, dy):
 
 
 ########################################
-Ranges = dict()
-for x in range(1, SIZE+1):
-    for y in range(x+1):
-        Ranges[(x, y)] = HexagonXRange(x, y)
+if False:
+    FitSize = dict()
+    FitHex = dict()
+    for x in range(1, SIZE+1):
+        for y in range(x+1):
+            TSize = HexagonXRange(x, y)
+            if TSize > SIZE:
+                continue
 
-#for (x, y) in sorted(Ranges.keys()):
-#    if (x == y):
-#        print("Range({}, {}) = {} (symmetric)".format(x, y, Ranges[(x, y)]))
-#    else:
-#        print("Range({}, {}) = {}".format(x, y, Ranges[(x, y)]))
+            Symmetric = (x == y) or (y == 0)
+            if Symmetric:
+                # Symmetric hexagons can not be reflected horizontally
+                Count = 1
+            else:
+                # Asymmetric hexagons can be reflected horizontally
+                Count = 2
+
+            if TSize not in FitSize.keys():
+                # First bounding triangle of this size
+                FitSize[TSize] = Count
+                FitHex[TSize] = [(x, y, Count)]
+            else:
+                FitSize[TSize] += Count
+                FitHex[TSize].append((x, y, Count))
+
+    if False:
+        for TSize in sorted(FitSize.keys()):
+            if TSize > 100:
+                break
+            print("Fits[{}] = {}, {}".format(TSize, FitSize[TSize], FitHex[TSize]))
+
+else:
+    # Much faster, and known from observation to be the same result
+    FitSize = [n//3 if ((n % 3) == 0) else 0 for n in range(SIZE+1)]
+
+    if False:
+        # Test code
+        for TSize in range(3, SIZE+1, 3):
+            if TSize > 100:
+                break
+            print("Fits[{}] = {}".format(TSize, FitSize[TSize]))
 
 
 ########################################
-H = 0
-Hlist = list()
-Hlist.append(H)  # H(0)
-Hlist.append(H)  # H(1)
-Hlist.append(H)  # H(2)
-Debug = False
+def TFitT(n, m):
+    '''How many triangles of size m fit inside
+    a triangle of size n'''
+    return (n-m+1)*(n-m+2)//2
 
+if False:
+    # Test code for the TFitT(n, m) function
+    assert TFitT(6, 3) == 10
+    assert TFitT(7, 3) == 15
+    assert TFitT(7, 4) == 10
+
+
+########################################
+def Hquick(n):
+    '''Quicker way of calculating H(n)'''
+    Debug = False
+
+    Answer = 0
+    for m in range(3, n+1, 3):
+        Triangles = TFitT(n, m)
+        Fits = FitSize[m]
+        Answer += Triangles * Fits
+        if Debug:
+            print(" + {} * {} = {} = {} * {}".format(
+                    Triangles, Fits, Triangles*Fits, Triangles, FitHex[m]))
+
+    return Answer
+
+Answer = 0
 for n in range(3, SIZE+1):
-#    if (n == 80) or (n == 180):
-#        Debug = True
-#    else:
-#        Debug = False
+    H = Hquick(n)
+    Answer += H
 
-    H = Hlist[n-3]
-    if Debug:
-        print("----------------------------------------")
-        print("Calculating H({})".format(n))
-        print("    Starting with H({}) = {}".format(n-3, H))
-
-    for x in range(1, n+1):
-        for y in range(x+1):
-            Range = Ranges[(x, y)]
-            if (Range <= n) and Debug:
-                print("    Range[({}, {})] is {}".format(x, y, Range))
-
-            if (x == y) or (y == 0):
-                # Symmetric cases
-                if Range == n:
-                    H += 1
-                    if Debug:
-                        print("    H = H + 1 = {}".format(H))
-
-                elif Range < n:
-                    H += (n-Range)*3
-                    if Debug:
-                        print("    H = H + ({})*3 = H + {} = {}".format(n-Range, (n-Range)*3, H))
-            else:
-                # Not-symmetric cases
-                if Range == n:
-                    H += 2
-                    if Debug:
-                        print("    H = H + 1*2 = {} symmetry".format(H))
-
-                elif Range < n:
-                    H += (n-Range)*3*2
-                    if Debug:
-                        print("    H = H + ({})*3*2 = H + {} = {} symmetry".format(n-Range, (n-Range)*3*2, H))
-
-    Hlist.append(H)
-
-    if ((n % 10) == 0) or Debug:
-        print("H({}) = {}".format(n, H))
-
-print("Answer = H({}) = {}".format(n, H))
+print("Answer: sum(H({})) = {}".format(n, Answer))
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
