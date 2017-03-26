@@ -38,4 +38,5 @@ while (answer == 0):
             answer = i
     i -= 1
 i += 1
-print "Answer is", i
+
+print "Answer is", answer
