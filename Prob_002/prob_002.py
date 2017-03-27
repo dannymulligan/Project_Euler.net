@@ -13,10 +13,7 @@
 #
 # Find the sum of all the even-valued terms in the sequence which do
 # not exceed four million.
-#
-# Solved ??/??/09
-# ?? problems solved
-# Position #??? on level ?
+
 
 answer = 0
 (f1, f0) = (1, 1)

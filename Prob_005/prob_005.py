@@ -33,5 +33,6 @@
 #  19      19       19x17x13x11x7x5x3x3x2x2x2x2
 #  20      5x2x2    19x17x13x11x7x5x3x3x2x2x2x2
 
+
 answer = 19 * 17 * 13 * 11 * 7 * 5 * 3 * 3 * 2 * 2 * 2 * 2
-print "Answer is", answer
+print("Answer = {}".format(answer))

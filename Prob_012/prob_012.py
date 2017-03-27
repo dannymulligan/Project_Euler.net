@@ -32,6 +32,7 @@ MAX = 12376  # t(12375) = 76576500 with 576 divisors
 GOAL = 500
 
 LIMIT_PRIME = (MAX*(MAX+1)/2 + 1)
+print("LIMIT_PRIME =", LIMIT_PRIME)
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
 
 
@@ -61,7 +62,6 @@ def prime_factors(n):
             # n is a composite number
             factors.append(prime_table[n])
             n /= prime_table[n]
-    factors.reverse()
     return factors
 
 
@@ -75,35 +75,35 @@ def triangle(n):
 def divisors(n):
     d = prime_factors(n)
 
-    divs = 1
+    div_cnt = 1
     mult = 2
     prev_factor = 0
     for factor in d:
         if (factor == prev_factor):
-            divs /= mult
+            div_cnt /= mult
             mult += 1
         else:
             mult = 2
-        divs *= mult
+        div_cnt *= mult
         prev_factor = factor
-    return divs
+    return div_cnt
 
 
-max_divs = 0
+max_div_cnt = 0
 i = 0
 for t in triangle(MAX):
     i += 1
 
-    divs = divisors(t)
+    div_cnt = divisors(t)
 
-    if (divs > max_divs):
-        max_divs = divs
-        print("{0}: Triangle number {1} has {2} divisors".format(i, t, divs))
+    if (div_cnt > max_div_cnt):
+        max_div_cnt = div_cnt
+        print("{0}: Triangle number {1} has {2} divisors".format(i, t, div_cnt))
 
     if ((i % 1000) == 0):
-        print("    {0}: Triangle number {1} has {2} divisors".format(i, t, divs))
+        print("    {0}: Triangle number {1} has {2} divisors".format(i, t, div_cnt))
 
-    if (divs > GOAL):
-        print("t = {}, divs = {}".format(t, divs))
+    if (div_cnt > GOAL):
+        print("t = {}, div_cnt = {}".format(t, div_cnt))
         print("Answer = {}".format(t))
         exit()

@@ -112,13 +112,13 @@ int main()
 
     // Print the answer
     printf("// Print the answer\n");
-    int max = max_h;
-    if (max_v > max_h)   max = max_v;
-    if (max_nw > max_h)  max = max_nw;
-    if (max_ne > max_h)  max = max_ne;
-    printf("max = %d\n", max);
-    printf("max_h  = %d\n", max_h);
-    printf("max_v  = %d\n", max_v);
-    printf("max_nw = %d\n", max_nw);
+    int max_all = max_h;
+    if (max_ne > max_all)  max_all = max_ne;
+    if (max_nw > max_all)  max_all = max_nw;
+    if (max_v  > max_all)  max_all = max_v;
+    printf("max_h  = %d, ", max_h);
+    printf("max_v  = %d, ", max_v);
+    printf("max_nw = %d, ", max_nw);
     printf("max_ne = %d\n", max_ne);
+    printf("Answer = %d\n", max_all);
 }

@@ -10,7 +10,7 @@
 # bottom right corner.
 #
 # How many such routes are there through a 20×20 grid?
-#
+
 
 import sys
 import time
@@ -18,7 +18,7 @@ start_time = time.clock()
 
 ########################################
 
-SIZE = 6
+SIZE = 20
 
 # Create an empty array of node values
 nodes = list()
