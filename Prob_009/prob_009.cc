@@ -18,15 +18,14 @@ int main()
 {
 
   // Find the answer
-  int a, b, c;
-  for (a=1; a<MAX/3; a++) {
-    for (b=a+1; b<(MAX-a)/2; b++) {
-      for (c=b+1; c<MAX; c++) {
+  for (int a=1; a<MAX/3; a++)
+    for (int b=a+1; b<(MAX-a)/2; b++)
+      for (int c=b+1; c<MAX; c++)
+
         if ((a+b+c) == MAX)
-          if ((a*a) + (b*b) == (c*c))
+          if ((a*a) + (b*b) == (c*c)) {
             printf("a = %d, b = %d, c = %d, a+b+c = %d, a*b*c = %d\n", a, b, c, (a+b+c), (a*b*c));
-      }
-    }
-  }
+            printf("Answer = %d\n", (a*b*c));
+          }
 
 }

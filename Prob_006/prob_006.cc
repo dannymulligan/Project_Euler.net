@@ -20,22 +20,13 @@ const int CNT = 100;
 
 int main()
 {
-  int i;
-
-  // Calculate the sum of the squares
   int sum_sq = 0;
-  for (i = 1; i <= CNT; i++) {
-    sum_sq += i * i;
-  }
-
-  // Calculate the square of the sum
   int sq_sum = 0;
-  for (i = 1; i <= CNT; i++) {
-    sq_sum += i;
+  for (int i = 1; i <= CNT; i++) {
+    sum_sq += i * i;  // sum(i^2)
+    sq_sum += i;      // sum(i)
   }
   sq_sum = sq_sum * sq_sum;
-
-  // Calculate the difference
   int diff = sq_sum - sum_sq;
 
   printf("Sum of squares of 1 to %d is %d\n", CNT, sum_sq);

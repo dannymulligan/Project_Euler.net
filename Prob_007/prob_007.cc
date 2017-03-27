@@ -16,8 +16,8 @@ int main()
 {
   int i, j;
   char tab[MAX];
-  printf("sizeof(tab[MAX]) = %d\n", sizeof(tab[MAX]));
-  printf("sizeof(tab) = %d\n", sizeof(tab));
+  printf("sizeof(tab[MAX]) = %lu\n", sizeof(tab[MAX]));
+  printf("sizeof(tab) = %lu\n", sizeof(tab));
 
 
   // Initialize the array to all prime
@@ -33,9 +33,8 @@ int main()
   for (i = 2; i < SQRT_MAX; i++) {
     if (tab[i]) {
       printf("%d is a prime.\n", i);
-      for (j = i*i; j < MAX; j += i) {
+      for (j = i*i; j < MAX; j += i)
         tab[j] = 0;
-      }
     }
   }
 
