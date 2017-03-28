@@ -32,8 +32,7 @@ private:
 const int SIZE = 20;
 
 int main () {
-  // Start a timer
-  Timer tmr;
+  Timer tmr;  // Start a timer
 
   // Create an empty array of node values, initialized with 0
   std::vector<std::vector<int> > nodes(SIZE+1, std::vector<int>(SIZE+1, 0));

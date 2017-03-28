@@ -14,4 +14,4 @@ answer = 0
 for i in lnum:
     answer += int(i)
 
-print "Answer =", answer
+print("Answer = {}".format(answer))
