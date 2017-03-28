@@ -22,8 +22,6 @@
 // The 12th term, F_(12), is the first term to contain three digits.
 //
 // What is the first term in the Fibonacci sequence to contain 1000 digits?
-//
-// $Revision
 
 #include <stdio.h>
 
@@ -114,6 +112,4 @@ int main()
     }
     printf("\n");
     printf("The answer is %d\n", n);
-
-
 }

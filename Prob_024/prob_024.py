@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Project Euler.net Problem 24
 #
@@ -15,10 +15,23 @@
 #
 # What is the millionth lexicographic permutation of the digits 0, 1,
 # 2, 3, 4, 5, 6, 7, 8 and 9?
-#
-# Solved ??/??/09
-# ?? problems solved
-# Position #??? on level ?
+
+
+import itertools
+
+N = 1000000
+
+nums = range(10)
+
+for n, perm in enumerate(itertools.permutations(nums)):
+    if (n == (N-1)):
+        break
+
+Answer = ''
+for j in perm:
+    Answer += str(j)
+print("Answer = {}".format(Answer))
+
 
 # Numbers like 0xxxxxxxxx: 9! = 362,880 possibilities => #1 to #362,880
 # Numbers like 1xxxxxxxxx: 9! = 362,880 possibilities => #362,881 to #725,760
@@ -51,18 +64,3 @@
 # 2783915460 => #1,000,000
 # 2783915604 => #1,000,001
 # 2783915640 => #1,000,002
-
-import itertools
-
-nums = range(10)
-
-i = 0
-for n in itertools.permutations(nums):
-    i += 1
-    if (i == 1000000):
-        answer = ''
-        for j in n:
-            answer += str(j)
-        print "Answer is", answer
-        exit()
-

@@ -38,6 +38,16 @@
 //
 // Need to compile this on my mac with...
 //   g++ -std=c++11 prob_018.cc
+//
+// My g++ compiler is as follows...
+//    bash-3.2$ g++ --version
+//    g++ --version
+//    Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+//    Apple LLVM version 8.0.0 (clang-800.0.42.1)
+//    Target: x86_64-apple-darwin16.4.0
+//    Thread model: posix
+//    InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
 
 #include <chrono>
 #include <iostream>
@@ -61,7 +71,7 @@ private:
 };
 
 ////////////////////////////////////////
-std::vector<std::vector<int> > triangle = {
+std::vector<std::vector<int>> triangle = {
                 {75},
                {95, 64},
               {17, 47, 82},

@@ -8,13 +8,9 @@
 // + 9 + 14 = 53, is the 938th name in the list. So, COLIN would obtain a score of 938 × 53 = 49714.
 //
 // What is the total of all the name scores in the file?
-//
-// $Revision
 
 #include <stdio.h>
 #include <string.h>
-
-#define MAX 10000
 
 int main()
 {
@@ -22,17 +18,15 @@ int main()
     char name[32];  // String to store names
 
     // Read in the entries
-    int name_count;
+    int name_count = 0;
     int name_score;
-    int name_len;
     int tot_score = 0;
     while (!feof(stdin)) {
         (void)fscanf(stdin, "%s\n", &name);
 
         name_count++;
         name_score = 0;
-        name_len = strlen(name);
-        for (i = 0; i < name_len; i++) {
+        for (i = 0; i < strlen(name); i++) {
             name_score += name[i] - 'A' + 1;
         }
         name_score = name_score * name_count;
