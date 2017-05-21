@@ -215,6 +215,7 @@
 #215: Problem 375, solved 03/17/17
 #216: Problem 491, solved 04/02/17
 #217: Problem 587, solved 05/21/17
+#218: Problem 429, solved 05/21/17
 
 
 As of 7/3/11
@@ -678,10 +679,10 @@ same level today, which is 27 more than I have currently solved.  There are curr
 more problems solved.  There are 90,395 users with 25 or more problems solved, which is 13.088% of all.
 
 As of 05/21/17:
-I have solved 217 problems and am at position 48 on level 8, this puts me at position 1,436 overall.
-My percentage rank is 0.204%.  My best ever rank was 1,048, I'd need to have solved 244 problems to be at that
-same level today, which is 27 more than I have currently solved.  There are currently 702,834 users with 1 or
-more problems solved.  There are 91,590 users with 25 or more problems solved, which is 13.032% of all.
+I have solved 218 problems and am at position 42 on level 8, this puts me at position 1,413 overall.
+My percentage rank is 0.201%.  My best ever rank was 1,048, I'd need to have solved 244 problems to be at that
+same level today, which is 26 more than I have currently solved.  There are currently 702,846 users with 1 or
+more problems solved.  There are 91,592 users with 25 or more problems solved, which is 13.032% of all.
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -1110,7 +1111,7 @@ more problems solved.  There are 91,590 users with 25 or more problems solved, w
 426 -
 427 - Lucky Luke,
 428 -
-429 - Lucky Luke,
+429 - Solved, Lucky Luke,
 430 -
 431 - Prime Obsession,
 432 -
@@ -1272,7 +1273,7 @@ more problems solved.  There are 91,590 users with 25 or more problems solved, w
 
 Solved 11 out of 12 Fibonacci Fever (233)
 Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325)
-Solved 46 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 319, 321, 327, 331, 339, 361, 367, 385, 391, 393, 399, 409, 415, 421, 427, 429, 433, 451, 463, 475, 477, 483, 487, 489, 495, 511, 517, 519, 529, 535, 537, 541, 553, 559, 579, 583, 591, 601, 613, 615, 619)
+Solved 47 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 319, 321, 327, 331, 339, 361, 367, 385, 391, 393, 399, 409, 415, 421, 427, 433, 451, 463, 475, 477, 483, 487, 489, 495, 511, 517, 519, 529, 535, 537, 541, 553, 559, 579, 583, 591, 601, 613, 615, 619)
 
 Target list for the next few months (finish all problems <= 150, finish Fibonacci Fever):
 171 - Triangle Trophy, Lucky Luke, (solved by 1,568)
