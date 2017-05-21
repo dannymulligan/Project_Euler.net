@@ -1,23 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding=utf-8
 #
-# Project Euler.net Problem ??
+# Project Euler.net Problem ???
 #
 # Problem summary
 #
 # Problem text
-#
-# Solved ??/??/16
-
-#import numpy as np
-#import scipy as sp
-#import matplotlib as mpl
-
-#import cProfile
-#cProfile.run('main()')
-
-#import pdb
-#pdb.set_trace()
 
 import sys
 #print(sys.version)

@@ -3,7 +3,7 @@
 import time
 start_time = time.clock()
 
-LIMIT_PRIME = 10**7
+LIMIT_PRIME = 10**9
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
 primes = []
 
@@ -114,10 +114,10 @@ assert is_prime(5678039) == True
 ############################################################
 def factors(n):
     answer = []
-    while True:
-        if prime_table[n] == 1:
-            answer.append(n)
-            answer.sort()
-            return answer
+    while (prime_table[n] != 1):
         answer.append(prime_table[n])
-        n /= prime_table[n]
+        n //= prime_table[n]
+        
+    answer.append(n)
+    answer.sort()
+    return answer
