@@ -20,7 +20,7 @@
 import sys
 #print(sys.version)
 import time
-start_time = time.clock()
+overall_start_time = time.clock()
 
 MODULO = 1000000009
 TARGET = 10**8
@@ -31,6 +31,7 @@ primes = []
 
 ############################################################
 def calculate_primes(limit=LIMIT_PRIME):
+    start_time = time.clock()
     if (limit>len(prime_table)):
         raise Exception("prime_table is too small ({} entries, need at least {})".format(len(prime_table), limit))
 
@@ -55,12 +56,13 @@ def calculate_primes(limit=LIMIT_PRIME):
         if (prime_table[i] == 1):
             primes.append(i)
         i += 2
-    print("There are {} primes less than {}, calculated in {:.2f} seconds".format(len(primes), limit, (time.clock() - start_time)))
+    print("There are {:,} primes less than {:,}, calculated in {:.2f} seconds".format(len(primes), limit, (time.clock() - start_time)))
 
 calculate_primes(LIMIT_PRIME)
 
 
 ############################################################
+start_time = time.clock()
 factorial = [0]*LIMIT_PRIME
 
 for i in range(2,TARGET+1):
@@ -74,10 +76,11 @@ for i in range(2,TARGET+1):
             factorial[factor] += 1
             n = n // factor
 
-#print("factorial =", factorial)
+print("Calculated factorial primes in {:.2f} seconds".format(time.clock() - start_time))
 
 
 ############################################################
+start_time = time.clock()
 squares = [0]*LIMIT_PRIME
 
 for i in range(2,TARGET+1):
@@ -91,9 +94,11 @@ for i in range(2,TARGET+1):
     squares[i] = s
 
 #print("squares =", squares)
+print("Calculated squares of primes in {:.2f} seconds".format(time.clock() - start_time))
 
 
 ############################################################
+start_time = time.clock()
 answer = 1  # 1^2
 
 for i in range(2,TARGET+1):
@@ -102,5 +107,6 @@ for i in range(2,TARGET+1):
     answer = (answer * (1 + squares[i])) % MODULO
 
 print("Answer =", answer)
+print("Calculated answer in {:.2f} seconds".format(time.clock() - start_time))
 
-print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
+print("Time taken = {:.2f} seconds".format(time.clock() - overall_start_time))

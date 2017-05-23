@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 import time
-start_time = time.clock()
 
 LIMIT_PRIME = 10**9
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
@@ -9,6 +8,7 @@ primes = []
 
 ############################################################
 def calculate_primes(limit=LIMIT_PRIME):
+    start_time = time.clock()
     if (limit>len(prime_table)):
         raise Exception("prime_table is too small ({} entries, need at least {})".format(len(prime_table), limit))
 
@@ -33,7 +33,7 @@ def calculate_primes(limit=LIMIT_PRIME):
         if (prime_table[i] == 1):
             primes.append(i)
         i += 2
-    print("There are {} primes less than {}, calculated in {} seconds".format(len(primes), limit, (time.clock() - start_time)))
+    print("There are {:,} primes less than {:,}, calculated in {:.2f} seconds".format(len(primes), limit, (time.clock() - start_time)))
 
 
 ############################################################
