@@ -216,6 +216,7 @@
 #216: Problem 491, solved 04/02/17
 #217: Problem 587, solved 05/21/17
 #218: Problem 429, solved 05/21/17
+#219: Problem 186, solved 05/29/17
 
 
 As of 7/3/11
@@ -684,6 +685,12 @@ My percentage rank is 0.201%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 26 more than I have currently solved.  There are currently 702,846 users with 1 or
 more problems solved.  There are 91,592 users with 25 or more problems solved, which is 13.032% of all.
 
+As of 05/29/17:
+I have solved 219 problems and am at position 39 on level 8, this puts me at position 1,399 overall.
+My percentage rank is 0.199%.  My best ever rank was 1,048, I'd need to have solved 244 problems to be at that
+same level today, which is 25 more than I have currently solved.  There are currently 704,669 users with 1 or
+more problems solved.  There are 91,757 users with 25 or more problems solved, which is 13.021% of all.
+
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
 003 - Solved, Prime Obsession, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph, As Easy As Pi,
@@ -869,7 +876,7 @@ more problems solved.  There are 91,592 users with 25 or more problems solved, w
 183 - Solved,
 184 - 75%
 185 - 55%
-186 - 60%
+186 - Solved,
 187 - Solved,
 188 - Solved,
 189 - 70%, Lucky Luke,
@@ -1287,3 +1294,4 @@ Solutions in progress
 152 - Writing 1/2 as a sum of inverse squares
 190 - Maximizing a weighted product (Triangle Trophy)
 143 - Investigating the Torricelli point of a triangle (Complete 1-150)
+172 - Investigating numbers with few repeated digits
