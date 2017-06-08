@@ -217,6 +217,7 @@
 #217: Problem 587, solved 05/21/17
 #218: Problem 429, solved 05/21/17
 #219: Problem 186, solved 05/29/17
+#220: Problem 190, solved 06/07/17
 
 
 As of 7/3/11
@@ -691,6 +692,12 @@ My percentage rank is 0.199%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 25 more than I have currently solved.  There are currently 704,669 users with 1 or
 more problems solved.  There are 91,757 users with 25 or more problems solved, which is 13.021% of all.
 
+As of 06/07/17:
+I have solved 220 problems and am at position 29 on level 8, this puts me at position 1,390 overall.
+My percentage rank is 0.197%.  My best ever rank was 1,048, I'd need to have solved 244 problems to be at that
+same level today, which is 24 more than I have currently solved.  There are currently 707,065 users with 1 or
+more problems solved.  There are 91,978 users with 25 or more problems solved, which is 13.008% of all.
+
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
 003 - Solved, Prime Obsession, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph, As Easy As Pi,
@@ -880,7 +887,7 @@ more problems solved.  There are 91,757 users with 25 or more problems solved, w
 187 - Solved,
 188 - Solved,
 189 - 70%, Lucky Luke,
-190 - 50%, Triangle Trophy,
+190 - Solved, Triangle Trophy,
 191 - Solved, Prime Obsession,
 192 - 75%
 193 - Solved, Prime Obsession, Lucky Luke,
@@ -951,9 +958,9 @@ more problems solved.  There are 91,757 users with 25 or more problems solved, w
 258 - 70%
 259 - Solved, Lucky Luke,
 260 - 70%
-261 - Lucky Luke,
-262 -
-263 - Prime Obsession,
+261 - 85%, Lucky Luke,
+262 - 80%
+263 - 75%, Prime Obsession,
 264 -
 265 - Solved,
 266 - Solved,
@@ -978,9 +985,9 @@ more problems solved.  There are 91,757 users with 25 or more problems solved, w
 285 - Lucky Luke,
 286 - Solved,
 287 -
-288 -
-289 - Unlucky Squares, Lucky Luke,
-290 -
+288 - 35%
+289 - 90%, Unlucky Squares, Lucky Luke,
+290 - 50%
 291 -
 292 -
 293 - Solved, Prime Obsession,
@@ -1011,7 +1018,7 @@ more problems solved.  There are 91,757 users with 25 or more problems solved, w
 318 -
 319 - Lucky Luke,
 320 -
-321 - Lucky Luke,
+321 - 30%, Lucky Luke,
 322 -
 323 - Solved
 324 - Unlucky Squares,
@@ -1278,20 +1285,20 @@ more problems solved.  There are 91,757 users with 25 or more problems solved, w
 587 - Solved, Prime Obsession
 
 
-Solved 11 out of 12 Fibonacci Fever (233)
-Solved 17 out of 25 Triangle Trophy (153, 171, 190, 210, 253, 276, 300, 325)
-Solved 47 out of 50 Lucky Luke (159, 163, 171, 189, 195, 201, 219, 223, 241, 261, 273, 283, 285, 289, 297, 319, 321, 327, 331, 339, 361, 367, 385, 391, 393, 399, 409, 415, 421, 427, 433, 451, 463, 475, 477, 483, 487, 489, 495, 511, 517, 519, 529, 535, 537, 541, 553, 559, 579, 583, 591, 601, 613, 615, 619)
+Solved 11 out of 12 Fibonacci Fever (233=70%)
+Solved 18 out of 25 Triangle Trophy (153=65%, 171=65%, 210=70%, 253=75%, 276=75%, 300=50%, 325=80%)
+Solved 47 out of 50 Lucky Luke (159=60%, 163=70%, 171=65%, 189=70%, 195=75%, 201=65%, 219=70%, 223=70%, 241=80%, 261=85%, 273=70%, 283=75%, 285=55%, 289=90%, 297=35%, 319, 321, 327, 331, 339, 361, 367=55%, 385=70%, 391=75%, 393=50%, 399=45%, 409=55%, 415=100%, 421, 427, 433, 451, 463, 475, 477, 483, 487, 489, 495, 511, 517=45%, 519=50%, 529=80%, 535=55%, 537=35%, 541, 553, 559, 579, 583, 591, 601, 613, 615, 619)
 
 Target list for the next few months (finish all problems <= 150, finish Fibonacci Fever):
-171 - Triangle Trophy, Lucky Luke, (solved by 1,568)
-143 - (solved by 1,479)
-233 - Prime Obsession, Fibonacci Fever, (solved by 1,239)
-3 problems, sorted by number of people solved as of 01/24/15
+171 - 65% - Triangle Trophy, Lucky Luke, (solved by 1,568)
+143 - 65% - (solved by 1,479)
+233 - 70% - Fibonacci Fever, (solved by 1,239)
+516 - 20% -
+518 - 20% -
 
 Solutions in progress
-501 - Eight Divisors
-202 - Find the 200th prime-proof sqube containing the contiguous sub-string "200"
-152 - Writing 1/2 as a sum of inverse squares
-190 - Maximizing a weighted product (Triangle Trophy)
-143 - Investigating the Torricelli point of a triangle (Complete 1-150)
-172 - Investigating numbers with few repeated digits
+501 - 40% - Eight Divisors
+202 - 60% - Find the 200th prime-proof sqube containing the contiguous sub-string "200"
+152 - 65% - Writing 1/2 as a sum of inverse squares
+143 - 65% - Investigating the Torricelli point of a triangle (Complete 1-150)
+172 - 55% - Investigating numbers with few repeated digits
