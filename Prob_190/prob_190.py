@@ -215,3 +215,27 @@ print("Pm({}) = {}".format(m, Pm(m, temp=1e-3, Debug=True)))  # goes off the rai
 #m = 15
 #print("Pm({}) = {}".format(m, Pm(m, temp=1e-4)))  # Doesn't work
 
+
+temp = ''' It turns out that the derivative calculation is correct, but the
+solution for m = 8 with temp = 1e-3 runs into an instability at step
+14, and goes off into the weeds.  For this case, the gradient descent
+eventually recovers and produces the correct answer, but some of the
+bigger problems do not recover.
+
+A correct solution that I found in the forums for problem 190 does
+work, but does so by testing each step to see if it improves the
+answer, and adjusting the size of the step until the answer is best.
+This approach would have avoided my step 14 problem, by preventing bad
+steps in that and a few previous steps, possibly at the risk of slow
+progress or early stopping when near areas of instability.
+
+I dug deep on this problem because I am interested in the topic of
+gradient descent for machine learning applications.  I have not seen
+the technique of adjusting the size of the step to ensure that the
+step improves the solution used in machine learning.  To use it we
+would need to run forward propogation for the current minibatch with
+the current solution updated with different step sizes to find the
+best step size.  This would result in a significant increase in the
+number of forward propagation steps run per minibatch, and would only
+benefit if the number of minibatches needed to be run to get an
+equivalent quality solution drops by an equivalent factor.'''
