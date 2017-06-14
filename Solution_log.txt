@@ -218,6 +218,7 @@
 #218: Problem 429, solved 05/21/17
 #219: Problem 186, solved 05/29/17
 #220: Problem 190, solved 06/07/17
+#221: Problem 607, solved 06/13/17
 
 
 As of 7/3/11
@@ -697,6 +698,12 @@ I have solved 220 problems and am at position 29 on level 8, this puts me at pos
 My percentage rank is 0.197%.  My best ever rank was 1,048, I'd need to have solved 244 problems to be at that
 same level today, which is 24 more than I have currently solved.  There are currently 707,065 users with 1 or
 more problems solved.  There are 91,978 users with 25 or more problems solved, which is 13.008% of all.
+
+As of 06/13/17:
+I have solved 221 problems and am at position 29 on level 8, this puts me at position 1,386 overall.
+My percentage rank is 0.196%.  My best ever rank was 1,048, I'd need to have solved 244 problems to be at that
+same level today, which is 23 more than I have currently solved.  There are currently 708,505 users with 1 or
+more problems solved.  There are 92,138 users with 25 or more problems solved, which is 13.005% of all.
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -1274,7 +1281,7 @@ more problems solved.  There are 91,978 users with 25 or more problems solved, w
 576 -
 577 - Solved, Prime Obsession, Lucky Luke
 578 -
-579 -
+579 - Lucky Luke
 580 -
 581 -
 582 -
@@ -1283,11 +1290,48 @@ more problems solved.  There are 91,978 users with 25 or more problems solved, w
 585 -
 586 -
 587 - Solved, Prime Obsession
-
+589 - 
+590 - 
+591 - Lucky Luke
+592 - 
+593 - Prime Obsession
+594 - 
+595 - 
+596 - 
+597 - 
+598 - 
+599 - Prime Obsession
+600 - 
+601 - Prime Obsession, Lucky Luke
+602 - 
+603 - 
+604 - 
+605 - 
+606 - 
+607 - Solved, Prime Obsession
+608 - 
+609 - 
+610 - 
+611 - 
+612 - 
+613 - Lucky Luke
+614 - 
+613 - Prime Obsession
+615 - Lucky Luke
+617 - Prime Obsession
+618 - 
+619 - Prime Obsession, Lucky Luke
+620 - 
+621 - Lucky Luke
 
 Solved 11 out of 12 Fibonacci Fever (233=70%)
 Solved 18 out of 25 Triangle Trophy (153=65%, 171=65%, 210=70%, 253=75%, 276=75%, 300=50%, 325=80%)
-Solved 47 out of 50 Lucky Luke (159=60%, 163=70%, 171=65%, 189=70%, 195=75%, 201=65%, 219=70%, 223=70%, 241=80%, 261=85%, 273=70%, 283=75%, 285=55%, 289=90%, 297=35%, 319, 321, 327, 331, 339, 361, 367=55%, 385=70%, 391=75%, 393=50%, 399=45%, 409=55%, 415=100%, 421, 427, 433, 451, 463, 475, 477, 483, 487, 489, 495, 511, 517=45%, 519=50%, 529=80%, 535=55%, 537=35%, 541, 553, 559, 579, 583, 591, 601, 613, 615, 619)
+Solved 47 out of 50 Lucky Luke (159=60%, 163=70%, 171=65%, 189=70%, 195=75%, 201=65%, 219=70%, 223=70%, 241=80%,
+                                261=85%, 273=70%, 283=75%, 285=55%, 289=90%, 297=35%, 319=90%, 321=30%, 327=40%,
+                                331=100%, 339=70%, 361=90%, 367=55%, 385=70%, 391=75%, 393=50%, 399=45%, 409=55%,
+                                415=100%, 421=50%, 427=95%, 433=65%, 451=30%, 463=30%, 475=50%, 477=65%, 483=100%,
+                                487=40%, 489=100%, 495=100%, 511=55%, 517=45%, 519=50%, 529=80%, 535=55%, 537=35%,
+                                541=85%, 553=80%, 559=95%, 577, 579, 583, 591, 601, 613, 615, 619, 621)
 
 Target list for the next few months (finish all problems <= 150, finish Fibonacci Fever):
 171 - 65% - Triangle Trophy, Lucky Luke, (solved by 1,568)
@@ -1295,6 +1339,10 @@ Target list for the next few months (finish all problems <= 150, finish Fibonacc
 233 - 70% - Fibonacci Fever, (solved by 1,239)
 516 - 20% -
 518 - 20% -
+321 - 30% - Lucky Luke
+327 - 40% - Lucky Luke
+451 - 30% - Lucky Luke
+463 - 30% - Lucky Luke
 
 Solutions in progress
 501 - 40% - Eight Divisors
