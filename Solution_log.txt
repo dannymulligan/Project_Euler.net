@@ -700,7 +700,7 @@ same level today, which is 24 more than I have currently solved.  There are curr
 more problems solved.  There are 91,978 users with 25 or more problems solved, which is 13.008% of all.
 
 As of 06/13/17:
-I have solved 221 problems and am at position 29 on level 8, this puts me at position 1,386 overall.
+I have solved 221 problems and am at position 24 on level 8, this puts me at position 1,386 overall.
 My percentage rank is 0.196%.  My best ever rank was 1,048, I'd need to have solved 244 problems to be at that
 same level today, which is 23 more than I have currently solved.  There are currently 708,505 users with 1 or
 more problems solved.  There are 92,138 users with 25 or more problems solved, which is 13.005% of all.
