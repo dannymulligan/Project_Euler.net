@@ -219,6 +219,7 @@
 #219: Problem 186, solved 05/29/17
 #220: Problem 190, solved 06/07/17
 #221: Problem 607, solved 06/13/17
+#222: Problem 178, solved 06/18/17
 
 
 As of 7/3/11
@@ -705,6 +706,12 @@ My percentage rank is 0.196%.  My best ever rank was 1,048, I'd need to have sol
 same level today, which is 23 more than I have currently solved.  There are currently 708,505 users with 1 or
 more problems solved.  There are 92,138 users with 25 or more problems solved, which is 13.005% of all.
 
+As of 06/18/17:
+I have solved 222 problems and am at position 19 on level 8, this puts me at position 1,373 overall.
+My percentage rank is 0.193%.  My best ever rank was 1,048, I'd need to have solved 245 problems to be at that
+same level today, which is 23 more than I have currently solved.  There are currently 709,697 users with 1 or
+more problems solved.  There are 92,261 users with 25 or more problems solved, which is 13.000% of all.
+
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
 003 - Solved, Prime Obsession, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph, As Easy As Pi,
@@ -882,7 +889,7 @@ more problems solved.  There are 92,138 users with 25 or more problems solved, w
 175 - 70%
 176 - 70%
 177 - 80%
-178 - 55%
+178 - Solved
 179 - Solved, Prime Obsession,
 180 - 75%
 181 - 70%, Prime Obsession,
@@ -968,43 +975,43 @@ more problems solved.  There are 92,138 users with 25 or more problems solved, w
 261 - 85%, Lucky Luke,
 262 - 80%
 263 - 75%, Prime Obsession,
-264 -
+264 - 85%
 265 - Solved,
 266 - Solved,
 267 - Solved, Lucky Luke,
 268 - Solved,
-269 - Prime Obsession,
-270 -
-271 - Prime Obsession,
-272 -
-273 - Lucky Luke,
-274 -
-275 -
-276 - Triangle Trophy,
+269 - 80%, Prime Obsession,
+270 - 80%
+271 - 60%, Prime Obsession,
+272 - 80%
+273 - 70%, Lucky Luke,
+274 - 65%
+275 - 85%
+276 - 75%, Triangle Trophy,
 277 - Solved, Prime Obsession,
-278 -
-279 -
-280 -
-281 - Prime Obsession,
-282 -
-283 - Prime Obsession, Lucky Luke,
-284 -
-285 - Lucky Luke,
+278 - 50%
+279 - 60%
+280 - 65%
+281 - 55%, Prime Obsession,
+282 - 70%
+283 - 75%, Prime Obsession, Lucky Luke,
+284 - 55%
+285 - 55%, Lucky Luke,
 286 - Solved,
-287 -
+287 - 40%
 288 - 35%
 289 - 90%, Unlucky Squares, Lucky Luke,
 290 - 50%
-291 -
-292 -
+291 - 45%
+292 - 65%
 293 - Solved, Prime Obsession,
-294 -
-295 -
-296 -
-297 - Lucky Luke,
-298 -
-299 -
-300 - Triangle Trophy,
+294 - 45%
+295 - 75%
+296 - 60%
+297 - 35%, Lucky Luke,
+298 - 60%
+299 - 60%
+300 - 50%, Triangle Trophy,
 301 - Solved
 302 -
 303 - Solved, Lucky Luke,
@@ -1031,7 +1038,7 @@ more problems solved.  There are 92,138 users with 25 or more problems solved, w
 324 - Unlucky Squares,
 325 - Triangle Trophy,
 326 -
-327 - Lucky Luke,
+327 - 40%, Lucky Luke,
 328 -
 329 - Solved
 330 -
