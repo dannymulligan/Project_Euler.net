@@ -144,13 +144,14 @@ print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
 # If we have a number X00, then we can convert it to 00X by adding
 # 0XX, then subtracting XX0.  Since the numbers we added and
 # subtracted were both divisible by 11, we haven't changed the overall
-# disivilibity by 11 by doing this.
+# divisibility by 11 by doing this.
 #
 # Thus we can move any digit 2 places to the right, until we've summed
 # all of the odd position digits to position 1 (i.e. the 10's position
 # in the number), and all of the even position digits to position 0
 # (i.e. the 1's position in the number), at which point the number is
-# divisible by 11 only if position 1 and position 0 are equal.
+# divisible by 11 only if position 1 and position 0 are equal, or
+# differ by some multiple of 11.
 #
 # So to be divisible by 11, all of the odd position digits must sum to
 # the same as all of the even position digits, although either odd or
