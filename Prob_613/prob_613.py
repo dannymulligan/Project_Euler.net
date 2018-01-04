@@ -29,50 +29,54 @@ import sys
 import time
 start_time = time.clock()
 
+X = 40.0
+Y = 30.0
+# Z = 50.0 mm
+
+
 ########################################
 
 
-def calc_prob(step):
-    #print("step size {}".format(step))
+def local_probability(x, y):
+    #print("local_probability(x={}, y={}, X={}, Y={})".format(x, y, X, Y))
+    # Calculate angle between (X, 0), (x, y), & (0, Y)
+    # return this angle divided by a full circle.
+    # Calculate using the law of cosines
+    #     c^2 = a^2 + b^2 - 2ab Cos (C)
+    # or
+    #     Cos(C) = (a^2 + b^2 - c^2) / 2ab
     
-    x = np.arange(step, 30.+step, step)
-    #print("x =\n", x)
+    a = np.sqrt((x - X)**2 + y**2)  # a = distance between (x, y) and (X, 0)
+    b = np.sqrt(x**2 + (Y-y)**2)    # b = distance between (x, y) and (0, Y)
+    c = np.sqrt(X**2 + Y**2)        # c = distance between (X, 0) and (0, Y)
 
-    y = 40.0/x
-    #print("y =\n", y)
-
-    theta = np.arctan(y)
-    #print("theta (radians) =\n", theta)
-    #print("theta (degrees) =\n", theta * 180. / np.pi)
-
-    angle = np.pi - theta
-    #print("angle (radians) =\n{}".format(angle))
-    #print("angle (degrees) =\n{}".format(angle*180./np.pi))
-
-    average = np.average(angle)
-    #print("average = {}".format(average))
-
-    probability = average / (2.*np.pi)
-    #print("probability = {:.11f}".format(probability))
-    
-    return probability
-        
-def function(x):
-    y = 40.0/x
-    theta = np.arctan(y)
-    angle = np.pi - theta
+    CosC = (a**2 + b**2 - c**2) / (2*a*b)
+    angle = np.arccos(CosC)
     value = angle / (2.*np.pi)
+
+    #print("    a = {}".format(a))
+    #print("    b = {}".format(b))
+    #print("    c = {}".format(c))
+    #print("    Cos(C) = {}".format(CosC))
+    #print("    angle = {}".format(angle))
+    #print("    value = {}".format(value))
+    
     return value
 
+def fixed_probability(x, y):
+    return 1.0
 
-for step in [1.0, 1.e-1, 1.e-2, 1.e-3, 1.e-4, 1.e-5]:
-    print("with step size {}, answer is {:.12f}".format(step, calc_prob(step)))
+#(volume, accuracy) = integrate.dblquad(fixed_probability, 0., X, (lambda x: 0.0), (lambda x: Y*(X-x)/X))
+(volume, accuracy) = integrate.dblquad(local_probability, 0., X, (lambda x: 0.0), (lambda x: Y*(X-x)/X), epsabs=1.49e-10, epsrel=1.49e-10)
+area = X * Y * 0.5
+result = volume / area
 
-(result, accuracy) = integrate.quad(function, 0, 30.0)
+print("volume = {}".format(volume))
+print("area = {}".format(area))
+print("result = {}".format(result))
+print("accuracy = {}".format(accuracy/area))
 
-print("result = {}".format(result/30.))
-print("accuracy = {}".format(accuracy/30.))
-
-print("Result to 10 digits = {:.10f}".format(result/30.))
+print("Result to 10 digits = {:.10f}".format(result))
+print("Result ranges from {:.10f} to {:.10f}".format(result-accuracy/area, result+accuracy/area))
       
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
