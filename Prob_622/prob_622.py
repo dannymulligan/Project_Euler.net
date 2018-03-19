@@ -31,21 +31,62 @@ import sys
 import time
 start_time = time.clock()
 
+# Discussion of solution
+#
+# If the deck of cards has DECK cards, we can track the location of
+# each card with an integer 0 and DECK-1.  Ignoring the last card
+# (which doesn't move anyway), each riffle shuffle will change the
+# location of a card at location N as follows...
+#
+#    N -> N * 2 mod (DECK - 1)
+#
+# Which means we are looking for values of DECK where iterating
+# through 60 riffle shuffles will return the card back to it's
+# original location, or where
+#
+#   N -> N * (2**60) mod (DECK - 1)
+#
+# or where
+#
+#    2**60 mod (DECK - 1) = 1
+#    (2**60 - 1) mode (DECK - 1) = 0
+#
+# so the solutions will be values of (DECK - 1) that are factors of
+# 2**60 - 1.  Thus we need to find all of the factors of 2**60 - 1
+# and then test them as possible parts of the solution.
+#
+# Note that sometimes when 60 steps returns all cards to their
+# original locations there will be a smaller number of steps that also
+# return all cards to their original locations.  We need to test each
+# possible part of the solution and eliminate it if it has a shorter
+# number of steps.
+#
+# Minor detail: DECK must be even or else it's not possible to do a
+# riffle shuffle.  Thus we can eliminate all possible solutions where
+# DECK is odd.
+
+# Worked example for the 8 shuffle case
+#
 # for s(n) = 8, the solutions are 18, 52, 86, 256
-# n = 18, n-1 = 17
-# n = 52, n-1 = 51 = 3 * 17
-# n = 86, n-1 = 85 = 5 * 17
-# n = 256, n-1 = 255 = 3 * 5 * 17
 #
-# all of the solutions are factors of 255, which is 2^8-1
-# prime factors of 255 are 3, 5, 17
+#     n = 18, n-1 = 17
+#     n = 52, n-1 = 51 = 3 * 17
+#     n = 86, n-1 = 85 = 5 * 17
+#     n = 256, n-1 = 255 = 3 * 5 * 17
 #
-# the following are also factors of 255, but are not solutions...
+# All solutions are factors of 255, which is 2^8-1.
+# The prime factors of 255 are 3, 5, 17, so the following possible solutions
 #
-# n = 4 , n-1 = 3, because s(4) = 2
-# n = 6 , n-1 = 5, because s(6) = 4
-# n = 16, n-1 = 15 = 3 * 5, because s(16) = 4
+#    1 * 1 *  1 =   1  =>  DECK =   2,  S(  2) = 2, eliminated
+#    1 * 1 * 17 =  17  =>  DECK =  18,  S( 18) = 8, part of the solution
+#    1 * 5 *  1 =   5  =>  DECK =   6,  S(  6) = 4, eliminated
+#    1 * 5 * 17 =  85  =>  DECK =  86,  S( 86) = 8, part of the solution
+#    3 * 1 *  1 =   3  =>  DECK =   4,  S(  4) = 2, eliminated
+#    3 * 1 * 17 =  51  =>  DECK =  52,  S( 52) = 8, part of the solution
+#    3 * 5 *  1 =  15  =>  DECK =  16,  S( 16) = 4, eliminated
+#    3 * 5 * 17 = 255  =>  DECK = 256,  S(256) = 8, part of the solution
 #
+# So the answer is 18 + 86 + 52 + 256 = 412
 
 
 ########################################
@@ -59,13 +100,13 @@ def is_sorted(deck):
 def init_deck(size):
     return [n for n in range(1, size-1)]
 
-def s(size, debug=False):
+def s(size, limit, debug=False):
     history = [1]
     deck = init_deck(size)
     if debug:
         print("Start: {}".format(deck))
 
-    for shuffle in range(61):
+    for shuffle in range(limit):
         deck = [riffle(card, size) for card in deck]
         history.append(deck[0])
         if debug:
@@ -74,8 +115,22 @@ def s(size, debug=False):
             return shuffle+1
     return(history)
 
-def slow_test(n, target, debug=False):
-    return s(n, debug) == target
+def fs(size, limit, debug=False):
+    n = 1
+    history = [n]
+    for i in range(limit):
+        n = riffle(n, size)
+        history.append(n)
+        if n == 1:
+            if debug:
+                print("True, n = {}, i = {}, target = {}".format(n, i, target), history)
+            return (i+1)
+    if debug:
+        print("False, n = {}".format(n), history)
+    return None
+
+def slow_test(n, target, limit, debug=False):
+    return s(n, limit, debug) == target
 
 def fast_test(deck_size, target, debug=False):
     n = 1
@@ -100,7 +155,7 @@ primes.calculate_primes(limit=LIMIT_PRIME, prime_table=prime_table, prime_list=p
 
 n = 2 ** 60 - 1
 factors_of_n = primes.find_factors(n, prime_list)
-print(factors_of_n)
+print("Factors of 2**60 - 1 = {} are {}".format(n, factors_of_n))
 
 # This code is hard coded for the factors of 2**60-1, if I had more time to spend
 # I'd write code to generate the candidates automatically from those factors.
@@ -132,6 +187,9 @@ for candidate in candidates:
         answer += candidate
         answers.append(candidate)
         print("    {:,} answers totaling to {:,}".format(len(answers), answer))
+    else:
+        print("    s({:,}) = {}, not a part of the answer".format(candidate, fs(candidate, target)))
+        
         
 print("len(answers) = {}".format(len(answers)))
 print("answers = {}".format(answers))
