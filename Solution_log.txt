@@ -220,6 +220,7 @@
 #220: Problem 190, solved 06/07/17
 #221: Problem 607, solved 06/13/17
 #222: Problem 178, solved 06/18/17
+#223: Problem 622, solved 03/19/18
 
 
 As of 7/3/11
@@ -711,6 +712,12 @@ I have solved 222 problems and am at position 19 on level 8, this puts me at pos
 My percentage rank is 0.193%.  My best ever rank was 1,048, I'd need to have solved 245 problems to be at that
 same level today, which is 23 more than I have currently solved.  There are currently 709,697 users with 1 or
 more problems solved.  There are 92,261 users with 25 or more problems solved, which is 13.000% of all.
+
+As of 03/19/18:
+I have solved 223 problems and am at position 28 on level 8, this puts me at position 1,452 overall.
+My percentage rank is 0.185%.  My best ever rank was 1,048, I'd need to have solved 252 problems to be at that
+same level today, which is 29 more than I have currently solved.  There are currently 786,262 users with 1 or
+more problems solved.  There are 98,613 users with 25 or more problems solved, which is 12.542% of all.
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -1330,6 +1337,7 @@ more problems solved.  There are 92,261 users with 25 or more problems solved, w
 619 - Prime Obsession, Lucky Luke
 620 - 
 621 - Lucky Luke
+622 - Solved
 
 Solved 11 out of 12 Fibonacci Fever (233=70%)
 Solved 18 out of 25 Triangle Trophy (153=65%, 171=65%, 210=70%, 253=75%, 276=75%, 300=50%, 325=80%)
@@ -1338,7 +1346,8 @@ Solved 47 out of 50 Lucky Luke (159=60%, 163=70%, 171=65%, 189=70%, 195=75%, 201
                                 331=100%, 339=70%, 361=90%, 367=55%, 385=70%, 391=75%, 393=50%, 399=45%, 409=55%,
                                 415=100%, 421=50%, 427=95%, 433=65%, 451=30%, 463=30%, 475=50%, 477=65%, 483=100%,
                                 487=40%, 489=100%, 495=100%, 511=55%, 517=45%, 519=50%, 529=80%, 535=55%, 537=35%,
-                                541=85%, 553=80%, 559=95%, 577, 579, 583, 591, 601, 613, 615, 619, 621)
+                                541=85%, 553=80%, 559=95%, 577, 579, 583, 591, 601, 613, 615, 619, 621, 631, 633,
+                                637, 639, 643, 645, 651, 655, 663)
 
 Target list for the next few months (finish all problems <= 150, finish Fibonacci Fever):
 171 - 65% - Triangle Trophy, Lucky Luke, (solved by 1,568)
