@@ -2,19 +2,15 @@
 
 import time
 
-LIMIT_PRIME = 10**9
-prime_table = [1]*LIMIT_PRIME  # table of largest factor
-primes = []
-
 ############################################################
-def calculate_primes(limit=LIMIT_PRIME):
+def calculate_primes(limit, prime_table, prime_list):
     start_time = time.clock()
     if (limit>len(prime_table)):
         raise Exception("prime_table is too small ({} entries, need at least {})".format(len(prime_table), limit))
 
     # Optimization to allow us to increment i by 2 for the rest of the algoritm
     i = 2
-    primes.append(i)
+    prime_list.append(i)
     j = i**2
     while (j < limit):
         prime_table[j] = i
@@ -23,7 +19,7 @@ def calculate_primes(limit=LIMIT_PRIME):
     i = 3
     while (i < (limit/2)):
         if (prime_table[i] == 1):
-            primes.append(i)
+            prime_list.append(i)
             j = i**2
             while (j < limit):
                 prime_table[j] = i
@@ -31,28 +27,23 @@ def calculate_primes(limit=LIMIT_PRIME):
         i += 2
     while (i < limit):
         if (prime_table[i] == 1):
-            primes.append(i)
+            prime_list.append(i)
         i += 2
-    print("There are {:,} primes less than {:,}, calculated in {:.2f} seconds".format(len(primes), limit, (time.clock() - start_time)))
-
-
-############################################################
-calculate_primes(LIMIT_PRIME)
+    print("There are {:,} primes less than {:,}, calculated in {:.2f} seconds".format(len(prime_list), limit, (time.clock() - start_time)))
 
 
 ############################################################
 def exp_by_sq(x,y,z):
-    # return (x**y % z)
+    '''Calculate (x**y % z) efficiently, using recursion'''
     if (y == 1):
-        # y is 1
         ans = x
     elif ((y % 2) == 0):
         # y is even
-        ans = exp_by_sq(x,y/2,z)
+        ans = exp_by_sq(x, y/2, z)
         ans = (ans * ans) % z
     else:
         # l is odd
-        ans = exp_by_sq(x,(y-1)/2,z)
+        ans = exp_by_sq(x, (y-1)/2, z)
         ans = (ans * ans) % z
         ans = (x * ans) % z
     return ans
@@ -65,12 +56,12 @@ def miller_rabin_primality_test(n,s,d,k):
     # False = n not prime
     #
     # http://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
-    for kk in xrange(k):
+    for kk in range(k):
         a = random.randint(2,n-2)
         x = exp_by_sq(a,d,n)
         if ((x == 1) or (x == n-1)):
             continue
-        for r in xrange(1,s):
+        for r in range(1,s):
             x = ((x*x) % n)
             if (x == 1):  return False
             if (x == n-1):  break
@@ -111,13 +102,25 @@ assert is_prime(5678039) == True
 #
 # 3,825,123,056,546,413,051 > 2^61
 
+
 ############################################################
-def factors(n):
+def factors(n, prime_table):
     answer = []
     while (prime_table[n] != 1):
         answer.append(prime_table[n])
         n //= prime_table[n]
-        
+
     answer.append(n)
     answer.sort()
     return answer
+
+
+############################################################
+import itertools
+import operator
+import functools
+def divisors(n, prime_table):
+    n_factors = factors(n, prime_table)
+    for l in range(1, len(n_factors)):
+        for c in itertools.combinations(n_factors, l):
+            yield functools.reduce(operator.mul, c)
