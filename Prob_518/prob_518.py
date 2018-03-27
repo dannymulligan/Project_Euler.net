@@ -27,8 +27,6 @@
 #
 #Find S(10^8).
 
-                
-
 import sys
 import time
 start_time = time.clock()
@@ -42,70 +40,130 @@ start_time = time.clock()
 
 SIZE = 100    # Answer = 1035
 #SIZE = 10**3  # Answer = 75019
-#SIZE = 10**4  # Answer = 4225228 in 0.27 seconds
-#SIZE = 4*10**4  # Answer = 48159907 in 3.05 seconds
-#SIZE = 5*10**4  # Answer = 72290551 in 4.5 seconds
-SIZE = 10**5  # Answer = 249551109 in 16.17 seconds
-SIZE = 10**6  # Answer = 
-#SIZE = 10**6
-#SIZE = 10**8
+#SIZE = 10**4  # Answer = 4225228
+#SIZE = 4*10**4  # Answer = 48159907
+#SIZE = 5*10**4  # Answer = 72290551
+#SIZE = 10**5  # Answer = 249551109
+SIZE = 10**6  # Answer = 17822459735 in 1.99 seconds (previous code took 1091.25 seconds)
+SIZE = 10**7  # Answer = 1316768308545 in 19.59 seconds
+SIZE = 10**8
 
-LIMIT_PRIME = SIZE+1
+# With SIZE = 10**8, it takes
+# 40.44 seconds to calculate primes
+# 67.74 seconds to calculate factors
+
+############################################################
+import primes
+LIMIT_PRIME = SIZE
 prime_table = [1]*LIMIT_PRIME  # table of largest factor
-primes = []
+prime_list = []
+primes.calculate_primes(LIMIT_PRIME, prime_table, prime_list)
 
-############################################################
-def calculate_primes(limit=LIMIT_PRIME):
-    start_time = time.clock()
-    if (limit>len(prime_table)):
-        raise Exception("prime_table is too small ({} entries, need at least {})".format(len(prime_table), limit))
-
-    # Optimization to allow us to increment i by 2 for the rest of the algoritm
-    i = 2
-    primes.append(i)
-    j = i**2
-    while (j < limit):
-        prime_table[j] = i
-        j += i
-
-    i = 3
-    while (i < (limit/2)):
-        if (prime_table[i] == 1):
-            primes.append(i)
-            j = i**2
-            while (j < limit):
-                prime_table[j] = i
-                j += i
-        i += 2
-    while (i < limit):
-        if (prime_table[i] == 1):
-            primes.append(i)
-        i += 2
-    print("There are {:,} primes less than {:,}, calculated in {:.2f} seconds".format(len(primes), limit, (time.clock() - start_time)))
-
-calculate_primes(LIMIT_PRIME)
+import itertools
+import operator
+import functools
+def divisors(factors0, factors1):
+    factors = sorted(factors0 + factors1)
+    for l in range(1, len(factors)):
+        for c in itertools.combinations(factors, l):
+            yield functools.reduce(operator.mul, c)
 
 
 ############################################################
+factor_list = dict()
+for prime in prime_list:
+    factor_list[prime+1] = primes.factors(prime+1, prime_table)
+    #print("factor_list[{}] = {}".format(prime+1, factor_list[prime+1]))
+print("Finished calculating factor_list after {:.2f} seconds".format(time.clock() - start_time))
+#print()
 
-Answer = 0
-for ci in range(3, len(primes)):
-    c = primes[ci]
-    #print(c, end=':')
-    for bi in range(ci-1, 0, -1):
-        b = primes[bi]
-        #print(b, end=', ')
+############################################################
+reverse_factors = dict()
+for factor in factor_list:
+    this = sorted(factor_list[factor])
+    that = list()
+    i = 0
+    while (i+1) < len(this):
+        if this[i] == this[i+1]:
+            i += 2  # skip pair of prime factors
+        else:
+            that.append(this[i])
+            i += 1
+    if i < len(this):
+        that.append(this[i])
+    that_hash = str(that)
 
-        #if (b+1)*(b+1) < (c+1):
-        #    break
+    if that_hash in reverse_factors:
+        reverse_factors[that_hash].append(factor)
+    else:
+        reverse_factors[that_hash] = [factor]
 
-        if (((b+1)*(b+1) % (c+1)) == 0):
-            a = (b+1)*(b+1) // (c+1) - 1
-            if (prime_table[a] == 1) & (a > 1):
-                #print((a, b, c))
-                Answer += a + b + c
-    #print()
+    #print("trimmed_factors[{}] = {}".format(factor, that))
 
-print("Answer = {}".format(Answer))
+#print()
+#for that in reverse_factors:
+#    print("reverse_factors[{}] = {}".format(that, reverse_factors[that]))
+
+#print()
+print("Finished calculating {} groups of reverse_factors after {:.2f} seconds".format(len(reverse_factors), time.clock() - start_time))
+
+
+############################################################
+import itertools
+def candidates():
+    for factor_list in reverse_factors:
+        #print("Searching for results featuring factors {}".format(factor_list))
+        for a, c in itertools.combinations(sorted(reverse_factors[factor_list]), 2):
+            yield (a, c)
+
+
+############################################################
+def test_candidate(a, c):
+    # Find the factors of m^2 = c / a    
+    a_factors = primes.factors(a, prime_table)
+    c_factors = primes.factors(c, prime_table)
+
+    # Eliminate common factors 
+    a_index = c_index = 0
+    while (a_index < len(a_factors)) and (c_index < len(c_factors)):
+        if a_factors[a_index] == c_factors[c_index]:
+            a_factors[a_index] = 1
+            c_factors[c_index] = 1
+            a_index += 1
+            c_index += 1
+        elif a_factors[a_index] < c_factors[c_index]:
+            a_index += 1
+        else:
+            c_index += 1
+    a_factors = [x for x in a_factors if x != 1]
+    c_factors = [x for x in c_factors if x != 1]
+
+    # Get the square root m
+    a_factors = a_factors[::2]
+    c_factors = c_factors[::2]
+
+    # Calculate b
+    b = a
+    for f in c_factors:
+        b *= f
+    for f in a_factors:
+        b //= f
+
+    if b in factor_list:
+        return True, b
+    else:
+        return False, b
+
     
+############################################################
+answer = 0
+for a, c in candidates():
+    valid, b = test_candidate(a, c)
+    if valid:
+        #print("valid (a, b, c) = ({}, {}, {})".format(a-1, b-1, c-1))
+        answer += a-1 + b-1 + c-1
+    #else:
+    #    print("    false (a, c) = ({},{})".format(a, c))
+
+print("Answer = {}".format(answer))
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
