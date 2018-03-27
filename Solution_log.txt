@@ -223,6 +223,7 @@
 #223: Problem 622, solved 03/19/18
 #224: Problem 407, solved 03/24/18
 #225: Problem 317, solved 03/24/18
+#226: Problem 518, solved 03/27/18
 
 
 As of 7/3/11
@@ -728,6 +729,10 @@ of all active users.  I'm ranked 2nd in Ireland.
 As of 03/24/18: I have solved 225 problems.  Considering only active members, I'm at position 142 on level 9,
 and position 782 overall.  My percentage rank is 0.594%.  There are currently 131,651 active users, 20,075
 with 25 or more problems solved, which is 15.249% of all active users.  I'm ranked 2nd in Ireland.
+
+As of 03/27/18: I have solved 226 problems.  Considering only active members, I'm at position 138 on level 9,
+and position 776 overall.  My percentage rank is 0.589%.  There are currently 131,733 active users, 20,100
+with 25 or more problems solved, which is 15.813% of all active users.  I'm ranked 2nd in Ireland.
 
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
@@ -1245,7 +1250,7 @@ with 25 or more problems solved, which is 15.249% of all active users.  I'm rank
 515 -
 516 -
 517 - Lucky Luke,
-518 -
+518 - Solved
 519 - Lucky Luke,
 520 -
 521 - Prime Obsession,
@@ -1365,7 +1370,6 @@ Target list for the next few months (finish all problems <= 150, finish Fibonacc
 143 - 65% - (solved by 1,479)
 233 - 70% - Fibonacci Fever, (solved by 1,239)
 516 - 20% -
-518 - 20% -
 321 - 30% - Lucky Luke
 327 - 40% - Lucky Luke
 451 - 30% - Lucky Luke
