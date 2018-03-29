@@ -3,7 +3,9 @@
 import time
 
 ############################################################
-def calculate_primes(limit, prime_table, prime_list):
+def calculate_primes(limit):
+    prime_table = [1]*limit
+    prime_list = []
     start_time = time.clock()
     if (limit>len(prime_table)):
         raise Exception("prime_table is too small ({} entries, need at least {})".format(len(prime_table), limit))
@@ -30,6 +32,10 @@ def calculate_primes(limit, prime_table, prime_list):
             prime_list.append(i)
         i += 2
     print("There are {:,} primes less than {:,}, calculated in {:.2f} seconds".format(len(prime_list), limit, (time.clock() - start_time)))
+    return prime_table, prime_list
+
+# Example call:
+#     prime_table, prime_list = primes.calculate_primes(SIZE)
 
 
 ############################################################

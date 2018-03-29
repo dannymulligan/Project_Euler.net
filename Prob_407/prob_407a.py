@@ -28,10 +28,7 @@ SizeLimit = SIZE
 
 ############################################################
 import primes
-LIMIT_PRIME = SIZE
-prime_table = [1]*LIMIT_PRIME  # table of largest factor
-prime_list = []
-primes.calculate_primes(LIMIT_PRIME, prime_table, prime_list)
+prime_table, prime_list = primes.calculate_primes(SIZE)
 
 import itertools
 import operator

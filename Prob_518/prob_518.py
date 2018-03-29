@@ -44,8 +44,8 @@ SIZE = 100    # Answer = 1035
 #SIZE = 4*10**4  # Answer = 48159907
 #SIZE = 5*10**4  # Answer = 72290551
 #SIZE = 10**5  # Answer = 249551109
-SIZE = 10**6  # Answer = 17822459735 in 1.99 seconds (previous code took 1091.25 seconds)
-SIZE = 10**7  # Answer = 1316768308545 in 19.59 seconds
+#SIZE = 10**6  # Answer = 17822459735 in 1.99 seconds (previous code took 1091.25 seconds)
+#SIZE = 10**7  # Answer = 1316768308545 in 19.59 seconds
 SIZE = 10**8  # Answer in 192.13 seconds
 
 # With SIZE = 10**8, it takes
@@ -54,19 +54,7 @@ SIZE = 10**8  # Answer in 192.13 seconds
 
 ############################################################
 import primes
-LIMIT_PRIME = SIZE
-prime_table = [1]*LIMIT_PRIME  # table of largest factor
-prime_list = []
-primes.calculate_primes(LIMIT_PRIME, prime_table, prime_list)
-
-import itertools
-import operator
-import functools
-def divisors(factors0, factors1):
-    factors = sorted(factors0 + factors1)
-    for l in range(1, len(factors)):
-        for c in itertools.combinations(factors, l):
-            yield functools.reduce(operator.mul, c)
+prime_table, prime_list = primes.calculate_primes(SIZE)
 
 
 ############################################################
@@ -76,6 +64,7 @@ for prime in prime_list:
     #print("factor_list[{}] = {}".format(prime+1, factor_list[prime+1]))
 print("Finished calculating factor_list after {:.2f} seconds".format(time.clock() - start_time))
 #print()
+
 
 ############################################################
 reverse_factors = dict()
