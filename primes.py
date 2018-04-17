@@ -4,6 +4,8 @@ import time
 
 ############################################################
 def calculate_primes(limit):
+    """calculate a table of primes < limit"""
+
     prime_table = [1]*limit
     prime_list = []
     start_time = time.clock()
@@ -76,7 +78,9 @@ def miller_rabin_primality_test(n,s,d,k):
 
 
 ############################################################
-def is_prime(n):
+def is_prime(n, prime_table):
+    if n < len(prime_table):
+        return prime_table[n] == 1
     s = 0
     d = n - 1
     while ((d % 2) == 0):
@@ -85,10 +89,16 @@ def is_prime(n):
     # n-1 = (2**s)*d
     return miller_rabin_primality_test(n,s,d,4)
 
+if False:
+    # Debug test
+    prime_table, prime_list = calculate_primes(10*3)
+    assert is_prime(51, prime_table) == False
+    assert is_prime(53, prime_table) == True
+    assert is_prime(5678027, prime_table) == False
+    assert is_prime(5678039, prime_table) == True
+
 
 ############################################################
-assert is_prime(5678027) == False
-assert is_prime(5678039) == True
 
 
 # From: https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
