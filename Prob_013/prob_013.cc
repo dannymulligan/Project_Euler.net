@@ -214,5 +214,6 @@ int main () {
   sum += "53503534226472524250874054075591789781264330331690";
 
   std::string sumstr = sum.toString();
-  std::cout << "Answer = " << sumstr.substr(0, 10) << std::endl;
+  std::string answer = sumstr.substr(0, 10);
+  std::cout << "Answer = " << answer << std::endl;
 }
