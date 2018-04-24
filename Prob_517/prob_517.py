@@ -1,15 +1,20 @@
 #!/usr/bin/python
 # coding=utf-8
 #
-# Project Euler.net Problem ??
+# Project Euler.net Problem 517
 #
-# Problem summary
+# A real recursion
+# 
+# For every real number a>1 is given the sequence ga by:
 #
-# Problem text
+#    g_a(x) = 1 for x < a
+#    g_a(x) = g_a(x−1) + g_a(x−a) for x >= a
+#    G(n) = g_rootN(n)
+#    G(90) = 7564511
 #
-# Solved ??/??/15
-# ?? problems solved
-# Position #??? on level ?
+# Find sum(G(p)) for p prime and 10000000<p<10010000
+#
+# Give your answer modulo 1000000007.
 
 #import numpy as np
 #import scipy as sp
