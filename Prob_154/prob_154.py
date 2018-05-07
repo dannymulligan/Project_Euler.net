@@ -168,7 +168,6 @@ def prob_154(mod_power, power):
         sum += m
         count += 1
         #c = trinomial_coefficient(power, trio)
-        c = 0
         answer += m
 
         if (count % 100000) == 0:
