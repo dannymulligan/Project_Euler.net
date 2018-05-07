@@ -38,8 +38,26 @@
 # How many coefficients in the expansion of (x + y + z)^200000 are
 # multiples of 10^12?
 
-# When the modulus is 10**12, this is approximately 2**40.  A 64-bit
-# integer is big enough to store this, but a 32 bit integer is not.
+# For layer N, the addresses of the values are (x, y, z) or (x, N-x-z,
+# z).  There is symmetry in these values, and the value at (x, y, z)
+# is identical to the 5 values at (x, z, y), (y, x, z), (y, z, x), (z,
+# x, y), and (z, y, x).  This allows us to only calculate the cases
+# where x >= y >= z, then we multiply by 6 if x, y, & z are all
+# different, by 3 if two of the three values are identical and by 1 if
+# all three are identical.
+#
+# The value of at (x, y, z) is given by C(x, y, z) = N! / (x! * y! * z!)
+#
+# For this to be divisible by 10**M = 2**M * 5**M, we calculate the
+# power of 2 and power of 5 in N! = T and F, then subtract M from each
+# one to calculate the maximum powers of 2 and 5 in (x! * y! * z!).
+#
+# This in turn allows us to limit the values that we consider as valid
+# values of (x, y, z).
+#
+# This solution runs in about an hour, but other solutions in the
+# forum are well under 1 minute.  I choose to not spend any more time
+# optimizing the run time from here.
 
 (MOD_POWER, POWER) = (12, 200000)
 # debug_answers[(MOD_POWER, POWER)] = answer
@@ -152,10 +170,6 @@ def prob_154(mod_power, power):
         #c = trinomial_coefficient(power, trio)
         c = 0
         answer += m
-        #if (c % modulus) == 0:
-        #    print ("{} x {} = {} x {} -> answer = {}".format(m, trio, m, c, answer))
-        #else:
-        #    print ("{} x {} = {} x {}".format(m, trio, m, c, m))
 
         if (count % 100000) == 0:
             print("{}: {:,} terms, {:.2f} seconds delta, {:.2f} seconds total".format(
