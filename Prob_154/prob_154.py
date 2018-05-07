@@ -41,7 +41,7 @@
 # When the modulus is 10**12, this is approximately 2**40.  A 64-bit
 # integer is big enough to store this, but a 32 bit integer is not.
 
-(MOD_POWER, POWER) = (3, 30)
+(MOD_POWER, POWER) = (12, 200000)
 # debug_answers[(MOD_POWER, POWER)] = answer
 debug_answers = {(2, 10): 3,
                  (2, 20): 33,
@@ -63,55 +63,54 @@ modulus = 10**MOD_POWER
 
 ########################################
 
-n_factorial_power_2 = [0] * (POWER+1)
+def pre_calculations(n, mod_power, power):
+    n_factorial_power = [0] * (power+1)
 
-power_2 = 0
-for p in range(2, POWER+1):
-    n = p
-    while (n % 2) == 0:
-        power_2 += 1
-        n /= 2
-    n_factorial_power_2[p] = power_2
+    power_n = 0
+    for p in range(2, power+1):
+        x = p
+        while (x % n) == 0:
+            power_n += 1
+            x /= n
+        n_factorial_power[p] = power_n
 
-n_factorial_power_5 = [0] * (POWER+1)
+    max_power = n_factorial_power[power] - mod_power
+    return max_power, n_factorial_power
 
-power_5 = 0
-for p in range(2, POWER+1):
-    n = p
-    while (n % 5) == 0:
-        power_5 += 1
-        n /= 5
-    n_factorial_power_5[p] = power_5
-
-print("n_factorial_power_2[:10] = {}".format(n_factorial_power_2[:10]))
-print("n_factorial_power_5[:10] = {}".format(n_factorial_power_5[:10]))
-
-print("n_factorial_power_2[{}] = {:,}".format(POWER, n_factorial_power_2[POWER]))
-print("n_factorial_power_5[{}] = {:,}".format(POWER, n_factorial_power_5[POWER]))
-
-max_power_2 = n_factorial_power_2[POWER] - MOD_POWER
-max_power_5 = n_factorial_power_5[POWER] - MOD_POWER
-
-print("max_power_2 = {:,}".format(max_power_2))
-print("max_power_5 = {:,}".format(max_power_5))
 
 
 ########################################
 
 def gen_valid_triplets(limit):
-    min_x_value = (limit+2)//3
-    max_x_value = limit
-    while n_factorial_power_2[max_x_value] > max_power_2:
-        max_x_value -= 1
-    while n_factorial_power_2[max_x_value] > max_power_2:
-        max_x_value -= 1
+    max_power_2, n_factorial_power_2 = pre_calculations(2, MOD_POWER, POWER)
+    max_power_5, n_factorial_power_5 = pre_calculations(5, MOD_POWER, POWER)
+    print(" max_power_2 = {:,}".format(max_power_2))
+    print(" n_factorial_power_2[:11] = {}".format(n_factorial_power_2[:11]))
+    print(" max_power_5 = {:,}".format(max_power_5))
+    print(" n_factorial_power_5[:11] = {}".format(n_factorial_power_5[:11]))
 
-    for x in range(max_x_value, min_x_value-1, -1):
-        max_z_value = (limit - min_x_value)//2
-        for z in range(0, max_z_value+1):
+    min_x = (limit+2)//3
+
+    max_x = limit
+    while n_factorial_power_2[max_x] > max_power_2:
+        max_x -= 1
+    while n_factorial_power_5[max_x] > max_power_5:
+        max_x -= 1
+
+    for x in range(max_x, min_x-1, -1):
+        max_z = (limit - min_x)//2
+        while n_factorial_power_2[x] + n_factorial_power_2[max_z] > max_power_2:
+            max_z -= 1
+        while n_factorial_power_5[x] + n_factorial_power_5[max_z] > max_power_5:
+            max_z -= 1
+
+        for z in range(0, max_z+1):
             y = limit - x - z
             if (x >= y >= z):
-                yield (x, y, z)
+                power_2 = n_factorial_power_2[x] + n_factorial_power_2[y] + n_factorial_power_2[z]
+                power_5 = n_factorial_power_5[x] + n_factorial_power_5[y] + n_factorial_power_5[z]
+                if (power_2 <= max_power_2) and (power_5 <= max_power_5):
+                    yield (x, y, z)
 
 
 ########################################
@@ -140,30 +139,34 @@ def trinomial_coefficient(n, trio):
     result = math.factorial(n) // (math.factorial(x) * math.factorial(y) * math.factorial(z))
     return result
 
-
-prev_time = start_time
-count = 0
-sum = 0
-answer = 0
-#for trio in gen_triplets(POWER):
-for trio in gen_valid_triplets(POWER):
-    m = trio_multiplier(trio)
-    sum += m
-    count += 1
-    c = trinomial_coefficient(POWER, trio)
-    if (c % modulus) == 0:
+def prob_154(mod_power, power):
+    prev_time = time.clock()
+    count = 0
+    sum = 0
+    answer = 0
+    #for trio in gen_triplets(power):
+    for trio in gen_valid_triplets(power):
+        m = trio_multiplier(trio)
+        sum += m
+        count += 1
+        #c = trinomial_coefficient(power, trio)
+        c = 0
         answer += m
-        print ("{} x {} = {} x {} -> answer = {}".format(m, trio, m, c, answer))
-    else:
-        print ("{} x {} = {} x {}".format(m, trio, m, c, m))
+        #if (c % modulus) == 0:
+        #    print ("{} x {} = {} x {} -> answer = {}".format(m, trio, m, c, answer))
+        #else:
+        #    print ("{} x {} = {} x {}".format(m, trio, m, c, m))
 
-    if (count % 1000000) == 0:
-        print("{:,} terms, {:.2f} seconds delta, {:.2f} seconds total".format(
-            count, time.clock() - prev_time, time.clock() - start_time))
-        prev_time = time.clock()
+        if (count % 100000) == 0:
+            print("{}: {:,} terms, {:.2f} seconds delta, {:.2f} seconds total".format(
+                trio, count, time.clock() - prev_time, time.clock() - start_time))
+            prev_time = time.clock()
 
-print("{:,} terms calculated out of {:,} total in triangle".format(count, sum))
+    print("{:,} terms calculated out of {:,} total in triangle".format(count, sum))
+    return answer
 
+
+answer = prob_154(MOD_POWER, POWER)
 print()
 print("With MOD_POWER = {:,}, POWER = {:,}, answer = {:,}".format(MOD_POWER, POWER, answer))
 
