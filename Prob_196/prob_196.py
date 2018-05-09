@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # coding=utf-8
 #
 # Project Euler.net Problem 196
@@ -7,7 +7,7 @@
 #
 # Build a triangle from all positive integers in the following way:
 #
-#    1:     1
+#    1:    1
 #    2:   <2>  <3>
 #    3:    4   <5>   6
 #    4:   <7>   8    9   10
@@ -60,10 +60,17 @@ start_time = time.clock()
 
 ########################################
 def triangle(n):
-    return n*(n+1)/2
+    return n*(n+1)//2
 
 def triangle_row_range(n):
     return triangle(n-1)+1, triangle(n)
+
+def integer_square_root(n):
+    '''Return largest m where m**2 <= n'''
+    m = 1
+    while m**2 <= n:
+        m += 1
+    return m-1
 
 for i in range(10):
     print("triangle({}) = {}".format(i, triangle(i)))
@@ -83,6 +90,18 @@ for i in [9999, 10000, 5678027, 5678026, 7208784, 7208785, 7208786, 7208787]:
 # Row 7208787 covers 25983301401292 to 25983308610078
 # log2(25983308610078) = 44.56
 # 25983308610078 = 2.6E13
+#
 # So we can't build a table of primes that big
+#
+# But 5,097,383^2 = 25,983,313,448,689 > 25,983,308,610,078
+#
+# So we can build a table of primes up to 5,100,000 and have all the factors we need
+# to disqualify all non primes on the rows we care about
 
-print "Time taken = {0} seconds".format(time.clock() - start_time)
+print("")
+for i in [5678027, 5678026, 5678027, 7208785, 7208786, 7208787]:
+    t_low, t_high = triangle_row_range(i)
+    print("row({:,}) covers {:,} to {:,}, sqrt({:,}) = {:,}".format(i, t_low, t_high, t_high, integer_square_root(t_high)))
+
+print("")
+print("Time taken = {0} seconds".format(time.clock() - start_time))
