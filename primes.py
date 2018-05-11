@@ -37,6 +37,7 @@ def calculate_primes(limit):
     return prime_table, prime_list
 
 # Example call:
+#     import primes
 #     prime_table, prime_list = primes.calculate_primes(SIZE)
 
 
@@ -77,21 +78,50 @@ def miller_rabin_primality_test(n,s,d,k):
     return True
 
 
-############################################################
+#############################################################
+#def is_prime(n, prime_table):
+#    if ((n % 2) == 0) or ((n % 3) == 0) or ((n % 5) == 0):
+#        return False
+#    elif n < len(prime_table):
+#        return prime_table[n] == 1
+#    s = 0
+#    d = n - 1
+#    while ((d % 2) == 0):
+#        d /= 2
+#        s += 1
+#    # n-1 = (2**s)*d
+#    return miller_rabin_primality_test(n,s,d,4)
+
+
+#############################################################
 def is_prime(n, prime_table):
-    if n < len(prime_table):
+    if ((n % 2) == 0) or ((n % 3) == 0) or ((n % 5) == 0):
+        return False
+    elif n < len(prime_table):
         return prime_table[n] == 1
-    s = 0
-    d = n - 1
-    while ((d % 2) == 0):
-        d /= 2
-        s += 1
-    # n-1 = (2**s)*d
-    return miller_rabin_primality_test(n,s,d,4)
+    elif n < len(prime_table)**2:
+        x = 5
+        while (x**2 <= n) and (x <= len(prime_table)):
+            if prime_table[x] == 1:
+                if (n % x) == 0:
+                    return False
+            x += 2
+        return True
+    else:
+        #print("is_prime({:,}, prime_table) resorting to miller_rabin_primailty_test".format(n))
+        s = 0
+        d = n - 1
+        while ((d % 2) == 0):
+            d /= 2
+            s += 1
+        # n-1 = (2**s)*d
+        return miller_rabin_primality_test(n,s,d,4)
 
 if False:
     # Debug test
     prime_table, prime_list = calculate_primes(10*3)
+    print(prime_table)
+    print(len(prime_table))
     assert is_prime(51, prime_table) == False
     assert is_prime(53, prime_table) == True
     assert is_prime(5678027, prime_table) == False

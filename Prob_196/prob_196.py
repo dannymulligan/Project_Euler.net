@@ -44,16 +44,6 @@
 # ?? problems solved
 # Position #??? on level ?
 
-#import numpy as np
-#import scipy as sp
-#import matplotlib as mpl
-
-#import cProfile
-#cProfile.run('main()')
-
-#import pdb
-#pdb.set_trace()
-
 import sys
 import time
 start_time = time.clock()
@@ -63,7 +53,7 @@ def triangle(n):
     return n*(n+1)//2
 
 def triangle_row_range(n):
-    return triangle(n-1)+1, triangle(n)
+    return triangle(n-1)+1, triangle(n)+1
 
 def integer_square_root(n):
     '''Return largest m where m**2 <= n'''
@@ -72,36 +62,149 @@ def integer_square_root(n):
         m += 1
     return m-1
 
-for i in range(10):
-    print("triangle({}) = {}".format(i, triangle(i)))
 
-for i in range(1,12):
-    print("row({}) covers {}".format(i, triangle_row_range(i)))
+def S(target_row, debug=False):
+    if debug:
+        print("S({:,}, debug={})".format(target_row, debug))
+    ########################################
+    # Calculate rows l, m, n, o, p
+    if debug:
+        print("Calculate rows l, m, n, o, p")
 
-for i in [10000, 5678027, 7208785, 7208786, 7208787]:
-    print("row({}) covers {}".format(i, triangle_row_range(i)))
+    row_l_min, row_l_max = triangle_row_range(target_row-2)
+    row_m_min, row_m_max = triangle_row_range(target_row-1)
+    row_n_min, row_n_max = triangle_row_range(target_row)
+    row_o_min, row_o_max = triangle_row_range(target_row+1)
+    row_p_min, row_p_max = triangle_row_range(target_row+2)
 
-for i in [9999, 10000, 5678027, 5678026, 7208784, 7208785, 7208786, 7208787]:
-    print("triangle({}) = {}".format(i, triangle(i)))
+    row_l_value = [n for n in range(row_l_min, row_l_max)]
+    row_m_value = [n for n in range(row_m_min, row_m_max)]
+    row_n_value = [n for n in range(row_n_min, row_n_max)]
+    row_o_value = [n for n in range(row_o_min, row_o_max)]
+    row_p_value = [n for n in range(row_p_min, row_p_max)]
 
-# Row 7208785 covers 25983286983721 to 25983294192505
-# We'd possibly need to check the next two rows too, up to 7208787
-# Row 7208786 covers 25983294192506 to 25983301401291
-# Row 7208787 covers 25983301401292 to 25983308610078
-# log2(25983308610078) = 44.56
-# 25983308610078 = 2.6E13
-#
-# So we can't build a table of primes that big
-#
-# But 5,097,383^2 = 25,983,313,448,689 > 25,983,308,610,078
-#
-# So we can build a table of primes up to 5,100,000 and have all the factors we need
-# to disqualify all non primes on the rows we care about
+    def prime_1_0(n):
+        if primes.is_prime(n, prime_table):
+            return 1
+        else:
+            return 0
 
-print("")
-for i in [5678027, 5678026, 5678027, 7208785, 7208786, 7208787]:
-    t_low, t_high = triangle_row_range(i)
-    print("row({:,}) covers {:,} to {:,}, sqrt({:,}) = {:,}".format(i, t_low, t_high, t_high, integer_square_root(t_high)))
+    row_l_prime = [prime_1_0(n) for n in row_l_value]
+    row_m_prime = [prime_1_0(n) for n in row_m_value]
+    row_n_prime = [prime_1_0(n) for n in row_n_value]
+    row_o_prime = [prime_1_0(n) for n in row_o_value]
+    row_p_prime = [prime_1_0(n) for n in row_p_value]
 
-print("")
-print("Time taken = {0} seconds".format(time.clock() - start_time))
+
+    ########################################
+    # Count adjacent primes in row m
+    if debug:
+        print("Count adjacent primes in row m")
+
+    for n in range(len(row_m_prime)):
+        if row_m_prime[n]:
+            a, b = n-1, n+1
+            a = max(0, a)
+            b = min(b, len(row_l_prime))
+            adjacent_l = sum(row_l_prime[a:b+1])
+            if adjacent_l == 1:
+                row_m_prime[n] = 2
+            elif adjacent_l == 2:
+                row_m_prime[n] = 3
+
+
+    ########################################
+    # Count adjacent primes in row o
+    if debug:
+        print("Count adjacent primes in row o")
+
+    for n in range(len(row_o_prime)):
+        if row_o_prime[n]:
+            a, b = n-1, n+1
+            a = max(0, a)
+            adjacent_p = sum(row_p_prime[a:b+1])
+            if adjacent_p == 1:
+                row_o_prime[n] = 2
+            elif adjacent_p == 2:
+                row_o_prime[n] = 3
+
+
+    ########################################
+    # Count adjacent primes in row n
+    if debug:
+        print("Count adjacent primes in row n")
+
+    for n in range(len(row_n_prime)):
+        if row_n_prime[n]:
+            a, b = n-1, n+1
+            a = max(0, a)
+            b = min(b, len(row_m_prime))
+            adjacent_m = sum(row_m_prime[a:b+1])
+
+            a, b = n-1, n+1
+            a = max(0, a)
+            adjacent_o = sum(row_o_prime[a:b+1])
+
+            row_n_prime[n] += adjacent_m + adjacent_o
+
+
+    ########################################
+    # Generate count of triplets in row n
+    if debug:
+        print("Count count of triplets in row n")
+    answer = 0
+    for n in range(len(row_n_prime)):
+        if row_n_prime[n] >= 3:
+            answer += row_n_value[n]
+
+    if debug and (n < 100):
+        print("row_l_prime = {}".format(row_l_prime))
+        print("row_m_prime = {}".format(row_m_prime))
+        print("row_n_prime = {}".format(row_n_prime))
+        print("row_o_prime = {}".format(row_o_prime))
+        print("row_p_prime = {}".format(row_p_prime))
+
+    return answer
+
+
+########################################
+TARGET = 100
+#TARGET = 5678027
+#TARGET = 7208785
+
+row_min, row_max = triangle_row_range(TARGET)
+print("Row {} is from {} to {}".format(TARGET, row_min, row_max))
+
+min_needed, _ = triangle_row_range(TARGET-2)
+_, max_needed = triangle_row_range(TARGET+2)
+print("Need to know primes from {:,} to {:,}".format(min_needed, max_needed))
+
+max_prime_table = integer_square_root(max_needed) + 1
+print("Generating a table of primes < {:,}".format(max_prime_table))
+print("This will allow us to check primes < {:,}".format(max_prime_table**2))
+
+import primes
+prime_table, prime_list = primes.calculate_primes(max_prime_table)
+
+
+if False:
+    answer, expect = S(8), 60
+    assert answer == expect, "S(8) == {:,} given in the problem statement, but we got {:,}".format(expect, answer)
+    answer, expect = S(9), 37
+    assert answer == expect, "S(9) == {:,} given in the problem statement, but we got {:,}".format(expect, answer)
+    answer, expect = S(1000), 3500211
+    assert answer == expect, "S(1000) == {:,} calculated from earlier version of code, but we got {:,}".format(expect, answer)
+    answer, expect = S(10000), 950007619
+    assert answer == expect, "S(10000) == {:,} given in the problem statement, but we got {:,}".format(expect, answer)
+    answer, expect = S(100000), 549999566882
+    assert answer == expect, "S(100000) == {:,} calculated from earlier version of code, but we got {:,}".format(expect, answer)
+
+import cProfile
+start_time = time.clock()
+
+n = 5678027
+n = 10000
+cProfile.run('S(n, debug=True)')
+#print("S({}) = {}".format(n, S(n, debug=True)))
+
+print("Time taken = {:.3f} seconds".format(time.clock() - start_time))
