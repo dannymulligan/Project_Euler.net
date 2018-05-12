@@ -77,60 +77,6 @@ def miller_rabin_primality_test(n,s,d,k):
         if (x != n-1):  return False
     return True
 
-
-#############################################################
-#def is_prime(n, prime_table):
-#    if ((n % 2) == 0) or ((n % 3) == 0) or ((n % 5) == 0):
-#        return False
-#    elif n < len(prime_table):
-#        return prime_table[n] == 1
-#    s = 0
-#    d = n - 1
-#    while ((d % 2) == 0):
-#        d /= 2
-#        s += 1
-#    # n-1 = (2**s)*d
-#    return miller_rabin_primality_test(n,s,d,4)
-
-
-#############################################################
-def is_prime(n, prime_table):
-    if ((n % 2) == 0) or ((n % 3) == 0) or ((n % 5) == 0):
-        return False
-    elif n < len(prime_table):
-        return prime_table[n] == 1
-    elif n < len(prime_table)**2:
-        x = 5
-        while (x**2 <= n) and (x <= len(prime_table)):
-            if prime_table[x] == 1:
-                if (n % x) == 0:
-                    return False
-            x += 2
-        return True
-    else:
-        #print("is_prime({:,}, prime_table) resorting to miller_rabin_primailty_test".format(n))
-        s = 0
-        d = n - 1
-        while ((d % 2) == 0):
-            d /= 2
-            s += 1
-        # n-1 = (2**s)*d
-        return miller_rabin_primality_test(n,s,d,4)
-
-if False:
-    # Debug test
-    prime_table, prime_list = calculate_primes(10*3)
-    print(prime_table)
-    print(len(prime_table))
-    assert is_prime(51, prime_table) == False
-    assert is_prime(53, prime_table) == True
-    assert is_prime(5678027, prime_table) == False
-    assert is_prime(5678039, prime_table) == True
-
-
-############################################################
-
-
 # From: https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
 # There is a deterministic version of the Miller-Rabin primality test that provides an authorative answer
 # after testing a smallish number of possible witnesses a
@@ -147,6 +93,52 @@ if False:
 #    if n < 3,825,123,056,546,413,051, it is enough to test a = 2, 3, 5, 7, 11, 13, 17, 19, and 23.
 #
 # 3,825,123,056,546,413,051 > 2^61
+
+
+#############################################################
+def is_prime(n, prime_table):
+    if ((n % 2) == 0) or ((n % 3) == 0) or ((n % 5) == 0):
+        # Quick test - is n divisible by 2, 3, or 5
+        # This eliminates 22 out of 30 numbers
+        return False
+    elif n < len(prime_table):
+        # If n is in our table of primes, look up the answer
+        return prime_table[n] == 1
+    elif n < (len(prime_table)-1)**2:
+        # If n is less than the square of our table of primes,
+        # then we can check it against every prime in that table
+        x = 5
+        while (x**2 <= n) and (x <= len(prime_table)):
+            if prime_table[x] == 1:
+                if (n % x) == 0:
+                    return False
+            x += 2
+        return True
+    else:
+        # If all other options are exhausted, we use the probabilistic
+        # Miller Rabin primality test
+        s = 0
+        d = n - 1
+        while ((d % 2) == 0):
+            d /= 2
+            s += 1
+        return miller_rabin_primality_test(n,s,d,4)
+
+if False:
+    # Debug test
+    prime_table, prime_list = calculate_primes(10*3)
+    print(prime_table)
+    print(len(prime_table))
+    assert is_prime(51, prime_table) == False
+    assert is_prime(53, prime_table) == True
+    assert is_prime(5678027, prime_table) == False
+    assert is_prime(5678039, prime_table) == True
+
+# Example call:
+#     import primes
+#     prime_table, prime_list = primes.calculate_primes(SIZE)
+#     answer = primes.is_prime(n, prime_table)
+
 
 
 ############################################################
