@@ -226,6 +226,7 @@
 #226: Problem 518, solved 03/27/18
 #227: Problem 516, solved 04/02/18
 #228: Problem 154, solved 05/06/18
+#229: Problem 196, solved 05/13/18
 
 As of 7/3/11
 Veterans =   151
@@ -743,6 +744,10 @@ As of 05/06/18: I have solved 228 problems.  Considering only active members, I'
 and position 756 overall.  My percentage rank is 0.572%.  There are currently 133,065 active users, 19,911
 with 25 or more problems solved, which is 15.077% of all active users.  I'm ranked 2nd in Ireland.
 
+As of 05/13/18: I have solved 229 problems.  Considering only active members, I'm at position 112 on level 9,
+and position 748 overall.  My percentage rank is 0.568%.  There are currently 131,805 active users, 19,886
+with 25 or more problems solved, which is 15.087% of all active users.  I'm ranked 2nd in Ireland.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -939,7 +944,7 @@ with 25 or more problems solved, which is 15.077% of all active users.  I'm rank
 193 - Solved, Prime Obsession, Lucky Luke,
 194 - 75%
 195 - 75%, Lucky Luke,
-196 - 65%, Unlucky Squares,
+196 - Solved, 65%, Unlucky Squares,
 197 - Solved, Prime Obsession,
 198 - 80%
 199 - 70%, Prime Obsession,
@@ -1373,6 +1378,8 @@ Solved 47 out of 50 Lucky Luke (159=60%, 163=70%, 171=65%, 189=70%, 195=75%, 201
                                 487=40%, 489=100%, 495=100%, 511=55%, 517=45%, 519=50%, 529=80%, 535=55%, 537=35%,
                                 541=85%, 553=80%, 559=95%, 579, 583, 591, 601, 613, 615, 619, 621, 631, 633,
                                 637, 639, 643, 645, 651, 655, 663)
+
+Solved 172 out of the first 200 problems
 
 Target list for the next few months (finish all problems <= 150, finish Fibonacci Fever):
 171 - 65% - Triangle Trophy, Lucky Luke, (solved by 1,568)

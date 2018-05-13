@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import time
 
 ############################################################
 def calculate_primes(limit):
@@ -8,6 +7,7 @@ def calculate_primes(limit):
 
     prime_table = [1]*limit
     prime_list = []
+    import time
     start_time = time.clock()
     if (limit>len(prime_table)):
         raise Exception("prime_table is too small ({} entries, need at least {})".format(len(prime_table), limit))

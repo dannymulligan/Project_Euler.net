@@ -39,10 +39,6 @@
 # You are given that S(10000)=950007619.
 #
 # Find S(5678027) + S(7208785).
-#
-# Solved ??/??/14
-# ?? problems solved
-# Position #??? on level ?
 
 import sys
 import time
@@ -61,6 +57,36 @@ def integer_square_root(n):
     while m**2 <= n:
         m += 1
     return m-1
+
+
+def is_prime_range(bot, top, prime_table):
+    '''Return a list like prime_table but starting with a defined offset'''
+    assert bot <= top
+    assert top <= (len(prime_table)-1)**2, \
+        "Error: prime_table needs to be bigger, result will cover {} to {}, len(prime_table) = {}, needs to be {}" \
+        .format(bot, top, len(prime_table), integer_square_root(top))
+    offset_prime_table = [1] * (top - bot + 1)
+
+    # special case for multiples of 2
+    n = bot - (bot % 2)
+    while n <= top:
+        offset_prime_table[n - bot] = 2
+        n += 2
+
+    # iterate through primes >= 3
+    for p in range(3, len(prime_table)):
+        if prime_table[p] != 1:
+            continue  # p is not a prime
+
+        n = bot - (bot % (2*p)) + p  # n = the first odd multiple of p that is >= bot
+        while n <= top:
+            if bot <= n <= top:
+                offset_prime_table[n - bot] = p
+            n += p*2
+        if p ** 2 > top:
+            break
+
+    return offset_prime_table
 
 
 def S(target_row, debug=False):
@@ -83,8 +109,10 @@ def S(target_row, debug=False):
     row_o_value = [n for n in range(row_o_min, row_o_max)]
     row_p_value = [n for n in range(row_p_min, row_p_max)]
 
+    offset_prime_table = is_prime_range(row_l_min, row_p_max, prime_table)
+
     def prime_1_0(n):
-        if primes.is_prime(n, prime_table):
+        if offset_prime_table[n - row_l_min] == 1:
             return 1
         else:
             return 0
@@ -149,6 +177,19 @@ def S(target_row, debug=False):
 
 
     ########################################
+    # The above code doesn't cover this case correctly
+    # Row M:  0, 1, 0, 0, 0
+    # Row N:  1, 0, 1, 0, 0
+    # Row O:  0, 0, 0, 0, 0
+    # So look for it explicitly
+    for n in range(len(row_n_prime)-2):
+        if row_n_prime[n] and row_n_prime[n+2]:
+            if row_m_prime[n+1] or row_o_prime[n+1]:
+                row_n_prime[n] += 1
+                row_n_prime[n+2] += 1
+
+
+    ########################################
     # Generate count of triplets in row n
     if debug:
         print("Count count of triplets in row n")
@@ -168,9 +209,9 @@ def S(target_row, debug=False):
 
 
 ########################################
-TARGET = 100
-#TARGET = 5678027
-#TARGET = 7208785
+TARGET1 = 5678027
+TARGET2 = 7208785
+TARGET = TARGET1 + TARGET2 + 100
 
 row_min, row_max = triangle_row_range(TARGET)
 print("Row {} is from {} to {}".format(TARGET, row_min, row_max))
@@ -184,27 +225,80 @@ print("Generating a table of primes < {:,}".format(max_prime_table))
 print("This will allow us to check primes < {:,}".format(max_prime_table**2))
 
 import primes
-prime_table, prime_list = primes.calculate_primes(max_prime_table)
+prime_table, prime_list = primes.calculate_primes(max_prime_table+1)
 
+#answer1 = S(41, debug=True)
+#print("S({:,}) = {:,}".format(41, answer1))
+#sys.exit()
+
+#            (       n,              S(n)),
+
+#            (       n,              S(n)),
+TestCases = [(       8,                 60),  # Given in the problem statement
+             (       9,                 37),  # Given in the problem statement
+             (      40,                797),
+             (      50,               3709),
+             (      60,               5399),
+             (     100,               9938),
+             (    1000,            3500211),
+             (    1010,            8162514),
+             (   10000,          950007619),  # Given in the problem statement
+             (   25000,        11250007474),
+             (   50000,       232499865696),
+             (   75000,       975937610571),
+             (  100000,       549999566882),
+             (  250000,      8749999468456),
+             (  500000,     98375000264623),
+             ( 1000000,    463999977061648)]
+
+# before using is_prime_range()...
+#
+# Testing - verifying S(8) = 60, ran in 0.000 seconds
+# Testing - verifying S(9) = 37, ran in 0.000 seconds
+# Testing - verifying S(1000) = 3500211, ran in 0.041 seconds
+# Testing - verifying S(10000) = 950007619, ran in 0.397 seconds
+# Testing - verifying S(25000) = 11250007474, ran in 0.924 seconds
+# Testing - verifying S(50000) = 176249823503, ran in 2.081 seconds
+# Testing - verifying S(75000) = 776250028962, ran in 3.380 seconds
+# Testing - verifying S(100000) = 549999566882, ran in 4.510 seconds
+# Testing - verifying S(125000) = 2000000444988, ran in 5.748 seconds
+# Testing - verifying S(150000) = 5141250480315, ran in 7.093 seconds
+# Testing - verifying S(200000) = 6620000729143, ran in 9.331 seconds
+# Testing - verifying S(250000) = 8749999468456, ran in 11.922 seconds
+#
+# after using is_prime_range()...
+#
+# Testing - verifying S(8) = 60, ran in 0.000 seconds
+# Testing - verifying S(9) = 37, ran in 0.000 seconds
+# Testing - verifying S(1000) = 3500211, ran in 0.003 seconds
+# Testing - verifying S(10000) = 950007619, ran in 0.033 seconds
+# Testing - verifying S(25000) = 11250007474, ran in 0.083 seconds
+# Testing - verifying S(50000) = 176249823503, ran in 0.179 seconds
+# Testing - verifying S(75000) = 776250028962, ran in 0.245 seconds
+# Testing - verifying S(100000) = 549999566882, ran in 0.337 seconds
+# Testing - verifying S(125000) = 2000000444988, ran in 0.417 seconds
+# Testing - verifying S(150000) = 5141250480315, ran in 0.508 seconds
+# Testing - verifying S(200000) = 6620000729143, ran in 0.679 seconds
+# Testing - verifying S(250000) = 8749999468456, ran in 0.908 seconds
 
 if False:
-    answer, expect = S(8), 60
-    assert answer == expect, "S(8) == {:,} given in the problem statement, but we got {:,}".format(expect, answer)
-    answer, expect = S(9), 37
-    assert answer == expect, "S(9) == {:,} given in the problem statement, but we got {:,}".format(expect, answer)
-    answer, expect = S(1000), 3500211
-    assert answer == expect, "S(1000) == {:,} calculated from earlier version of code, but we got {:,}".format(expect, answer)
-    answer, expect = S(10000), 950007619
-    assert answer == expect, "S(10000) == {:,} given in the problem statement, but we got {:,}".format(expect, answer)
-    answer, expect = S(100000), 549999566882
-    assert answer == expect, "S(100000) == {:,} calculated from earlier version of code, but we got {:,}".format(expect, answer)
+    for Test in TestCases:
+        (n, expect) = Test
+        print("Testing - verifying S({:,}) = {:,}".format(n, expect), end='')
+        start_time = time.clock()
+        answer = S(n)
+        print(", ran in {:.3f} seconds".format(time.clock() - start_time))
+        #assert answer == expect, "S({:,}) should be {:,} but got {:,}".format(n, expect, answer)
+        if not answer == expect:
+            print("S({:,}) should be {:,} but got {:,}".format(n, expect, answer))
+    sys.exit()
 
-import cProfile
 start_time = time.clock()
+answer1 = S(TARGET1)
+print("S({:,}) = {:,}".format(TARGET1, answer1))
+answer2 = S(TARGET2)
+print("S({:,}) = {:,}".format(TARGET2, answer2))
 
-n = 5678027
-n = 10000
-cProfile.run('S(n, debug=True)')
-#print("S({}) = {}".format(n, S(n, debug=True)))
+print("Answer = {:,}".format(answer1 + answer2))
 
 print("Time taken = {:.3f} seconds".format(time.clock() - start_time))
