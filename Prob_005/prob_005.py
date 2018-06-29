@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Project Euler.net Problem 5
 #
@@ -15,7 +15,7 @@
 #   1      1        1
 #   2      2        2
 #   3      3        3x2
-#   4      2x2      3x2x2 
+#   4      2x2      3x2x2
 #   5      5        5x3x2x2
 #   6      3x2      5x3x2x2
 #   7      7        7x5x3x2x2

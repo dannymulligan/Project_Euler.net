@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Project Euler.net Problem 9
 #
@@ -82,8 +82,8 @@ def find_answer_version2(cmin, cmax, target):
 # values of a.
 
 def find_answer_version3(cmin, cmax, target):
-    for c in xrange(cmin, cmax):
-        for b in xrange(2, c):
+    for c in range(cmin, cmax):
+        for b in range(2, c):
             a = target - b - c
             if a > b or a < 1:
                 continue

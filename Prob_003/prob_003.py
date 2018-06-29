@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Project Euler.net Problem 3
 #
@@ -36,4 +36,4 @@ while (answer == 0):
     i -= 1
 i += 1
 
-print "Answer is", answer
+print("Answer is {:,}".format(answer))

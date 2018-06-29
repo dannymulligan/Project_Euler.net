@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Project Euler.net Problem 2
 #
@@ -21,5 +21,4 @@ while (f1 < 4000000):
     (f1, f0) = ((f1+f0), f1)
     if ((f1 % 2) == 0):
         answer += f1
-print "Answer is", answer
-
+print ("Answer is {:,}".format(answer))
