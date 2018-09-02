@@ -45,7 +45,7 @@ import sys
 import time
 start_time = time.clock()
 
-SIZE = 5
+SIZE = 15
 
 ########################################
 
@@ -54,11 +54,15 @@ def triangle(n):
 
 def is_triangle(n):
     #print("is_triangle({})".format(n))
-    if n < 10:
-        if n in [1, 3, 6]:
-            return True
-        else:
-            return False
+    if not (((n % 3) == 0) or ((n % 9) == 1)):
+        # Every triangle number is divisible by 3 or has
+        # remainder 1 when divided by 9
+        return False
+
+    if n in [1, 3, 6]:
+        return True
+        # These cases are too small to be handled properly by the code below
+
     bot, top = 1, 2
 
     while triangle(top) < n:
@@ -84,7 +88,7 @@ def is_triangle(n):
     return False
 
 
-if False:  # debug code
+if True:  # debug code
     triangle_nums = [triangle(x+1) for x in range(25)]
     print(triangle_nums)
     for n in range(1, 300):
@@ -110,6 +114,8 @@ while count < SIZE:
         answer += i
         count += 1
         print("{}: M({:,}) = {:,} is a triangle number".format(count, i, n))
+        print("With SIZE = {:,}, answer = {:,}.  ".format(count, answer), end='')
+        print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
     i += 1
 
 
@@ -117,6 +123,23 @@ while count < SIZE:
 
 print("With SIZE = {:,}, answer = {:,}".format(SIZE, answer))
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
+
+# First working version of the code, too slow...
+# With SIZE = 5, answer = 99.  Time taken = 0.01 seconds
+# With SIZE = 10, answer = 8,108.  Time taken = 0.06 seconds
+# With SIZE = 15, answer = 706,232.  Time taken = 6.86 seconds
+# With SIZE = 16, answer = 1,607,504.  Time taken = 15.14 seconds
+# With SIZE = 17, answer = 4,116,297.  Time taken = 45.64 seconds
+# With SIZE = 18, answer = 9,369,300.  Time taken = 100.24 seconds
+
+# Added a quick test to start of is_triangle()...
+# With SIZE = 5, answer = 99.  Time taken = 0.00 seconds
+# With SIZE = 10, answer = 8,108.  Time taken = 0.04 seconds
+# With SIZE = 15, answer = 706,232.  Time taken = 4.70 seconds
+# With SIZE = 16, answer = 1,607,504.  Time taken = 10.40 seconds
+# With SIZE = 17, answer = 4,116,297.  Time taken = 31.01 seconds
+# With SIZE = 18, answer = 9,369,300.  Time taken = 67.83 seconds
+
 
 
 #   0 rrr.bbb
