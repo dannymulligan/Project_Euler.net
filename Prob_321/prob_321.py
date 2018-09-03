@@ -53,25 +53,30 @@ def triangle(n):
     return n*(n+1)//2
 
 def is_triangle(n):
-    #print("is_triangle({})".format(n))
+    """ is_triangle(n) returns 0 if n is not a triangle number
+                       returns x if n is a triangle number
+                       where n = x * (x + 1) / 2"""
     if not (((n % 3) == 0) or ((n % 9) == 1)):
         # Every triangle number is divisible by 3 or has
         # remainder 1 when divided by 9
-        return False
+        return 0
 
-    if n in [1, 3, 6]:
-        return True
-        # These cases are too small to be handled properly by the code below
+    # These cases are too small to be handled properly by the code below
+    if n == 1:
+        return 1
+    elif n == 3:
+        return 2
+    elif n == 6:
+        return 3
 
     bot, top = 1, 2
-
     while triangle(top) < n:
         bot = top
         top *= 2
         #print("    bot = {}, top = {}, triangle({}) = {}".format(bot, top, top, top*(top+1)//2))
 
         if triangle(top) == n:
-            return True
+            return top
 
     while (top - bot) > 1:
         mid = (top + bot) // 2
@@ -79,28 +84,46 @@ def is_triangle(n):
         #print("    bot = {}, mid = {} top = {}, triangle({}) = {}".format(bot, mid, top, mid, t))
         if t == n:
             #print("triangle({}) == {}, returning True".format(mid, n))
-            return True
+            return mid
         elif t > n:
             top = mid
         else:
             bot = mid
     #print("finished iterating, returning False")
-    return False
+    return 0
 
 
-if True:  # debug code
+if False:  # debug code
     triangle_nums = [triangle(x+1) for x in range(25)]
     print(triangle_nums)
     for n in range(1, 300):
         print("Testing is_triangle({})".format(n))
         t = is_triangle(n)
         if n in triangle_nums:
-            assert t == True, "is_triangle({}) returned False, should be True".format(n)
+            assert triangle_nums[t-1] == n, "is_triangle({}) returned False, should be True".format(n)
         else:
-            assert t == False, "is_triangle({}) returned True, should be False".format(n)
+            assert t == 0, "is_triangle({}) returned True, should be False".format(n)
 
 
 ########################################
+
+# We need to find values of n for which there are integer solutions to
+#
+# M(n) = n*(n+2) = T(x) = x*(x+1)/2
+#
+# for the first 10 solutions we have...
+#
+#  1: M(   1) =    1 *    3 =        3 =     2 *    3 / 2 = triangle(   2)
+#  2: M(   3) =    3 *    5 =       15 =     5 *    6 / 2 = triangle(   5)
+#  3: M(  10) =   10 *   12 =      120 =    15 *   16 / 2 = triangle(  15)
+#  4: M(  22) =   22 *   24 =      528 =    32 *   33 / 2 = triangle(  32)
+#  5: M(  63) =   63 *   65 =     4095 =    90 *   91 / 2 = triangle(  90)
+#  6: M( 133) =  133 *  135 =    17955 =   189 *  190 / 2 = triangle( 189)
+#  7: M( 372) =  372 *  374 =   139128 =   527 *  528 / 2 = triangle( 527)
+#  8: M( 780) =  780 *  782 =   609960 =  1104 * 1105 / 2 = triangle(1104)
+#  9: M(2173) = 2173 * 2175 =  4726275 =  3074 * 3075 / 2 = triangle(3074)
+# 10: M(4551) = 4551 * 4553 = 20720703 =  6437 * 6438 / 2 = triangle(6437)
+
 
 def M(n):
     return n * (n+2)
@@ -110,12 +133,12 @@ count = 0
 i = 1
 while count < SIZE:
     n = M(i)
-    if is_triangle(n):
+    t = is_triangle(n)
+    if t:
         answer += i
         count += 1
-        print("{}: M({:,}) = {:,} is a triangle number".format(count, i, n))
-        print("With SIZE = {:,}, answer = {:,}.  ".format(count, answer), end='')
-        print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
+        print("{}: M({:,}) = {:,} = triangle({:,})".format(count, i, n, t), end='')
+        print(".  Time taken = {:.2f} seconds".format(time.clock() - start_time))
     i += 1
 
 
