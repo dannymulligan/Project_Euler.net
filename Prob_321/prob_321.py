@@ -45,7 +45,7 @@ import sys
 import time
 start_time = time.clock()
 
-SIZE = 15
+SIZE = 20
 
 ########################################
 
@@ -130,16 +130,20 @@ def M(n):
 
 answer = 0
 count = 0
-i = 1
+n = 1
+t = 1
+x = 2
 while count < SIZE:
-    n = M(i)
-    t = is_triangle(n)
-    if t:
-        answer += i
+    m = M(n)
+    while (t < m):
+        t, x = t+x, x+1
+    if t == m:
+        answer += n
         count += 1
-        print("{}: M({:,}) = {:,} = triangle({:,})".format(count, i, n, t), end='')
+        print("{}: M({:,}) = {:,} = triangle({:,})".format(count, n, m, x-1), end='')
+        #print("With SIZE = {:,}, answer = {:,}".format(count, answer), end='')
         print(".  Time taken = {:.2f} seconds".format(time.clock() - start_time))
-    i += 1
+    n += 1
 
 
 ########################################
@@ -163,8 +167,33 @@ print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
 # With SIZE = 17, answer = 4,116,297.  Time taken = 31.01 seconds
 # With SIZE = 18, answer = 9,369,300.  Time taken = 67.83 seconds
 
+# Calculate triangle numbers as we go...
+# With SIZE = 5, answer = 99.  Time taken = 0.00 seconds
+# With SIZE = 10, answer = 8,108.  Time taken = 0.00 seconds
+# With SIZE = 15, answer = 706,232.  Time taken = 0.30 seconds
+# With SIZE = 16, answer = 1,607,504.  Time taken = 0.63 seconds
+# With SIZE = 17, answer = 4,116,297.  Time taken = 1.74 seconds
+# With SIZE = 18, answer = 9,369,300.  Time taken = 3.62 seconds
+# With SIZE = 19, answer = 23,991,622.  Time taken = 10.13 seconds
+# With SIZE = 20, answer = 54,608,372.  Time taken = 21.22 seconds
+# With SIZE = 21, answer = 139,833,515.  Time taken = 59.06 seconds
+# With SIZE = 22, answer = 318,281,016.  Time taken = 124.00 seconds
+#
+# 5: M(63) = 4,095 = triangle(90).  Time taken = 0.00 seconds
+# 10: M(4,551) = 20,720,703 = triangle(6,437).  Time taken = 0.00 seconds
+# 15: M(430,440) = 185,279,454,480 = triangle(608,735).  Time taken = 0.28 seconds
+# 16: M(901,272) = 812,293,020,528 = triangle(1,274,592).  Time taken = 0.58 seconds
+# 17: M(2,508,793) = 6,294,047,334,435 = triangle(3,547,970).  Time taken = 1.61 seconds
+# 18: M(5,253,003) = 27,594,051,024,015 = triangle(7,428,869).  Time taken = 3.38 seconds
+# 19: M(14,622,322) = 213,812,329,916,328 = triangle(20,679,087).  Time taken = 9.40 seconds
+# 20: M(30,616,750) = 937,385,441,796,000 = triangle(43,298,624).  Time taken = 19.69 seconds
+# With SIZE = 20, answer = 54,608,372
+#
+# This is much faster than the previous attempts, but still MUCH too slow to
+# solve this problem.  :-(
 
-
+# How to rearrange the squares...
+#
 #   0 rrr.bbb
 #   1 rr.Rbbb  Move  init-step
 #   2 rrBr.bb  Jump
@@ -191,29 +220,7 @@ print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
 # 2 JM
 # M(3) = 15
 #
-# n = 4:
-# 1 M
-# 2 JM
-# 3 JJM
-# 4 JJJM
-# 5 JJJJM
-# 4 JJJM
-# 3 JJM
-# 2 JM
-# M(4) = 24
-#
-# n = 5:
-# 1 M
-# 2 JM
-# 3 JJM
-# 4 JJJM
-# 5 JJJJM
-# 6 JJJJJ M
-# 5 JJJJM
-# 4 JJJM
-# 3 JJM
-# 2 JM
-# M(5) = 35
+# By pattern matching, it looks like the M(10) case will be...
 #
 # n = 10:
 #  1 M
@@ -238,7 +245,9 @@ print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
 #  2 JM
 # M(10) = 120
 #
-# M(n) = n*(n+2)
+# The formula seems to be... M(n) = n*(n+2)
+#
 # M(3) = 15
 # M(4) = 24
 # M(10) = 120
+# M(22) = 528
