@@ -39,65 +39,55 @@ def gen_coords(n):
         y = (y*3) % n
         yield (x, y)
 
-if True:
-    def coords(n):
-        #print("coords({})".format(n))
-        if (n == 1):
-            clist = [(1, 1), (0, 0)]
-        elif (n == 2):
-            clist = [(1, 1), (0, 1)]
-        elif (n == 3):
-            clist =  [(1, 1), (2, 0), (1, 0)]
-        else:
-            clist = []
-            (stopx, stopy) = (2, 3)
-            for i, (x, y) in enumerate(gen_coords(n)):
-                if (i > 1) and (x, y) == (1, 1):
-                    return clist
-                if (i > 1) and (x, y) == (stopx, stopy):
-                    return clist
-                if (stopx != 0) and (x == 0):
-                    (stopx, stopy) = (x, y)
-                if (stopy != 0) and (y == 0):
-                    (stopx, stopy) = (x, y)
-                clist.append((x, y))
-                #print("{:2}: ({:2},{:2})".format(i, x, y))
-        return clist
-else:
-    def coords(n):
-        cset = set((x, y) for (x, y) in gen_coords(n))
-        return cset
+def coords(n):
+    cset = set((x+y, x, y) for (x, y) in gen_coords(n))
+    clist = sorted(list(cset), reverse=True)
+    return [(x, y) for (xy, x, y) in clist]
 
 
 ###############################################################################
-def process_coords(c):
-    print(sorted(c, reverse=True))
-    return True
+def S(n):
+    #print("S({})".format(n))
+    points = coords(n)
+    #print("points = {}".format(points))
+    frontier = []
+    for (x, y) in points:
+        # Calculate the number of stations on the path of the current point
+        max_s = 0
+        for (fx, fy, fs) in frontier:
+            if (fx >= x) and (fy >= y):
+                max_s = max(max_s, fs)
+
+        ## Delete points in the frontier supersceded by the current point
+        #frontier = [p for p in frontier if (p[0] <= x) or (p[1] <= y)]
+
+        # Add new point to the frontier
+        frontier.append((x, y, max_s+1))
+        #print("point = {}, frontier = {}".format((x,y), frontier))
+
+    # Find the final answer
+    max_s = 0
+    for (x, y, s) in frontier:
+        max_s = max(max_s, s)
+
+    #print("S({}) = {}".format(n, max_s))
+    return max_s
 
 
 ###############################################################################
 
-#for k in range(1, 33):
-#    points = coords(k)
-#    print("coords({}) generates {:,} points= {}".format(
-#        k, len(points), points))
+#for n in [22, 123, 10000]:
+#    print("S({}) = {}".format(n, S(n)))
+#sys.exit()
 
-k = 7776
-points = coords(k)
-print("coords({}) generates {:,} points= {}".format(
-    k, len(points), points[653:655]))
-print((3904,2673) in points[:652])
-print((32,243) in points[:653])
-print((64,729) in points[:653])
-sys.exit()
-
-for k in range(1, 12):
+answer = 0
+for k in range(1, 31):
     prev_time = time.clock()
-    #points = coords(k)
-    points = coords(k**5)
-    print("With k = {:2}, coords({}) generated {:,} points in {:.2f} seconds".format(
-        k, k**5, len(points), time.clock() - prev_time))
+    s = S(k**5)
+    answer += s
+    print("S({}) = S({:,}) = {:,}, calculated in {:.2f} seconds".format(
+        k, k**5, s, time.clock() - prev_time))
     #result = process_coords(points)
 
-
+print("Answer = {:,}".format(answer))
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
