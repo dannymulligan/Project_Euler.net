@@ -29,23 +29,21 @@ import sys
 import time
 start_time = time.clock()
 
-X = 40.0
-Y = 30.0
+X = 30.0
+Y = 40.0
 # Z = 50.0 mm
 
-
-########################################
-
+###############################################################################
 
 def local_probability(x, y):
-    #print("local_probability(x={}, y={}, X={}, Y={})".format(x, y, X, Y))
+    #print("local_probability(x={}, y={})".format(x, y))
     # Calculate angle between (X, 0), (x, y), & (0, Y)
     # return this angle divided by a full circle.
     # Calculate using the law of cosines
     #     c^2 = a^2 + b^2 - 2ab Cos (C)
     # or
     #     Cos(C) = (a^2 + b^2 - c^2) / 2ab
-    
+
     a = np.sqrt((x - X)**2 + y**2)  # a = distance between (x, y) and (X, 0)
     b = np.sqrt(x**2 + (Y-y)**2)    # b = distance between (x, y) and (0, Y)
     c = np.sqrt(X**2 + Y**2)        # c = distance between (X, 0) and (0, Y)
@@ -53,21 +51,13 @@ def local_probability(x, y):
     CosC = (a**2 + b**2 - c**2) / (2*a*b)
     angle = np.arccos(CosC)
     value = angle / (2.*np.pi)
-
-    #print("    a = {}".format(a))
-    #print("    b = {}".format(b))
-    #print("    c = {}".format(c))
-    #print("    Cos(C) = {}".format(CosC))
-    #print("    angle = {}".format(angle))
-    #print("    value = {}".format(value))
-    
     return value
 
-def fixed_probability(x, y):
-    return 1.0
 
-#(volume, accuracy) = integrate.dblquad(fixed_probability, 0., X, (lambda x: 0.0), (lambda x: Y*(X-x)/X))
-(volume, accuracy) = integrate.dblquad(local_probability, 0., X, (lambda x: 0.0), (lambda x: Y*(X-x)/X), epsabs=1.49e-10, epsrel=1.49e-10)
+###############################################################################
+
+f = lambda y, x: local_probability(x, y)
+(volume, accuracy) = integrate.dblquad(f, 0., X, (lambda x: 0.0), (lambda x: Y-x*Y/X), epsabs=1.49e-10, epsrel=1.49e-10)
 area = X * Y * 0.5
 result = volume / area
 
@@ -76,7 +66,7 @@ print("area = {}".format(area))
 print("result = {}".format(result))
 print("accuracy = {}".format(accuracy/area))
 
-print("Result to 10 digits = {:.10f}".format(result))
 print("Result ranges from {:.10f} to {:.10f}".format(result-accuracy/area, result+accuracy/area))
-      
+print("Answer = {:.10f} (which is the result rounded to 10 digits)".format(result))
+
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
