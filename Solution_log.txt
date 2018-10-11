@@ -229,6 +229,7 @@
 #229: Problem 196, solved 05/13/18
 #230: Problem 630, solved 07/07/18
 #231: Problem 613, solved 10/04/18
+#232: Problem 321, solved 10/11/18
 
 As of 7/3/11
 Veterans =   151
@@ -758,6 +759,10 @@ As of 10/04/18: I have solved 231 problems.  Considering only active members, I'
 and position 722 overall.  My percentage rank is 0.544%.  There are currently 132,789 active users, 19,275
 with 25 or more problems solved, which is 14.516% of all active users.  I'm ranked 2nd in Ireland.
 
+As of 10/11/18: I have solved 232 problems.  Considering only active members, I'm at position 98 on level 9,
+and position 717 overall.  My percentage rank is 0.539%.  There are currently 133,116 active users, 19,273
+with 25 or more problems solved, which is 14.478% of all active users.  I'm ranked 2nd in Ireland.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -1079,7 +1084,7 @@ with 25 or more problems solved, which is 14.516% of all active users.  I'm rank
 318 -
 319 - Lucky Luke,
 320 -
-321 - 30%, Lucky Luke,
+321 - Solved, 30%, Lucky Luke,
 322 -
 323 - Solved
 324 - Unlucky Squares,
@@ -1398,8 +1403,8 @@ with 25 or more problems solved, which is 14.516% of all active users.  I'm rank
 
 Solved 11 out of 12 Fibonacci Fever (233=70%)
 Solved 18 out of 25 Triangle Trophy (153=65%, 171=65%, 210=70%, 253=75%, 276=75%, 300=50%, 325=80%)
-Solved 48 out of 50 Lucky Luke (159=60%, 163=70%, 171=65%, 189=70%, 195=75%, 201=65%, 219=70%, 223=70%, 241=80%,
-                                261=85%, 273=70%, 283=75%, 285=55%, 289=90%, 297=35%, 319=90%, 321=30%, 327=40%,
+Solved 49 out of 50 Lucky Luke (159=60%, 163=70%, 171=65%, 189=70%, 195=75%, 201=65%, 219=70%, 223=70%, 241=80%,
+                                261=85%, 273=70%, 283=75%, 285=55%, 289=90%, 297=35%, 319=90%, 327=40%,
                                 331=100%, 339=70%, 361=90%, 367=55%, 385=70%, 391=75%, 393=50%, 399=45%, 409=55%,
                                 415=100%, 421=50%, 427=95%, 433=65%, 451=30%, 463=30%, 475=50%, 477=65%, 483=100%,
                                 487=40%, 489=100%, 495=100%, 511=55%, 517=45%, 519=50%, 529=80%, 535=55%, 537=35%,
@@ -1423,3 +1428,4 @@ Solutions in progress
 152 - 65% - Writing 1/2 as a sum of inverse squares
 143 - 65% - Investigating the Torricelli point of a triangle (Complete 1-150)
 172 - 55% - Investigating numbers with few repeated digits
+411 - 45% - Uphill paths

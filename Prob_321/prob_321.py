@@ -45,9 +45,9 @@ import sys
 import time
 start_time = time.clock()
 
-SIZE = 20
+SIZE = 40
 
-########################################
+###############################################################################
 
 def triangle(n):
     return n*(n+1)//2
@@ -105,7 +105,7 @@ if False:  # debug code
             assert t == 0, "is_triangle({}) returned True, should be False".format(n)
 
 
-########################################
+###############################################################################
 
 # We need to find values of n for which there are integer solutions to
 #
@@ -128,25 +128,79 @@ if False:  # debug code
 def M(n):
     return n * (n+2)
 
+slow = False
+if slow:
+    answer = 0
+    count = 0
+    n = 1
+    t = 1
+    x = 2
+    while count < SIZE:
+        m = M(n)
+        while (t < m):
+            t, x = t+x, x+1
+        if t == m:
+            answer += n
+            count += 1
+            print("{:2}: M({:,}) = {:,} = triangle({:,})".format(count, n, m, x-1), end='')
+            #print("With SIZE = {:,}, answer = {:,}".format(count, answer), end='')
+            print(".  Time taken = {:.2f} seconds".format(time.clock() - start_time))
+        n += 1
+
+    print("With SIZE = {:,}, answer = {:,}".format(SIZE, answer))
+
+
+###############################################################################
+# We are searching for integer solutions to the following...
+#
+# M(n) = T(x)
+# n*(n+2) = x(x+1)/2
+# 2n^2 + 4n = x^2 + x
+# x^2 - 2n^2 +x - 4n = 0
+#
+# replace n with y
+#
+# x^2 - 2y^2 +x - 4y = 0
+#
+# This is a diophantine problem, I'm going to use an online solver
+#     https://www.alpertron.com.ar/QUAD.HTM
+# The solution provided is
+#
+# x` = 3x + 4y + 5
+# y` = 2x + 3y + 3
+
+def diophantine(x = 0, y = 0):
+    while True:
+        x, y = 3*x + 4*y + 5, 2*x + 3*y + 3
+        yield x, y
+
 answer = 0
-count = 0
-n = 1
-t = 1
-x = 2
-while count < SIZE:
-    m = M(n)
-    while (t < m):
-        t, x = t+x, x+1
-    if t == m:
-        answer += n
-        count += 1
-        print("{}: M({:,}) = {:,} = triangle({:,})".format(count, n, m, x-1), end='')
-        #print("With SIZE = {:,}, answer = {:,}".format(count, answer), end='')
-        print(".  Time taken = {:.2f} seconds".format(time.clock() - start_time))
-    n += 1
+print()
+
+# Odd solutions: First solution is x, y = 2, 1
+n, (x, y) = 1, (2, 1)
+answer += y
+print("{:2}: M({:,}) = {:,} = triangle({:,})".format(n, y, M(y), x))
+for (x, y) in diophantine(x, y):
+    n += 2
+    if n > SIZE:
+        break
+    print("{:2}: M({:,}) = {:,} = triangle({:,})".format(n, y, M(y), x))
+    answer += y
+
+# Even solutions: First solution is x, y = 5, 3
+n, (x, y) = 2, (5, 3)
+answer += y
+print("{:2}: M({:,}) = {:,} = triangle({:,})".format(n, y, M(y), x))
+for (x, y) in diophantine(x, y):
+    n += 2
+    if n > SIZE:
+        break
+    print("{:2}: M({:,}) = {:,} = triangle({:,})".format(n, y, M(y), x))
+    answer += y
 
 
-########################################
+###############################################################################
 
 print("With SIZE = {:,}, answer = {:,}".format(SIZE, answer))
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
