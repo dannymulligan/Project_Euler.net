@@ -2,7 +2,8 @@
 #
 # Project Euler.net Problem 8
 #
-# Find the greatest product of five consecutive digits in the 1000-digit number.
+# The four adjacent digits in the 1000-digit number that have the
+# greatest product are 9 × 9 × 8 × 9 = 5832.
 #
 #     73167176531330624919225119674426574742355349194934
 #     96983520312774506326239578318016984801869478851843
@@ -25,6 +26,8 @@
 #     05886116467109405077541002256983155200055935729725
 #     71636269561882670428252483600823257530420752963450
 #
+# Find the thirteen adjacent digits in the 1000-digit number that have
+# the greatest product. What is the value of this product?
 
 
 number = ('73167176531330624919225119674426574742355349194934'
@@ -53,7 +56,9 @@ digits = [int(x) for x in list(number)]
 max_res = 0
 max_i = 0
 for i in range(len(digits)-12):
-    res = digits[i] * digits[i+1] * digits[i+2] * digits[i+3] * digits[i+4] * digits[i+5] * digits[i+6] * digits[i+7] * digits[i+8] * digits[i+9] * digits[i+10] * digits[i+11] * digits[i+12]
+    res = 1
+    for j in range(13):
+        res *= digits[i+j]
     if (res > max_res):
         #print("Better answer {} from [{}:{}]".format(res, i, i+4))
         max_res = res
