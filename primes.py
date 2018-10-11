@@ -1,20 +1,22 @@
 #!/usr/bin/python
 
 
-############################################################
-def calculate_primes(limit):
+###############################################################################
+def calculate_primes(limit, make_prime_list=True, silent=False):
     """calculate a table of primes < limit"""
 
     prime_table = [1]*limit
-    prime_list = []
+    prime_count = 0
+    if make_prime_list:
+        prime_list = []
     import time
     start_time = time.clock()
-    if (limit>len(prime_table)):
-        raise Exception("prime_table is too small ({} entries, need at least {})".format(len(prime_table), limit))
 
     # Optimization to allow us to increment i by 2 for the rest of the algoritm
     i = 2
-    prime_list.append(i)
+    prime_count += 1
+    if make_prime_list:
+        prime_list.append(i)
     j = i**2
     while (j < limit):
         prime_table[j] = i
@@ -23,7 +25,9 @@ def calculate_primes(limit):
     i = 3
     while (i < (limit/2)):
         if (prime_table[i] == 1):
-            prime_list.append(i)
+            prime_count += 1
+            if make_prime_list:
+                prime_list.append(i)
             j = i**2
             while (j < limit):
                 prime_table[j] = i
@@ -31,17 +35,25 @@ def calculate_primes(limit):
         i += 2
     while (i < limit):
         if (prime_table[i] == 1):
-            prime_list.append(i)
+            prime_count += 1
+            if make_prime_list:
+                prime_list.append(i)
         i += 2
-    print("There are {:,} primes less than {:,}, calculated in {:.2f} seconds".format(len(prime_list), limit, (time.clock() - start_time)))
-    return prime_table, prime_list
+    if not silent:
+        print("There are {:,} primes less than {:,}, calculated in {:.2f} seconds".format(prime_count, limit, (time.clock() - start_time)))
+    if make_prime_list:
+        return prime_table, prime_list
+    else:
+        return prime_table
 
 # Example call:
 #     import primes
 #     prime_table, prime_list = primes.calculate_primes(SIZE)
+#     # or
+#     prime_table = primes.calculate_primes(SIZE, make_prime_list=False)
 
 
-############################################################
+###############################################################################
 def exp_by_sq(x,y,z):
     '''Calculate (x**y % z) efficiently, using recursion'''
     if (y == 1):
@@ -58,7 +70,7 @@ def exp_by_sq(x,y,z):
     return ans
 
 
-############################################################
+###############################################################################
 import random
 def miller_rabin_primality_test(n,s,d,k):
     # True  = n might be prime
@@ -95,7 +107,7 @@ def miller_rabin_primality_test(n,s,d,k):
 # 3,825,123,056,546,413,051 > 2^61
 
 
-#############################################################
+###############################################################################
 def is_prime(n, prime_table):
     if ((n % 2) == 0) or ((n % 3) == 0) or ((n % 5) == 0):
         # Quick test - is n divisible by 2, 3, or 5
@@ -141,7 +153,7 @@ if False:
 
 
 
-############################################################
+###############################################################################
 def factors(n, prime_table):
     answer = []
     while (prime_table[n] != 1):
@@ -153,7 +165,7 @@ def factors(n, prime_table):
     return answer
 
 
-############################################################
+###############################################################################
 import itertools
 import operator
 import functools
@@ -162,3 +174,30 @@ def divisors(n, prime_table):
     for l in range(1, len(n_factors)):
         for c in itertools.combinations(n_factors, l):
             yield functools.reduce(operator.mul, c)
+
+
+###############################################################################
+def calculate_phi(prime_table, silent=False):
+    import time
+    start_time = time.clock()
+    length = len(prime_table)
+    phi_table = [0]*length
+    for n in range(1, length):
+        if prime_table[n] == 1:
+            # n is a prime number
+            phi = n-1
+        else:
+            # n is a composite number
+            divisor = prime_table[n]
+            phi = divisor - 1
+            num = n // divisor
+            while (num % divisor) == 0:
+                phi *= divisor
+                num = num // divisor
+            if num > 1:
+                phi *= phi_table[num]
+        phi_table[n] = phi
+
+    if not silent:
+        print("Calculated Eulers totient up to {:,} in {:.2f} seconds".format(length, (time.clock() - start_time)))
+    return phi_table

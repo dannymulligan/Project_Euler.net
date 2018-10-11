@@ -28,9 +28,9 @@
 # Let H(n) be the number of points hidden from the center in a
 # hexagonal orchard of order n.
 #
-# H(5) = 30. H(10) = 138. H(1 000) = 1177848.
+# H(5) = 30. H(10) = 138. H(1,000) = 1177848.
 #
-# Find H(100 000 000).
+# Find H(100,000,000).
 
 
 import sys
@@ -38,7 +38,23 @@ import sys
 import time
 start_time = time.clock()
 
-############################################################
+###############################################################################
+SIZE = 100000000
+
+import primes
+prime_table = primes.calculate_primes(SIZE+1, make_prime_list=False)
+phi_table = primes.calculate_phi(prime_table)
+
+def Hfast(n):
+    ans = 0
+    for i in range(2,n+1):
+        ans += i - phi_table[i]
+    return ans * 6
+
+
+
+###############################################################################
+
 def gcd(a,b):
     while ((a != b) & (b != 0)):
         t = b
@@ -50,6 +66,7 @@ def H(n, debug=False):
     max_x = 0
     max_y = 0
     max_xy = 0
+    points = 0
     answer = 0
     # Calculate points hidden by (1,0)
     x, y = 1, 0
@@ -59,6 +76,7 @@ def H(n, debug=False):
         max_x = max(max_x, x)
         max_y = max(max_y, y)
         max_xy = max(max_xy, x+y)
+        points += 1
     if debug:
         print("({},{}) hides {} points in the form (a,0)".format(x, y, a))
         result = "    " + ', '.join(['({},{})'.format(x*_a, y*_a) for _a in range(2, a+2)])
@@ -72,6 +90,7 @@ def H(n, debug=False):
         max_x = max(max_x, x)
         max_y = max(max_y, y)
         max_xy = max(max_xy, x+y)
+        points += 1
     if debug:
         print("({},{}) hides {} points in the form (a,a)".format(x, y, a))
         result = "    " + ', '.join(['({},{})'.format(x*_a, y*_a) for _a in range(2, a+2)])
@@ -84,13 +103,14 @@ def H(n, debug=False):
                 continue
             if (x+y) > n:
                 continue
-            #print("========\nTrying ({},{})\n========\n".format(x, y))
+            #print("========\nTrying ({},{})\n========".format(x, y))
             a = (n // (x+y)) - 1
             answer += 2*a
             if a > 0:
                 max_x = max(max_x, x)
                 max_y = max(max_y, y)
                 max_xy = max(max_xy, x+y)
+                points += 1
 
             if debug and (a > 0):
                 if (x == y):
@@ -106,51 +126,59 @@ def H(n, debug=False):
                     result += ', '.join(['({},{})'.format(y*_a, x*_a) for _a in range(2, a+2)])
                     print(result)
 
-    print("max_x = {}, max_y = {}, max_xy = {}".format(max_x, max_y, max_xy))
+    print("max_x = {}, max_y = {}, max_xy = {}, points = {}/{:.2f}%".format(max_x, max_y, max_xy, points, 100*points/n/n))
     return answer*6
 
 
-############################################################
-solutions = [
-    (   10,       138),
-    (   11,       144),
-    (   12,       192),
-    (   15,       288),
-    (   16,       336),
-    (   17,       342),
-    (   18,       414),
-    (   19,       420),
-    (   20,       492),
-    (   25,       750),
-    (   26,       834),
-    (   27,       888),
-    (   28,       984),
-    (   30,      1122),
-    (   40,      1980),
-    (   49,      2826),
-    (   50,      3006),
-    (  100,     12036),
-    ( 1000,   1177848),
-    ( 2000,   4706472),
-    ( 3000,  10591872),
-    ( 4000,  18830388),
-    ( 5000,  29412252),
-    (10000, 117645084),
-    (15000, 264679104),
-    (20000, 470517624),
-]
-for n, h in solutions:
-    #if n > 20:  break
-    start_time = time.clock()
-    print()
-    s = H(n, False)
-#    s = H(n, True)
-    if (s == h):
-        print("H({:,}) = {:,} (calculated in {:.2f} seconds)".format(n, s, time.clock() - start_time))
-    else:
-        print("H({:,}) = {:,} incorrect, expecting {},  (calculated in {:.2f} seconds)".format(n, s, h, time.clock() - start_time))
-    assert s == h
+###############################################################################
 
+debug = False
+if debug == True:
+    solutions = [
+        (   10,       138),
+        (   11,       144),
+        (   12,       192),
+        (   15,       288),
+        (   16,       336),
+        (   17,       342),
+        (   18,       414),
+        (   19,       420),
+        (   20,       492),
+        (   25,       750),
+        (   26,       834),
+        (   27,       888),
+        (   28,       984),
+        (   29,       990),
+        (   30,      1122),
+        (   40,      1980),
+        (   49,      2826),
+        (   50,      3006),
+        (  100,     12036),
+        ( 1000,   1177848),
+        ( 2000,   4706472),
+        ( 3000,  10591872),
+        ( 4000,  18830388),
+        ( 5000,  29412252),
+        (10000, 117645084),
+        (15000, 264679104),
+        (20000, 470517624),
+        (25000, 735194460),
+    ]
+    for n, h in solutions:
+        #if n > 20:  break
+        start_time = time.clock()
+        print()
+        s = Hfast(n)
+    #    s = H(n, False)
+    #    s = H(n, True)
+        if (s == h):
+            print("H({:,}) = {:,} (calculated in {:.2f} seconds)".format(n, s, time.clock() - start_time))
+        else:
+            print("H({:,}) = {:,} incorrect, expecting {},  (calculated in {:.2f} seconds)".format(n, s, h, time.clock() - start_time))
+        assert s == h
+
+n = SIZE
+print("Answer = H({:,}) = {:,}".format(n, Hfast(n)))
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
 
 
