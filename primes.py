@@ -1,9 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 
 ###############################################################################
 def calculate_primes(limit, make_prime_list=True, silent=False):
-    """calculate a table of primes < limit"""
+    """Calculates a table of primes/factors for integers less than limit
+    Optionally generates a list of prime numbers
+    """
 
     prime_table = [1]*limit
     prime_count = 0
@@ -137,6 +139,7 @@ def is_prime(n, prime_table):
         return miller_rabin_primality_test(n,s,d,4)
 
 if False:
+    print("testing is_prime()")
     # Debug test
     prime_table, prime_list = calculate_primes(10*3)
     print(prime_table)
@@ -155,6 +158,9 @@ if False:
 
 ###############################################################################
 def factors(n, prime_table):
+    """Returns a list of the factors of an integer
+    Relies on a table of prime values/factors calculated by calculate_primes()
+    """
     answer = []
     while (prime_table[n] != 1):
         answer.append(prime_table[n])
@@ -170,6 +176,9 @@ import itertools
 import operator
 import functools
 def divisors(n, prime_table):
+    """Generates divisors of an integer
+    Relies on a table of prime values/factors calculated by calculate_primes()
+    """
     n_factors = factors(n, prime_table)
     for l in range(1, len(n_factors)):
         for c in itertools.combinations(n_factors, l):
@@ -177,7 +186,49 @@ def divisors(n, prime_table):
 
 
 ###############################################################################
+def gcd(a,b):
+    """Greatest Common Denominator
+    Takes two integers, returns an integer
+    """
+    while ((a != b) & (b != 0)):
+        t = b
+        b = a % b
+        a = t
+    return a
+
+
+###############################################################################
+def lcm(nums):
+    """Lowest Common Multiplier
+    Takes a list of integers
+    Returns an integer
+    """
+    lcm = nums[0]
+    for num in nums[1:]:
+        #print("lcm = {} * {} // {}".format(lcm, num, gcd(lcm, num)))
+        lcm = lcm * num // gcd(lcm, num)
+    return lcm
+
+if False:
+    print("testing lcm()")
+    testcases = [
+        ([30], 30),
+        ([20, 30], 60),
+        ([2, 3, 5, 7, 11, 13], 2*3*5*7*11*13),
+        ([2, 3, 9], 2*9),
+        ([2, 3, 5, 7, 9, 11, 13], 2*3*5*7*3*11*13),
+    ]
+    for (nums, ans) in testcases:
+        res = lcm(nums)
+        print("lcm({}) = {}".format(nums, res))
+        assert ans == res, "lcm({}) = {} but expecting {}".format(nums, res, ans)
+
+
+###############################################################################
 def calculate_phi(prime_table, silent=False):
+    """Calculates a table of Euler's Totient function values
+    Relies on a table of prime values/factors calculated by calculate_primes()
+    """
     import time
     start_time = time.clock()
     length = len(prime_table)
@@ -201,3 +252,6 @@ def calculate_phi(prime_table, silent=False):
     if not silent:
         print("Calculated Eulers totient up to {:,} in {:.2f} seconds".format(length, (time.clock() - start_time)))
     return phi_table
+
+
+###############################################################################
