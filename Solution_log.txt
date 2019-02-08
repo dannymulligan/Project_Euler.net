@@ -231,6 +231,7 @@
 #231: Problem 613, solved 10/04/18
 #232: Problem 321, solved 10/11/18
 #233: Problem 351, solved 10/11/18
+#234: Problem 371, solved 02/08/19
 
 As of 7/3/11
 Veterans =   151
@@ -764,6 +765,10 @@ As of 10/11/18: I have solved 233 problems.  Considering only active members, I'
 and position 711 overall.  My percentage rank is 0.534%.  There are currently 133,116 active users, 19,273
 with 25 or more problems solved, which is 14.478% of all active users.  I'm ranked 2nd in Ireland.
 
+As of 02/08/19: I have solved 234 problems.  Considering only active members, I'm at position 81 on level 9,
+and position 717 overall.  My percentage rank is 0.527%.  There are currently 136,046 active users, 19,144
+with 25 or more problems solved, which is 14.072% of all active users.  I'm ranked 2nd in Ireland.
+
 
 001 - Solved, Unlucky Squares, Fibonacci Fever, Triangle Trophy, Lucky Luke, Trinary Triumph,
 002 - Solved, Prime Obsession, Fibonacci Fever,
@@ -1134,7 +1139,7 @@ with 25 or more problems solved, which is 14.478% of all active users.  I'm rank
 368 -
 369 -
 370 -
-371 -
+371 - Solved
 372 -
 373 - Prime Obsession,
 374 -
