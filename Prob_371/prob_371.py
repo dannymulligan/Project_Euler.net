@@ -30,7 +30,13 @@ import time
 start_time = time.clock()
 import string
 
+SIZE = 1000
 TOLERANCE = 1e-9
+DEBUG = False
+
+SIZE = 10
+TOLERANCE = 1e-8
+DEBUG = True
 
 
 ###############################################################################
@@ -41,8 +47,8 @@ def NoMatchX(N, debug=False):
     Probability = 1.0
     DebugList = []
     for i in range(N):
-        DebugList.append("{}/1000".format(998-i))
-        Probability *= (998-i)/1000
+        DebugList.append("{}/{}".format(SIZE-2-i, SIZE))
+        Probability *= (SIZE-2-i)/SIZE
     DebugString = " * ".join(DebugList)
     return Probability, DebugString
 
@@ -55,8 +61,8 @@ def ProbX(N, debug=False):
     if (N < 2):
         return 0.0, "0"
     p, s = NoMatchX(N-1)
-    Probability = p * (N-1)/1000
-    DebugString = s + " * {}/1000".format(N-1)
+    Probability = p * (N-1)/SIZE
+    DebugString = s + " * {}/{}".format(N-1, SIZE)
     return Probability, DebugString
 
 ###############################################################################
@@ -69,8 +75,8 @@ def ProbX5(N, debug=False):
     if (N < 3):
         return 0.0, "0"
     p, s = NoMatchX(N-2)
-    Probability = p * (N-1)/1000 * (N-2)/1000
-    DebugString = s + " * {}/1000 * {}/1000".format(N-1, N-2)
+    Probability = p * (N-1)/SIZE * (N-2)/SIZE
+    DebugString = s + " * {}/{} * {}/{}".format(N-1, SIZE, N-2, SIZE)
     return Probability, DebugString
 
 ###############################################################################
@@ -81,13 +87,13 @@ def ProbX55(N, debug=False):
     # Assuming that 1 of the first N-1 plates is "500"
     # Assuming that the last plate is "500"
     p, s = NoMatchX(N-2)
-    Probability = p * (N-1)/1000 * 1/1000
+    Probability = p * (N-1)/SIZE * 1/SIZE
     if (N < 2):
         return 0.0, "0"
     elif (N == 2):
-        DebugString = "{}/1000 * 1/1000".format(N-1)
+        DebugString = "{}/{} * 1/{}".format(N-1, SIZE, SIZE)
     else:
-        DebugString = s + " * {}/1000 * 1/1000".format(N-1)
+        DebugString = s + " * {}/{} * 1/{}".format(N-1, SIZE, SIZE)
     return Probability, DebugString
 
 ###############################################################################
@@ -104,44 +110,6 @@ def Prob(N, debug=False):
         print("ProbX({}) = {} = {:f}".format(N, sX, pX))
         print("ProbX5({}) = {} = {:f}".format(N, sX5, pX5))
         print("ProbX55({}) = {} = {:f}".format(N, sX55, pX55))
-
-    return pX + pX5 + pX55
-
-###############################################################################
-
-def Prob0(N, debug=False):
-    # Calculate the probability of seeing N plates ending in a match
-    # with one "000" mixed in anywhere
-    pX, sX = ProbX(N-1)
-    pX5, sX5 = ProbX5(N-1)
-    pX55, sX55 = ProbX55(N-1)
-
-    pX *= (N-1)/1000
-    pX5 *= (N-1)/1000
-    pX55 *= (N-1)/1000
-    if debug:
-        print("Prob0X({}) = {}/1000 * {} = {:f}".format(N, N-1, sX, pX))
-        print("Prob0X5({}) = {}/1000 * {} = {:f}".format(N, N-1, sX5, pX5))
-        print("Prob0X55({}) = {}/1000 * {} = {:f}".format(N, N-1, sX55, pX55))
-
-    return pX + pX5 + pX55
-
-###############################################################################
-
-def Prob00(N, debug=False):
-    # Calculate the probability of seeing N plates ending in a match
-    # with two "000" mixed in anywhere
-    pX, sX = ProbX(N-2)
-    pX5, sX5 = ProbX5(N-2)
-    pX55, sX55 = ProbX55(N-2)
-
-    pX *= (N-1)*(N-2)/2 * 1/1000 * 1/1000
-    pX5 *= (N-1)*(N-2)/2 * 1/1000 * 1/1000
-    pX55 *= (N-1)*(N-2)/2 * 1/1000 * 1/1000
-    if debug:
-        print("Prob00X({}) = 1/1000 * 1/1000 * {} * {} = {:f}".format(N, (N-1)*(N-2)//2, sX, pX))
-        print("Prob00X5({}) = 1/1000 * 1/1000 * {} * {} = {:f}".format(N, (N-1)*(N-2)//2, sX5, pX5))
-        print("Prob00X55({}) = 1/1000 * 1/1000 * {} * {} = {:f}".format(N, (N-1)*(N-2)//2, sX55, pX55))
 
     return pX + pX5 + pX55
 
@@ -186,16 +154,18 @@ if False:
 
 ###############################################################################
 
+Probabilities = [0] * 50
 expected = 0.0
 
-debug = False
 N = 2
 while True:
-    prob = Prob(N, debug)
+    prob = Prob(N, DEBUG)
     delta = N * prob
     expected += delta
     print("Prob({}) = {:.12f}, exp += {:.12f}, exp = {:.12f}".format(N, prob, delta, expected))
-    if debug:
+    if (N < 20):
+        Probabilities[N] += prob
+    if DEBUG:
         print()
 
     if (N > 5) and (delta < TOLERANCE):
@@ -204,10 +174,12 @@ while True:
     Z = 1
     while True:
         part = Partitions(Z, N)
-        zprob = prob * part / (1000**Z)
+        zprob = prob * part / (SIZE**Z)
         zdelta = (N+Z) * zprob
         expected += zdelta
-        print("Prob0(Z={}, N={}) = {:.12f}, exp += {:.12f}, exp = {:.12f}, Partitions(Z={}, N={}) = {:,}".format(Z, N, zprob, zdelta, expected, Z, N, part))
+        print("Prob0(T={}, Z={}, N={}) = {:.12f}, exp += {:.12f}, exp = {:.12f}, Partitions(Z={}, N={}) = {:,}".format(N+Z, Z, N, zprob, zdelta, expected, Z, N, part))
+        if ((N+Z) < 50):
+            Probabilities[(N+Z)] += zprob
 
         if (Z > 1) and (zdelta < TOLERANCE):
             break
@@ -216,17 +188,41 @@ while True:
 
     N += 1
 
+
 print("Answer = {}".format(expected))
 print("Answer = {:.8f} (to 8 decimal places)".format(expected))
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
 
+total = 0.0
+answer = 0.0
+for i in range(50):
+    if Probabilities[i] == 0:
+        continue
+    answer += i * Probabilities[i]
+    total += Probabilities[i]
+    print("Probability of match after {} plates = {:.8f}, answer += {:.8f}, answer = {:.8f}".format(i, Probabilities[i], i*Probabilities[i], answer))
+print("Alternate calculation answer = {}".format(answer))
+print("Alternata answer = {:.8f} (to 8 decimal places)".format(answer))
+print("Difference = {}".format(expected-answer))
+print("Total probability = {}".format(total))
+
 
 # Key:
-#    0 = "000"
-#    5 = "500"
+#    0 = "000" = zero
+#    5 = "500" = half
 #    X = any other number other than a compliment of previously picked X
 #    M = compliment of a previously picked X
 # (a compliment of a number and the number add up to 1000)
+#
+# Possible wins of length 3
+#
+#    XXM = 998/1000 * 997/1000 * 2/1000
+#
+#    5XM =   1/1000 * 998/1000 * 1/1000
+#    X5M = 998/1000 *   1/1000 * 1/1000
+#
+#    5X5 =   1/1000 * 998/1000 * 1/1000
+#    X55 = 998/1000 *   1/1000 * 1/1000
 #
 # Possible wins of length 4
 #
@@ -254,85 +250,3 @@ print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
 # of X 0's, inserted into N locations.
 #
 # Partition(Z, N) =
-
-# Wins of length 4 => 1 zero inserted => 3 possible locations
-#
-#    0XXM =   1/1000 * 998/1000 * 997/1000 * 2/1000
-#    X0XM = 998/1000 *   1/1000 * 997/1000 * 2/1000
-#    XX0M = 998/1000 * 997/1000 *   1/1000 * 2/1000
-#
-#    05XM =   1/1000 *   1/1000 * 998/1000 * 1/1000
-#    50XM =   1/1000 *   1/1000 * 998/1000 * 1/1000
-#    5X0M =   1/1000 * 998/1000 *   1/1000 * 1/1000
-#    0X5M =   1/1000 * 998/1000 *   1/1000 * 1/1000
-#    X05M = 998/1000 *   1/1000 *   1/1000 * 1/1000
-#    X50M = 998/1000 *   1/1000 *   1/1000 * 1/1000
-#
-#    05X5 =   1/1000 *   1/1000 * 998/1000 * 1/1000
-#    50X5 =   1/1000 *   1/1000 * 998/1000 * 1/1000
-#    5X05 =   1/1000 * 998/1000 *   1/1000 * 1/1000
-#    0X55 =   1/1000 * 998/1000 *   1/1000 * 1/1000
-#    X055 = 998/1000 *   1/1000 *   1/1000 * 1/1000
-#    X505 = 998/1000 *   1/1000 *   1/1000 * 1/1000
-#
-# Each possibility has 1/1000 the probability of the non-zero inserted original
-#
-# Wins of length 5 => 1 zero inserted => 4 possible locations
-#
-#    0XXXM =   1/1000 * 998/1000 * 997/1000 * 996/1000 * 3/1000
-#    X0XXM = 998/1000 *   1/1000 * 997/1000 * 996/1000 * 3/1000
-#    XX0XM = 998/1000 * 997/1000 *   1/1000 * 996/1000 * 3/1000
-#    XXX0M = 998/1000 * 997/1000 * 996/1000 *   1/1000 * 3/1000
-#
-# Each possibility has 1/1000 the probability of the non-zero inserted original
-#
-# Wins of length 6 => 2 zeros => 4+3+2+1 = (5*4)/2 possible locations
-#
-#    00XXXM =   1/1000 *   1/1000 * 998/1000 * 997/1000 * 996/1000 * 3/1000
-#    0X0XXM =   1/1000 * 998/1000 *   1/1000 * 997/1000 * 996/1000 * 3/1000
-#    0XX0XM =   1/1000 * 998/1000 * 997/1000 *   1/1000 * 996/1000 * 3/1000
-#    0XXX0M =   1/1000 * 998/1000 * 997/1000 * 996/1000 *   1/1000 * 3/1000
-#
-#    X00XXM = 998/1000 *   1/1000 *   1/1000 * 997/1000 * 996/1000 * 3/1000
-#    X0X0XM = 998/1000 *   1/1000 * 997/1000 *   1/1000 * 996/1000 * 3/1000
-#    X0XX0M = 998/1000 *   1/1000 * 997/1000 * 996/1000 *   1/1000 * 3/1000
-#
-#    XX00XM = 998/1000 * 997/1000 *   1/1000 *   1/1000 * 996/1000 * 3/1000
-#    XX0X0M = 998/1000 * 997/1000 *   1/1000 * 996/1000 *   1/1000 * 3/1000
-#
-#    XX00XM = 998/1000 * 997/1000 *   1/1000 *   1/1000 * 996/1000 * 3/1000
-#    XX0X0M = 998/1000 * 997/1000 *   1/1000 * 996/1000 *   1/1000 * 3/1000
-#
-#    XXX00M = 998/1000 * 997/1000 * 996/1000 *   1/1000 *   1/1000 * 3/1000
-#
-# Each possibility has (1/1000)^2 the probability of the non-zero inserted original
-#
-# Wins of length 7 => 3 zeros => 4+3+2+1 + 3+2+1 + 2+1 + 1 = (6*5*4)/(3*2) possible locations
-#
-#    000XXXM =   1/1000 *    1/000 *   1/1000 * 998/1000 * 997/1000 * 996/1000 * 3/1000
-#    00X0XXM =   1/1000 *    1/000 * 998/1000 *   1/1000 * 997/1000 * 996/1000 * 3/1000
-#    00XX0XM =   1/1000 *    1/000 * 998/1000 * 997/1000 *   1/1000 * 996/1000 * 3/1000
-#    00XXX0M =   1/1000 *    1/000 * 998/1000 * 997/1000 * 996/1000 *   1/1000 * 3/1000
-#
-#    0X00XXM =   1/1000 * 998/1000 *    1/000 *   1/1000 * 997/1000 * 996/1000 * 3/1000
-#    0X0X0XM =   1/1000 * 998/1000 *    1/000 * 997/1000 *   1/1000 * 996/1000 * 3/1000
-#    0X0XX0M =   1/1000 * 998/1000 *    1/000 * 997/1000 * 996/1000 *   1/1000 * 3/1000
-#
-#    0XX00XM =   1/1000 * 998/1000 * 997/1000 *    1/000 *   1/1000 * 996/1000 * 3/1000
-#    0XX0X0M =   1/1000 * 998/1000 * 997/1000 *    1/000 * 996/1000 *   1/1000 * 3/1000
-#
-#    0XXX00M =   1/1000 * 998/1000 * 997/1000 * 996/1000 *    1/000 *   1/1000 * 3/1000
-#
-#    X000XXM = 998/1000 *   1/1000 *   1/1000 *   1/1000 * 997/1000 * 996/1000 * 3/1000
-#    X00X0XM = 998/1000 *   1/1000 *   1/1000 * 997/1000 *   1/1000 * 996/1000 * 3/1000
-#    X00XX0M = 998/1000 *   1/1000 *   1/1000 * 997/1000 * 996/1000 *   1/1000 * 3/1000
-#
-#    X0X00XM = 998/1000 *   1/1000 * 997/1000 *   1/1000 *   1/1000 * 996/1000 * 3/1000
-#    X0X0X0M = 998/1000 *   1/1000 * 997/1000 *   1/1000 * 996/1000 *   1/1000 * 3/1000
-#
-#    X0XX00M = 998/1000 *   1/1000 * 997/1000 * 996/1000 *   1/1000 *   1/1000 * 3/1000
-#
-#    XX000XM = 998/1000 * 997/1000 *   1/1000 *   1/1000 *   1/1000 * 996/1000 * 3/1000
-#    XX00X0M = 998/1000 * 997/1000 *   1/1000 *   1/1000 * 996/1000 *   1/1000 * 3/1000
-#
-#    XXX000M = 998/1000 * 997/1000 * 996/1000 *   1/1000 *   1/1000 *   1/1000 * 3/1000
