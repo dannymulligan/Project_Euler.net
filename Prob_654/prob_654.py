@@ -35,6 +35,7 @@ if DEBUG:
     print(sys.version)
 
 PRIME = 1000000007
+Calls = 0
 
 
 ###############################################################################
@@ -50,8 +51,8 @@ def Comb(S, P, B, E, Depth=1, Debug=DEBUG):
     global Calls
     Calls += 1
 
-    print("  "*Depth, end='')
-    print("Comb(P={}, {:2} - {:2})".format(P, B, E))
+    #print("  "*Depth, end='')
+    #print("Comb(P={}, {:2} - {:2})".format(P, B, E))
     if Debug:
         print("Comb(S={},P={},B={},E={})".format(S, P, B, E))
 
@@ -104,8 +105,104 @@ def Comb(S, P, B, E, Depth=1, Debug=DEBUG):
 
 ###############################################################################
 
+def PreCalculate(S, MaxPairs, Debug=False):
+    global precalc
+
+    # Calculate precalc[(S, P=2, B, E)]
+    P = 2
+    if Debug:
+        print("Precalculating for P = {}".format(P))
+    temp_calc = [[0]*S]*S
+    for B in range(1,S):
+        for E in range(B,S):
+            ans = Comb(S, P, B, E)
+            precalc[(S, P, B, E)] = ans
+            if Debug:
+                print("precalc[({},{},{},{})] = {}".format(S, P, B, E, ans))
+
+    # Calculate precalc[(S, P, B, E)] for larger values of P
+    while P*2 < MaxPairs:
+        if Debug:
+            print("Precalculating for P = {}".format(P*2))
+
+        temp_calc = [[0]*i for i in range(S-1, -1, -1)]
+        for M in range(1,S):
+
+            # Lookup everything we need for B -> M and M -> E calculations
+            if Debug:
+                print("Calculate all paths that go via M={}".format(M))
+            this_M = [0 for _ in range(S+1)]
+            for O in range(1,S):
+                if O > M:
+                    this = precalc[(S, P, M, O)]
+                else:
+                    this = precalc[(S, P, O, M)]
+                this_M[O] = this
+                #print("this_M[{}] = {}".format(O, this))
+
+            # Calculate contribution from M for all paths from B -> M -> E
+            for B in range(1, S):
+                left = this_M[B]
+                for E in range(B, S):
+                    right = this_M[E]
+                    if Debug:
+                        print("temp_calc[B={B}][E={E}] += this_M[B={B}]*this_M[E={E}] = {L} * {R} (was {P})".format(B=B, E=E, L=left, R=right, P=temp_calc[B-1][E-B]))
+                    temp_calc[B-1][E-B] += left * right
+
+            # Record all paths from B -> E in cache
+            for B in range(1,S):
+                for E in range(B, S):
+                    precalc[(S, P*2, B, E)] = temp_calc[B-1][E-B]
+                    if Debug:
+                        print("precalc[({},{},{},{})] = {}".format(S, P*2, B, E, temp_calc[B-1][E-B]))
+
+        for B in range(1, S):
+            if Debug:
+                print("temp_calc[B={B}] = {T}".format(B=B, T=temp_calc[B-1]))
+            for E in range(B, S):
+                expect = Comb(S, P*2, B, E)
+                if (temp_calc[B-1][E-B] == expect):
+                    if Debug:
+                        print("temp_calc[B={B}][E={E}] = {T}".format(B=B, E=E, T=temp_calc[B-1][E-B]))
+                else:
+                    print("temp_calc[B={B}][E={E}] = {T}".format(B=B, E=E, T=temp_calc[B-1][E-B]), end='')
+                    print("ERROR expected {expect}".format(expect=expect))
+
+
+        P *= 2
+        prev_calc = temp_calc
+
+
+precalc = {}
+
+S = 100
+MaxPairs = 5
+PreCalculate(S, MaxPairs, Debug=False)
+#print("Given S={}, precalc = {}".format(S, precalc))
+print("Finished precalculating after {:.2f} seconds".format(time.clock() - start_time))
+
+B = 1
+E = 1
+P = 1
+while P*2 < MaxPairs:
+    P *= 2
+    print("precalc[({}, {}, {}, {})] = {}".format(S, P, B, E, precalc[(S, P, B, E)]))
+
+sys.exit(0)
+
+###############################################################################
+
 def T(n, m):
-    return Comb(S=n, P=m-1, B=0, E=0)
+    #return Comb(S=n, P=m-1, B=0, E=0)
+    result = 0
+    for i in range(1,n):
+        for j in range(i,n):
+            if (i == j):
+                result = (result + Comb(S=n, P=m-1, B=i, E=j)) % PRIME
+            else:
+                result = (result + 2*Comb(S=n, P=m-1, B=i, E=j)) % PRIME
+    return result
+
 
 ###############################################################################
 
@@ -117,23 +214,20 @@ TestData = [
     # ((  4,      4),        31),  # hand calculated
     # ((  5,      5),       246),  # problem description
     # ((  5,     10),     48620),
-    # ((  5,     20), 904652096),
-    # ((  5,     50), 470279892),
-    # ((  5,    100), 507204810),
     # (( 10,     10),  83833256),  # problem description
     # (( 10,     25), 247610452),
     # (( 10,     50), 474746258),
     # (( 10,    100), 862820094),  # problem description
     # (( 10,    200), 504071520),
     # (( 10,    500),  51121641),
-    # (( 10,   1000), 380913635),
     # (( 20,    257),  44422060),
-      (( 20,    513), 593197885),
-    # (( 20,   1000), 785677136),
-    # (( 30,   1000), 500353563),
-    # (( 40,   1000), 244000114),
-    # (( 50,   1000),   2128094),
-    # (( 60,   1000), 411903171),
+    # (( 20,    513), 593197885),
+      (( 10,   1000), 380913635),
+      (( 20,   1000), 785677136),
+      (( 30,   1000), 500353563),
+      (( 40,   1000), 244000114),
+      (( 50,   1000),   2128094),
+      (( 60,   1000), 411903171),
     # (( 80,   1000), 171954316),
     # ((100,   1000), 501206836),
     # ((200,   1000), 382292968),
@@ -172,7 +266,6 @@ TestData = [
 
 for ((n, m), expect) in TestData:
     b_time = time.clock()
-    Calls = 0
     Comb.cache_clear()
     result = T(n, m)
     #print(Comb.cache_info())
