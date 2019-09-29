@@ -1,24 +1,27 @@
 #!/usr/bin/env python
 
 
+SELF_TEST = __name__ == "__main__"
+
 ###############################################################################
-def calculate_primes(limit, make_prime_list=True, silent=False):
-    """Calculates a table of primes/factors for integers less than limit
+def calculate_primes_list(limit, make_prime_list=True, silent=False):
+    """Calculates a table of primes less than limit using a list
+    The resulting datastructure can also be used to find the factors of non-primes
     Optionally generates a list of prime numbers
     """
 
+    if not silent:
+        import time
+        start_time = time.clock()
+
     prime_table = [1]*limit
     prime_count = 0
-    if make_prime_list:
-        prime_list = []
-    import time
-    start_time = time.clock()
 
     # Optimization to allow us to increment i by 2 for the rest of the algoritm
     i = 2
     prime_count += 1
     if make_prime_list:
-        prime_list.append(i)
+        prime_list = [2]
     j = i**2
     while (j < limit):
         prime_table[j] = i
@@ -41,18 +44,85 @@ def calculate_primes(limit, make_prime_list=True, silent=False):
             if make_prime_list:
                 prime_list.append(i)
         i += 2
+
     if not silent:
         print("There are {:,} primes less than {:,}, calculated in {:.2f} seconds".format(prime_count, limit, (time.clock() - start_time)))
+
     if make_prime_list:
         return prime_table, prime_list
     else:
         return prime_table
 
+
+###############################################################################
+def calculate_primes_bitarray(limit, make_prime_list=True, silent=False):
+    """Calculates a table of primes/factors for integers less than limit
+    Optionally generates a list of prime numbers
+    """
+
+    if not silent:
+        import time
+        start_time = time.clock()
+
+    import bitarray
+    prime_table = bitarray.bitarray(limit+1)
+    prime_table.setall(1)
+
+    # Optimization to allow us to increment i by 2 for the rest of the algoritm
+    prime_table[:2] = prime_table[2*2::2] = 0
+    prime_count = 1
+    if make_prime_list:
+        prime_list = [2]
+
+    i = 3
+    while (i < (limit/2)):
+        if prime_table[i]:
+            prime_count += 1
+            if make_prime_list:
+                prime_list.append(i)
+            prime_table[i*i::i*2] = 0
+        i += 2
+
+    while (i < limit):
+        if prime_table[i]:
+            prime_count += 1
+            if make_prime_list:
+                prime_list.append(i)
+        i += 2
+
+    if not silent:
+        print("There are {:,} primes less than {:,}, calculated in {:.2f} seconds".format(prime_count, limit, (time.clock() - start_time)))
+
+    if make_prime_list:
+        return prime_table, prime_list
+    else:
+        return prime_table
+
+
+###############################################################################
+def calculate_primes(limit, make_prime_list=True, silent=False):
+    return calculate_primes_list(limit, make_prime_list, silent)
 # Example call:
 #     import primes
 #     prime_table, prime_list = primes.calculate_primes(SIZE)
-#     # or
+# or
 #     prime_table = primes.calculate_primes(SIZE, make_prime_list=False)
+
+if SELF_TEST:
+    print("Running self test on calculate_primes()")
+    primes_100 = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59,
+                  61, 67, 71, 73, 79, 83, 89, 97]
+    primes_500 = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59,
+                  61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127,
+                  131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191,
+                  193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257,
+                  263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331,
+                  337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401,
+                  409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467,
+                  479, 487, 491, 499]
+    prime_table, prime_list = calculate_primes(500, make_prime_list=True, silent=True)
+    assert prime_list == primes_500
+    print("Test passed")
 
 
 ###############################################################################
@@ -138,9 +208,8 @@ def is_prime(n, prime_table):
             s += 1
         return miller_rabin_primality_test(n,s,d,4)
 
-if False:
-    print("testing is_prime()")
-    # Debug test
+if SELF_TEST:
+    print("Running self test on is_prime()")
     prime_table, prime_list = calculate_primes(10*3)
     print(prime_table)
     print(len(prime_table))
@@ -148,12 +217,12 @@ if False:
     assert is_prime(53, prime_table) == True
     assert is_prime(5678027, prime_table) == False
     assert is_prime(5678039, prime_table) == True
+    print("Test passed")
 
 # Example call:
 #     import primes
 #     prime_table, prime_list = primes.calculate_primes(SIZE)
 #     answer = primes.is_prime(n, prime_table)
-
 
 
 ###############################################################################
@@ -255,3 +324,29 @@ def calculate_phi(prime_table, silent=False):
 
 
 ###############################################################################
+# Speed testing
+
+if __name__ == "__main__":
+
+    SIZE = 100*(10**6)
+    print("Running calculate_primes_list({})".format(SIZE))
+    prime_table, prime_list = calculate_primes_list(SIZE, make_prime_list=True)
+
+    SIZE = 100*(10**6)
+    print("Running calculate_primes_bitarray({})".format(SIZE))
+    prime_table, prime_list = calculate_primes_bitarray(SIZE, make_prime_list=True)
+
+    if len(prime_list) < 100:
+        print(prime_list)
+        for i in range(2, SIZE):
+            if prime_table[i] == 1:
+                print("{}, ".format(i))
+    # Running in Sept 2019...
+    #
+    # I can calculate primes up to 100M using the bitarray approach in approx.
+    # the same time as I can calculate primes up to 36M using lists, or about
+    # 2.7x more in the same amount of run time.
+    #
+    # I calcalculate primes up to 100M in 35 seconds using the list approach
+    # versus 12.5 seconds using the bitarray approach, or the same in about
+    # 1/2.8x less time.
