@@ -31,53 +31,40 @@
 import primes
 import time
 start_time = time.clock()
-SIZE = 5  # We evaluate F(10**SIZE)
+SIZE = 7  # We evaluate F(10**SIZE)
 NOT_CONNECTED = 10**SIZE + 1
 DEBUG = False
 
-########################################
-def char_diff_count(a, b):
-    assert len(a) == len(b)
-    answer = 0
-    for i in range(len(a)):
-        if a[i] != b[i]:
-            answer += 1
-    return answer
-
 
 ########################################
-def same_digit_primes(n):
+def same_digit_primes(n, digits):
     # Yield numbers with the same number of digits as n
     # that differ in just one digit
-    n_str = "{}".format(n)
-    for p in prime_list:
-        if n == p:
-            continue
-        p_str = "{}".format(p)
-        if len(p_str) < len(n_str):
-            continue
-        if len(p_str) > len(n_str):
-            break
-        if char_diff_count(p_str, n_str) == 1:
-            yield p
+    for d in range(digits):
+        top = (n // (10**(d+1))) * (10**(d+1))
+        bot = n % (10**d)
+        for c in range(10):
+            candidate = top + bot + c*(10**d)
+            if (prime_table[candidate] == 1):
+                yield candidate
 
 
 ########################################
-def more_digit_primes(n):
+def more_digit_primes(n, digits):
     # Yield numbers with one digits appended to the left of n
-    digits = len("{}".format(n))
+    if digits == SIZE:
+        return None
     for p in range(1, 10):
         trial = n + p * (10**digits)
-        if trial in prime_list:
+        if (prime_table[trial] == 1):
             yield trial
 
 
 ########################################
-def less_digit_primes(n):
+def less_digit_primes(n, digits):
     # Yield numbers with one digits chopped off the left of n
-    digits = len("{}".format(n))
     trial = n % 10**(digits-1)
-    if trial in prime_list:
+    if (prime_table[trial] == 1):
         yield trial
 
 
@@ -85,8 +72,8 @@ def less_digit_primes(n):
 
 prime_table, prime_list = primes.calculate_primes(10**SIZE+1)
 
-lowest_path = {p: NOT_CONNECTED for p in prime_list}
-lowest_path[2] = 2
+best_path = {p: NOT_CONNECTED for p in prime_list}
+best_path[2] = 2
 
 overall_done = False
 while not overall_done:
@@ -100,81 +87,70 @@ while not overall_done:
         print(", between {} and {}".format(lower_limit, upper_limit))
 
         # Find all connected primes with the same number of digits
-        same_digit_done = False
-        while not same_digit_done:
-            same_digit_done = True
+        for prime in prime_list:
+            if (prime < lower_limit) or (prime > upper_limit):
+                continue
+            if best_path[prime] == NOT_CONNECTED:
+                continue
 
-            for prime in prime_list:
-                if (prime < lower_limit) or (prime > upper_limit):
-                    continue
-                if lowest_path[prime] == NOT_CONNECTED:
-                    continue
-
-                if DEBUG:
-                    print("    looking for same digit primes from {}".format(prime))
-                for n in same_digit_primes(prime):
-                    path_max = max(n, lowest_path[prime])
-                    if path_max < lowest_path[n]:
-                        lowest_path[n] = path_max
-                        if DEBUG:
-                            print("        lowest_path[{}] = {}".format(n, path_max))
-                        same_digit_done = False
-                        overall_done = False
+            if DEBUG:
+                print("    looking for same digit primes from {}".format(prime))
+            for n in same_digit_primes(prime, digits):
+                path_max = max(n, best_path[prime])
+                if path_max < best_path[n]:
+                    best_path[n] = path_max
+                    if DEBUG:
+                        print("        best_path[{}] = {}".format(n, path_max))
+                    overall_done = False
 
         # Find all connected primes with the 1 more digits
-        more_digit_done = False
-        while not more_digit_done:
-            more_digit_done = True
+        for prime in prime_list:
+            if (prime < lower_limit) or (prime > upper_limit):
+                continue
+            if best_path[prime] == NOT_CONNECTED:
+                continue
 
-            for prime in prime_list:
-                if (prime < lower_limit) or (prime > upper_limit):
-                    continue
-                if lowest_path[prime] == NOT_CONNECTED:
-                    continue
-
-                if DEBUG:
-                    print("    looking for more digit primes from {}".format(prime))
-                for n in more_digit_primes(prime):
-                    path_max = max(n, lowest_path[prime])
-                    if path_max < lowest_path[n]:
-                        lowest_path[n] = path_max
-                        if DEBUG:
-                            print("        lowest_path[{}] = {}".format(n, path_max))
-                        more_digit_done = False
-                        overall_done = False
+            if DEBUG:
+                print("    looking for more digit primes from {}".format(prime))
+            for n in more_digit_primes(prime, digits):
+                path_max = max(n, best_path[prime])
+                if path_max < best_path[n]:
+                    best_path[n] = path_max
+                    if DEBUG:
+                        print("        best_path[{}] = {}".format(n, path_max))
+                    overall_done = False
 
         # Find all connected primes with the 1 fewer digits
-        less_digit_done = False
-        while not less_digit_done:
-            less_digit_done = True
+        for prime in prime_list:
+            if (prime < lower_limit) or (prime > upper_limit):
+                continue
+            if best_path[prime] == NOT_CONNECTED:
+                continue
 
-            for prime in prime_list:
-                if (prime < lower_limit) or (prime > upper_limit):
-                    continue
-                if lowest_path[prime] == NOT_CONNECTED:
-                    continue
+            if DEBUG:
+                print("    looking for less digit primes from {}".format(prime))
+            for n in less_digit_primes(prime, digits):
+                path_max = max(n, best_path[prime])
+                if path_max < best_path[n]:
+                    best_path[n] = path_max
+                    if DEBUG:
+                        print("        best_path[{}] = {}".format(n, path_max))
+                    less_digit_done = False
+                    overall_done = False
 
-                if DEBUG:
-                    print("    looking for less digit primes from {}".format(prime))
-                for n in less_digit_primes(prime):
-                    path_max = max(n, lowest_path[prime])
-                    if path_max < lowest_path[n]:
-                        lowest_path[n] = path_max
-                        if DEBUG:
-                            print("        lowest_path[{}] = {}".format(n, path_max))
-                        less_digit_done = False
-                        overall_done = False
-
-
+#DEBUG = True
 answer = 0
-for p in lowest_path:
-    if DEBUG:
-        if lowest_path[p] == NOT_CONNECTED:
-            print("lowest_path[{}] = not connected".format(p))
-        else:
-            print("lowest_path[{}] = {}".format(p, lowest_path[p]))
-    if lowest_path[p] > p:
+for p in best_path:
+    if best_path[p] > p:
         answer += p
+    if DEBUG:
+        if best_path[p] == NOT_CONNECTED:
+            print("best_path[{}] = not connected".format(p))
+        else:
+            if best_path[p] > p:
+                print("best_path[{}] = {} => not 2's relative".format(p, best_path[p]))
+            else:
+                print("best_path[{}] = {}".format(p, best_path[p]))
 print("F({}) = {}".format(10**SIZE, answer))
 
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))

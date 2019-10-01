@@ -15,6 +15,8 @@ def calculate_primes_list(limit, make_prime_list=True, silent=False):
         start_time = time.clock()
 
     prime_table = [1]*limit
+    prime_table[0] = 0  # Not a prime
+    prime_table[1] = 0  # Not a prime
     prime_count = 0
 
     # Optimization to allow us to increment i by 2 for the rest of the algoritm
