@@ -40,6 +40,7 @@ import time
 start_time = time.clock()
 
 DEBUG = False
+DEBUG = True
 
 if DEBUG:
     print(sys.version)
@@ -52,7 +53,7 @@ def pot(nplayers, tolerance):
     if DEBUG:
         print()
         print("pot(nplayers={}, tolerance={})".format(nplayers, tolerance))
-        print(prev_probs)
+        print("0,{},0.0".format(",".join([str(n) for n in prev_probs])))
     prev_probs[0] = 0
 
     done = False
@@ -74,7 +75,7 @@ def pot(nplayers, tolerance):
         done = (pot_contribution < tolerance)
         expected_pot += pot_contribution
         if DEBUG:
-            print(round, next_probs, pot_contribution)
+            print("{},{},{}".format(round, ",".join([str(n) for n in next_probs]), pot_contribution))
 
         prev_probs = next_probs
         prev_probs[0] = 0.0
@@ -87,7 +88,7 @@ g = 0.0
 tol = 2e-14
 tolerance = 1.0 * tol
 prev_time = start_time
-for n in range(2,51):
+for n in range(2,6):
     result = pot(nplayers=n, tolerance=tolerance)
     g += result
     now = time.clock()
