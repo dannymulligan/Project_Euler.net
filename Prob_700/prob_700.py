@@ -29,6 +29,39 @@ start_time = time.clock()
 
 A = 1504170715041707  # = 17 * 1249 * 12043 * 5882353
 B = 4503599627370517  # prime
+partition = 20000000
+answer = 0
+
+
+###############################################################################
+
+def sequence():
+    '''
+    sequence[n] = ((A * n) % B)
+    '''
+    n = 0
+    while True:
+        n += 1
+        yield n, (A * n) % B
+
+
+###############################################################################
+
+front_solutions = []
+valid_ns = []
+current_limit = A + 1
+i = 0
+for n, e in sequence():
+    if e < partition:
+        break
+    if e < current_limit:
+        current_limit = e
+        answer += e
+        i += 1
+        valid_ns.append(n)
+        print("{}: sequence[{:,}] = {:,}, answer = {:,}, time = {:.2f} seconds".format(i, n, e, answer, time.clock() - start_time))
+        front_solutions.append((n, e))
+
 
 ###############################################################################
 def ext_euclid(n, m, debug = False):
@@ -73,52 +106,33 @@ if False:
     print()
     sys.exit()
 
+
+###############################################################################
+# Calculate X such that
+#     1504170715041707 * X mod 4503599627370517 = 1
 x = ext_euclid(A, B)
 print("x = {}".format(x))
+# Given that, then
+#     (X * 2) mod 4503599627370517 = 2
+#     (X * 3) mod 4503599627370517 = 3
+#     etc
 
-answer = 0
+rear_solutions = []
 prev_n = B
-i = 1
-for e in range(1, 9667):
+i = 0
+for e in range(1, partition):
     n = (e * x) % B
     if n < prev_n:
-        print("{}: sequence[{:,}] = {:,}, answer = {:,}, time = {:.2f} seconds".format(i, n, e, answer, time.clock() - start_time))
         prev_n = n
         answer += e
         i += 1
-print("Answer = {:,}".format(answer))
-print("Ultimate answer = {:,}".format(answer + 1517926517692145))
-sys.exit()
-
-
-
-###############################################################################
-
-def sequence():
-    '''
-    sequence[n] = ((A * n) % B)
-    '''
-    n = 0
-    while True:
-        n += 1
-        yield n, (A * n) % B
-
-valid_ns = []
-answer = 0
-current_limit = A + 1
-i = 0
-for n, e in sequence():
-    if e < current_limit:
-        current_limit = e
-        answer += e
-        i += 1
-        valid_ns.append(n)
         print("{}: sequence[{:,}] = {:,}, answer = {:,}, time = {:.2f} seconds".format(i, n, e, answer, time.clock() - start_time))
-    if n > B:
-        break
+        rear_solutions.insert(0, (n, e))
 
-print("After {:,} items, answer = {:,}".format(i, answer))
-print("Valid N's = {}".format(valid_ns))
+solutions = front_solutions + rear_solutions
+print("{} Eulercoins = {}".format(len(solutions), solutions))
+
+print("Answer = {:,}".format(answer))
 
 print("Time taken = {:.2f} seconds".format(time.clock() - start_time))
 
